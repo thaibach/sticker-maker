@@ -15,7 +15,6 @@ class PrivacyPage extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              margin: const EdgeInsets.only(bottom: 31),
               padding: const EdgeInsets.only(top: 58, left: 23, bottom: 12),
               decoration: const BoxDecoration(color: Color.fromRGBO(135, 193, 255, 0.5)),
               child: Column(
@@ -57,6 +56,19 @@ class PrivacyPage extends StatelessWidget {
                 ],
               ),
             ),
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.only(top: 31),
+                color: Colors.white,
+                child: Column(
+                  
+                ),
+              ),
+            ),
+            Container(
+              height: 100,
+              decoration: const BoxDecoration(color: Color.fromRGBO(135, 193, 255, 0.1)),
+            )
           ],
         ),
       ),
