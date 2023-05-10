@@ -45,6 +45,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     _homeCubit = HomePageCubit();
+    prepareModel();
     super.initState();
   }
 
