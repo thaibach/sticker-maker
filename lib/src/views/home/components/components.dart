@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sticker_maker/src/cubit/home_cubit/home_cubit.dart';
 import 'package:sticker_maker/src/utils/style.dart';
+import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
 
 class Components {
@@ -67,10 +68,15 @@ class Components {
                   color: Color(0xFFE46D39),
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
                 ),
-                child: Image.asset(
-                  "assets/images/image_setting.png",
-                  width: MediaQuery.of(context).size.width * 0.099,
-                  height: MediaQuery.of(context).size.height * 0.099,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SettingPage()));
+                  },
+                  child: Image.asset(
+                    "assets/images/image_setting.png",
+                    width: MediaQuery.of(context).size.width * 0.099,
+                    height: MediaQuery.of(context).size.height * 0.099,
+                  ),
                 ),
               ),
             ],
@@ -213,9 +219,9 @@ class Components {
                     ),
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
-                     openAppSettings();
+                      openAppSettings();
                     },
                     child: Container(
                       margin: const EdgeInsets.only(top: 6, bottom: 20),
@@ -237,15 +243,15 @@ class Components {
                         child: Center(
                           child: Text(
                             'Go to setting',
-                            style:
-                                AppStyle.DEFAULT_14.copyWith(fontWeight: FontWeight.w500, color: const Color(0xFF5060B8)),
+                            style: AppStyle.DEFAULT_14
+                                .copyWith(fontWeight: FontWeight.w500, color: const Color(0xFF5060B8)),
                           ),
                         ),
                       ),
                     ),
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.of(context).pop();
                     },
                     child: Text(
