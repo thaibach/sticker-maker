@@ -1,5 +1,5 @@
 class PolicyConstant {
-  static const String content_01 = " Privacy Policy for INTERNATIONAL TELECOM SOLUTIONS AND TRADING COMPANY LIMITED";
+  static const String content_01 = "Privacy Policy for INTERNATIONAL TELECOM SOLUTIONS AND TRADING COMPANY LIMITED";
   static const String content_003 =
       "  This policy is not applicable to any information collected offline or via channels other than this website.";
   static const String content_002 =
