@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:sticker_maker/src/bloc/BlocObserver.dart';
 import 'package:sticker_maker/src/cubit/home_cubit/home_cubit.dart';
 import 'package:sticker_maker/src/views/pre_edit/pre_edit_page.dart';
+import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
 
 import 'src/views/views_index.dart';
 
@@ -32,6 +33,7 @@ final _appRouter = GoRouter(routes: [
   GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
   GoRoute(path: '/homePage', builder: (context, state) => const HomePage()),
   GoRoute(path: '/preEditPage', builder: (context, state) =>  PreEditPage(image: null)),
+  GoRoute(path: '/settings',builder: (context, state) => SettingPage())
 ]);
 
 class MyApp extends StatelessWidget {
