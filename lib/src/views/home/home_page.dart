@@ -167,8 +167,10 @@ class _HomeViewState extends State<HomeView> {
                                 child: Container(
                                   width: double.infinity,
                                   margin: const EdgeInsets.only(
-                                    left: 11,
-                                    right: 11,
+                                    top: 2,
+                                    left: 9,
+                                    right: 9,
+                                   bottom: 3
                                   ),
                                   decoration: const BoxDecoration(
                                       image: DecorationImage(
