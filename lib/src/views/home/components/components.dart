@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sticker_maker/src/cubit/home_cubit/home_cubit.dart';
 import 'package:sticker_maker/src/utils/style.dart';
-import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
 
 class Components {
@@ -16,7 +15,7 @@ class Components {
   Widget rowSetting(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 10),
-      height: 50,
+      height: 45,
       width: double.infinity,
       child: Stack(
         children: [
