@@ -15,7 +15,7 @@ class Components {
 
   Widget rowSetting(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 20),
+      margin: const EdgeInsets.only(top: 10),
       height: 50,
       width: double.infinity,
       child: Stack(
@@ -34,7 +34,7 @@ class Components {
                   clipBehavior: Clip.none,
                   children: [
                     Container(
-                      color: const Color(0xFFE46D39),
+                     color: const Color(0xFFE46D39),
                       margin: const EdgeInsets.only(
                         top: 10,
                         left: 5,
@@ -63,20 +63,9 @@ class Components {
               ),
               Container(
                 width: 60,
-                padding: const EdgeInsets.only(top: 10),
                 decoration: const BoxDecoration(
                   color: Color(0xFFE46D39),
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-                ),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => SettingPage()));
-                  },
-                  child: Image.asset(
-                    "assets/images/image_setting.png",
-                    width: MediaQuery.of(context).size.width * 0.099,
-                    height: MediaQuery.of(context).size.height * 0.099,
-                  ),
                 ),
               ),
             ],
@@ -190,6 +179,8 @@ class Components {
         context: context,
         builder: (context) {
           return AlertDialog(
+            surfaceTintColor: Colors.white,
+            backgroundColor: Colors.white,
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(
@@ -203,7 +194,7 @@ class Components {
                   Text(
                     'Access disabled!',
                     style: AppStyle.DEFAULT_16.copyWith(
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w700,
                       color: Colors.black,
                     ),
                   ),
@@ -215,7 +206,7 @@ class Components {
                     textAlign: TextAlign.center,
                     style: AppStyle.DEFAULT_12.copyWith(
                       fontWeight: FontWeight.w500,
-                      color: Colors.black,
+                      color: Color(0xFF6C6C6C),
                     ),
                   ),
                   GestureDetector(
@@ -227,9 +218,9 @@ class Components {
                       margin: const EdgeInsets.only(top: 6, bottom: 20),
                       height: 45,
                       width: MediaQuery.of(context).size.width * 0.54,
-                      padding: const EdgeInsets.all(2),
+                      padding: const EdgeInsets.all(1),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(22),
                           gradient: const LinearGradient(colors: [
                             Color(0xFFFF28B6),
                             Color(0xFF5060F5),
@@ -237,7 +228,7 @@ class Components {
                           ])),
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(22),
                           color: Colors.white,
                         ),
                         child: Center(
