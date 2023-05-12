@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 import 'package:sticker_maker/src/utils/values.dart';
 import 'package:sticker_maker/src/widgets/nav_button.dart';
 import 'package:sticker_maker/src/widgets/nav_custom_painter.dart';
@@ -12,6 +11,7 @@ class CurvedNavigationBar extends StatefulWidget {
   final Color color;
   final Color? buttonBackgroundColor;
   final Color backgroundColor;
+  final Gradient gradientBG;
   final ValueChanged<int>? onTap;
   final _LetIndexPage letIndexChange;
   final Curve animationCurve;
@@ -32,6 +32,12 @@ class CurvedNavigationBar extends StatefulWidget {
     this.animationDuration = const Duration(milliseconds: 600),
     this.height = 75.0,
     this.width = 120.0,
+    this.gradientBG = const LinearGradient(
+      colors: [
+        Color(0xFFDE225B),
+        Color(0xFFE46D39),
+      ],
+    ),
   })  : letIndexChange = letIndexChange ?? ((_) => true),
         assert(items != null),
         assert(items.length >= 1),
@@ -100,9 +106,8 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
     return Padding(
       padding: const EdgeInsets.only(bottom: 30),
       child: Container(
-        width: AppValue.widths*0.7,
+        width: AppValue.widths * 0.7,
         height: widget.height,
-
         child: Stack(
           clipBehavior: Clip.none,
           alignment: Alignment.bottomCenter,
@@ -129,9 +134,8 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
                       height: 50,
                       width: 50,
                       decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xFFE35C40)),
-                        borderRadius: BorderRadius.circular(25)
-                      ),
+                          border: Border.all(color: const Color(0xFFE35C40)),
+                          borderRadius: BorderRadius.circular(25)),
                       child: Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: _icon,
@@ -144,12 +148,16 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
             Positioned(
               left: 0,
               right: 0,
-              bottom: 0 - (75.0 - widget.height),
+              bottom: 0 - (62.0 - widget.height),
               child: CustomPaint(
                 painter: NavCustomPainter(
-                    _pos, _length, widget.color, Directionality.of(context),),
+                  _pos,
+                  _length,
+                  widget.color,
+                  Directionality.of(context),
+                ),
                 child: Container(
-                  height: 75.0,
+                  height: 53.0,
                 ),
               ),
             ),
@@ -158,21 +166,20 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
               right: 0,
               bottom: 0 - (75.0 - widget.height),
               child: Container(
-                  height: 80.0,
+                  height: 70.0,
                   decoration: BoxDecoration(
                       color: widget.backgroundColor,
-                      borderRadius: BorderRadius.circular(40)
-                  ),
+                      borderRadius: BorderRadius.circular(32)),
                   child: Row(
                       children: widget.items.map((item) {
-                        return NavButton(
-                          onTap: _buttonTap,
-                          position: _pos,
-                          length: _length,
-                          index: widget.items.indexOf(item),
-                          child: Center(child: item),
-                        );
-                      }).toList())),
+                    return NavButton(
+                      onTap: _buttonTap,
+                      position: _pos,
+                      length: _length,
+                      index: widget.items.indexOf(item),
+                      child: Center(child: item),
+                    );
+                  }).toList())),
             ),
           ],
         ),
