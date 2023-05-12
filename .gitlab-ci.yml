@@ -43,7 +43,7 @@ build-android-apk:
    - flutter build apk --split-per-abi --no-tree-shake-icons --release
   artifacts:
     paths:
-      - build\app\outputs\flutter-apk\app-arm64-v8a-release.apk
+       - build/app/outputs/flutter-apk/app-release.apk
     expire_in: 1 day
 
 deploy-android:
@@ -56,4 +56,4 @@ deploy-android:
     - main
   script:
     - aws configure set region $S3_REGION
-    - aws s3 cp build\app\outputs\flutter-apk\app-arm64-v8a-release.apk s3://$S3_BUCKET/isticker/app.apk
+    - aws s3 cp  - build/app/outputs/flutter-apk/app-release.apk s3://$S3_BUCKET/isticker/app.apk
