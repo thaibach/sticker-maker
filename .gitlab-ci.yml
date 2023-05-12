@@ -56,4 +56,4 @@ deploy-android:
     - main
   script:
     - aws configure set region $S3_REGION
-    - aws s3 cp  - build/app/outputs/flutter-apk/app-release.apk s3://$S3_BUCKET/isticker/app.apk
+    - aws s3 cp build/app/outputs/flutter-apk/app-release.apk s3://$S3_BUCKET/isticker/app.apk

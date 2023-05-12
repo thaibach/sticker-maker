@@ -28,8 +28,6 @@ void main() {
 }
 
 //viết route cho app ở đây
-// test
-// asdas
 final _appRouter = GoRouter(routes: [
   GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
   GoRoute(path: '/homePage', builder: (context, state) => const HomePage()),
