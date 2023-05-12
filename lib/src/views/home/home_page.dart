@@ -242,7 +242,7 @@ class _HomeViewState extends State<HomeView> {
                       color: Colors.white.withOpacity(0.2),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 29,right: 21),
+                      padding: const EdgeInsets.only(top: 24,right: 21),
                       child: Align(
                         alignment: Alignment.topRight,
                           child: Image.asset(
