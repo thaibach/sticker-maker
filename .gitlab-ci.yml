@@ -40,7 +40,7 @@ build-android-apk:
   only:
     - main
   script:
-   - flutter build apk --split-per-abi --no-tree-shake-icons --release
+   - flutter build apk 
   artifacts:
     paths:
        - build/app/outputs/flutter-apk/app-release.apk
