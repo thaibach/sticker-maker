@@ -13,27 +13,29 @@ void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent, // transparent status bar
       statusBarIconBrightness: Brightness.dark // dark text for status bar
-  ));
+      ));
   Bloc.observer = AppBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
 
-  runApp(MultiBlocProvider(providers:[
+  runApp(MultiBlocProvider(providers: [
     // * viết các page provider vào đây
     BlocProvider<HomePageCubit>(
       create: (BuildContext context) => HomePageCubit(),
     ),
-  ],
-   child: const MyApp()));
+  ], child: const MyApp()));
   //runApp(const MyApp());
 }
 
 //viết route cho app ở đây
+// test
 final _appRouter = GoRouter(routes: [
   GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
   GoRoute(path: '/homePage', builder: (context, state) => const HomePage()),
-  GoRoute(path: '/preEditPage', builder: (context, state) =>  PreEditPage(image: null)),
-  GoRoute(path: '/settings',builder: (context, state) => SettingPage())
+  GoRoute(
+      path: '/preEditPage',
+      builder: (context, state) => PreEditPage(image: null)),
+  GoRoute(path: '/settings', builder: (context, state) => SettingPage())
 ]);
 
 class MyApp extends StatelessWidget {
