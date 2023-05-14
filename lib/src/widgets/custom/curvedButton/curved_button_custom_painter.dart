@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 
 class NavCustomPainter extends CustomPainter {
   late double loc;
@@ -10,7 +10,7 @@ class NavCustomPainter extends CustomPainter {
       double startingLoc, int itemsLength, this.color, this.textDirection) {
     final span = 1.0 / itemsLength;
     s = 0.2;
-    double l = startingLoc + (span - s) / 2;
+    double l = startingLoc + (span - s) / 3;
     loc = textDirection == TextDirection.rtl ? 0.8 - l : l;
   }
   @override
@@ -27,11 +27,11 @@ class NavCustomPainter extends CustomPainter {
         center: Offset.zero,
         radius: 250.0,
       ));
-    final path = Path()
+     final path = Path()
       ..moveTo(0, 0)
       ..lineTo((loc - 0.1) * size.width, 0)
       ..cubicTo(
-        (loc + s * 0.30) * size.width,
+        (loc + s * 0.20) * size.width,
         size.height * 0.05,
         loc * size.width,
         size.height * 0.60,
@@ -41,7 +41,7 @@ class NavCustomPainter extends CustomPainter {
       ..cubicTo(
         (loc + s) * size.width,
         size.height * 0.60,
-        (loc + s - s * 0.30) * size.width,
+        (loc + s - s * 0.20) * size.width,
         size.height * 0.05,
         (loc + s + 0.1) * size.width,
         0,
@@ -58,3 +58,4 @@ class NavCustomPainter extends CustomPainter {
     return this != oldDelegate;
   }
 }
+ 

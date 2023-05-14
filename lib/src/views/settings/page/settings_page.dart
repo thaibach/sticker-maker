@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticker_maker/src/views/settings/component/custom_choice_settings.dart';
 import 'package:sticker_maker/src/views/settings/page/about_us_page.dart';
-import 'package:sticker_maker/src/views/settings/page/language_page.dart';
 import 'package:sticker_maker/src/views/settings/page/privacy_page.dart';
 import 'package:sticker_maker/src/views/settings/page/term_page.dart';
 
 class SettingPage extends StatefulWidget {
-  SettingPage({super.key});
+  const SettingPage({super.key});
 
   @override
   State<SettingPage> createState() => _SettingPageState();
@@ -71,7 +68,7 @@ class _SettingPageState extends State<SettingPage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AboutPage(),
+                      builder: (context) => const AboutPage(),
                     ));
               },
               child: ChosenSetting(icon: "assets/icons/ic_About.svg", text: "About us")),
@@ -80,7 +77,7 @@ class _SettingPageState extends State<SettingPage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => TermPage(),
+                      builder: (context) => const TermPage(),
                     ));
               },
               child: ChosenSetting(icon: "assets/icons/ic_Term.svg", text: "Terms of use")),
@@ -89,7 +86,7 @@ class _SettingPageState extends State<SettingPage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => PrivacyPage(),
+                      builder: (context) => const PrivacyPage(),
                     ));
               },
               child: ChosenSetting(icon: "assets/icons/ic_Privacy.svg", text: "Privacy policy")),
