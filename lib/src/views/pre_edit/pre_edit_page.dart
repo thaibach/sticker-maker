@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sticker_maker/src/utils/app_navigate.dart';
 import 'package:sticker_maker/src/utils/style.dart';
+import 'package:sticker_maker/src/views/home/home_page.dart';
 
 import '../../widgets/widgets_index.dart';
 
@@ -25,7 +27,6 @@ class _PreEditPageState extends State<PreEditPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFCECECE),
-     
       body: Stack(
         children: [
           Container(
@@ -41,7 +42,7 @@ class _PreEditPageState extends State<PreEditPage> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.popAndPushNamed(context, '/homePage');
+                          AppNavigate.replacePage(context, const HomePage());
                         },
                         child: Container(
                           margin: const EdgeInsets.only(top: 10, left: 10),
@@ -116,14 +117,13 @@ class _PreEditPageState extends State<PreEditPage> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-                margin: const EdgeInsets.only(left: 25, right: 25, bottom: 55),
-                width: double.infinity,
-                height: 42,
-                child: 
-                CurvedButtonBar(
+              margin: const EdgeInsets.only(left: 25, right: 25, bottom: 55),
+              width: double.infinity,
+              height: 42,
+              child: CurvedButtonBar(
                 buttonBackgroundColor: Colors.white,
                 height: 42,
-                 letIndexChange: (index) => true,
+                letIndexChange: (index) => true,
                 backgroundColor: Colors.transparent,
                 color: Colors.black,
                 animationDuration: const Duration(milliseconds: 300),
@@ -159,8 +159,8 @@ class _PreEditPageState extends State<PreEditPage> {
                     color: Color(0xFFDE225B),
                   ),
                 ],
-              ), 
-                ),
+              ),
+            ),
           ),
         ],
       ),

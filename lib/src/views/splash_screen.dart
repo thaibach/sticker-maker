@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sticker_maker/src/utils/spacing.dart';
 import 'package:sticker_maker/src/utils/style.dart';
-import 'package:sticker_maker/src/utils/values.dart';
 import 'package:sticker_maker/src/views/home/home_page.dart';
 
 class SplashScreen extends StatefulWidget {
