@@ -1,25 +1,21 @@
-import 'package:flutter/material.dart';
-import 'package:sticker_maker/src/utils/values.dart';
-import 'package:sticker_maker/src/widgets/nav_button.dart';
-import 'package:sticker_maker/src/widgets/nav_custom_painter.dart';
+ import 'package:flutter/material.dart';
+import 'package:sticker_maker/src/widgets/custom/curvedButton/curved_button.dart';
+import 'package:sticker_maker/src/widgets/custom/curvedButton/curved_button_custom_painter.dart';
 
 typedef _LetIndexPage = bool Function(int value);
 
-class CurvedNavigationBar extends StatefulWidget {
+class CurvedButtonBar extends StatefulWidget {
   final List<Widget> items;
   final int index;
   final Color color;
   final Color? buttonBackgroundColor;
   final Color backgroundColor;
-  final Gradient gradientBG;
   final ValueChanged<int>? onTap;
   final _LetIndexPage letIndexChange;
   final Curve animationCurve;
   final Duration animationDuration;
   final double height;
-  final double width;
-
-  CurvedNavigationBar({
+  CurvedButtonBar({
     Key? key,
     required this.items,
     this.index = 0,
@@ -30,27 +26,19 @@ class CurvedNavigationBar extends StatefulWidget {
     _LetIndexPage? letIndexChange,
     this.animationCurve = Curves.easeOut,
     this.animationDuration = const Duration(milliseconds: 600),
-    this.height = 75.0,
-    this.width = 120.0,
-    this.gradientBG = const LinearGradient(
-      colors: [
-        Color(0xFFDE225B),
-        Color(0xFFE46D39),
-      ],
-    ),
+    this.height = 42.0,
+    // this.width = 120.0,
   })  : letIndexChange = letIndexChange ?? ((_) => true),
-        assert(items != null),
-        assert(items.length >= 1),
+        assert(items.isNotEmpty),
         assert(0 <= index && index < items.length),
         assert(0 <= height && height <= 75.0),
-        assert(0 <= width && width <= 120.0),
         super(key: key);
 
   @override
-  CurvedNavigationBarState createState() => CurvedNavigationBarState();
+  CurvedButtonBarState createState() => CurvedButtonBarState();
 }
 
-class CurvedNavigationBarState extends State<CurvedNavigationBar>
+class CurvedButtonBarState extends State<CurvedButtonBar>
     with SingleTickerProviderStateMixin {
   late double _startingPos;
   int _endingIndex = 0;
@@ -83,7 +71,7 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
   }
 
   @override
-  void didUpdateWidget(CurvedNavigationBar oldWidget) {
+  void didUpdateWidget(CurvedButtonBar oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.index != widget.index) {
       final newPosition = widget.index / _length;
@@ -103,52 +91,52 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 30),
-      child: Container(
-        width: AppValue.widths * 0.7,
-        height: widget.height,
-        child: Stack(
-          clipBehavior: Clip.none,
-          alignment: Alignment.bottomCenter,
-          children: <Widget>[
-            Positioned(
-              bottom: -40 - (75.0 - widget.height),
-              left: Directionality.of(context) == TextDirection.rtl
-                  ? null
-                  : _pos * size.width,
-              right: Directionality.of(context) == TextDirection.rtl
-                  ? _pos * size.width
-                  : null,
-              width: size.width / _length,
-              child: Center(
-                child: Transform.translate(
-                  offset: Offset(
-                    0,
-                    -(1 - _buttonHide) * 80,
-                  ),
-                  child: Material(
-                    color: widget.buttonBackgroundColor ?? widget.color,
-                    type: MaterialType.circle,
-                    child: Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: const Color(0xFFE35C40)),
-                          borderRadius: BorderRadius.circular(25)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: _icon,
-                      ),
+    return Container(
+      color: widget.backgroundColor,
+      height: widget.height,
+      child: Stack(
+        clipBehavior: Clip.none,
+        alignment: Alignment.bottomCenter,
+        children: <Widget>[
+          Positioned(
+            bottom: -40 - (75.0 - widget.height),
+            left: Directionality.of(context) == TextDirection.rtl
+                ? null
+                : _pos * size.width,
+            right: Directionality.of(context) == TextDirection.rtl
+                ? _pos * size.width
+                : null,
+            width: size.width / _length,
+            child: Center(
+              child: Transform.translate(
+                offset: Offset(
+                  0,
+                  -(1 - _buttonHide) * 80,
+                ),
+                child: Material(
+                  color: widget.buttonBackgroundColor ?? widget.color,
+                  type: MaterialType.circle,
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: const Color(0xFFE35C40)),
+                        borderRadius: BorderRadius.circular(25)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: _icon,
                     ),
                   ),
                 ),
               ),
             ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 0 - (62.0 - widget.height),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0 - (62.0 - widget.height),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30),
               child: CustomPaint(
                 painter: NavCustomPainter(
                   _pos,
@@ -157,32 +145,30 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
                   Directionality.of(context),
                 ),
                 child: Container(
-                  height: 53.0,
+                  height: 54.0,
                 ),
               ),
             ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 0 - (75.0 - widget.height),
-              child: Container(
-                  height: 70.0,
-                  decoration: BoxDecoration(
-                      color: widget.backgroundColor,
-                      borderRadius: BorderRadius.circular(32)),
-                  child: Row(
-                      children: widget.items.map((item) {
-                    return NavButton(
-                      onTap: _buttonTap,
-                      position: _pos,
-                      length: _length,
-                      index: widget.items.indexOf(item),
-                      child: Center(child: item),
-                    );
-                  }).toList())),
-            ),
-          ],
-        ),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0 - (75.0 - widget.height),
+            child: SizedBox(
+                height: 70.0,
+            
+                child: Row(
+                    children: widget.items.map((item) {
+                  return NavButton(
+                    onTap: _buttonTap,
+                    position: _pos,
+                    length: _length,
+                    index: widget.items.indexOf(item),
+                    child: Center(child: item),
+                  );
+                }).toList())),
+          ),
+        ],
       ),
     );
   }
@@ -207,3 +193,5 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
     });
   }
 }
+ 
+ 

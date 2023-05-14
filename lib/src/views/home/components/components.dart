@@ -1,11 +1,8 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sticker_maker/src/cubit/home_cubit/home_cubit.dart';
 import 'package:sticker_maker/src/utils/style.dart';
-import 'package:sticker_maker/src/views/views_index.dart';
 
 class Components {
   Components(this._homeCubit);
