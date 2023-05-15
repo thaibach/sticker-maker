@@ -6,6 +6,7 @@ import 'package:sticker_maker/src/cubit/home_cubit/home_state.dart';
 import 'package:sticker_maker/src/utils/app_navigate.dart';
 import 'package:sticker_maker/src/utils/style.dart';
 import 'package:sticker_maker/src/views/home/components/components.dart';
+import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
 
 class HomePage extends StatefulWidget {
@@ -48,8 +49,7 @@ class _HomeViewState extends State<HomeView> {
         bloc: _homeCubit,
         listener: (context, state) {
           if (state is HomePageSuccess && _homeCubit.imageFile != null) {
-            AppNavigate.navigatePage(
-                context, PreEditPage(image: _homeCubit.imageFile));
+            AppNavigate.navigatePage(context, PreEditPage(image: _homeCubit.imageFile));
           }
           if (state is HomePageError) {
             Components(_homeCubit).popUpAccessRights(context);
@@ -155,24 +155,20 @@ class _HomeViewState extends State<HomeView> {
                               ),
                               Text(
                                 'No pack created',
-                                style: AppStyle.DEFAULT_14
-                                    .copyWith(fontWeight: FontWeight.w500),
+                                style: AppStyle.DEFAULT_14.copyWith(fontWeight: FontWeight.w500),
                               ),
                               Expanded(
                                 child: Container(
                                   width: double.infinity,
-                                  margin: const EdgeInsets.only(
-                                      top: 2, left: 9, right: 9, bottom: 3),
+                                  margin: const EdgeInsets.only(top: 2, left: 9, right: 9, bottom: 3),
                                   decoration: const BoxDecoration(
                                       image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/img_ds.png'),
+                                    image: AssetImage('assets/images/img_ds.png'),
                                   )),
                                   child: Center(
                                     child: Text(
                                       'Empty pack',
-                                      style: AppStyle.DEFAULT_14.copyWith(
-                                          color: Colors.white.withOpacity(0.7)),
+                                      style: AppStyle.DEFAULT_14.copyWith(color: Colors.white.withOpacity(0.7)),
                                     ),
                                   ),
                                 ),
@@ -202,12 +198,10 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Components(_homeCubit)
-                                .PopUpImagePicker(context, null);
+                            Components(_homeCubit).PopUpImagePicker(context, null);
                           },
                           child: Container(
-                            margin: const EdgeInsets.only(
-                                top: 10, right: 71, left: 71),
+                            margin: const EdgeInsets.only(top: 10, right: 71, left: 71),
                             height: 45,
                             width: double.infinity,
                             decoration: BoxDecoration(
@@ -221,8 +215,7 @@ class _HomeViewState extends State<HomeView> {
                               children: [
                                 Text(
                                   'Start making sticker',
-                                  style: AppStyle.DEFAULT_14
-                                      .copyWith(fontWeight: FontWeight.w700),
+                                  style: AppStyle.DEFAULT_14.copyWith(fontWeight: FontWeight.w700),
                                 ),
                                 const SizedBox(
                                   width: 10,
@@ -243,10 +236,19 @@ class _HomeViewState extends State<HomeView> {
                       padding: const EdgeInsets.only(top: 24, right: 21),
                       child: Align(
                           alignment: Alignment.topRight,
-                          child: Image.asset(
-                            'assets/images/settings.png',
-                            width: 48,
-                            height: 48,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SettingPage(),
+                                  ));
+                            },
+                            child: Image.asset(
+                              'assets/images/settings.png',
+                              width: 48,
+                              height: 48,
+                            ),
                           )),
                     ),
                   ],
