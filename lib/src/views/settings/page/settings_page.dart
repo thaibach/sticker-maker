@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticker_maker/src/utils/style.dart';
+import 'package:sticker_maker/src/views/home/home_page.dart';
 import 'package:sticker_maker/src/views/settings/component/custom_choice_settings.dart';
 import 'package:sticker_maker/src/views/settings/cubit/setting_cubit.dart';
 import 'package:sticker_maker/src/views/settings/cubit/setting_state.dart';
@@ -42,24 +43,28 @@ class _SettingPageState extends State<SettingPage> {
                 child: Column(children: [
                   Container(
                     margin: const EdgeInsets.only(bottom: 31),
-                    padding: const EdgeInsets.only(top: 58, left: 23, bottom: 12),
+                    padding: const EdgeInsets.only(top: 38, left: 23, bottom: 12),
                     decoration: const BoxDecoration(color: Color.fromRGBO(135, 193, 255, 0.25)),
                     child: Column(
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Navigator.pop(context);
+                            // Navigator.pop(context); bug den man hinh neu dung pop, chua tim ra nguyen nhan :D
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => HomePage(),
+                                ));
                           },
                           child: Row(
                             children: [
-                              SvgPicture.asset("assets/icons/ic_backBtn.svg"),
-                              const SizedBox(
-                                width: 9,
+                              Padding(
+                                padding: const EdgeInsets.only(right: 20, top: 10, bottom: 26),
+                                child: SvgPicture.asset("assets/icons/ic_backBtn.svg"),
                               ),
                             ],
                           ),
                         ),
-                        const SizedBox(height: 26),
                         const Align(
                           alignment: Alignment.topLeft,
                           child: Text("Settings", textAlign: TextAlign.left, style: AppStyle.DEFAUlT_LABEL),

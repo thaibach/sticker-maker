@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
 import 'package:sticker_maker/src/utils/style.dart';
@@ -19,7 +17,7 @@ class LanguagePage extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.only(top: 58, left: 23, bottom: 12),
+              padding: const EdgeInsets.only(top: 38, left: 23, bottom: 12),
               decoration: const BoxDecoration(color: Color.fromRGBO(135, 193, 255, 0.25)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -30,22 +28,13 @@ class LanguagePage extends StatelessWidget {
                     },
                     child: Row(
                       children: [
-                        SvgPicture.asset("assets/icons/ic_backBtn.svg"),
-                        const SizedBox(
-                          width: 9,
+                        Padding(
+                          padding: const EdgeInsets.only(right: 30, top: 10, bottom: 26),
+                          child: SvgPicture.asset("assets/icons/ic_backBtn.svg"),
                         ),
-                        const Text(
-                          "Settings",
-                          style: TextStyle(
-                            fontFamily: 'Nunito',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                          ),
-                        )
                       ],
                     ),
                   ),
-                  const SizedBox(height: 26),
                   const Align(
                     alignment: Alignment.topLeft,
                     child: Text("Languages", style: AppStyle.DEFAUlT_LABEL),
@@ -53,7 +42,7 @@ class LanguagePage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 63),
+            const SizedBox(height: 53),
             GestureDetector(
               onTap: () {},
               child: ChoseLanguge(context, "Vietnamese (Tiếng Việt)"),
@@ -66,7 +55,7 @@ class LanguagePage extends StatelessWidget {
               onTap: () {},
               child: ChoseLanguge(context, "France (Francais )"),
             ),
-            const SizedBox(height: 97),
+            const SizedBox(height: 87),
             OutlineGradientButton(
               padding: const EdgeInsets.symmetric(horizontal: 38, vertical: 10),
               radius: const Radius.circular(5),
