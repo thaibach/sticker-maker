@@ -12,11 +12,15 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   showOptionShare(BuildContext context) {
     return showModalBottomSheet(
+      backgroundColor: Colors.transparent,
       context: context,
       builder: (BuildContext context) {
         return Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(colors: [Color(0xFFDE225B), Color(0xFFE46D39)], begin: Alignment.topLeft)),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+              gradient: LinearGradient(
+                  colors: [Color(0xFFDE225B).withOpacity(0.7), Color(0xFFE46D39).withOpacity(0.7)],
+                  begin: Alignment.topLeft)),
           height: 340,
           child: Column(
             children: [
@@ -32,7 +36,7 @@ class SettingsCubit extends Cubit<SettingsState> {
                     SizedBox(width: 12),
                     Text(
                       "Share this app",
-                      style: AppStyle.DEFAUlT_CONTENT_TEXT,
+                      style: AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SHARE_SOCIALMEDIA,
                     ),
                   ],
                 ),
@@ -40,53 +44,78 @@ class SettingsCubit extends Cubit<SettingsState> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 47),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Column(
                           children: [
                             Image.asset("assets/icons/logo_mess.png"),
                             const Text(
                               "Messenger",
-                              style: AppStyle.DEFAUlT_CONTENT_TEXT,
+                              style: AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA,
                             )
                           ],
                         ),
-                        Column(
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Column(
                           children: [
                             Image.asset("assets/icons/logo_fb.png"),
                             const Text(
                               "Facebook",
-                              style: AppStyle.DEFAUlT_CONTENT_TEXT,
+                              style: AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA,
                             )
                           ],
                         ),
-                        Column(
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Column(
                           children: [
                             Image.asset("assets/icons/logo_ig.png"),
                             const Text(
                               "Instagram",
-                              style: AppStyle.DEFAUlT_CONTENT_TEXT,
+                              style: AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA,
                             )
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 11),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 47),
-                    child: Column(
-                      children: [
-                        SvgPicture.asset("assets/icons/ic_copyURL.svg"),
-                        const Text(
-                          "Copy URL",
-                          style: AppStyle.DEFAUlT_CONTENT_TEXT,
-                        )
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Column(
+                          children: [
+                            SvgPicture.asset("assets/icons/ic_copyURL.svg"),
+                            const Text(
+                              "Copy URL",
+                              style: AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA,
+                            )
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Column(
+                          children: [
+                            SvgPicture.asset("assets/icons/ic_more.svg"),
+                            const Text(
+                              "More",
+                              style: AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA,
+                            )
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: SizedBox(),
+                      ),
+                    ],
                   ),
                 ],
               )
@@ -102,6 +131,9 @@ class SettingsCubit extends Cubit<SettingsState> {
       context: context,
       builder: (BuildContext context) {
         return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          ),
           child: Column(
             children: [
               Padding(

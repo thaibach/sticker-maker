@@ -34,6 +34,10 @@ class AppStyle {
   static const DEFAUlT_LABELBACK_FEED = TextStyle(fontFamily: 'Nunito', fontSize: 16, fontWeight: FontWeight.w600);
   static const DEFAUlT_CONTENT = TextStyle(fontFamily: 'Nunito', fontSize: 16, fontWeight: FontWeight.w700);
   static const DEFAUlT_CONTENT_TEXT = TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w500);
+  static const DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA =
+      TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w500, color: Colors.white);
+  static const DEFAUlT_CONTENT_TEXT_FEED_SHARE_SOCIALMEDIA =
+      TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w600, color: Colors.white);
   static const DEFAUlT_CONTENT_TEXT_SPAN =
       TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w700, color: Colors.black);
   static const DEFAUlT_CONTENT_TEXT_SPAN_FEED =
