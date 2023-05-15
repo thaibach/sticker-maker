@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:sticker_maker/src/cubit/home_cubit/home_cubit.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
 import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
-
+import 'src/cubit/cubit_index.dart';
 import 'app_observer.dart';
 import 'src/views/views_index.dart';
 
@@ -16,8 +15,7 @@ void main() {
       statusBarColor: Colors.transparent, // transparent status bar
       statusBarIconBrightness: Brightness.dark // dark text for status bar
       ));
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
   Bloc.observer = AppBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
@@ -26,6 +24,9 @@ void main() {
     // * viết các page provider vào đây
     BlocProvider<HomePageCubit>(
       create: (BuildContext context) => HomePageCubit(),
+    ),
+    BlocProvider<PreEditCubit>(
+      create: (BuildContext context) => PreEditCubit(),
     ),
   ], child: const MyApp()));
 }
@@ -44,8 +45,11 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     prepareModel();
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     super.initState();
   }
+
   Future<void> prepareModel() async {
     final directory = await getApplicationDocumentsDirectory();
     // prepare for detection

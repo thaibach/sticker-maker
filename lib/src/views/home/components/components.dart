@@ -71,7 +71,7 @@ class Components {
     );
   }
 
-  Future<void> PopUpImagePicker(BuildContext context, Function(String image)? callBack) {
+  Future<void> popUpImagePicker(BuildContext context, Function(String image)? callBack) {
     return showModalBottomSheet<void>(
       // barrierColor: Colors.transparent,
       context: context,
@@ -202,7 +202,7 @@ class Components {
                     textAlign: TextAlign.center,
                     style: AppStyle.DEFAULT_12.copyWith(
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF6C6C6C),
+                      color: const Color(0xFF6C6C6C),
                     ),
                   ),
                   GestureDetector(
