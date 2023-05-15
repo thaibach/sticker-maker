@@ -1,4 +1,4 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../utils/style.dart';
@@ -17,7 +17,7 @@ class PrivacyPage extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.only(top: 38, left: 23, bottom: 12),
-              decoration: const BoxDecoration(color: Color.fromRGBO(135, 193, 255, 0.5)),
+              decoration: const BoxDecoration(color: Color.fromRGBO(135, 193, 255, 0.3)),
               child: Column(
                 children: [
                   GestureDetector(
@@ -380,9 +380,6 @@ class PrivacyPage extends StatelessWidget {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
                                   const Text(
                                       textAlign: TextAlign.justify,
                                       PolicyConstant.content_007,
@@ -436,9 +433,6 @@ class PrivacyPage extends StatelessWidget {
                                       textAlign: TextAlign.justify,
                                       PolicyConstant.content_010,
                                       style: AppStyle.DEFAUlT_CONTENT_TEXT),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
                                   const SizedBox(
                                     height: 10,
                                   ),
@@ -577,6 +571,7 @@ class PrivacyPage extends StatelessWidget {
               ),
             ),
             Container(
+              color: Colors.transparent,
               height: 100,
             )
           ],
