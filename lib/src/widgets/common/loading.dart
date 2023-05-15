@@ -61,8 +61,8 @@ class _LoadingWidget extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             color: Colors.black.withOpacity(0.4),
             child:  Center(
-              child: SvgPicture.asset(
-                'assets/images/loading.svg',
+              child: Image.asset(
+                'assets/images/loading.gif',
                 height: 83,
                 width: 83,
               ),
