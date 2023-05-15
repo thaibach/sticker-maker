@@ -43,6 +43,8 @@ dependencies:
   permission_handler: ^10.2.0
   ffi: ^2.0.2
   path_provider: ^2.0.15
+  outline_gradient_button: ^2.0.1+1
+  flutter_social_content_share: ^1.0.2
   animated_notch_bottom_bar: ^0.0.6
 
 dev_dependencies:

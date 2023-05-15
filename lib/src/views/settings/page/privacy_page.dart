@@ -4,10 +4,11 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sticker_maker/src/utils/spacing.dart';
 
+import '../../../utils/style.dart';
 import '../common/policy_constant.dart';
 
 class PrivacyPage extends StatelessWidget {
-  const PrivacyPage({super.key});
+  PrivacyPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class PrivacyPage extends StatelessWidget {
                           "Settings",
                           style: TextStyle(
                             fontFamily: 'Nunito',
-                            fontSize: 12,
+                            fontSize: 16,
                             fontWeight: FontWeight.w800,
                           ),
                         )
@@ -96,12 +97,7 @@ class PrivacyPage extends StatelessWidget {
                                   const Text(
                                     textAlign: TextAlign.justify,
                                     PolicyConstant.content_02,
-                                    style: TextStyle(
-                                      fontFamily: 'Nunito',
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.black,
-                                      fontSize: 12,
-                                    ),
+                                    style: AppStyle.DEFAUlT_CONTENT_TEXT,
                                   ),
                                   const SizedBox(
                                     height: 10,
@@ -109,12 +105,7 @@ class PrivacyPage extends StatelessWidget {
                                   const Text(
                                     textAlign: TextAlign.justify,
                                     PolicyConstant.content_002,
-                                    style: TextStyle(
-                                      fontFamily: 'Nunito',
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.black,
-                                      fontSize: 12,
-                                    ),
+                                    style: AppStyle.DEFAUlT_CONTENT_TEXT,
                                   ),
                                   const SizedBox(
                                     height: 10,
@@ -122,97 +113,57 @@ class PrivacyPage extends StatelessWidget {
                                   const Text(
                                     textAlign: TextAlign.justify,
                                     PolicyConstant.content_003,
-                                    style: TextStyle(
-                                      fontFamily: 'Nunito',
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.black,
-                                      fontSize: 12,
-                                    ),
+                                    style: AppStyle.DEFAUlT_CONTENT_TEXT,
                                   ),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_03,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.black,
-                                        fontSize: 16),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_03,
+                                      style: AppStyle.DEFAUlT_CONTENT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_04,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_04,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_05,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.black,
-                                        fontSize: 16),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_05,
+                                      style: AppStyle.DEFAUlT_CONTENT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_06,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_06,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_004,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_004,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_005,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_005,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_07,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.black,
-                                        fontSize: 16),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_07,
+                                      style: AppStyle.DEFAUlT_CONTENT),
                                   const SizedBox(
                                     height: 10,
                                   ),
@@ -223,13 +174,7 @@ class PrivacyPage extends StatelessWidget {
                                       text: const TextSpan(
                                         children: [
                                           TextSpan(
-                                            text: PolicyConstant.content_1,
-                                            style: TextStyle(
-                                                fontFamily: 'Nunito',
-                                                fontWeight: FontWeight.normal,
-                                                color: Colors.black,
-                                                fontSize: 12),
-                                          )
+                                              text: PolicyConstant.content_1, style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                         ],
                                       ),
                                     ),
@@ -253,13 +198,8 @@ class PrivacyPage extends StatelessWidget {
                                             ),
                                           ),
                                           const TextSpan(
-                                            text: PolicyConstant.content_101,
-                                            style: TextStyle(
-                                                fontFamily: 'Nunito',
-                                                fontWeight: FontWeight.normal,
-                                                color: Colors.black,
-                                                fontSize: 12),
-                                          )
+                                              text: PolicyConstant.content_101,
+                                              style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                         ],
                                       ),
                                     ),
@@ -283,13 +223,8 @@ class PrivacyPage extends StatelessWidget {
                                             ),
                                           ),
                                           const TextSpan(
-                                            text: PolicyConstant.content_102,
-                                            style: TextStyle(
-                                                fontFamily: 'Nunito',
-                                                fontWeight: FontWeight.normal,
-                                                color: Colors.black,
-                                                fontSize: 12),
-                                          )
+                                              text: PolicyConstant.content_102,
+                                              style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                         ],
                                       ),
                                     ),
@@ -313,13 +248,8 @@ class PrivacyPage extends StatelessWidget {
                                             ),
                                           ),
                                           const TextSpan(
-                                            text: PolicyConstant.content_103,
-                                            style: TextStyle(
-                                                fontFamily: 'Nunito',
-                                                fontWeight: FontWeight.normal,
-                                                color: Colors.black,
-                                                fontSize: 12),
-                                          )
+                                              text: PolicyConstant.content_103,
+                                              style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                         ],
                                       ),
                                     ),
@@ -343,13 +273,8 @@ class PrivacyPage extends StatelessWidget {
                                             ),
                                           ),
                                           const TextSpan(
-                                            text: PolicyConstant.content_104,
-                                            style: TextStyle(
-                                                fontFamily: 'Nunito',
-                                                fontWeight: FontWeight.normal,
-                                                color: Colors.black,
-                                                fontSize: 12),
-                                          )
+                                              text: PolicyConstant.content_104,
+                                              style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                         ],
                                       ),
                                     ),
@@ -373,13 +298,8 @@ class PrivacyPage extends StatelessWidget {
                                             ),
                                           ),
                                           const TextSpan(
-                                            text: PolicyConstant.content_105,
-                                            style: TextStyle(
-                                                fontFamily: 'Nunito',
-                                                fontWeight: FontWeight.normal,
-                                                color: Colors.black,
-                                                fontSize: 12),
-                                          )
+                                              text: PolicyConstant.content_105,
+                                              style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                         ],
                                       ),
                                     ),
@@ -403,13 +323,8 @@ class PrivacyPage extends StatelessWidget {
                                             ),
                                           ),
                                           const TextSpan(
-                                            text: PolicyConstant.content_106,
-                                            style: TextStyle(
-                                                fontFamily: 'Nunito',
-                                                fontWeight: FontWeight.normal,
-                                                color: Colors.black,
-                                                fontSize: 12),
-                                          )
+                                              text: PolicyConstant.content_106,
+                                              style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                         ],
                                       ),
                                     ),
@@ -433,13 +348,8 @@ class PrivacyPage extends StatelessWidget {
                                             ),
                                           ),
                                           const TextSpan(
-                                            text: PolicyConstant.content_107,
-                                            style: TextStyle(
-                                                fontFamily: 'Nunito',
-                                                fontWeight: FontWeight.normal,
-                                                color: Colors.black,
-                                                fontSize: 12),
-                                          )
+                                              text: PolicyConstant.content_107,
+                                              style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                         ],
                                       ),
                                     ),
@@ -448,62 +358,37 @@ class PrivacyPage extends StatelessWidget {
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_21,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.black,
-                                        fontSize: 16),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_21,
+                                      style: AppStyle.DEFAUlT_CONTENT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_2,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_2,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_31,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.black,
-                                        fontSize: 16),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_31,
+                                      style: AppStyle.DEFAUlT_CONTENT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_3,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_3,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_006,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_006,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
@@ -511,98 +396,58 @@ class PrivacyPage extends StatelessWidget {
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_007,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_007,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_41,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.black,
-                                        fontSize: 16),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_41,
+                                      style: AppStyle.DEFAUlT_CONTENT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_4,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_4,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_008,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_008,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_51,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.black,
-                                        fontSize: 16),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_51,
+                                      style: AppStyle.DEFAUlT_CONTENT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_5,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_5,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_009,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_009,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_010,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_010,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
@@ -610,218 +455,128 @@ class PrivacyPage extends StatelessWidget {
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_011,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_011,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_61,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.black,
-                                        fontSize: 16),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_61,
+                                      style: AppStyle.DEFAUlT_CONTENT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_6,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_6,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_012,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_012,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_013,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_013,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_014,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_014,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_015,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_015,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_016,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_016,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_017,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_017,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_018,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_018,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_71,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.black,
-                                        fontSize: 16),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_71,
+                                      style: AppStyle.DEFAUlT_CONTENT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_7,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_7,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_019,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_019,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_81,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.black,
-                                        fontSize: 16),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_81,
+                                      style: AppStyle.DEFAUlT_CONTENT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_8,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_8,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_020,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_020,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_91,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.black,
-                                        fontSize: 16),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_91,
+                                      style: AppStyle.DEFAUlT_CONTENT),
                                   const SizedBox(
                                     height: 10,
                                   ),
                                   const Text(
-                                    textAlign: TextAlign.justify,
-                                    PolicyConstant.content_9,
-                                    style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.normal,
-                                        color: Colors.black,
-                                        fontSize: 12),
-                                  ),
+                                      textAlign: TextAlign.justify,
+                                      PolicyConstant.content_9,
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                 ],
                               ),
                             ),
@@ -835,7 +590,6 @@ class PrivacyPage extends StatelessWidget {
             ),
             Container(
               height: 100,
-              decoration: const BoxDecoration(color: Color.fromRGBO(135, 193, 255, 0.1)),
             )
           ],
         ),
