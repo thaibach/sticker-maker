@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:sticker_maker/src/utils/utils_index.dart';
-import 'app_observer.dart';
-import 'package:sticker_maker/src/cubit/home_cubit/home_cubit.dart';
-import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sticker_maker/src/cubit/home_cubit/home_cubit.dart';
+import 'package:sticker_maker/src/utils/utils_index.dart';
+import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
+
+import 'app_observer.dart';
 import 'src/views/views_index.dart';
 
 void main() {
@@ -16,6 +16,8 @@ void main() {
       statusBarColor: Colors.transparent, // transparent status bar
       statusBarIconBrightness: Brightness.dark // dark text for status bar
       ));
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   Bloc.observer = AppBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
@@ -27,8 +29,6 @@ void main() {
     ),
   ], child: const MyApp()));
 }
-
-
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -70,12 +70,13 @@ class _MyAppState extends State<MyApp> {
       title: 'Sticker Maker',
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
-       routes: {
-        "/":(context) => const SplashScreen(),
-        "/homePage":(context)=>const HomePage(),
-        "preEditPage":(context)=>const PreEditPage(image: null),
-        'settingsPage':(context) => const SettingPage()
-       },
+      routes: {
+        "/": (context) => const SplashScreen(),
+        "homePage": (context) => const HomePage(),
+        "preEditPage": (context) => const PreEditPage(image: null),
+        'settingsPage': (context) => const SettingPage(),
+        "editPage": (context) => const EditScreen(image: null)
+      },
     );
   }
 }
