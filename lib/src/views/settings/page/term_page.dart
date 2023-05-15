@@ -3,11 +3,12 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sticker_maker/src/utils/spacing.dart';
+import 'package:sticker_maker/src/utils/style.dart';
 
 import '../common/policy_constant.dart';
 
 class TermPage extends StatelessWidget {
-  const TermPage({super.key});
+  TermPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +33,7 @@ class TermPage extends StatelessWidget {
                         const SizedBox(
                           width: 9,
                         ),
-                        const Text(
-                          "Settings",
-                          style: TextStyle(
-                            fontFamily: 'Nunito',
-                            fontSize: 12,
-                            fontWeight: FontWeight.w800,
-                          ),
-                        )
+                        const Text("Settings", style: AppStyle.DEFAUlT_LABELBACK)
                       ],
                     ),
                   ),
@@ -49,11 +43,7 @@ class TermPage extends StatelessWidget {
                     child: Text(
                       "Terms of use",
                       textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontFamily: 'Nunito',
-                        fontSize: 24,
-                        fontWeight: FontWeight.w800,
-                      ),
+                      style: AppStyle.DEFAUlT_LABEL,
                     ),
                   )
                 ],
@@ -79,101 +69,37 @@ class TermPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const SizedBox(height: 31),
-                              const Text(
-                                PolicyConstantTerm.contentTerm,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                              const Text(PolicyConstantTerm.contentTerm, style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
-                              const Text(
-                                PolicyConstantTerm.contentTime,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                              const Text(PolicyConstantTerm.contentTime, style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
-                              const Text(
-                                PolicyConstantTerm.content_00,
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                              const Text(PolicyConstantTerm.content_00,
+                                  textAlign: TextAlign.justify, style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
-                              const Text(
-                                PolicyConstantTerm.content_001,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                              const Text(PolicyConstantTerm.content_001, style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
-                              const Text(
-                                PolicyConstantTerm.content_002,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                              const Text(PolicyConstantTerm.content_002, style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
-                              const Text(
-                                PolicyConstantTerm.content_003,
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                              const Text(PolicyConstantTerm.content_003,
+                                  textAlign: TextAlign.justify, style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
-                              const Text(
-                                PolicyConstantTerm.content_004,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                              const Text(PolicyConstantTerm.content_004, style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
-                              const Text(
-                                PolicyConstantTerm.content_005,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                              const Text(PolicyConstantTerm.content_005, style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
@@ -196,23 +122,10 @@ class TermPage extends StatelessWidget {
                                         ),
                                       ),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_01,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
+                                          text: PolicyConstantTerm.content_01,
+                                          style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_1,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      )
+                                          text: PolicyConstantTerm.content_1, style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                     ],
                                   ),
                                 ),
@@ -239,23 +152,10 @@ class TermPage extends StatelessWidget {
                                         ),
                                       ),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_02,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
+                                          text: PolicyConstantTerm.content_02,
+                                          style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_2,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      )
+                                          text: PolicyConstantTerm.content_2, style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                     ],
                                   ),
                                 ),
@@ -282,23 +182,10 @@ class TermPage extends StatelessWidget {
                                         ),
                                       ),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_03,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
+                                          text: PolicyConstantTerm.content_03,
+                                          style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_3,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      )
+                                          text: PolicyConstantTerm.content_3, style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                     ],
                                   ),
                                 ),
@@ -325,23 +212,10 @@ class TermPage extends StatelessWidget {
                                         ),
                                       ),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_04,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
+                                          text: PolicyConstantTerm.content_04,
+                                          style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_4,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      )
+                                          text: PolicyConstantTerm.content_4, style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                     ],
                                   ),
                                 ),
@@ -368,23 +242,10 @@ class TermPage extends StatelessWidget {
                                         ),
                                       ),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_05,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
+                                          text: PolicyConstantTerm.content_05,
+                                          style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_5,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      )
+                                          text: PolicyConstantTerm.content_5, style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                     ],
                                   ),
                                 ),
@@ -411,23 +272,10 @@ class TermPage extends StatelessWidget {
                                         ),
                                       ),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_06,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
+                                          text: PolicyConstantTerm.content_06,
+                                          style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_6,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      )
+                                          text: PolicyConstantTerm.content_6, style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                     ],
                                   ),
                                 ),
@@ -454,23 +302,10 @@ class TermPage extends StatelessWidget {
                                         ),
                                       ),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_07,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
+                                          text: PolicyConstantTerm.content_07,
+                                          style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_7,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      )
+                                          text: PolicyConstantTerm.content_7, style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                     ],
                                   ),
                                 ),
@@ -497,23 +332,10 @@ class TermPage extends StatelessWidget {
                                         ),
                                       ),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_08,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
+                                          text: PolicyConstantTerm.content_08,
+                                          style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_8,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      )
+                                          text: PolicyConstantTerm.content_8, style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                     ],
                                   ),
                                 ),
@@ -540,23 +362,10 @@ class TermPage extends StatelessWidget {
                                         ),
                                       ),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_09,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
+                                          text: PolicyConstantTerm.content_09,
+                                          style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_9,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      )
+                                          text: PolicyConstantTerm.content_9, style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                     ],
                                   ),
                                 ),
@@ -583,23 +392,10 @@ class TermPage extends StatelessWidget {
                                         ),
                                       ),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_010,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
+                                          text: PolicyConstantTerm.content_010,
+                                          style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_10,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      )
+                                          text: PolicyConstantTerm.content_10, style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR)
                                     ],
                                   ),
                                 ),
@@ -608,392 +404,212 @@ class TermPage extends StatelessWidget {
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_11,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_11,
+                                  style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_200,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_200,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_201,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_201,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_202,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_202,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_203,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_203,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_204,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_204,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_12,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_12,
+                                  style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_500,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_500,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_501,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_501,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_502,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_502,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_13,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_13,
+                                  style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_600,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_600,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_601,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_601,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_14,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_14,
+                                  style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_700,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_700,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_701,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_701,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_702,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_702,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_15,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_15,
+                                  style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_800,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_800,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_801,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_801,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_802,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_802,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_16,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_16,
+                                  style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_900,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_900,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_17,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_17,
+                                  style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_1000,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_1000,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_18,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_18,
+                                  style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_1001,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_1001,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_19,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_19,
+                                  style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_1002,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_1002,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_20,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_20,
+                                  style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
@@ -1011,15 +627,9 @@ class TermPage extends StatelessWidget {
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_1003,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_1003,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
@@ -1037,106 +647,58 @@ class TermPage extends StatelessWidget {
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_1004,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_1004,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_23,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_23,
+                                  style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_1005,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_1005,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_24,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_24,
+                                  style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_1006,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_1006,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_1007,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_1007,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_25,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_25,
+                                  style: AppStyle.DEFAUlT_CONTENT),
                               const SizedBox(
                                 height: 10,
                               ),
                               const Text(
-                                textAlign: TextAlign.justify,
-                                PolicyConstantTerm.content_400,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Nunito',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
+                                  textAlign: TextAlign.justify,
+                                  PolicyConstantTerm.content_400,
+                                  style: AppStyle.DEFAUlT_CONTENT_TEXT),
                               const SizedBox(
                                 height: 10,
                               ),
@@ -1159,14 +721,8 @@ class TermPage extends StatelessWidget {
                                         ),
                                       ),
                                       const TextSpan(
-                                        text: PolicyConstantTerm.content_300,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
+                                          text: PolicyConstantTerm.content_300,
+                                          style: AppStyle.DEFAUlT_CONTENT_TEXT_NOR),
                                     ],
                                   ),
                                 ),
@@ -1182,7 +738,7 @@ class TermPage extends StatelessWidget {
             ),
             Container(
               height: 100,
-              decoration: const BoxDecoration(color: Color.fromRGBO(135, 193, 255, 0.1)),
+              // decoration: const BoxDecoration(color: Color.fromRGBO(135, 193, 255, 0.1)),
             )
           ],
         ),
