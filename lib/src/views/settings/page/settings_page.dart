@@ -28,75 +28,79 @@ class _SettingPageState extends State<SettingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocConsumer<SettingsCubit, SettingsState>(
-          bloc: _cubit,
-          listener: (context, state) {},
-          builder: (context, snapshot) {
-            return Container(
-              decoration: const BoxDecoration(
-                  image: DecorationImage(image: AssetImage("assets/images/img_bgr_sticker.png"), fit: BoxFit.fill)),
-              child: Column(children: [
-                Container(
-                  margin: const EdgeInsets.only(bottom: 31),
-                  padding: const EdgeInsets.only(top: 58, left: 23, bottom: 12),
-                  decoration: const BoxDecoration(color: Color.fromRGBO(135, 193, 255, 0.25)),
-                  child: Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Row(
-                          children: [
-                            SvgPicture.asset("assets/icons/ic_backBtn.svg"),
-                            const SizedBox(
-                              width: 9,
-                            ),
-                          ],
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(useMaterial3: true),
+      home: Scaffold(
+        body: BlocConsumer<SettingsCubit, SettingsState>(
+            bloc: _cubit,
+            listener: (context, state) {},
+            builder: (context, snapshot) {
+              return Container(
+                decoration: const BoxDecoration(
+                    image: DecorationImage(image: AssetImage("assets/images/img_bgr_sticker.png"), fit: BoxFit.fill)),
+                child: Column(children: [
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 31),
+                    padding: const EdgeInsets.only(top: 58, left: 23, bottom: 12),
+                    decoration: const BoxDecoration(color: Color.fromRGBO(135, 193, 255, 0.25)),
+                    child: Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Row(
+                            children: [
+                              SvgPicture.asset("assets/icons/ic_backBtn.svg"),
+                              const SizedBox(
+                                width: 9,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 26),
-                      const Align(
-                        alignment: Alignment.topLeft,
-                        child: Text("Settings", textAlign: TextAlign.left, style: AppStyle.DEFAUlT_LABEL),
-                      )
-                    ],
+                        const SizedBox(height: 26),
+                        const Align(
+                          alignment: Alignment.topLeft,
+                          child: Text("Settings", textAlign: TextAlign.left, style: AppStyle.DEFAUlT_LABEL),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                GestureDetector(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => AboutPage()));
-                    },
-                    child: ChosenSetting(icon: "assets/icons/ic_About.svg", text: "About us")),
-                GestureDetector(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => TermPage()));
-                    },
-                    child: ChosenSetting(icon: "assets/icons/ic_Term.svg", text: "Terms of use")),
-                GestureDetector(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => PrivacyPage()));
-                    },
-                    child: ChosenSetting(icon: "assets/icons/ic_Privacy.svg", text: "Privacy policy")),
-                GestureDetector(
-                    onTap: () {
-                      _cubit.showOptionShare(context);
-                    },
-                    child: ChosenSetting(icon: "assets/icons/ic_Share.svg", text: "Share this app")),
-                GestureDetector(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => LanguagePage()));
-                    },
-                    child: ChosenSetting(icon: "assets/icons/ic_Lang.svg", text: "Languages")),
-                GestureDetector(
-                    onTap: () {
-                      _cubit.showFeedback(context);
-                    },
-                    child: ChosenSetting(icon: "assets/icons/ic_Feed.svg", text: "Feedback"))
-              ]),
-            );
-          }),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => AboutPage()));
+                      },
+                      child: ChosenSetting(icon: "assets/icons/ic_About.svg", text: "About us")),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => TermPage()));
+                      },
+                      child: ChosenSetting(icon: "assets/icons/ic_Term.svg", text: "Terms of use")),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => PrivacyPage()));
+                      },
+                      child: ChosenSetting(icon: "assets/icons/ic_Privacy.svg", text: "Privacy policy")),
+                  GestureDetector(
+                      onTap: () {
+                        _cubit.showOptionShare(context);
+                      },
+                      child: ChosenSetting(icon: "assets/icons/ic_Share.svg", text: "Share this app")),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => LanguagePage()));
+                      },
+                      child: ChosenSetting(icon: "assets/icons/ic_Lang.svg", text: "Languages")),
+                  GestureDetector(
+                      onTap: () {
+                        _cubit.showFeedback(context);
+                      },
+                      child: ChosenSetting(icon: "assets/icons/ic_Feed.svg", text: "Feedback"))
+                ]),
+              );
+            }),
+      ),
     );
   }
 }
