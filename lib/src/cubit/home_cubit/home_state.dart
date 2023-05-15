@@ -1,16 +1,10 @@
-import 'dart:io';
-
 abstract class HomePageState {}
 
 class HomePageLoading extends HomePageState {}
 
-class HomePageSuccess extends HomePageState {
-  final bool? status;
-  HomePageSuccess({this.status,});
-}
+class HomePageSuccess extends HomePageState {}
 
-class HomePageError extends HomePageState {
-}
+class HomePageError extends HomePageState {}
 
 class ChoosePermissionCameraError extends HomePageState {}
 

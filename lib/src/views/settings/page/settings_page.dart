@@ -6,12 +6,12 @@ import 'package:sticker_maker/src/views/settings/component/custom_choice_setting
 import 'package:sticker_maker/src/views/settings/cubit/setting_cubit.dart';
 import 'package:sticker_maker/src/views/settings/cubit/setting_state.dart';
 import 'package:sticker_maker/src/views/settings/page/about_us_page.dart';
-import 'package:sticker_maker/src/views/settings/page/language_page.dart';
 import 'package:sticker_maker/src/views/settings/page/privacy_page.dart';
 import 'package:sticker_maker/src/views/settings/page/term_page.dart';
+import 'package:sticker_maker/src/views/settings/page/language_page.dart';
 
 class SettingPage extends StatefulWidget {
-  SettingPage({super.key});
+  const SettingPage({super.key});
 
   @override
   State<SettingPage> createState() => _SettingPageState();
