@@ -1,4 +1,6 @@
- import 'package:flutter/material.dart';
+
+
+import 'package:flutter/material.dart';
 import 'package:sticker_maker/src/widgets/custom/curvedButton/curved_button.dart';
 import 'package:sticker_maker/src/widgets/custom/curvedButton/curved_button_custom_painter.dart';
 
@@ -15,6 +17,7 @@ class CurvedButtonBar extends StatefulWidget {
   final Curve animationCurve;
   final Duration animationDuration;
   final double height;
+
   CurvedButtonBar({
     Key? key,
     required this.items,
@@ -31,15 +34,14 @@ class CurvedButtonBar extends StatefulWidget {
   })  : letIndexChange = letIndexChange ?? ((_) => true),
         assert(items.isNotEmpty),
         assert(0 <= index && index < items.length),
-        assert(0 <= height && height <= 75.0),
+        assert(25 <= height && height <= 75.0),
         super(key: key);
 
   @override
   CurvedButtonBarState createState() => CurvedButtonBarState();
 }
 
-class CurvedButtonBarState extends State<CurvedButtonBar>
-    with SingleTickerProviderStateMixin {
+class CurvedButtonBarState extends State<CurvedButtonBar> with SingleTickerProviderStateMixin {
   late double _startingPos;
   int _endingIndex = 0;
   late double _pos;
@@ -64,8 +66,7 @@ class CurvedButtonBarState extends State<CurvedButtonBar>
         if ((endingPos - _pos).abs() < (_startingPos - _pos).abs()) {
           _icon = widget.items[_endingIndex];
         }
-        _buttonHide =
-            (1 - ((middle - _pos) / (_startingPos - middle)).abs()).abs();
+        _buttonHide = (1 - ((middle - _pos) / (_startingPos - middle)).abs()).abs();
       });
     });
   }
@@ -77,8 +78,7 @@ class CurvedButtonBarState extends State<CurvedButtonBar>
       final newPosition = widget.index / _length;
       _startingPos = _pos;
       _endingIndex = widget.index;
-      _animationController.animateTo(newPosition,
-          duration: widget.animationDuration, curve: widget.animationCurve);
+      _animationController.animateTo(newPosition, duration: widget.animationDuration, curve: widget.animationCurve);
     }
   }
 
@@ -99,31 +99,27 @@ class CurvedButtonBarState extends State<CurvedButtonBar>
         alignment: Alignment.bottomCenter,
         children: <Widget>[
           Positioned(
-            bottom: -40 - (75.0 - widget.height),
-            left: Directionality.of(context) == TextDirection.rtl
-                ? null
-                : _pos * size.width,
-            right: Directionality.of(context) == TextDirection.rtl
-                ? _pos * size.width
-                : null,
-            width: size.width / _length,
+            bottom: -32 - (75.0 - widget.height),
+            left: Directionality.of(context) == TextDirection.rtl ? null : _pos * (size.width-50),
+            right: Directionality.of(context) == TextDirection.rtl ? _pos * (size.width-50) : null,
+            width: size.width  / _length,
             child: Center(
               child: Transform.translate(
-                offset: Offset(
-                  0,
-                  -(1 - _buttonHide) * 80,
+                offset: const Offset(
+                  -5,
+                  -80,
                 ),
                 child: Material(
                   color: widget.buttonBackgroundColor ?? widget.color,
                   type: MaterialType.circle,
+                  clipBehavior: Clip.none,
                   child: Container(
                     height: 50,
                     width: 50,
                     decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xFFE35C40)),
-                        borderRadius: BorderRadius.circular(25)),
+                        border: Border.all(color: const Color(0xFFE35C40)), borderRadius: BorderRadius.circular(25)),
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(14.0),
                       child: _icon,
                     ),
                   ),
@@ -131,10 +127,11 @@ class CurvedButtonBarState extends State<CurvedButtonBar>
               ),
             ),
           ),
+
           Positioned(
             left: 0,
             right: 0,
-            bottom: 0 - (62.0 - widget.height),
+            bottom: 0 - (52.0 - widget.height),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
               child: CustomPaint(
@@ -153,10 +150,9 @@ class CurvedButtonBarState extends State<CurvedButtonBar>
           Positioned(
             left: 0,
             right: 0,
-            bottom: 0 - (75.0 - widget.height),
+            bottom: 0 - (62.0 - widget.height),
             child: SizedBox(
                 height: 70.0,
-            
                 child: Row(
                     children: widget.items.map((item) {
                   return NavButton(
@@ -188,10 +184,7 @@ class CurvedButtonBarState extends State<CurvedButtonBar>
     setState(() {
       _startingPos = _pos;
       _endingIndex = index;
-      _animationController.animateTo(newPosition,
-          duration: widget.animationDuration, curve: widget.animationCurve);
+      _animationController.animateTo(newPosition, duration: widget.animationDuration, curve: widget.animationCurve);
     });
   }
 }
- 
- 

@@ -26,6 +26,15 @@ class PreEditPage extends StatefulWidget {
 
 class _PreEditPageState extends State<PreEditPage> {
   String _functionLabel = '';
+  bool removeBg = false;
+  bool cut = false;
+  bool crop = false;
+
+  @override
+  void initState() {
+    removeBg = true;
+    super.initState();
+  }
   PreEditCubit preEditCubit = PreEditCubit();
   @override
   Widget build(BuildContext context) {
@@ -152,34 +161,38 @@ class _PreEditPageState extends State<PreEditPage> {
                       switch (index) {
                         case 0:
                           setState(() {
+                            removeBg = true;
+                            crop = false;
+                            cut = false;
                             _functionLabel = 'Remove Background';
                           });
-                          preEditCubit.removeImageBG(widget.image!.path);
+                         // preEditCubit.removeImageBG(widget.image!.path);
                           break;
                         case 1:
                           setState(() {
+                            cut = true;
+                            crop = false;
+                            removeBg = false;
                             _functionLabel = 'Cut';
                           });
                           break;
                         default:
                           setState(() {
-                            _functionLabel = 'abc';
+                            crop = true;
+                            removeBg = false;
+                            cut = false;
+                            _functionLabel = 'Frame crop';
                           });
                       }
                     },
-                    items: const [
-                      Icon(
-                        Icons.home,
-                        color: Color(0xFFDE225B),
-                      ),
-                      Icon(
-                        Icons.favorite,
-                        color: Color(0xFFDE225B),
-                      ),
-                      Icon(
-                        Icons.settings,
-                        color: Color(0xFFDE225B),
-                      ),
+                    items:  [
+                      removeBg == false ? SvgPicture.asset('assets/icons/ic_removeBgr.svg') :
+                      SvgPicture.asset('assets/icons/ic_removeBgr.svg', color: const Color(0xFFDE225B),width: 12,height: 12,),
+                      cut == false ? SvgPicture.asset('assets/icons/ic_cut.svg') :
+                      SvgPicture.asset('assets/icons/ic_cut.svg', color: const Color(0xFFDE225B),width: 12,height: 12,),
+                      crop == false ? SvgPicture.asset('assets/icons/ic_crop.svg') :
+                      SvgPicture.asset('assets/icons/ic_crop.svg', color: const Color(0xFFDE225B),width: 12,height: 12,),
+                    //  Icon(Icons.add,color: Colors.blue,)
                     ],
                   ),
                 ),

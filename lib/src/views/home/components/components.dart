@@ -74,15 +74,16 @@ class Components {
   Future<void> popUpImagePicker(BuildContext context, Function(String image)? callBack) {
     return showModalBottomSheet<void>(
       // barrierColor: Colors.transparent,
+      backgroundColor: Colors.transparent,
       context: context,
       builder: (BuildContext context) {
         return Container(
           height: 200,
           decoration: const BoxDecoration(
-              color: Colors.white,
+            color: Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15),
-                topRight: Radius.circular(15),
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
               )),
           child: Center(
             child: Column(

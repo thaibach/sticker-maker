@@ -8,14 +8,9 @@ import 'package:sticker_maker/src/views/home/components/components.dart';
 import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     HomePageCubit homeCubit = HomePageCubit();

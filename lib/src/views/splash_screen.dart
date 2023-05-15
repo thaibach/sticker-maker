@@ -81,7 +81,6 @@ class _SplashScreenState extends State<SplashScreen> {
                       )
                     ),
                     child: LinearPercentIndicator(
-
                       linearGradient: const LinearGradient(
                         colors: [
                           Color(0xFF50F4FF),
@@ -92,7 +91,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 3.0),
                       barRadius: const Radius.circular(20),
                       animation: true,
-                      animationDuration: 2700,
+                      animationDuration: 2250,
                       lineHeight: 40,
                       percent: 1,
                       // progressColor: const Color(0xFF50F4FF),
@@ -100,7 +99,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(
+                 const SizedBox(
                   height: 70,
                   width: double.infinity,
                 ),

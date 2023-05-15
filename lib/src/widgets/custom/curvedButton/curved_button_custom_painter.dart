@@ -8,7 +8,7 @@ class NavCustomPainter extends CustomPainter {
 
   NavCustomPainter(
       double startingLoc, int itemsLength, this.color, this.textDirection) {
-    final span = 1.0 / itemsLength;
+    final span = 1.3 / itemsLength;
     s = 0.2;
     double l = startingLoc + (span - s) / 3;
     loc = textDirection == TextDirection.rtl ? 0.8 - l : l;
