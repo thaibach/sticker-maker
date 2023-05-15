@@ -3,12 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:sticker_maker/src/utils/utils_index.dart';
-import 'app_observer.dart';
-import 'package:sticker_maker/src/cubit/home_cubit/home_cubit.dart';
-import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sticker_maker/src/utils/utils_index.dart';
+import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
+import 'src/cubit/cubit_index.dart';
+import 'app_observer.dart';
 import 'src/views/views_index.dart';
 
 void main() {
@@ -16,6 +15,7 @@ void main() {
       statusBarColor: Colors.transparent, // transparent status bar
       statusBarIconBrightness: Brightness.dark // dark text for status bar
       ));
+
   Bloc.observer = AppBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
@@ -25,10 +25,11 @@ void main() {
     BlocProvider<HomePageCubit>(
       create: (BuildContext context) => HomePageCubit(),
     ),
+    BlocProvider<PreEditCubit>(
+      create: (BuildContext context) => PreEditCubit(),
+    ),
   ], child: const MyApp()));
 }
-
-
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -44,8 +45,11 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     prepareModel();
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     super.initState();
   }
+
   Future<void> prepareModel() async {
     final directory = await getApplicationDocumentsDirectory();
     // prepare for detection
@@ -70,12 +74,13 @@ class _MyAppState extends State<MyApp> {
       title: 'Sticker Maker',
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
-       routes: {
-        "/":(context) => const SplashScreen(),
-        "/homePage":(context)=>const HomePage(),
-        "preEditPage":(context)=>const PreEditPage(image: null),
-        'settingsPage':(context) => const SettingPage()
-       },
+      routes: {
+        "/": (context) => const SplashScreen(),
+        "homePage": (context) => const HomePage(),
+        "preEditPage": (context) => const PreEditPage(image: null),
+        'settingsPage': (context) => const SettingPage(),
+        "editPage": (context) => const EditScreen(image: null)
+      },
     );
   }
 }

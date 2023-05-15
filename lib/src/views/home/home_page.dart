@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sticker_maker/src/cubit/home_cubit/home_cubit.dart';
-import 'package:sticker_maker/src/cubit/home_cubit/home_state.dart';
+import 'package:sticker_maker/src/cubit/cubit_index.dart';
 import 'package:sticker_maker/src/utils/app_navigate.dart';
 import 'package:sticker_maker/src/utils/style.dart';
 import 'package:sticker_maker/src/views/home/components/components.dart';
@@ -19,43 +18,21 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => HomePageCubit(),
-      child: const HomeView(),
-    );
-  }
-}
+    HomePageCubit homeCubit = HomePageCubit();
 
-class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
-
-  @override
-  State<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
-  late HomePageCubit _homeCubit;
-
-  @override
-  void initState() {
-    _homeCubit = HomePageCubit();
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return WillPopScope(
       child: BlocConsumer<HomePageCubit, HomePageState>(
-        bloc: _homeCubit,
+        bloc: homeCubit,
         listener: (context, state) {
-          if (state is HomePageSuccess && _homeCubit.imageFile != null) {
-            AppNavigate.navigatePage(context, PreEditPage(image: _homeCubit.imageFile));
+          if (state is HomePageSuccess && homeCubit.imageFile != null) {
+            AppNavigate.navigatePage(
+                context, PreEditPage(image: homeCubit.imageFile));
           }
           if (state is HomePageError) {
-            Components(_homeCubit).popUpAccessRights(context);
+            Components(homeCubit).popUpAccessRights(context);
           }
         },
-        builder: (context, setState1) {
+        builder: (context, state) {
           return Scaffold(
             body: SafeArea(
               child: Container(
@@ -85,7 +62,7 @@ class _HomeViewState extends State<HomeView> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left: 16, right: 16),
-                          child: Components(_homeCubit).rowSetting(context),
+                          child: Components(homeCubit).rowSetting(context),
                         ),
                         Container(
                           clipBehavior: Clip.none,
@@ -155,20 +132,24 @@ class _HomeViewState extends State<HomeView> {
                               ),
                               Text(
                                 'No pack created',
-                                style: AppStyle.DEFAULT_14.copyWith(fontWeight: FontWeight.w500),
+                                style: AppStyle.DEFAULT_14
+                                    .copyWith(fontWeight: FontWeight.w500),
                               ),
                               Expanded(
                                 child: Container(
                                   width: double.infinity,
-                                  margin: const EdgeInsets.only(top: 2, left: 9, right: 9, bottom: 3),
+                                  margin: const EdgeInsets.only(
+                                      top: 2, left: 9, right: 9, bottom: 3),
                                   decoration: const BoxDecoration(
                                       image: DecorationImage(
-                                    image: AssetImage('assets/images/img_ds.png'),
+                                    image:
+                                        AssetImage('assets/images/img_ds.png'),
                                   )),
                                   child: Center(
                                     child: Text(
                                       'Empty pack',
-                                      style: AppStyle.DEFAULT_14.copyWith(color: Colors.white.withOpacity(0.7)),
+                                      style: AppStyle.DEFAULT_14.copyWith(
+                                          color: Colors.white.withOpacity(0.7)),
                                     ),
                                   ),
                                 ),
@@ -198,10 +179,12 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Components(_homeCubit).PopUpImagePicker(context, null);
+                            Components(homeCubit)
+                                .popUpImagePicker(context, null);
                           },
                           child: Container(
-                            margin: const EdgeInsets.only(top: 10, right: 71, left: 71),
+                            margin: const EdgeInsets.only(
+                                top: 10, right: 71, left: 71),
                             height: 45,
                             width: double.infinity,
                             decoration: BoxDecoration(
@@ -215,7 +198,8 @@ class _HomeViewState extends State<HomeView> {
                               children: [
                                 Text(
                                   'Start making sticker',
-                                  style: AppStyle.DEFAULT_14.copyWith(fontWeight: FontWeight.w700),
+                                  style: AppStyle.DEFAULT_14
+                                      .copyWith(fontWeight: FontWeight.w700),
                                 ),
                                 const SizedBox(
                                   width: 10,
@@ -241,7 +225,7 @@ class _HomeViewState extends State<HomeView> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => SettingPage(),
+                                    builder: (context) => const SettingPage(),
                                   ));
                             },
                             child: Image.asset(
