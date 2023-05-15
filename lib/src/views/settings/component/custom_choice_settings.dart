@@ -1,10 +1,6 @@
 // ignore_for_file: prefer_const_constructors_in_immutables
 
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticker_maker/src/utils/style.dart';
 
@@ -25,10 +21,9 @@ class ChosenSetting extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              width: 20,
-              height: 20,
+              padding: const EdgeInsets.all(8),
               decoration: const BoxDecoration(shape: BoxShape.circle, color: Color.fromRGBO(255, 255, 255, 0.5)),
-              child: SvgPicture.asset(icon, width: 5, height: 5),
+              child: SvgPicture.asset(icon),
             ),
           ),
           Expanded(

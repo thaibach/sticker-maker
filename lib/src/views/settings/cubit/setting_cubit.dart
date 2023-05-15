@@ -50,7 +50,7 @@ class SettingsCubit extends Cubit<SettingsState> {
                         flex: 2,
                         child: Column(
                           children: [
-                            Image.asset("assets/icons/logo_mess.png"),
+                            SvgPicture.asset("assets/icons/ic_mess.svg"),
                             const Text(
                               "Messenger",
                               style: AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA,
@@ -62,7 +62,7 @@ class SettingsCubit extends Cubit<SettingsState> {
                         flex: 2,
                         child: Column(
                           children: [
-                            Image.asset("assets/icons/logo_fb.png"),
+                            SvgPicture.asset("assets/icons/ic_fb.svg"),
                             const Text(
                               "Facebook",
                               style: AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA,
@@ -74,7 +74,7 @@ class SettingsCubit extends Cubit<SettingsState> {
                         flex: 2,
                         child: Column(
                           children: [
-                            Image.asset("assets/icons/logo_ig.png"),
+                            SvgPicture.asset("assets/icons/ic_ig.svg"),
                             const Text(
                               "Instagram",
                               style: AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA,
