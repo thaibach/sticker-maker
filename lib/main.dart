@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:sticker_maker/src/utils/share_local.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
 import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
 
@@ -12,7 +11,7 @@ import 'app_observer.dart';
 import 'src/cubit/cubit_index.dart';
 import 'src/views/views_index.dart';
 
-void main() async {
+void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent, // transparent status bar
       statusBarIconBrightness: Brightness.dark // dark text for status bar
@@ -31,7 +30,6 @@ void main() async {
       create: (BuildContext context) => PreEditCubit(),
     ),
   ], child: const MyApp()));
-  shareLocal = await ShareLocal.getInstance();
 }
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
