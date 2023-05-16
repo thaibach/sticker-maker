@@ -20,8 +20,7 @@ class HomePage extends StatelessWidget {
         bloc: homeCubit,
         listener: (context, state) {
           if (state is HomePageSuccess && homeCubit.imageFile != null) {
-            AppNavigate.navigatePage(
-                context, PreEditPage(image: homeCubit.imageFile));
+            AppNavigate.navigatePage(context, PreEditPage(image: homeCubit.imageFile));
           }
           if (state is HomePageError) {
             Components(homeCubit).popUpAccessRights(context);
@@ -127,24 +126,20 @@ class HomePage extends StatelessWidget {
                               ),
                               Text(
                                 'No pack created',
-                                style: AppStyle.DEFAULT_14
-                                    .copyWith(fontWeight: FontWeight.w500),
+                                style: AppStyle.DEFAULT_14.copyWith(fontWeight: FontWeight.w500),
                               ),
                               Expanded(
                                 child: Container(
                                   width: double.infinity,
-                                  margin: const EdgeInsets.only(
-                                      top: 2, left: 9, right: 9, bottom: 3),
+                                  margin: const EdgeInsets.only(top: 2, left: 9, right: 9, bottom: 3),
                                   decoration: const BoxDecoration(
                                       image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/img_ds.png'),
+                                    image: AssetImage('assets/images/img_ds.png'),
                                   )),
                                   child: Center(
                                     child: Text(
                                       'Empty pack',
-                                      style: AppStyle.DEFAULT_14.copyWith(
-                                          color: Colors.white.withOpacity(0.7)),
+                                      style: AppStyle.DEFAULT_14.copyWith(color: Colors.white.withOpacity(0.7)),
                                     ),
                                   ),
                                 ),
@@ -174,12 +169,10 @@ class HomePage extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Components(homeCubit)
-                                .popUpImagePicker(context, null);
+                            Components(homeCubit).popUpImagePicker(context, null);
                           },
                           child: Container(
-                            margin: const EdgeInsets.only(
-                                top: 10, right: 71, left: 71),
+                            margin: const EdgeInsets.only(top: 10, right: 71, left: 71),
                             height: 45,
                             width: double.infinity,
                             decoration: BoxDecoration(
@@ -193,13 +186,15 @@ class HomePage extends StatelessWidget {
                               children: [
                                 Text(
                                   'Start making sticker',
-                                  style: AppStyle.DEFAULT_14
-                                      .copyWith(fontWeight: FontWeight.w700),
+                                  style: AppStyle.DEFAULT_14.copyWith(fontWeight: FontWeight.w700),
                                 ),
                                 const SizedBox(
                                   width: 10,
                                 ),
-                                SvgPicture.asset('assets/icons/ic_add.svg')
+                                Padding(
+                                  padding: EdgeInsets.only(top: 2),
+                                  child: SvgPicture.asset('assets/icons/ic_add.svg',height: 16,width: 16,),
+                                ),
                               ],
                             ),
                           ),

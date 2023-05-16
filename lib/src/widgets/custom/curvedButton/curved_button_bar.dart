@@ -100,8 +100,8 @@ class CurvedButtonBarState extends State<CurvedButtonBar> with SingleTickerProvi
         children: <Widget>[
           Positioned(
             bottom: -32 - (75.0 - widget.height),
-            left: Directionality.of(context) == TextDirection.rtl ? null : _pos * (size.width-50),
-            right: Directionality.of(context) == TextDirection.rtl ? _pos * (size.width-50) : null,
+            left: Directionality.of(context) == TextDirection.rtl ? null : _pos * (size.width-63),
+            right: Directionality.of(context) == TextDirection.rtl ? _pos * (size.width) : null,
             width: size.width  / _length,
             child: Center(
               child: Transform.translate(
@@ -114,20 +114,26 @@ class CurvedButtonBarState extends State<CurvedButtonBar> with SingleTickerProvi
                   type: MaterialType.circle,
                   clipBehavior: Clip.none,
                   child: Container(
-                    height: 50,
-                    width: 50,
+                    height: 42,
+                    width: 42,
+                    padding: EdgeInsets.all(2),
                     decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xFFE35C40)), borderRadius: BorderRadius.circular(25)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(14.0),
-                      child: _icon,
+                        color: Color(0xFFE35C40), borderRadius: BorderRadius.circular(25)),
+                    child: Container(
+                      height: 42,
+                      width: 42,
+                      decoration: BoxDecoration(
+                          color: Colors.white, borderRadius: BorderRadius.circular(25)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(9.0),
+                        child: _icon,
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
           ),
-
           Positioned(
             left: 0,
             right: 0,
@@ -142,7 +148,7 @@ class CurvedButtonBarState extends State<CurvedButtonBar> with SingleTickerProvi
                   Directionality.of(context),
                 ),
                 child: Container(
-                  height: 54.0,
+                  height: 42.0,
                 ),
               ),
             ),
@@ -152,7 +158,7 @@ class CurvedButtonBarState extends State<CurvedButtonBar> with SingleTickerProvi
             right: 0,
             bottom: 0 - (62.0 - widget.height),
             child: SizedBox(
-                height: 70.0,
+                height: 65.0,
                 child: Row(
                     children: widget.items.map((item) {
                   return NavButton(
