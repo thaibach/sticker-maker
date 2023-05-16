@@ -52,13 +52,16 @@ class TermPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Container(
-                        child: Scrollbar(
+                        child: RawScrollbar(
+                          thumbColor: const Color(0xffAAAAAA),
+                          mainAxisMargin: -40,
+                          minThumbLength: 47,
+                          thickness: 6.56,
+                          thumbVisibility: true,
                           radius: const Radius.circular(20),
                           interactive: true,
-                          isAlwaysShown: true,
                           scrollbarOrientation: ScrollbarOrientation.right,
                           child: SingleChildScrollView(
-                            physics: const BouncingScrollPhysics(),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 35),
                               child: Column(
@@ -421,9 +424,6 @@ class TermPage extends StatelessWidget {
                                       textAlign: TextAlign.justify,
                                       PolicyConstantTerm.content_200,
                                       style: AppStyle.DEFAUlT_CONTENT_TEXT),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
                                   const Text(
                                       textAlign: TextAlign.justify,
                                       PolicyConstantTerm.content_201,
