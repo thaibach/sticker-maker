@@ -1,17 +1,12 @@
-import 'dart:ffi';
 import 'dart:io';
-import 'dart:ui' as ui;
 
-import 'package:ffi/ffi.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sticker_maker/src/cubit/cubit_index.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
 import 'package:sticker_maker/src/widgets/widgets_index.dart';
-import 'package:sticker_maker/src/cubit/cubit_index.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PreEditPage extends StatefulWidget {
   final File? image;
@@ -49,7 +44,8 @@ class _PreEditPageState extends State<PreEditPage> {
         }
         if (state is RemoveBGSuccess) {
           Loading.hide(context);
-          AppNavigate.navigatePage(context, EditScreen(image: preEditCubit.resultPath));
+          AppNavigate.navigatePage(
+              context, EditScreen(image: preEditCubit.resultPath));
         }
       },
       builder: (context, state) {
@@ -131,7 +127,7 @@ class _PreEditPageState extends State<PreEditPage> {
                         child: Center(
                           child: Image.file(File(widget.image!.path)),
                         ),
-                      )
+                      ),
                     ],
                   )),
               Align(
@@ -156,7 +152,8 @@ class _PreEditPageState extends State<PreEditPage> {
                             cut = false;
                             _functionLabel = 'Remove Background';
                           });
-                          // preEditCubit.removeImageBG(widget.image!.path);
+                          preEditCubit.removeImageBG(widget.image!.path);
+                        
                           break;
                         case 1:
                           setState(() {
