@@ -89,7 +89,7 @@ class _SettingPageState extends State<SettingPage> {
                       child: ChosenSetting(icon: "assets/icons/ic_Privacy.svg", text: "Privacy policy")),
                   GestureDetector(
                       onTap: () {
-                        _cubit.showOptionShare(context);
+                        _cubit.share();
                       },
                       child: ChosenSetting(icon: "assets/icons/ic_Share.svg", text: "Share this app")),
                   GestureDetector(

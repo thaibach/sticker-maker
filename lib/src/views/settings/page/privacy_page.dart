@@ -56,13 +56,16 @@ class PrivacyPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Container(
-                        child: Scrollbar(
+                        child: RawScrollbar(
+                          thumbColor: const Color(0xffAAAAAA),
+                          mainAxisMargin: -40,
+                          minThumbLength: 47,
+                          thickness: 6.56,
+                          thumbVisibility: true,
                           interactive: true,
-                          isAlwaysShown: true,
                           radius: const Radius.circular(20),
                           scrollbarOrientation: ScrollbarOrientation.right,
                           child: SingleChildScrollView(
-                            physics: const BouncingScrollPhysics(),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 35),
                               child: Column(

@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sticker_maker/src/utils/share_local.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
 import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
-import 'src/cubit/cubit_index.dart';
+
 import 'app_observer.dart';
+import 'src/cubit/cubit_index.dart';
 import 'src/views/views_index.dart';
 
-void main() {
+void main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent, // transparent status bar
       statusBarIconBrightness: Brightness.dark // dark text for status bar
@@ -29,8 +31,8 @@ void main() {
       create: (BuildContext context) => PreEditCubit(),
     ),
   ], child: const MyApp()));
+  shareLocal = await ShareLocal.getInstance();
 }
-
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -45,8 +47,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     prepareModel();
-    SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     super.initState();
   }
 
@@ -60,11 +61,9 @@ class _MyAppState extends State<MyApp> {
       ByteData modelData = await rootBundle.load('assets/rm_model.mnn');
       final modelBuffer = modelData.buffer;
       File modelFile = File(modelPath_);
-      await modelFile.writeAsBytes(modelBuffer.asUint8List(
-          modelData.offsetInBytes, modelData.lengthInBytes));
+      await modelFile.writeAsBytes(modelBuffer.asUint8List(modelData.offsetInBytes, modelData.lengthInBytes));
     }
-    InitModelArguments initArgs =
-        InitModelArguments(modelPath_, inputWidth, inputHeight, numMNNThreads);
+    InitModelArguments initArgs = InitModelArguments(modelPath_, inputWidth, inputHeight, numMNNThreads);
     initModel(initArgs);
   }
 
