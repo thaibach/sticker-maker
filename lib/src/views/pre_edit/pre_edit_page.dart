@@ -4,6 +4,7 @@ import 'dart:ui' as ui;
 
 import 'package:ffi/ffi.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
@@ -35,7 +36,9 @@ class _PreEditPageState extends State<PreEditPage> {
     removeBg = true;
     super.initState();
   }
+
   PreEditCubit preEditCubit = PreEditCubit();
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PreEditCubit, PreEditState>(
@@ -67,8 +70,7 @@ class _PreEditPageState extends State<PreEditPage> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              AppNavigate.replacePage(
-                                  context, const HomePage());
+                              AppNavigate.replacePage(context, const HomePage());
                             },
                             child: Container(
                               margin: const EdgeInsets.only(top: 10, left: 10),
@@ -85,12 +87,9 @@ class _PreEditPageState extends State<PreEditPage> {
                               ),
                               child: Container(
                                 margin: const EdgeInsets.all(1),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: Colors.white),
+                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
                                 child: Center(
-                                  child: SvgPicture.asset(
-                                      'assets/icons/ic_back.svg'),
+                                  child: SvgPicture.asset('assets/icons/ic_back.svg'),
                                 ),
                               ),
                             ),
@@ -98,40 +97,32 @@ class _PreEditPageState extends State<PreEditPage> {
                           const Spacer(),
                           Text(
                             _functionLabel,
-                            style: AppStyle.DEFAULT_16.copyWith(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
+                            style: AppStyle.DEFAULT_16.copyWith(color: Colors.black, fontWeight: FontWeight.bold),
                           ),
                           const Spacer(),
                           Container(
                             margin: const EdgeInsets.only(top: 10, right: 10),
                             height: 50,
                             width: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                color: const Color(0xFF36CF00)),
+                            decoration:
+                                BoxDecoration(borderRadius: BorderRadius.circular(15), color: const Color(0xFF36CF00)),
                             child: Container(
                               margin: const EdgeInsets.all(1),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Colors.white),
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
                               child: Center(
-                                child: SvgPicture.asset(
-                                    'assets/icons/ic_save.svg'),
+                                child: SvgPicture.asset('assets/icons/ic_save.svg'),
                               ),
                             ),
                           ),
                         ],
                       ),
                       Container(
-                        margin:
-                            const EdgeInsets.only(left: 10, right: 10, top: 10),
+                        margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
                         padding: const EdgeInsets.all(20),
                         decoration: const BoxDecoration(
                           // color: Colors.blue,
                           image: DecorationImage(
-                            image: AssetImage(
-                                'assets/images/img_transparent_bgr.png'),
+                            image: AssetImage('assets/images/img_transparent_bgr.png'),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -146,8 +137,7 @@ class _PreEditPageState extends State<PreEditPage> {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  margin:
-                      const EdgeInsets.only(left: 25, right: 25, bottom: 55),
+                  margin: const EdgeInsets.only(left: 30, right: 30, bottom: 55),
                   width: double.infinity,
                   height: 42,
                   child: CurvedButtonBar(
@@ -166,7 +156,7 @@ class _PreEditPageState extends State<PreEditPage> {
                             cut = false;
                             _functionLabel = 'Remove Background';
                           });
-                         // preEditCubit.removeImageBG(widget.image!.path);
+                          // preEditCubit.removeImageBG(widget.image!.path);
                           break;
                         case 1:
                           setState(() {
@@ -185,14 +175,38 @@ class _PreEditPageState extends State<PreEditPage> {
                           });
                       }
                     },
-                    items:  [
-                      removeBg == false ? SvgPicture.asset('assets/icons/ic_removeBgr.svg') :
-                      SvgPicture.asset('assets/icons/ic_removeBgr.svg', color: const Color(0xFFDE225B),width: 12,height: 12,),
-                      cut == false ? SvgPicture.asset('assets/icons/ic_cut.svg') :
-                      SvgPicture.asset('assets/icons/ic_cut.svg', color: const Color(0xFFDE225B),width: 12,height: 12,),
-                      crop == false ? SvgPicture.asset('assets/icons/ic_crop.svg') :
-                      SvgPicture.asset('assets/icons/ic_crop.svg', color: const Color(0xFFDE225B),width: 12,height: 12,),
-                    //  Icon(Icons.add,color: Colors.blue,)
+                    items: [
+                      removeBg == false
+                          ? Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: SvgPicture.asset('assets/icons/ic_removeBgr.svg'),
+                            )
+                          : SvgPicture.asset(
+                              'assets/icons/ic_removeBgr.svg',
+                              color: const Color(0xFFDE225B),
+                              width: 12,
+                              height: 12,
+                            ),
+                      cut == false
+                          ? SvgPicture.asset('assets/icons/ic_cut.svg')
+                          : SvgPicture.asset(
+                              'assets/icons/ic_cut.svg',
+                              color: const Color(0xFFDE225B),
+                              width: 12,
+                              height: 12,
+                            ),
+                      crop == false
+                          ? Padding(
+                        padding: const EdgeInsets.only(right: 20),
+                              child: SvgPicture.asset('assets/icons/ic_crop.svg'),
+                            )
+                          : SvgPicture.asset(
+                              'assets/icons/ic_crop.svg',
+                              color: const Color(0xFFDE225B),
+                              width: 12,
+                              height: 12,
+                            ),
+                      //  Icon(Icons.add,color: Colors.blue,)
                     ],
                   ),
                 ),

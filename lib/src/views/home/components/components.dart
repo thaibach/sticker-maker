@@ -242,11 +242,17 @@ class Components {
                     onTap: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text(
-                      'Return',
-                      style: AppStyle.DEFAULT_14.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xFF626262),
+                    child: SizedBox(
+                      height: 30,
+                      width: 150,
+                      child: Center(
+                        child: Text(
+                          'Return',
+                          style: AppStyle.DEFAULT_14.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xFF626262),
+                          ),
+                        ),
                       ),
                     ),
                   )
