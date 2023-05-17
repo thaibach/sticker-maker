@@ -71,24 +71,15 @@ class TermPage extends StatelessWidget {
                                     const SizedBox(height: 31),
                                     const Text(PolicyConstantTerm.contentTerm, style: AppStyle.DEFAUlT_LABELBACK),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
                                     ),
                                     const Text(PolicyConstantTerm.contentTime, style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
                                       height: 5,
-=======
-                                      height: 10,
-                                    ),
-                                    const Text(PolicyConstantTerm.contentTime, style: AppStyle.DEFAUlT_CONTENT_TEXT),
-                                    const SizedBox(
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(PolicyConstantTerm.content_00,
                                         textAlign: TextAlign.justify, style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
                                     ),
                                     const Text(PolicyConstantTerm.content_001, style: AppStyle.DEFAUlT_LABELBACK),
@@ -98,22 +89,10 @@ class TermPage extends StatelessWidget {
                                     const Text(PolicyConstantTerm.content_002, style: AppStyle.DEFAUlT_CONTENT),
                                     const SizedBox(
                                       height: 5,
-=======
-                                      height: 10,
-                                    ),
-                                    const Text(PolicyConstantTerm.content_001, style: AppStyle.DEFAUlT_LABELBACK),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    const Text(PolicyConstantTerm.content_002, style: AppStyle.DEFAUlT_CONTENT),
-                                    const SizedBox(
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(PolicyConstantTerm.content_003,
                                         textAlign: TextAlign.justify, style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
                                     ),
                                     const Text(PolicyConstantTerm.content_004, style: AppStyle.DEFAUlT_LABELBACK),
@@ -123,17 +102,6 @@ class TermPage extends StatelessWidget {
                                     const Text(PolicyConstantTerm.content_005, style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
                                       height: 5,
-=======
-                                      height: 10,
-                                    ),
-                                    const Text(PolicyConstantTerm.content_004, style: AppStyle.DEFAUlT_LABELBACK),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    const Text(PolicyConstantTerm.content_005, style: AppStyle.DEFAUlT_CONTENT_TEXT),
-                                    const SizedBox(
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 10),
@@ -164,11 +132,7 @@ class TermPage extends StatelessWidget {
                                       ),
                                     ),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 10),
@@ -199,11 +163,7 @@ class TermPage extends StatelessWidget {
                                       ),
                                     ),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 10),
@@ -234,11 +194,7 @@ class TermPage extends StatelessWidget {
                                       ),
                                     ),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 10),
@@ -269,11 +225,7 @@ class TermPage extends StatelessWidget {
                                       ),
                                     ),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 10),
@@ -304,11 +256,7 @@ class TermPage extends StatelessWidget {
                                       ),
                                     ),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 10),
@@ -339,11 +287,7 @@ class TermPage extends StatelessWidget {
                                       ),
                                     ),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 10),
@@ -374,11 +318,7 @@ class TermPage extends StatelessWidget {
                                       ),
                                     ),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 10),
@@ -409,11 +349,7 @@ class TermPage extends StatelessWidget {
                                       ),
                                     ),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 10),
@@ -444,11 +380,7 @@ class TermPage extends StatelessWidget {
                                       ),
                                     ),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 10),
@@ -479,22 +411,14 @@ class TermPage extends StatelessWidget {
                                       ),
                                     ),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_11,
                                         style: AppStyle.DEFAUlT_LABELBACK),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
@@ -505,335 +429,210 @@ class TermPage extends StatelessWidget {
                                         PolicyConstantTerm.content_201,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_202,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_203,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_204,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_12,
                                         style: AppStyle.DEFAUlT_LABELBACK),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_500,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_501,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_502,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_13,
                                         style: AppStyle.DEFAUlT_LABELBACK),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_600,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_601,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_14,
                                         style: AppStyle.DEFAUlT_LABELBACK),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_700,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_701,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_702,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_15,
                                         style: AppStyle.DEFAUlT_LABELBACK),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_800,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_801,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_802,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_16,
                                         style: AppStyle.DEFAUlT_LABELBACK),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_900,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_17,
                                         style: AppStyle.DEFAUlT_LABELBACK),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_1000,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_18,
                                         style: AppStyle.DEFAUlT_LABELBACK),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_1001,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_19,
                                         style: AppStyle.DEFAUlT_LABELBACK),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_1002,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_20,
                                         style: AppStyle.DEFAUlT_LABELBACK),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                       textAlign: TextAlign.justify,
                                       PolicyConstantTerm.content_21,
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       style: AppStyle.DEFAUlT_CONTENT,
                                     ),
                                     const SizedBox(
                                       height: 5,
-=======
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontFamily: 'Nunito',
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_1003,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
                                     ),
                                     const Text(
@@ -842,110 +641,62 @@ class TermPage extends StatelessWidget {
                                         style: AppStyle.DEFAUlT_CONTENT),
                                     const SizedBox(
                                       height: 5,
-=======
-                                      height: 10,
-                                    ),
-                                    const Text(
-                                      textAlign: TextAlign.justify,
-                                      PolicyConstantTerm.content_22,
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontFamily: 'Nunito',
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_1004,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_23,
                                         style: AppStyle.DEFAUlT_LABELBACK),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_1005,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_24,
                                         style: AppStyle.DEFAUlT_LABELBACK),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_1006,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_1007,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_25,
                                         style: AppStyle.DEFAUlT_LABELBACK),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_400,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
                                     const SizedBox(
-<<<<<<< lib/src/views/settings/page/term_page.dart
                                       height: 5,
-=======
-                                      height: 10,
->>>>>>> lib/src/views/settings/page/term_page.dart
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 10),
