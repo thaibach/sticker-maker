@@ -12,4 +12,5 @@ class EditableItem {
   int textStyle = 0;
   double fontSize = 14;
   int fontFamily = 0;
+  TextAlign textAlign = TextAlign.center;
 }
