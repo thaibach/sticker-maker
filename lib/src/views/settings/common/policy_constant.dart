@@ -98,13 +98,13 @@ class PolicyConstant {
 class PolicyConstantTerm {
   static const String contentTerm = "Terms and Conditions";
   static const String contentTime = "Last updated: May 10, 2023";
-  static const String content_00 = "  Please read these terms and conditions carefully before using Our Service.";
+  static const String content_00 = "Please read these terms and conditions carefully before using Our Service.";
   static const String content_001 = "Interpretation and Definitions";
   static const String content_002 = "Interpretation";
   static const String content_003 =
       "  The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.";
   static const String content_004 = "Definitions";
-  static const String content_005 = " For the purposes of these Terms and Conditions:";
+  static const String content_005 = "For the purposes of these Terms and Conditions:";
   static const String content = "Terms and Conditions\n" +
       "Last updated: March 07, 2023\n" +
       "Please read these terms and conditions carefully before using Our Service.\n" +
