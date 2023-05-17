@@ -95,7 +95,6 @@ class TermPage extends StatelessWidget {
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    const Text(PolicyConstantTerm.content_002, style: AppStyle.DEFAUlT_LABELBACK),
                                     const SizedBox(
                                       height: 10,
                                     ),
@@ -113,7 +112,7 @@ class TermPage extends StatelessWidget {
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    const Text(PolicyConstantTerm.content_004, style: AppStyle.DEFAUlT_LABELBACK),
+                                    const Text(PolicyConstantTerm.content_004, style: AppStyle.DEFAUlT_CONTENT),
                                     const SizedBox(
                                       height: 10,
                                     ),
@@ -451,6 +450,9 @@ class TermPage extends StatelessWidget {
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_200,
                                         style: AppStyle.DEFAUlT_CONTENT_TEXT),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
                                     const Text(
                                         textAlign: TextAlign.justify,
                                         PolicyConstantTerm.content_201,
