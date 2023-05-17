@@ -9,6 +9,8 @@ class PrivacyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sc = ScrollController(initialScrollOffset: 0);
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -49,22 +51,21 @@ class PrivacyPage extends StatelessWidget {
               ),
             ),
             Expanded(
+              flex: 4,
               child: Container(
                 color: Colors.white,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      child: Container(
-                        child: RawScrollbar(
-                          thumbColor: const Color(0xffAAAAAA),
-                          mainAxisMargin: -40,
-                          minThumbLength: 47,
+                      child: MediaQuery.removePadding(
+                        context: context,
+                        removeTop: true,
+                        child: Scrollbar(
+                          radius: const Radius.circular(30),
                           thickness: 6.56,
-                          thumbVisibility: true,
-                          interactive: true,
-                          radius: const Radius.circular(20),
-                          scrollbarOrientation: ScrollbarOrientation.right,
+                          controller: sc,
+                          isAlwaysShown: true,
                           child: SingleChildScrollView(
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 35),
@@ -573,9 +574,12 @@ class PrivacyPage extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              color: Colors.transparent,
-              height: 100,
+            Expanded(
+              flex: 1,
+              child: Container(
+                color: Colors.transparent,
+                height: 100,
+              ),
             )
           ],
         ),
