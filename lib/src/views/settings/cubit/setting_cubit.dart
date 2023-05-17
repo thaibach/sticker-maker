@@ -23,36 +23,31 @@ class SettingsCubit extends Cubit<SettingsState> {
               Padding(
                 padding: const EdgeInsets.only(left: 19, top: 12, right: 16, bottom: 17),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     GestureDetector(
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      child: Expanded(
-                        child: const Text(
-                          "Cancel",
-                          style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN_FEED,
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 30),
-                    Expanded(
-                      flex: 3,
                       child: const Text(
-                        "Give us your feedback",
-                        style: AppStyle.DEFAUlT_LABELBACK_FEED,
-                        textAlign: TextAlign.center,
+                        "Cancel",
+                        style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN_FEED,
                       ),
                     ),
-                    Expanded(
-                      child: OutlineGradientButton(
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                        radius: const Radius.circular(50),
-                        gradient: const LinearGradient(
-                          colors: [Color(0xFFFF28B6), Color(0xFF5060F5), Color(0xFF5060F5)],
-                          begin: Alignment.topLeft,
-                        ),
-                        strokeWidth: 1,
+                    const Text(
+                      "Give us your feedback",
+                      style: AppStyle.DEFAUlT_LABELBACK_FEED,
+                      textAlign: TextAlign.center,
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                      margin: EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(12)),
+                          gradient:
+                              LinearGradient(colors: const [Color(0xFFFF28B6), Color(0xFF5060F5), Color(0xFF5060F5)])),
+                      child: Container(
+                        decoration: BoxDecoration(color: Colors.white),
                         child: const Text(
                           "Send",
                           style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN,
