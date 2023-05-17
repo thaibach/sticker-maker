@@ -1,12 +1,18 @@
+import 'dart:ffi';
 import 'dart:io';
+import 'dart:ui' as ui;
 
+import 'package:ffi/ffi.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sticker_maker/src/cubit/cubit_index.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
+import 'package:sticker_maker/src/views/pre_edit/components/custom_bottom_bar.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
 import 'package:sticker_maker/src/widgets/widgets_index.dart';
+import 'package:sticker_maker/src/cubit/cubit_index.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PreEditPage extends StatefulWidget {
   final File? image;
@@ -44,8 +50,15 @@ class _PreEditPageState extends State<PreEditPage> {
         }
         if (state is RemoveBGSuccess) {
           Loading.hide(context);
-          AppNavigate.navigatePage(
-              context, EditScreen(image: preEditCubit.resultPath));
+          AppNavigate.navigatePage(context, EditScreen(image: preEditCubit.resultPath));
+        }
+
+        if (state is BottomBarSuccess) {
+          // !(state.removeBg ?? true) ? true : false;
+          setState(() {
+            //  preEditCubit.bottomBar = true;
+          });
+          print(removeBg);
         }
       },
       builder: (context, state) {
@@ -68,26 +81,9 @@ class _PreEditPageState extends State<PreEditPage> {
                             onTap: () {
                               AppNavigate.replacePage(context, const HomePage());
                             },
-                            child: Container(
-                              margin: const EdgeInsets.only(top: 10, left: 10),
-                              height: 50,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                gradient: const LinearGradient(
-                                  colors: [
-                                    Color(0xFFDE225B),
-                                    Color(0xFFE46D39),
-                                  ],
-                                ),
-                              ),
-                              child: Container(
-                                margin: const EdgeInsets.all(1),
-                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
-                                child: Center(
-                                  child: SvgPicture.asset('assets/icons/ic_back.svg'),
-                                ),
-                              ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 20, left: 22, bottom: 21),
+                              child: SvgPicture.asset('assets/icons/ic_back_home.svg'),
                             ),
                           ),
                           const Spacer(),
@@ -96,19 +92,9 @@ class _PreEditPageState extends State<PreEditPage> {
                             style: AppStyle.DEFAULT_16.copyWith(color: Colors.black, fontWeight: FontWeight.bold),
                           ),
                           const Spacer(),
-                          Container(
-                            margin: const EdgeInsets.only(top: 10, right: 10),
-                            height: 50,
-                            width: 50,
-                            decoration:
-                                BoxDecoration(borderRadius: BorderRadius.circular(15), color: const Color(0xFF36CF00)),
-                            child: Container(
-                              margin: const EdgeInsets.all(1),
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
-                              child: Center(
-                                child: SvgPicture.asset('assets/icons/ic_save.svg'),
-                              ),
-                            ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 22),
+                            child: SvgPicture.asset('assets/icons/ic_save.svg'),
                           ),
                         ],
                       ),
@@ -127,7 +113,7 @@ class _PreEditPageState extends State<PreEditPage> {
                         child: Center(
                           child: Image.file(File(widget.image!.path)),
                         ),
-                      ),
+                      )
                     ],
                   )),
               Align(
@@ -136,76 +122,78 @@ class _PreEditPageState extends State<PreEditPage> {
                   margin: const EdgeInsets.only(left: 30, right: 30, bottom: 55),
                   width: double.infinity,
                   height: 42,
-                  child: CurvedButtonBar(
-                    buttonBackgroundColor: Colors.white,
-                    height: 42,
-                    letIndexChange: (index) => true,
-                    backgroundColor: Colors.transparent,
-                    color: Colors.black,
-                    animationDuration: const Duration(milliseconds: 300),
-                    onTap: (index) {
-                      switch (index) {
-                        case 0:
-                          setState(() {
-                            removeBg = true;
-                            crop = false;
-                            cut = false;
-                            _functionLabel = 'Remove Background';
-                          });
-                          preEditCubit.removeImageBG(widget.image!.path);
-                        
-                          break;
-                        case 1:
-                          setState(() {
-                            cut = true;
-                            crop = false;
-                            removeBg = false;
-                            _functionLabel = 'Cut';
-                          });
-                          break;
-                        default:
-                          setState(() {
-                            crop = true;
-                            removeBg = false;
-                            cut = false;
-                            _functionLabel = 'Frame crop';
-                          });
-                      }
-                    },
-                    items: [
-                      removeBg == false
-                          ? Padding(
-                              padding: const EdgeInsets.only(left: 20),
-                              child: SvgPicture.asset('assets/icons/ic_removeBgr.svg'),
-                            )
-                          : SvgPicture.asset(
-                              'assets/icons/ic_removeBgr.svg',
-                              color: const Color(0xFFDE225B),
-                              width: 12,
-                              height: 12,
-                            ),
-                      cut == false
-                          ? SvgPicture.asset('assets/icons/ic_cut.svg')
-                          : SvgPicture.asset(
-                              'assets/icons/ic_cut.svg',
-                              color: const Color(0xFFDE225B),
-                              width: 12,
-                              height: 12,
-                            ),
-                      crop == false
-                          ? Padding(
-                        padding: const EdgeInsets.only(right: 20),
-                              child: SvgPicture.asset('assets/icons/ic_crop.svg'),
-                            )
-                          : SvgPicture.asset(
-                              'assets/icons/ic_crop.svg',
-                              color: const Color(0xFFDE225B),
-                              width: 12,
-                              height: 12,
-                            ),
-                      //  Icon(Icons.add,color: Colors.blue,)
-                    ],
-                  ),
+                  child: preEditCubit.bottomBar == false
+                      ? PreEditComponents(preEditCubit, widget.image).preEditCustomBar(context)
+                      : CurvedButtonBar(
+                          buttonBackgroundColor: Colors.white,
+                          height: 42,
+                          letIndexChange: (index) => true,
+                          backgroundColor: Colors.transparent,
+                          animationCurve: Curves.easeInOut,
+                          color: Colors.black,
+                          animationDuration: const Duration(milliseconds: 300),
+                          onTap: (index) {
+                            switch (index) {
+                              case 0:
+                                setState(() {
+                                  removeBg = true;
+                                  crop = false;
+                                  cut = false;
+                                  _functionLabel = 'Remove Background';
+                                });
+                                // preEditCubit.removeImageBG(widget.image!.path);
+                                break;
+                              case 1:
+                                setState(() {
+                                  cut = true;
+                                  crop = false;
+                                  removeBg = false;
+                                  _functionLabel = 'Cut';
+                                });
+                                break;
+                              default:
+                                setState(() {
+                                  crop = true;
+                                  removeBg = false;
+                                  cut = false;
+                                  _functionLabel = 'Frame crop';
+                                });
+                            }
+                          },
+                          items: [
+                            removeBg == false
+                                ? Padding(
+                                    padding: const EdgeInsets.only(left: 20),
+                                    child: SvgPicture.asset('assets/icons/ic_removeBgr.svg'),
+                                  )
+                                : SvgPicture.asset(
+                                    'assets/icons/ic_removeBgr.svg',
+                                    color: const Color(0xFFDE225B),
+                                    width: 12,
+                                    height: 12,
+                                  ),
+                            cut == false
+                                ? SvgPicture.asset('assets/icons/ic_cut.svg')
+                                : SvgPicture.asset(
+                                    'assets/icons/ic_cut.svg',
+                                    color: const Color(0xFFDE225B),
+                                    width: 12,
+                                    height: 12,
+                                  ),
+                            crop == false
+                                ? Padding(
+                                    padding: const EdgeInsets.only(right: 20),
+                                    child: SvgPicture.asset('assets/icons/ic_crop.svg'),
+                                  )
+                                : SvgPicture.asset(
+                                    'assets/icons/ic_crop.svg',
+                                    color: const Color(0xFFDE225B),
+                                    width: 12,
+                                    height: 12,
+                                  ),
+                            //  Icon(Icons.add,color: Colors.blue,)
+                          ],
+                        ),
                 ),
               ),
             ],

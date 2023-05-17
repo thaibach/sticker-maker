@@ -29,7 +29,6 @@ class _SplashScreenState extends State<SplashScreen> {
     ).createShader(const Rect.fromLTWH(0.0, 0.0, 300.0, 70.0));
     
     return AnnotatedRegion<SystemUiOverlayStyle>(
-
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: Colors.white,
