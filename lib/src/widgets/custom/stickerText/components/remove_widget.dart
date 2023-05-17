@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../extensions/context_extension.dart';
 import '../models/editable_items.dart';
@@ -23,7 +24,7 @@ class RemoveWidget extends StatelessWidget {
     return Visibility(
       visible: !isTextInput,
       child: Positioned(
-        bottom: 80 + context.bottomPadding,
+        bottom: context.bottomPadding,
         child: AnimatedSwitcher(
           duration: animationsDuration,
           child: _activeItem == null
@@ -34,29 +35,12 @@ class RemoveWidget extends StatelessWidget {
                     width: context.width,
                     child: Center(
                       child: AnimatedContainer(
-                        duration: animationsDuration,
-                        height: !isDeletePosition ? 60.0 : 72,
-                        width: !isDeletePosition ? 60.0 : 72,
-                        decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.5),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              !isDeletePosition ? 30 : 38,
-                            ),
-                          ),
-                        ),
-                        child: isDeletePosition
-                            ? const Icon(
-                                Icons.delete,
-                                color: Colors.white,
-                                size: 32,
-                              )
-                            : const Icon(
-                                Icons.kayaking,
-                                color: Colors.white,
-                                size: 32,
-                              ),
-                      ),
+                          duration: animationsDuration,
+                          height: !isDeletePosition ? 60.0 : 72,
+                          width: !isDeletePosition ? 60.0 : 72,
+                          child: isDeletePosition
+                              ? SvgPicture.asset('assets/icons/bin_open.svg')
+                              : SvgPicture.asset('assets/icons/bin_close.svg')),
                     ),
                   ),
                 ),

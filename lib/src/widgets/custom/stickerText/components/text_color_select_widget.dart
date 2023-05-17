@@ -52,11 +52,9 @@ class TextColorSelectWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: defaultColors[index],
                   borderRadius: const BorderRadius.all(
-                    Radius.circular(20),
+                    Radius.circular(25),
                   ),
-                  border: Border.all(
-                    color: Colors.white,
-                  ),
+                  border: Border.all(color: Colors.red),
                 ),
                 child: Center(
                   child: AnimatedSwitcher(
