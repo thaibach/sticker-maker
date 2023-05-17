@@ -39,13 +39,13 @@ class AppStyle {
   static const DEFAUlT_CONTENT_TEXT_FEED_SHARE_SOCIALMEDIA =
       TextStyle(fontFamily: 'Nunito', fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white);
   static const DEFAUlT_CONTENT_TEXT_SPAN =
-      TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w700, color: Colors.black);
+      TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w600, color: Colors.black);
   static const DEFAUlT_CONTENT_TEXT_SPAN_FEED =
       TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w600, color: Colors.black);
   static const DEFAUlT_CONTENT_TEXT_NOR =
       TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w500, color: Colors.black);
   static const DEFAUlT_CONTENT_TEXT_SETTINGSFEED =
-      TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w400, color: Color(0xFF7C726A));
+      TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w400, color: Color(0xFFCDC7C7));
 
   //DEFAULT STYLE MIX
   // ignore: non_constant_identifier_names
