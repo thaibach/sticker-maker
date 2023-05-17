@@ -30,7 +30,7 @@ class AppStyle {
       TextStyle(fontFamily: 'Montserrat', fontSize: AppValue.FONT_SIZE_24, color: Colors.white, height: 1.4);
 
   static const DEFAUlT_LABEL = TextStyle(fontFamily: 'Nunito', fontSize: 24, fontWeight: FontWeight.w800);
-  static const DEFAUlT_LABELBACK = TextStyle(fontFamily: 'Nunito', fontSize: 16, fontWeight: FontWeight.w800);
+  static const DEFAUlT_LABELBACK = TextStyle(fontFamily: 'Nunito', fontSize: 18, fontWeight: FontWeight.w800);
   static const DEFAUlT_LABELBACK_FEED = TextStyle(fontFamily: 'Nunito', fontSize: 16, fontWeight: FontWeight.w600);
   static const DEFAUlT_CONTENT = TextStyle(fontFamily: 'Nunito', fontSize: 16, fontWeight: FontWeight.w700);
   static const DEFAUlT_CONTENT_TEXT = TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w500);

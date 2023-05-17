@@ -58,7 +58,6 @@ class PrivacyPage extends StatelessWidget {
                       child: Container(
                         child: RawScrollbar(
                           thumbColor: const Color(0xffAAAAAA),
-                          mainAxisMargin: -40,
                           minThumbLength: 47,
                           thickness: 6.56,
                           thumbVisibility: true,
