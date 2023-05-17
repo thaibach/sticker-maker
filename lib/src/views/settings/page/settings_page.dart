@@ -8,9 +8,9 @@ import 'package:sticker_maker/src/views/settings/component/custom_components_set
 import 'package:sticker_maker/src/views/settings/cubit/setting_cubit.dart';
 import 'package:sticker_maker/src/views/settings/cubit/setting_state.dart';
 import 'package:sticker_maker/src/views/settings/page/about_us_page.dart';
+import 'package:sticker_maker/src/views/settings/page/language_page.dart';
 import 'package:sticker_maker/src/views/settings/page/privacy_page.dart';
 import 'package:sticker_maker/src/views/settings/page/term_page.dart';
-import 'package:sticker_maker/src/views/settings/page/language_page.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
@@ -34,16 +34,17 @@ class _SettingPageState extends State<SettingPage> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: BlocConsumer<SettingsCubit, SettingsState>(
             bloc: _settingsCubit,
-            listener: (context, state) {
-            },
+            listener: (context, state) {},
             builder: (context, snapshot) {
               return Container(
                 height: double.infinity,
                 width: double.infinity,
                 decoration: const BoxDecoration(
-                    image: DecorationImage(image: AssetImage("assets/images/img_bgr_sticker.png"), fit: BoxFit.fitWidth)),
+                    image:
+                        DecorationImage(image: AssetImage("assets/images/img_bgr_sticker.png"), fit: BoxFit.fitWidth)),
                 child: SingleChildScrollView(
                   child: Column(children: [
                     Container(
