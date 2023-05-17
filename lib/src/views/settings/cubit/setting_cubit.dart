@@ -23,11 +23,42 @@ class SettingsCubit extends Cubit<SettingsState> {
               Padding(
                 padding: const EdgeInsets.only(left: 19, top: 12, right: 16, bottom: 17),
                 child: Row(
+<<<<<<< lib/src/views/settings/cubit/setting_cubit.dart
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+=======
+>>>>>>> lib/src/views/settings/cubit/setting_cubit.dart
                   children: [
                     GestureDetector(
                       onTap: () {
                         Navigator.pop(context);
                       },
+<<<<<<< lib/src/views/settings/cubit/setting_cubit.dart
+                      child: const Text(
+                        "Cancel",
+                        style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN_FEED,
+                      ),
+                    ),
+                    const Text(
+                      "Give us your feedback",
+                      style: AppStyle.DEFAUlT_LABELBACK_FEED,
+                      textAlign: TextAlign.center,
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                      margin: EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(12)),
+                          gradient:
+                              LinearGradient(colors: const [Color(0xFFFF28B6), Color(0xFF5060F5), Color(0xFF5060F5)])),
+                      child: Container(
+                        decoration: BoxDecoration(color: Colors.white),
+                        child: const Text(
+                          "Send",
+                          style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+=======
                       child: Expanded(
                         child: const Text(
                           "Cancel",
@@ -59,6 +90,7 @@ class SettingsCubit extends Cubit<SettingsState> {
                           textAlign: TextAlign.center,
                         ),
                       ),
+>>>>>>> lib/src/views/settings/cubit/setting_cubit.dart
                     )
                   ],
                 ),
