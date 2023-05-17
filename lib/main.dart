@@ -29,6 +29,9 @@ void main() {
     BlocProvider<PreEditCubit>(
       create: (BuildContext context) => PreEditCubit(),
     ),
+    BlocProvider<EditPageCubit>(
+      create: (BuildContext context) => EditPageCubit(),
+    ),
   ], child: const MyApp()));
 }
 class MyApp extends StatefulWidget {
@@ -72,7 +75,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        "/": (context) => const SplashScreen(),
+       "/": (context) => const SplashScreen(),
         "homePage": (context) => const HomePage(),
         "preEditPage": (context) => const PreEditPage(image: null),
         'settingsPage': (context) => const SettingPage(),
@@ -81,3 +84,5 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+

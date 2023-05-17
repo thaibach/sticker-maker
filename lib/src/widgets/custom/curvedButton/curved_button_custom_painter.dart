@@ -8,9 +8,9 @@ class NavCustomPainter extends CustomPainter {
 
   NavCustomPainter(
       double startingLoc, int itemsLength, this.color, this.textDirection) {
-    final span = 1.3 / itemsLength;
+    final span = 1.0 / itemsLength;
     s = 0.2;
-    double l = startingLoc + (span - s) / 3;
+    double l = startingLoc + (span - s) / 1.79;
     loc = textDirection == TextDirection.rtl ? 0.8 - l : l;
   }
   @override
@@ -27,22 +27,22 @@ class NavCustomPainter extends CustomPainter {
         center: Offset.zero,
         radius: 250.0,
       ));
-     final path = Path()
+    final path = Path()
       ..moveTo(0, 0)
-      ..lineTo((loc - 0.1) * size.width, 0)
+      ..lineTo((loc - 0.08) * size.width , 0)
       ..cubicTo(
-        (loc + s * 0.20) * size.width,
-        size.height * 0.05,
-        loc * size.width,
-        size.height * 0.60,
+        (loc + s * 0.4) * size.width,
+        size.height * 0.01,
+        (loc + s * 0.08) * size.width,
+        size.height * 0.39,
         (loc + s * 0.50) * size.width,
-        size.height * 0.60,
+        size.height * 0.51,
       )
       ..cubicTo(
-        (loc + s) * size.width,
-        size.height * 0.60,
-        (loc + s - s * 0.20) * size.width,
-        size.height * 0.05,
+        (loc + s ) * size.width - 3,
+        size.height * 0.60 - 5,
+        (loc + s - s * 0.25) * size.width - 6,
+        size.height * 0.05 - 9,
         (loc + s + 0.1) * size.width,
         0,
       )
@@ -51,6 +51,31 @@ class NavCustomPainter extends CustomPainter {
       ..lineTo(0, size.height)
       ..close();
     canvas.drawPath(path, paint);
+
+    // final path = Path()
+    //   ..moveTo(0, 0)
+    //   ..lineTo((loc - 0.1) * size.width, 0)
+    //   ..cubicTo(
+    //     (loc + s * 0.20) * size.width,
+    //     size.height * 0.05,
+    //     loc * size.width,
+    //     size.height * 0.60,
+    //     (loc + s * 0.50) * size.width,
+    //     size.height * 0.60,
+    //   )
+    //   ..cubicTo(
+    //     (loc + s) * size.width,
+    //     size.height * 0.60,
+    //     (loc + s - s * 0.20) * size.width,
+    //     size.height * 0.05,
+    //     (loc + s + 0.1) * size.width,
+    //     0,
+    //   )
+    //   ..lineTo(size.width, 0)
+    //   ..lineTo(size.width, size.height)
+    //   ..lineTo(0, size.height)
+    //   ..close();
+    // canvas.drawPath(path, paint);
   }
 
   @override

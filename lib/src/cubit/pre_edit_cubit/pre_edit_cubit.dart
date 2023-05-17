@@ -14,6 +14,7 @@ import 'dart:ui' as ui;
 class PreEditCubit extends Cubit<PreEditState> {
   PreEditCubit() : super(PreEditInitial());
   String resultPath = '';
+  int bottomBar = 0;
   Future<ui.Image> getImage(ui.Image oriImg, ui.Image maskImg, int imageWidth,
       int imageHeight) async {
     final ui.PictureRecorder recorder = ui.PictureRecorder();
@@ -22,6 +23,10 @@ class PreEditCubit extends Cubit<PreEditState> {
         ui.Size(imageWidth.toDouble(), imageHeight.toDouble()));
     final ui.Picture picture = recorder.endRecording();
     return await picture.toImage(imageWidth, imageHeight);
+  }
+
+  void changeCuverBottomBar(){
+    emit(BottomBarSuccess());
   }
 
   void removeImageBG(String imagePath) async {
@@ -62,3 +67,6 @@ class PreEditCubit extends Cubit<PreEditState> {
     emit(RemoveBGSuccess());
   }
 }
+
+
+
