@@ -95,7 +95,6 @@ class TermPage extends StatelessWidget {
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    const Text(PolicyConstantTerm.content_002, style: AppStyle.DEFAUlT_CONTENT),
                                     const SizedBox(
                                       height: 10,
                                     ),
