@@ -242,9 +242,10 @@ class Components {
                     onTap: () {
                       Navigator.of(context).pop();
                     },
-                    child: SizedBox(
+                    child: Container(
                       height: 30,
-                      width: 150,
+                      width: 250,
+                      color: Colors.transparent,
                       child: Center(
                         child: Text(
                           'Return',

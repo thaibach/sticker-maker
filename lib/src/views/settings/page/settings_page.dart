@@ -37,8 +37,6 @@ class _SettingPageState extends State<SettingPage> {
         body: BlocConsumer<SettingsCubit, SettingsState>(
             bloc: _settingsCubit,
             listener: (context, state) {
-
-
             },
             builder: (context, snapshot) {
               return Container(
