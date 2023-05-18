@@ -47,8 +47,8 @@ class FontFamilySelectWidget extends StatelessWidget {
                 height: context.width * .1,
                 width: context.width * .1,
                 alignment: Alignment.center,
-                margin: const EdgeInsets.all(
-                  2,
+                margin: const EdgeInsets.only(
+                  right:8,
                 ),
                 decoration: BoxDecoration(
                   color: index == selectedFamilyIndex
@@ -56,24 +56,17 @@ class FontFamilySelectWidget extends StatelessWidget {
                       : Colors.black.withOpacity(
                           0.4,
                         ),
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(20),
-                  ),
-                  border: Border.all(
-                    color: Colors.white,
-                  ),
+                  borderRadius: BorderRadius.circular(55)
                 ),
-                child: Center(
-                  child: Text(
-                    'Aa',
-                    style: GoogleFonts.getFont(
-                      fontFamilyList[index],
-                    ).copyWith(
-                      color: index == selectedFamilyIndex
-                          ? Colors.red
-                          : Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+                child: Text(
+                  'Aa',
+                  style: GoogleFonts.getFont(
+                    fontFamilyList[index],
+                  ).copyWith(
+                    color: index == selectedFamilyIndex
+                        ? Colors.red
+                        : Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),

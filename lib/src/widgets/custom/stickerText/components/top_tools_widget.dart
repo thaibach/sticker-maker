@@ -6,18 +6,21 @@ class TopToolsWidget extends StatelessWidget {
   final bool isTextInput;
   final Duration animationsDuration;
   final EditableItem? activeItem;
-
+  final Widget? left;
+  final Widget? center;
+  final Widget? right;
   final int selectedTextBackgroundGradientIndex;
-
   final VoidCallback onCancel;
   final VoidCallback onDone;
   final VoidCallback onToggleTextColorPicker;
   final VoidCallback onChangeTextBackground;
   final VoidCallback onChangeTextFont;
+  final VoidCallback onChangeTextAlign;
   final bool isChangeTextFont;
   final bool isAligntext;
   final bool isChangeColorText;
   final bool isChangeTextBackground;
+  final TextAlign align;
   const TopToolsWidget({
     Key? key,
     required this.isTextInput,
@@ -33,6 +36,10 @@ class TopToolsWidget extends StatelessWidget {
     required this.isAligntext,
     required this.isChangeColorText,
     required this.isChangeTextBackground,
+    required this.align,
+    this.left,
+    this.center,
+    this.right, required this.onChangeTextAlign,
   }) : super(key: key);
 
   @override
@@ -47,7 +54,8 @@ class TopToolsWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GestureDetector(
+                const Spacer(),
+                /*  GestureDetector(
                   onTap: onCancel,
                   child: Container(
                     margin: const EdgeInsets.only(left: 16, top: 8),
@@ -56,14 +64,17 @@ class TopToolsWidget extends StatelessWidget {
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                ),
+                ), */
                 GestureDetector(
                     onTap: onDone,
                     child: Container(
                       margin: const EdgeInsets.only(right: 16, top: 8),
                       child: const Text(
                         'Done',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
                       ),
                     )),
               ],
@@ -85,13 +96,16 @@ class TopToolsWidget extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: onChangeTextFont,
+                  onTap: onChangeTextAlign,
                   child: Container(
-                    margin: const EdgeInsets.only(right: 10),
-                    child: !isAligntext
-                        ? SvgPicture.asset('assets/icons/align_right.svg')
-                        : SvgPicture.asset('assets/icons/ic_text_active.svg'),
-                  ),
+                      margin: const EdgeInsets.only(right: 10),
+                      alignment: Alignment.center,
+                      height: 46,
+                      width: 46,
+                      decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.6),
+                          borderRadius: BorderRadius.circular(26)),
+                      child: _mapTextAlignToWidget(align)),
                 ),
                 GestureDetector(
                   onTap: onToggleTextColorPicker,
@@ -116,4 +130,18 @@ class TopToolsWidget extends StatelessWidget {
       ),
     );
   }
+
+  Widget _mapTextAlignToWidget(TextAlign align) {
+    switch (align) {
+      case TextAlign.left:
+        return left ?? const Icon(Icons.format_align_left, color: Colors.white);
+      case TextAlign.center:
+        return center ??
+            const Icon(Icons.format_align_center, color: Colors.white);
+      default:
+        return right ??
+            const Icon(Icons.format_align_right, color: Colors.white);
+    }
+  }
+
 }

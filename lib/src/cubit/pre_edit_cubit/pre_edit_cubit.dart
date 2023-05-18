@@ -1,15 +1,16 @@
 import 'dart:ffi';
 import 'dart:io';
+import 'dart:ui' as ui;
 
 import 'package:ffi/ffi.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image/image.dart' as img_img;
 import 'package:path_provider/path_provider.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
 
 import 'pre_edit_state.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'dart:ui' as ui;
 
 class PreEditCubit extends Cubit<PreEditState> {
   PreEditCubit() : super(PreEditInitial());
@@ -25,9 +26,11 @@ class PreEditCubit extends Cubit<PreEditState> {
     return await picture.toImage(imageWidth, imageHeight);
   }
 
-  void changeCuverBottomBar(){
+  void changeCuverBottomBar() {
     emit(BottomBarSuccess());
   }
+
+ 
 
   void removeImageBG(String imagePath) async {
     emit(RemoveBGLoading());
@@ -67,6 +70,3 @@ class PreEditCubit extends Cubit<PreEditState> {
     emit(RemoveBGSuccess());
   }
 }
-
-
-
