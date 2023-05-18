@@ -92,8 +92,8 @@ class HomePage extends StatelessWidget {
                                   ),
                                   Text(
                                     'Packs library',
-                                    style: AppStyle.DEFAULT_16.copyWith(
-                                      fontWeight: FontWeight.w700,
+                                    style: AppStyle.DEFAUlT_CONTENT.copyWith(
+                                      color: Colors.white,
                                       shadows: <Shadow>[
                                         Shadow(
                                           offset: const Offset(2.0, 4.0),
@@ -126,7 +126,8 @@ class HomePage extends StatelessWidget {
                               ),
                               Text(
                                 'No pack created',
-                                style: AppStyle.DEFAULT_14.copyWith(fontWeight: FontWeight.w500),
+                                style: AppStyle.DEFAUlT_CONTENT_TEXT.copyWith(
+                                    fontWeight: FontWeight.w700, color: Colors.white),
                               ),
                               Expanded(
                                 child: Container(
@@ -139,7 +140,8 @@ class HomePage extends StatelessWidget {
                                   child: Center(
                                     child: Text(
                                       'Empty pack',
-                                      style: AppStyle.DEFAULT_14.copyWith(color: Colors.white.withOpacity(0.7)),
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT_SETTINGSFEED.copyWith(
+                                          color: Colors.white.withOpacity(0.7)),
                                     ),
                                   ),
                                 ),
@@ -186,14 +188,18 @@ class HomePage extends StatelessWidget {
                               children: [
                                 Text(
                                   'Start making sticker',
-                                  style: AppStyle.DEFAULT_14.copyWith(fontWeight: FontWeight.w700),
+                                  style: AppStyle.DEFAUlT_CONTENT.copyWith(color: Colors.white),
                                 ),
                                 const SizedBox(
                                   width: 10,
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(top: 2),
-                                  child: SvgPicture.asset('assets/icons/ic_add.svg',height: 16,width: 16,),
+                                  child: SvgPicture.asset(
+                                    'assets/icons/ic_add.svg',
+                                    height: 16,
+                                    width: 16,
+                                  ),
                                 ),
                               ],
                             ),
