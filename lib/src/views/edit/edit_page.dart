@@ -35,7 +35,8 @@ class _EditScreenState extends State<EditScreen> {
 
   bool _isChangeTextFont = false;
   TextAlign _selectedTextAlign = TextAlign.center;
-  bool _isAligntext = false;
+  AlignmentGeometry _selectedAlignWidget = Alignment.center;
+  final bool _isAligntext = false;
   bool _isChangeColorText = false;
   bool _isChangeTextBackground = false;
   late PageController _familyPageController;
@@ -223,9 +224,6 @@ class _EditScreenState extends State<EditScreen> {
                                 ],
                               ),
                             ),
-                            /*  if (_isTextInput)
-
-                               */
                             RemoveWidget(
                               isTextInput: _isTextInput,
                               animationsDuration:
@@ -236,7 +234,7 @@ class _EditScreenState extends State<EditScreen> {
                           ]),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
+                          padding: const EdgeInsets.only(top: 8.0, right: 8),
                           child: Row(children: [
                             const Spacer(),
                             Padding(
@@ -278,9 +276,11 @@ class _EditScreenState extends State<EditScreen> {
                           ),
                           color: Colors.white,
                         ),
-                        const IconButton(
-                          onPressed: null,
-                          icon: Icon(
+                        IconButton(
+                          onPressed: () {
+                            debugPrint(_editingController.text);
+                          },
+                          icon: const Icon(
                             Icons.dangerous,
                             color: Colors.white,
                           ),
@@ -294,7 +294,7 @@ class _EditScreenState extends State<EditScreen> {
                           ),
                           color: Colors.white,
                         ),
-                        IconButton(
+                        const IconButton(
                           onPressed: null,
                           icon: Icon(
                             Icons.g_translate,
@@ -312,7 +312,7 @@ class _EditScreenState extends State<EditScreen> {
                           height: context.height,
                           width: context.width,
                           color: Colors.black.withOpacity(0.4),
-                          child: _addTextDialog()))
+                          child: _addTextOverlay()))
               ],
             ),
           ),
@@ -321,7 +321,7 @@ class _EditScreenState extends State<EditScreen> {
     );
   }
 
-  _addTextDialog() {
+  _addTextOverlay() {
     return Stack(
       clipBehavior: Clip.antiAlias,
       children: [
@@ -339,6 +339,8 @@ class _EditScreenState extends State<EditScreen> {
           isAligntext: _isAligntext,
           isChangeColorText: _isChangeColorText,
           isChangeTextBackground: _isChangeTextBackground,
+          align: _selectedTextAlign,
+          onChangeTextAlign: () => _switchTextAlign(_selectedTextAlign),
         ),
         TextFieldWidget(
           controller: _editingController,
@@ -348,6 +350,8 @@ class _EditScreenState extends State<EditScreen> {
           fontFamilyIndex: _selectedFontFamily,
           textColor: _selectedTextColor,
           backgroundColorIndex: _selectedTextBackgroundGradient,
+          textAlign: _selectedTextAlign,
+          alignWidget: _selectedAlignWidget,
         ),
         if (_isChangeTextFont)
           FontFamilySelectWidget(
@@ -382,6 +386,28 @@ class _EditScreenState extends State<EditScreen> {
         ),
       ],
     );
+  }
+
+  void _switchTextAlign(TextAlign alignText) {
+    switch (alignText) {
+      case TextAlign.center:
+        setState(() {
+          _selectedTextAlign = TextAlign.right;
+          _selectedAlignWidget = Alignment.centerRight;
+        });
+        break;
+      case TextAlign.left:
+        setState(() {
+          _selectedTextAlign = TextAlign.center;
+          _selectedAlignWidget = Alignment.center;
+        });
+        break;
+      default:
+        setState(() {
+          _selectedTextAlign = TextAlign.left;
+          _selectedAlignWidget = Alignment.centerLeft;
+        });
+    }
   }
 
   void _toggleTextFont() {
