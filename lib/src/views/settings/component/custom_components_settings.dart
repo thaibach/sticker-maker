@@ -269,44 +269,44 @@ class _dialogToastState extends State<dialogToast> {
         ),
       ),
       content: SingleChildScrollView(
-        child: Container(
-          height: 39,
-          width: 300,
-          padding: const EdgeInsets.all(1.5),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              gradient: const LinearGradient(colors: [
-                Color(0xFFFF28B6),
-                Color(0xFF5060F5),
-                Color(0xFF5060F5),
-              ])),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pop();
+          },
           child: Container(
-            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  width: 5,
-                ),
-                Text('Please give us at least 6 characters!',
-                    style: AppStyle.DEFAUlT_CONTENT_TEXT_SETTINGSFEED.copyWith(color: Colors.black)),
-                const SizedBox(
-                  width: 40,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text(
+            height: 39,
+            width: 300,
+            padding: const EdgeInsets.all(1.5),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                gradient: const LinearGradient(colors: [
+                  Color(0xFFFF28B6),
+                  Color(0xFF5060F5),
+                  Color(0xFF5060F5),
+                ])),
+            child: Container(
+              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text('Please give us at least 6 characters!',
+                      style: AppStyle.DEFAUlT_CONTENT_TEXT_SETTINGSFEED.copyWith(color: Colors.black)),
+                  const SizedBox(
+                    width: 40,
+                  ),
+                  Text(
                     'OK',
                     style: AppStyle.DEFAUlT_CONTENT_TEXT_SETTINGSFEED.copyWith(
                         fontWeight: FontWeight.w800, color: Colors.black),
                   ),
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-              ],
+                  const SizedBox(
+                    width: 5,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
