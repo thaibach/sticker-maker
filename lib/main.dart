@@ -3,8 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
+import 'package:sticker_maker/src/views/settings/cubit/setting_cubit.dart';
 import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
 
 import 'app_observer.dart';
@@ -32,8 +35,12 @@ void main() {
     BlocProvider<EditPageCubit>(
       create: (BuildContext context) => EditPageCubit(),
     ),
+    BlocProvider<SettingsCubit>(
+      create: (BuildContext context) => SettingsCubit(),
+    ),
   ], child: const MyApp()));
 }
+
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -70,19 +77,36 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Sticker Maker',
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-       "/": (context) => const SplashScreen(),
-        "homePage": (context) => const HomePage(),
-        "preEditPage": (context) => const PreEditPage(image: null),
-        'settingsPage': (context) => const SettingPage(),
-        "editPage": (context) => const EditScreen(image: null)
-      },
+    return BlocProvider(
+      create: (context) => LanguageCubit(),
+      child: BlocBuilder<LanguageCubit, Locale?>(
+        builder: (context, lang) {
+          return MaterialApp(
+            title: 'Sticker Maker',
+            debugShowCheckedModeBanner: false,
+            initialRoute: '/',
+            routes: {
+              "/": (context) => const SplashScreen(),
+              "homePage": (context) => const HomePage(),
+              "preEditPage": (context) => const PreEditPage(image: null),
+              'settingsPage': (context) => const SettingPage(),
+              "editPage": (context) => const EditScreen(image: null)
+            },
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate
+            ],
+            supportedLocales: const [
+              Locale('en', ''),
+              Locale('vi', ''),
+              Locale('fr', ''),
+            ],
+            locale: lang,
+          );
+        },
+      ),
     );
   }
 }
-
-

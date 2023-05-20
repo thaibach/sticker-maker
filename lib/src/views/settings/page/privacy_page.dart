@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../utils/style.dart';
 import '../common/policy_constant.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PrivacyPage extends StatelessWidget {
   PrivacyPage({super.key});
@@ -35,10 +36,10 @@ class PrivacyPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Align(
+                  Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      "Privacy policy",
+                      AppLocalizations.of(context)!.privacy_policy,
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontFamily: 'Nunito',

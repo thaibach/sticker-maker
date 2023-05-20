@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sticker_maker/src/utils/style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../common/policy_constant.dart';
 
@@ -33,10 +34,10 @@ class TermPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Align(
+                  Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      "Terms of use",
+                      AppLocalizations.of(context)!.terms_of_use,
                       textAlign: TextAlign.left,
                       style: AppStyle.DEFAUlT_LABEL,
                     ),

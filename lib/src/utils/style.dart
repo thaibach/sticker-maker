@@ -42,8 +42,12 @@ class AppStyle {
       TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w600, color: Colors.black);
   static const DEFAUlT_CONTENT_TEXT_SPAN_FEED =
       TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w600, color: Colors.black);
+  static const DEFAUlT_CONTENT_BTN_APPLY =
+      TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w700, color: Colors.black);
   static const DEFAUlT_CONTENT_TEXT_NOR =
       TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w500, color: Colors.black);
+  static const DEFAUlT_CONTENT_TEXT_TAIL =
+      TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w500, color: Color(0xFF6B6B6B));
   static const DEFAUlT_CONTENT_TEXT_SETTINGSFEED =
       TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w400, color: Color(0xFFCDC7C7));
 

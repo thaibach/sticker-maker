@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sticker_maker/src/utils/style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AboutPage extends StatelessWidget {
   AboutPage({super.key});
@@ -32,9 +33,9 @@ class AboutPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Align(
+                  Align(
                     alignment: Alignment.topLeft,
-                    child: Text("About us", style: AppStyle.DEFAUlT_LABEL),
+                    child: Text(AppLocalizations.of(context)!.about_us, style: AppStyle.DEFAUlT_LABEL),
                   )
                 ],
               ),
@@ -49,20 +50,20 @@ class AboutPage extends StatelessWidget {
                     const SizedBox(height: 12),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           "Isticker",
                           style: TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w700),
                         ),
-                        Text(" version 1.0.0",
+                        Text(AppLocalizations.of(context)!.version_app,
                             style: TextStyle(fontFamily: 'Nunito', fontSize: 12, fontWeight: FontWeight.w500))
                       ],
                     ),
                     const SizedBox(height: 53),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(35),
                       child: Text(
-                        "  You are bored with the sticker from your old app. Or those stickers can not make you satisfy. Try ours to create your own beautiful and stylized stickers. Let do it now.",
+                        AppLocalizations.of(context)!.info_app,
                         textAlign: TextAlign.justify,
                         style: TextStyle(fontFamily: 'Nunito', fontSize: 12, color: Color(0xFF6C6C6C)),
                       ),
