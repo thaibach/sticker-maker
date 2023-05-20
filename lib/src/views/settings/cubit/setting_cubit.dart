@@ -14,7 +14,6 @@ class SettingsCubit extends Cubit<SettingsState> {
   share() async {
     await Share.share('https://play.google.com/store/apps/details?id=com.intes.backgrounderaser');
   }
-
 }
 
 class LanguageCubit extends Cubit<Locale?> {
