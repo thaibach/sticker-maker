@@ -141,7 +141,7 @@ class _PreEditPageState extends State<PreEditPage> {
                                   cut = false;
                                   _functionLabel = 'Remove Background';
                                 });
-                                // preEditCubit.removeImageBG(widget.image!.path);
+                                preEditCubit.removeImageBG(widget.image!.path);
                                 break;
                               case 1:
                                 setState(() {

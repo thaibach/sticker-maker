@@ -18,7 +18,7 @@ class SizeSliderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedPositioned(
       duration: animationsDuration,
-      top: context.height * .5 - 162,
+      top: context.height * .5 - 160,
       right: -100,
       child: Transform(
         alignment: FractionalOffset.center,
@@ -27,14 +27,19 @@ class SizeSliderWidget extends StatelessWidget {
         child: SizedBox(
           width: 248,
           child: SliderTheme(
-            data: const SliderThemeData(
-                thumbColor: Colors.red,
-                ),
+            data: SliderTheme.of(context).copyWith(
+              thumbColor: Colors.red,
+              inactiveTrackColor: Color.fromRGBO(217, 217, 217, 1),
+              trackHeight: 4.0,
+              activeTrackColor: const Color(0x00ffffff).withOpacity(0.9),
+              valueIndicatorColor: Colors.red,
+              thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 6),
+              inactiveTickMarkColor: Colors.grey,
+            ),
             child: Slider(
               value: selectedValue,
               min: 14,
-              max: 74,
-              activeColor: Colors.white,
+              max: 84,
               inactiveColor: Colors.white.withOpacity(0.4),
               onChanged: onChanged,
             ),

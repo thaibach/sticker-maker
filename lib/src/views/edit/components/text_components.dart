@@ -1,3 +1,4 @@
+/*
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -32,19 +33,17 @@ class _EditScreenState extends State<EditScreen> {
   double _selectedFontSize = 26;
   int _selectedFontFamily = 0;
   bool _isDeletePosition = false;
-
+  bool _isColorPickerSelected = false;
   bool _isChangeTextFont = false;
-  TextAlign _selectedTextAlign = TextAlign.center;
-  AlignmentGeometry _selectedAlignWidget = Alignment.center;
+
   final bool _isAligntext = false;
-  bool _isChangeColorText = false;
-  bool _isChangeTextBackground = false;
+  final bool _isChangeColorText = false;
+  final bool _isChangeTextBackground = false;
   late PageController _familyPageController;
   late PageController _textColorsPageController;
   late PageController _gradientsPageController;
   final _editingController = TextEditingController();
   final _stackData = <EditableItem>[];
-
   @override
   void initState() {
     super.initState();
@@ -79,14 +78,14 @@ class _EditScreenState extends State<EditScreen> {
         // TODO: implement listener
       },
       builder: (context, state) {
-        return DefaultTextHeightBehavior(
-          textHeightBehavior: const TextHeightBehavior(
-            leadingDistribution: TextLeadingDistribution.even,
-          ),
-          child: Scaffold(
-            backgroundColor: const Color(0xFFCECECE),
-            resizeToAvoidBottomInset: false,
-            body: Stack(
+        return Scaffold(
+          backgroundColor: const Color(0xFFCECECE),
+          resizeToAvoidBottomInset: true,
+          body: DefaultTextHeightBehavior(
+            textHeightBehavior: const TextHeightBehavior(
+              leadingDistribution: TextLeadingDistribution.even,
+            ),
+            child: Stack(
               clipBehavior: Clip.antiAlias,
               children: [
                 Container(
@@ -234,7 +233,7 @@ class _EditScreenState extends State<EditScreen> {
                           ]),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 8.0, right: 8),
+                          padding: const EdgeInsets.only(top: 8.0),
                           child: Row(children: [
                             const Spacer(),
                             Padding(
@@ -256,7 +255,7 @@ class _EditScreenState extends State<EditScreen> {
                   alignment: Alignment.bottomCenter,
                   child: Container(
                     margin:
-                        const EdgeInsets.only(left: 25, right: 25, bottom: 40),
+                        const EdgeInsets.only(left: 25, right: 25, bottom: 50),
                     width: double.infinity,
                     height: 42,
                     decoration: BoxDecoration(
@@ -269,18 +268,16 @@ class _EditScreenState extends State<EditScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
-                          onPressed: _onAddText,
+                          onPressed: () => _addTextDialog(context),
                           icon: const Icon(
                             Icons.smart_display,
                             color: Colors.white,
                           ),
                           color: Colors.white,
                         ),
-                        IconButton(
-                          onPressed: () {
-                            debugPrint(_editingController.text);
-                          },
-                          icon: const Icon(
+                        const IconButton(
+                          onPressed: null,
+                          icon: Icon(
                             Icons.dangerous,
                             color: Colors.white,
                           ),
@@ -306,13 +303,6 @@ class _EditScreenState extends State<EditScreen> {
                     ),
                   ),
                 ),
-                if (_isTextInput)
-                  Positioned.fill(
-                      child: Container(
-                          height: context.height,
-                          width: context.width,
-                          color: Colors.black.withOpacity(0.4),
-                          child: _addTextOverlay()))
               ],
             ),
           ),
@@ -321,115 +311,55 @@ class _EditScreenState extends State<EditScreen> {
     );
   }
 
-  _addTextOverlay() {
-    return Stack(
-      clipBehavior: Clip.antiAlias,
-      children: [
-        TopToolsWidget(
-          onCancel: _onCancel,
-          onDone: _onAddText,
-          isTextInput: _isTextInput,
-          animationsDuration: const Duration(milliseconds: 300),
-          selectedTextBackgroundGradientIndex: _selectedTextBackgroundGradient,
-          onToggleTextColorPicker: _toggleTextColor,
-          onChangeTextBackground: _onChangeTextBackground,
-          activeItem: _activeItem,
-          onChangeTextFont: _toggleTextFont,
-          isChangeTextFont: _isChangeTextFont,
-          isAligntext: _isAligntext,
-          isChangeColorText: _isChangeColorText,
-          isChangeTextBackground: _isChangeTextBackground,
-          align: _selectedTextAlign,
-          onChangeTextAlign: () => _switchTextAlign(_selectedTextAlign),
-        ),
-        TextFieldWidget(
-          controller: _editingController,
-          onChanged: _onTextChange,
-          onSubmit: _onTextSubmit,
-          fontSize: _selectedFontSize,
-          fontFamilyIndex: _selectedFontFamily,
-          textColor: _selectedTextColor,
-          backgroundColorIndex: _selectedTextBackgroundGradient,
-          textAlign: _selectedTextAlign,
-          alignWidget: _selectedAlignWidget,
-        ),
-        if (_isChangeTextFont)
-          FontFamilySelectWidget(
-            animationsDuration: const Duration(milliseconds: 300),
-            pageController: _familyPageController,
-            selectedFamilyIndex: _selectedFontFamily,
-            onPageChanged: _onFamilyChange,
-            onTap: (index) {
-              _onStyleChange(index);
-            },
-          ),
-        if (_isChangeColorText)
-          TextColorSelectWidget(
-            animationsDuration: const Duration(milliseconds: 300),
-            pageController: _textColorsPageController,
-            selectedTextColor: _selectedTextColor,
-            onPageChanged: _onTextColorChange,
-            onTap: (index) {
-              _onColorChange(index);
-            },
-          ),
-        SizeSliderWidget(
-          animationsDuration: const Duration(milliseconds: 300),
-          selectedValue: _selectedFontSize,
-          onChanged: (input) {
-            setState(
-              () {
-                _selectedFontSize = input;
-              },
-            );
-          },
-        ),
-      ],
-    );
-  }
-
-  void _switchTextAlign(TextAlign alignText) {
-    switch (alignText) {
-      case TextAlign.center:
-        setState(() {
-          _selectedTextAlign = TextAlign.right;
-          _selectedAlignWidget = Alignment.centerRight;
-        });
-        break;
-      case TextAlign.left:
-        setState(() {
-          _selectedTextAlign = TextAlign.center;
-          _selectedAlignWidget = Alignment.center;
-        });
-        break;
-      default:
-        setState(() {
-          _selectedTextAlign = TextAlign.left;
-          _selectedAlignWidget = Alignment.centerLeft;
-        });
-    }
-  }
-
-  void _toggleTextFont() {
-    if (_isChangeColorText) {
-      setState(() {
-        _isChangeColorText = false;
-      });
-    }
-    setState(() {
-      _isChangeTextFont = !_isChangeTextFont;
-    });
-  }
-
-  void _toggleTextColor() {
-    if (_isChangeTextFont) {
-      setState(() {
-        _isChangeTextFont = false;
-      });
-    }
-    setState(() {
-      _isChangeColorText = !_isChangeColorText;
-    });
+  Future<void> _addTextDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (_) => Dialog.fullscreen(
+            backgroundColor: Colors.transparent,
+            child: Stack(
+              clipBehavior: Clip.hardEdge,
+              children: [
+                TopToolsWidget(
+                  onCancel: _onCancel,
+                  onDone: _onDone,
+                  isTextInput: _isTextInput,
+                  animationsDuration: const Duration(milliseconds: 300),
+                  onScreenTap: _onDone,
+                  selectedTextBackgroundGradientIndex:
+                      _selectedTextBackgroundGradient,
+                  onToggleTextColorPicker: _onToggleTextColorSelector,
+                  onChangeTextBackground: _onChangeTextBackground,
+                  activeItem: _activeItem,
+                  onChangeTextFont: () => setState(() {
+                    _isChangeTextFont = !_isChangeTextFont;
+                  }),
+                  isChangeTextFont: _isChangeTextFont,
+                  isAligntext: _isAligntext,
+                  isChangeColorText: _isChangeColorText,
+                  isChangeTextBackground: _isChangeTextBackground,
+                ),
+                TextFieldWidget(
+                  controller: _editingController,
+                  onChanged: _onTextChange,
+                  onSubmit: _onTextSubmit,
+                  fontSize: _selectedFontSize,
+                  fontFamilyIndex: _selectedFontFamily,
+                  textColor: _selectedTextColor,
+                  backgroundColorIndex: _selectedTextBackgroundGradient,
+                ),
+                SizeSliderWidget(
+                  animationsDuration: const Duration(milliseconds: 300),
+                  selectedValue: _selectedFontSize,
+                  onChanged: (input) {
+                    setState(
+                      () {
+                        _selectedFontSize = input;
+                      },
+                    );
+                  },
+                ),
+              ],
+            )));
   }
 
   void _onTextSubmit(String input) {
@@ -458,9 +388,6 @@ class _EditScreenState extends State<EditScreen> {
   }
 
   void _onChangeTextBackground() {
-    setState(() {
-      _isChangeTextBackground = true;
-    });
     if (_selectedTextBackgroundGradient < gradientColors.length - 1) {
       setState(() {
         _selectedTextBackgroundGradient++;
@@ -470,6 +397,14 @@ class _EditScreenState extends State<EditScreen> {
         _selectedTextBackgroundGradient = 0;
       });
     }
+  }
+
+  void _onToggleTextColorSelector() {
+    setState(
+      () {
+        _isColorPickerSelected = !_isColorPickerSelected;
+      },
+    );
   }
 
   void _onTextColorChange(index) {
@@ -513,14 +448,14 @@ class _EditScreenState extends State<EditScreen> {
     });
   }
 
-  void _onAddText() {
+  void _onDone() {
     setState(() {
       _isTextInput = !_isTextInput;
       _activeItem = null;
     });
 
     if (_currentText.isNotEmpty) {
-      _onSubmitText();
+      setState(_onSubmitText);
     }
     _familyPageController = PageController(
       initialPage: _selectedFontFamily,
@@ -531,17 +466,19 @@ class _EditScreenState extends State<EditScreen> {
           defaultColors.indexWhere((element) => element == _selectedTextColor),
       viewportFraction: .1,
     );
-    // AppNavigate.pop(context);
+    AppNavigate.pop(context);
   }
 
   void _onSubmitText() {
-    _stackData.add(EditableItem()
-      ..type = ItemType.TEXT
-      ..value = _currentText
-      ..color = _selectedTextColor
-      ..textStyle = _selectedTextBackgroundGradient
-      ..fontSize = _selectedFontSize
-      ..fontFamily = _selectedFontFamily);
+    _stackData.add(
+      EditableItem()
+        ..type = ItemType.TEXT
+        ..value = _currentText
+        ..color = _selectedTextColor
+        ..textStyle = _selectedTextBackgroundGradient
+        ..fontSize = _selectedFontSize
+        ..fontFamily = _selectedFontFamily,
+    );
     _editingController.text = '';
     _currentText = '';
   }
@@ -563,6 +500,7 @@ class _EditScreenState extends State<EditScreen> {
   }
 
   void _onOverlayItemTap(EditableItem e) {
+    _addTextDialog(context);
     setState(
       () {
         _isTextInput = !_isTextInput;
@@ -629,9 +567,7 @@ class _EditScreenState extends State<EditScreen> {
   }
 
   void _onCancel() {
-    setState(() {
-      _isTextInput = false;
-      _activeItem = null;
-    });
+    AppNavigate.pop(context);
   }
 }
+*/

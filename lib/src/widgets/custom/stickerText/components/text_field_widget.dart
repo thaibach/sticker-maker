@@ -14,7 +14,8 @@ class TextFieldWidget extends StatelessWidget {
   final int fontFamilyIndex;
   final Color textColor;
   final int backgroundColorIndex;
-
+  final TextAlign textAlign;
+  final AlignmentGeometry alignWidget;
   const TextFieldWidget({
     Key? key,
     required this.controller,
@@ -24,64 +25,56 @@ class TextFieldWidget extends StatelessWidget {
     required this.fontFamilyIndex,
     required this.textColor,
     required this.backgroundColorIndex,
+    required this.textAlign, required this.alignWidget,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: 36,
-      top: 0,
-      bottom: 96,
-      child: Center(
-        child: Container(
-          padding: EdgeInsets.zero,
-          constraints: BoxConstraints(
-            minWidth: 100,
-            maxWidth: context.width - 72,
-          ),
-          child: Center(
-            child: IntrinsicWidth(
-              child: ShaderMask(
-                blendMode: BlendMode.overlay,
-                shaderCallback: (bounds) {
-                  return createShader(
-                    colors: gradientColors[backgroundColorIndex],
-                    width: context.width,
-                    height: context.height,
-                  );
-                },
-                child: TextField(
-                  autofocus: true,
-                  controller: controller,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.getFont(
-                    fontFamilyList[fontFamilyIndex],
-                  ).copyWith(
-                    color: textColor,
-                    fontSize: fontSize,
+    return Container(
+      width: context.width,
+      margin: const EdgeInsets.only(left: 16, right: 16),
+      child: Align(
+        alignment: alignWidget,
+        child: IntrinsicWidth(
+          child: ShaderMask(
+            blendMode: BlendMode.overlay,
+            shaderCallback: (bounds) {
+              return createShader(
+                colors: gradientColors[backgroundColorIndex],
+                width: context.width,
+                height: context.height,
+              );
+            },
+            child: TextField(
+              autofocus: true,
+              controller: controller,
+              textAlign: textAlign,
+              style: GoogleFonts.getFont(
+                fontFamilyList[fontFamilyIndex],
+              ).copyWith(
+                color: textColor,
+                fontSize: fontSize,
+              ),
+              cursorColor: textColor,
+              minLines: 1,
+              keyboardType: TextInputType.multiline,
+              maxLines: null,
+              decoration: const InputDecoration(
+                fillColor: Colors.white,
+                filled: false,
+                border: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
                   ),
-                  cursorColor: textColor,
-                  minLines: 1,
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
-                  decoration: const InputDecoration(
-                    fillColor: Colors.white,
-                    filled: false,
-                    border: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                      ),
-                    ),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
                   ),
-                  onChanged: onChanged,
-                  onSubmitted: onSubmit,
                 ),
               ),
+              onChanged: onChanged,
+              onSubmitted: onSubmit,
             ),
           ),
         ),

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sticker_maker/src/cubit/home_cubit/home_cubit.dart';
@@ -30,7 +29,7 @@ class Components {
                   clipBehavior: Clip.none,
                   children: [
                     Container(
-                     color: const Color(0xFFE46D39),
+                      color: const Color(0xFFE46D39),
                       margin: const EdgeInsets.only(
                         top: 10,
                         left: 5,
@@ -80,7 +79,7 @@ class Components {
         return Container(
           height: 200,
           decoration: const BoxDecoration(
-            color: Colors.white,
+              color: Colors.white,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
@@ -96,9 +95,8 @@ class Components {
                   child: Text(
                     'Which do you want to import your photo ?',
                     textAlign: TextAlign.center,
-                    style: AppStyle.DEFAULT_16.copyWith(
+                    style: AppStyle.DEFAUlT_CONTENT.copyWith(
                       color: Colors.black,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -127,9 +125,9 @@ class Components {
                           const SizedBox(
                             height: 10,
                           ),
-                          Text(
+                          const Text(
                             'From gallery',
-                            style: AppStyle.DEFAULT_12.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                            style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN,
                           )
                         ],
                       ),
@@ -154,9 +152,9 @@ class Components {
                           const SizedBox(
                             height: 10,
                           ),
-                          Text(
+                          const Text(
                             'Take photo',
-                            style: AppStyle.DEFAULT_12.copyWith(fontWeight: FontWeight.w500, color: Colors.black),
+                            style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN,
                           )
                         ],
                       ),
@@ -190,8 +188,7 @@ class Components {
                 children: [
                   Text(
                     'Access disabled!',
-                    style: AppStyle.DEFAULT_16.copyWith(
-                      fontWeight: FontWeight.w700,
+                    style: AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SHARE_SOCIALMEDIA.copyWith(
                       color: Colors.black,
                     ),
                   ),
@@ -201,8 +198,7 @@ class Components {
                   Text(
                     'Please go to settings to open\npermissions',
                     textAlign: TextAlign.center,
-                    style: AppStyle.DEFAULT_12.copyWith(
-                      fontWeight: FontWeight.w500,
+                    style: AppStyle.DEFAUlT_CONTENT_TEXT_SETTINGSFEED.copyWith(
                       color: const Color(0xFF6C6C6C),
                     ),
                   ),
@@ -231,8 +227,8 @@ class Components {
                         child: Center(
                           child: Text(
                             'Go to setting',
-                            style: AppStyle.DEFAULT_14
-                                .copyWith(fontWeight: FontWeight.w500, color: const Color(0xFF5060B8)),
+                            style:
+                                AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA.copyWith(color: const Color(0xFF5060B8)),
                           ),
                         ),
                       ),
@@ -242,14 +238,14 @@ class Components {
                     onTap: () {
                       Navigator.of(context).pop();
                     },
-                    child: SizedBox(
+                    child: Container(
                       height: 30,
-                      width: 150,
+                      width: 250,
+                      color: Colors.transparent,
                       child: Center(
                         child: Text(
                           'Return',
-                          style: AppStyle.DEFAULT_14.copyWith(
-                            fontWeight: FontWeight.w500,
+                          style: AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA.copyWith(
                             color: const Color(0xFF626262),
                           ),
                         ),

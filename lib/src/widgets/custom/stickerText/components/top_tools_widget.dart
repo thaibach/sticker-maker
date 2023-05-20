@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../extensions/context_extension.dart';
-import '../models/editable_items.dart';
+import 'package:sticker_maker/src/widgets/custom/custom.dart';
 
 class TopToolsWidget extends StatelessWidget {
   final bool isTextInput;
   final Duration animationsDuration;
   final EditableItem? activeItem;
-
+  final Widget? left;
+  final Widget? center;
+  final Widget? right;
   final int selectedTextBackgroundGradientIndex;
-  final VoidCallback onScreenTap;
   final VoidCallback onCancel;
   final VoidCallback onDone;
   final VoidCallback onToggleTextColorPicker;
   final VoidCallback onChangeTextBackground;
   final VoidCallback onChangeTextFont;
+  final VoidCallback onChangeTextAlign;
   final bool isChangeTextFont;
   final bool isAligntext;
   final bool isChangeColorText;
   final bool isChangeTextBackground;
+  final TextAlign align;
   const TopToolsWidget({
     Key? key,
     required this.isTextInput,
     required this.animationsDuration,
     this.selectedTextBackgroundGradientIndex = 0,
-    required this.onScreenTap,
     required this.onToggleTextColorPicker,
     required this.onChangeTextBackground,
     this.activeItem,
@@ -36,75 +36,112 @@ class TopToolsWidget extends StatelessWidget {
     required this.isAligntext,
     required this.isChangeColorText,
     required this.isChangeTextBackground,
+    required this.align,
+    this.left,
+    this.center,
+    this.right, required this.onChangeTextAlign,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (isTextInput) {
-      return Column(
+    return Positioned(
+      top: context.topPadding,
+      width: context.width,
+      child: Column(
         children: [
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //   children: [
-          //     TextButton(
-          //         onPressed: onCancel,
-          //         child: const Text(
-          //           'Cancel',
-          //           style: TextStyle(color: Colors.white),
-          //         )),
-          //     TextButton(
-          //         onPressed: onDone,
-          //         child: const Text(
-          //           'Done',
-          //           style: TextStyle(color: Colors.white),
-          //         )),
-          //   ],
-          // ),
+          SizedBox(
+            width: context.width,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Spacer(),
+                /*  GestureDetector(
+                  onTap: onCancel,
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 16, top: 8),
+                    child: const Text(
+                      'Cancel',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ), */
+                GestureDetector(
+                    onTap: onDone,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 16, top: 8),
+                      child: const Text(
+                        'Done',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    )),
+              ],
+            ),
+          ),
           Container(
             width: context.width,
-            padding: const EdgeInsets.all(4),
+            margin: const EdgeInsets.only(top: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  margin: const EdgeInsets.only(right: 10),
-                  child: GestureDetector(
-                    onTap: onChangeTextFont,
+                GestureDetector(
+                  onTap: onChangeTextFont,
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 10),
                     child: !isChangeTextFont
                         ? SvgPicture.asset('assets/icons/ic_text_inactive.svg')
                         : SvgPicture.asset('assets/icons/ic_text_active.svg'),
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(right: 10),
-                  child: GestureDetector(
-                    onTap: onChangeTextFont,
-                    child: !isAligntext
-                        ? SvgPicture.asset('assets/icons/Align.svg')
-                        : SvgPicture.asset('assets/icons/ic_text_active.svg'),
-                  ),
+                GestureDetector(
+                  onTap: onChangeTextAlign,
+                  child: Container(
+                      margin: const EdgeInsets.only(right: 10),
+                      alignment: Alignment.center,
+                      height: 46,
+                      width: 46,
+                      decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.6),
+                          borderRadius: BorderRadius.circular(26)),
+                      child: _mapTextAlignToWidget(align)),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(right: 10),
-                  child: GestureDetector(
-                    onTap: onChangeTextFont,
+                GestureDetector(
+                  onTap: onToggleTextColorPicker,
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 10),
                     child: !isChangeColorText
                         ? SvgPicture.asset('assets/icons/ic_color_inactive.svg')
                         : SvgPicture.asset('assets/icons/ic_color_active.svg'),
                   ),
                 ),
                 GestureDetector(
-                  onTap: onChangeTextFont,
-                  child: !isChangeTextBackground
+                  onTap: onChangeTextBackground,
+                  child: isChangeTextBackground
                       ? SvgPicture.asset('assets/icons/text_color.svg')
-                      : SvgPicture.asset('assets/icons/ic_text_active.svg'),
+                      : SvgPicture.asset(
+                          'assets/icons/text_color_inactive.svg'),
                 ),
               ],
             ),
           ),
         ],
-      );
-    }
-    return const SizedBox();
+      ),
+    );
   }
+
+  Widget _mapTextAlignToWidget(TextAlign align) {
+    switch (align) {
+      case TextAlign.left:
+        return left ?? const Icon(Icons.format_align_left, color: Colors.white);
+      case TextAlign.center:
+        return center ??
+            const Icon(Icons.format_align_center, color: Colors.white);
+      default:
+        return right ??
+            const Icon(Icons.format_align_right, color: Colors.white);
+    }
+  }
+
 }

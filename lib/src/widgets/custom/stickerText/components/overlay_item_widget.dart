@@ -36,7 +36,7 @@ class OverlayItemWidget extends StatelessWidget {
               Center(
                 child: Text(
                   editableItem.value,
-                  textAlign: TextAlign.center,
+                  textAlign: editableItem.textAlign,
                   style: GoogleFonts.getFont(
                     fontFamilyList[editableItem.fontFamily],
                   ).copyWith(
@@ -59,7 +59,7 @@ class OverlayItemWidget extends StatelessWidget {
                   onTap: onItemTap,
                   child: Text(
                     editableItem.value,
-                    textAlign: TextAlign.center,
+                    textAlign: editableItem.textAlign,
                     style: GoogleFonts.getFont(
                       fontFamilyList[editableItem.fontFamily],
                     ).copyWith(
