@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M5 11.7333L9.2605 16L18 8" stroke="#206F1E" stroke-width="2.14286" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="0.75" y="0.75" width="22.5" height="22.5" rx="11.25" stroke="#206F1E" stroke-width="1.5"/>
-=======
-<svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M7.69325 16L0 8.4158L1.92331 6.51975L7.69325 12.2079L20.0767 0L22 1.89605L7.69325 16Z" fill="black"/>
->>>>>>> 714736f4fad12ec179bcd719da4a2cee320276c3
 </svg>

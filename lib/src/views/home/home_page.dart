@@ -7,6 +7,7 @@ import 'package:sticker_maker/src/utils/style.dart';
 import 'package:sticker_maker/src/views/home/components/components.dart';
 import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -91,9 +92,9 @@ class HomePage extends StatelessWidget {
                                     width: 20,
                                   ),
                                   Text(
-                                    'Packs library',
-                                    style: AppStyle.DEFAUlT_CONTENT.copyWith(
-                                      color: Colors.white,
+                                    AppLocalizations.of(context)!.packs_lib,
+                                    style: AppStyle.DEFAULT_16.copyWith(
+                                      fontWeight: FontWeight.w700,
                                       shadows: <Shadow>[
                                         Shadow(
                                           offset: const Offset(2.0, 4.0),
@@ -125,9 +126,8 @@ class HomePage extends StatelessWidget {
                                 height: 12,
                               ),
                               Text(
-                                'No pack created',
-                                style: AppStyle.DEFAUlT_CONTENT_TEXT.copyWith(
-                                    fontWeight: FontWeight.w700, color: Colors.white),
+                                AppLocalizations.of(context)!.lab_home,
+                                style: AppStyle.DEFAULT_14.copyWith(fontWeight: FontWeight.w500),
                               ),
                               Expanded(
                                 child: Container(
@@ -139,9 +139,8 @@ class HomePage extends StatelessWidget {
                                   )),
                                   child: Center(
                                     child: Text(
-                                      'Empty pack',
-                                      style: AppStyle.DEFAUlT_CONTENT_TEXT_SETTINGSFEED.copyWith(
-                                          color: Colors.white.withOpacity(0.7)),
+                                      AppLocalizations.of(context)!.lab_emp_pack,
+                                      style: AppStyle.DEFAULT_14.copyWith(color: Colors.white.withOpacity(0.7)),
                                     ),
                                   ),
                                 ),
@@ -187,8 +186,8 @@ class HomePage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Start making sticker',
-                                  style: AppStyle.DEFAUlT_CONTENT.copyWith(color: Colors.white),
+                                  AppLocalizations.of(context)!.crt_Sti,
+                                  style: AppStyle.DEFAULT_14.copyWith(fontWeight: FontWeight.w700),
                                 ),
                                 const SizedBox(
                                   width: 10,
