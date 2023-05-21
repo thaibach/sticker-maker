@@ -42,7 +42,7 @@ class _LoadingWidget extends StatelessWidget {
     if ((backButton is Function) &&
         (dx < 30) &&
         (details.primaryVelocity != null) &&
-        (details.primaryVelocity! > 200)) {
+        (details.primaryVelocity! > 200)) {          
       dx = 0;
       await backButton!();
     }
