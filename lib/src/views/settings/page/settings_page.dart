@@ -69,7 +69,7 @@ class _SettingPageState extends State<SettingPage> {
                     ),
                     Align(
                       alignment: Alignment.topLeft,
-                      child: Text(AppLocalizations.of(context)!.lab_scr_text,
+                      child: Text(AppLocalizations.of(context)!.settings,
                           textAlign: TextAlign.left, style: AppStyle.DEFAUlT_LABEL),
                     )
                   ],
