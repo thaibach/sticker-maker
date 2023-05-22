@@ -10,7 +10,7 @@
 "access_disabled":"Access disabled!",
 "open_permissions":"Please go to settings to open permissions",
 "go_to_settings":"Go to setting",
-"return":"Return",
+"btn_return":"Return",
 "frame_crop":"Frame crop",
 "rectangle":"Rectangle",
 "circle":"Circle",

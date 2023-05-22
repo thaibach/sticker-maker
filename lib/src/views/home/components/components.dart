@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sticker_maker/src/cubit/home_cubit/home_cubit.dart';
 import 'package:sticker_maker/src/utils/style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Components {
   Components(this._homeCubit);
@@ -93,7 +94,7 @@ class Components {
                 Padding(
                   padding: const EdgeInsets.only(left: 51, right: 50),
                   child: Text(
-                    'Which do you want to import your photo ?',
+                    AppLocalizations.of(context)!.import_your_photo,
                     textAlign: TextAlign.center,
                     style: AppStyle.DEFAUlT_CONTENT.copyWith(
                       color: Colors.black,
@@ -125,8 +126,8 @@ class Components {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Text(
-                            'From gallery',
+                          Text(
+                            AppLocalizations.of(context)!.from_gallery,
                             style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN,
                           )
                         ],
@@ -152,8 +153,8 @@ class Components {
                           const SizedBox(
                             height: 10,
                           ),
-                          const Text(
-                            'Take photo',
+                          Text(
+                            AppLocalizations.of(context)!.take_photo,
                             style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN,
                           )
                         ],
@@ -187,7 +188,7 @@ class Components {
               child: Column(
                 children: [
                   Text(
-                    'Access disabled!',
+                    AppLocalizations.of(context)!.access_disabled,
                     style: AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SHARE_SOCIALMEDIA.copyWith(
                       color: Colors.black,
                     ),
@@ -196,7 +197,7 @@ class Components {
                     height: 6,
                   ),
                   Text(
-                    'Please go to settings to open\npermissions',
+                    AppLocalizations.of(context)!.open_permissions,
                     textAlign: TextAlign.center,
                     style: AppStyle.DEFAUlT_CONTENT_TEXT_SETTINGSFEED.copyWith(
                       color: const Color(0xFF6C6C6C),
@@ -226,7 +227,7 @@ class Components {
                         ),
                         child: Center(
                           child: Text(
-                            'Go to setting',
+                            AppLocalizations.of(context)!.go_to_settings,
                             style:
                                 AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA.copyWith(color: const Color(0xFF5060B8)),
                           ),
@@ -244,7 +245,7 @@ class Components {
                       color: Colors.transparent,
                       child: Center(
                         child: Text(
-                          'Return',
+                          AppLocalizations.of(context)!.btn_return,
                           style: AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA.copyWith(
                             color: const Color(0xFF626262),
                           ),
