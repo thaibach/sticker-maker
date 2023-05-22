@@ -76,12 +76,12 @@ class AboutPage extends StatelessWidget {
               height: 100,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
-                    "Made by ",
-                    style: TextStyle(fontFamily: 'Nunito', fontSize: 12, color: Color(0xFF6C6C6C)),
+                    AppLocalizations.of(context)!.made_by,
+                    style: const TextStyle(fontFamily: 'Nunito', fontSize: 12, color: Color(0xFF6C6C6C)),
                   ),
-                  Text(
+                  const Text(
                     "Tech Intes",
                     style: TextStyle(
                       fontFamily: 'Nunito',
