@@ -35,6 +35,7 @@ class _SettingPageState extends State<SettingPage> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Container(
           height: double.infinity,
           width: double.infinity,
