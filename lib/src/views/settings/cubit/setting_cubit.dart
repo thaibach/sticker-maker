@@ -34,3 +34,4 @@ class LanguageCubit extends Cubit<Locale?> {
     await prefs.setString('lang', data);
   }
 }
+

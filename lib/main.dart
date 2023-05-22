@@ -78,7 +78,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LanguageCubit(),
+      create: (context) => LanguageCubit()..changeStartLang(),
       child: BlocBuilder<LanguageCubit, Locale?>(
         builder: (context, lang) {
           return MaterialApp(
