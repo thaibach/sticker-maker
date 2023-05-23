@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:sticker_maker/src/widgets/custom/curvedButton/curved_button.dart';
 import 'package:sticker_maker/src/widgets/custom/curvedButton/curved_button_custom_painter.dart';
@@ -99,10 +97,10 @@ class CurvedButtonBarState extends State<CurvedButtonBar> with SingleTickerProvi
         alignment: Alignment.bottomCenter,
         children: <Widget>[
           Positioned(
-            bottom: -32 - (75.0 - widget.height),
-            left: Directionality.of(context) == TextDirection.rtl ? null : _pos * (size.width-63),
+            bottom: -40 - (75.0 - widget.height),
+            left: Directionality.of(context) == TextDirection.rtl ? null : _pos * (size.width - 63),
             right: Directionality.of(context) == TextDirection.rtl ? _pos * (size.width) : null,
-            width: size.width  / _length,
+            width: size.width / _length,
             child: Center(
               child: Transform.translate(
                 offset: const Offset(
@@ -117,13 +115,11 @@ class CurvedButtonBarState extends State<CurvedButtonBar> with SingleTickerProvi
                     height: 42,
                     width: 42,
                     padding: EdgeInsets.all(2),
-                    decoration: BoxDecoration(
-                        color: Color(0xFFE35C40), borderRadius: BorderRadius.circular(25)),
+                    decoration: BoxDecoration(color: Color(0xFFE35C40), borderRadius: BorderRadius.circular(25)),
                     child: Container(
                       height: 42,
                       width: 42,
-                      decoration: BoxDecoration(
-                          color: Colors.white, borderRadius: BorderRadius.circular(25)),
+                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(25)),
                       child: Padding(
                         padding: const EdgeInsets.all(9.0),
                         child: _icon,
@@ -137,7 +133,7 @@ class CurvedButtonBarState extends State<CurvedButtonBar> with SingleTickerProvi
           Positioned(
             left: 0,
             right: 0,
-            bottom: 0 - (52.0 - widget.height),
+            bottom: 0 - (75.0 - widget.height),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
               child: CustomPaint(

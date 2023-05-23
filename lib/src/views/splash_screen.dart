@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sticker_maker/src/utils/spacing.dart';
 import 'package:sticker_maker/src/utils/style.dart';
-import 'package:sticker_maker/src/views/home/home_page.dart';
+import 'package:sticker_maker/src/views/views_index.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -18,28 +18,26 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 4), () {
-      Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomePage()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     final Shader linearGradient = const LinearGradient(
       colors: <Color>[Color(0xFFDE225B), Color(0xFFE46D39)],
     ).createShader(const Rect.fromLTWH(0.0, 0.0, 300.0, 70.0));
-    
+
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Container(
-          height: MediaQuery.of(context).size.height * 1,
+            height: MediaQuery.of(context).size.height * 1,
             width: double.infinity,
             decoration: const BoxDecoration(
-                image: DecorationImage(
-              image: AssetImage('assets/images/img_bgr_sticker.png'),
-                  fit: BoxFit.fill
-            )),
+                image: DecorationImage(image: AssetImage('assets/images/img_bgr_sticker.png'), fit: BoxFit.fill)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -66,27 +64,22 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
                 Spacer(),
                 Padding(
-                  padding: EdgeInsets.only(left: 40,right: 40),
+                  padding: EdgeInsets.only(left: 40, right: 40),
                   child: Container(
                     width: double.infinity,
                     height: 45,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(22),
-                      gradient: const LinearGradient(
-                          colors: [
-                            Color(0xFFFF28B6),
-                            Color(0xFF5060F5),
-                          ]
-                      )
-                    ),
+                        borderRadius: BorderRadius.circular(22),
+                        gradient: const LinearGradient(colors: [
+                          Color(0xFFFF28B6),
+                          Color(0xFF5060F5),
+                        ])),
                     child: LinearPercentIndicator(
-                      linearGradient: const LinearGradient(
-                        colors: [
-                          Color(0xFF50F4FF),
-                          Color(0xFFC9FF94),
-                          // Colors.red,
-                        ]
-                      ),
+                      linearGradient: const LinearGradient(colors: [
+                        Color(0xFF50F4FF),
+                        Color(0xFFC9FF94),
+                        // Colors.red,
+                      ]),
                       padding: const EdgeInsets.symmetric(horizontal: 3.0),
                       barRadius: const Radius.circular(20),
                       animation: true,
@@ -98,7 +91,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ),
                 ),
-                 const SizedBox(
+                const SizedBox(
                   height: 70,
                   width: double.infinity,
                 ),
