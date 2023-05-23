@@ -1,18 +1,13 @@
-import 'dart:ffi';
 import 'dart:io';
-import 'dart:ui' as ui;
 
-import 'package:ffi/ffi.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sticker_maker/src/utils/utils_index.dart';
-import 'package:sticker_maker/src/views/pre_edit/components/custom_bottom_bar.dart';
-import 'package:sticker_maker/src/views/views_index.dart';
-import 'package:sticker_maker/src/widgets/widgets_index.dart';
-import 'package:sticker_maker/src/cubit/cubit_index.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sticker_maker/src/cubit/cubit_index.dart';
+import 'package:sticker_maker/src/utils/utils_index.dart';
+import 'package:sticker_maker/src/views/views_index.dart';
+import 'package:sticker_maker/src/widgets/custom/buttom_bar/import_buttom_bar.dart';
+import 'package:sticker_maker/src/widgets/widgets_index.dart';
 
 class PreEditPage extends StatefulWidget {
   final File? image;
@@ -28,13 +23,11 @@ class PreEditPage extends StatefulWidget {
 
 class _PreEditPageState extends State<PreEditPage> {
   String _functionLabel = '';
-  bool removeBg = false;
-  bool cut = false;
-  bool crop = false;
+  GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+  bool unSelect = false;
 
   @override
   void initState() {
-    removeBg = true;
     super.initState();
   }
 
@@ -51,14 +44,6 @@ class _PreEditPageState extends State<PreEditPage> {
         if (state is RemoveBGSuccess) {
           Loading.hide(context);
           AppNavigate.navigatePage(context, EditScreen(image: preEditCubit.resultPath));
-        }
-
-        if (state is BottomBarSuccess) {
-          // !(state.removeBg ?? true) ? true : false;
-          setState(() {
-            //  preEditCubit.bottomBar = true;
-          });
-          print(removeBg);
         }
       },
       builder: (context, state) {
@@ -118,82 +103,43 @@ class _PreEditPageState extends State<PreEditPage> {
                   )),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: Container(
-                  margin: const EdgeInsets.only(left: 30, right: 30, bottom: 55),
-                  width: double.infinity,
-                  height: 42,
-                  child: preEditCubit.bottomBar == false
-                      ? PreEditComponents(preEditCubit, widget.image).preEditCustomBar(context)
-                      : CurvedButtonBar(
-                          buttonBackgroundColor: Colors.white,
-                          height: 42,
-                          letIndexChange: (index) => true,
-                          backgroundColor: Colors.transparent,
-                          animationCurve: Curves.easeInOut,
-                          color: Colors.black,
-                          animationDuration: const Duration(milliseconds: 300),
-                          onTap: (index) {
-                            switch (index) {
-                              case 0:
-                                setState(() {
-                                  removeBg = true;
-                                  crop = false;
-                                  cut = false;
-                                  _functionLabel = 'Remove Background';
-                                });
-                                preEditCubit.removeImageBG(widget.image!.path);
-                                break;
-                              case 1:
-                                setState(() {
-                                  cut = true;
-                                  crop = false;
-                                  removeBg = false;
-                                  _functionLabel = 'Cut';
-                                });
-                                break;
-                              default:
-                                setState(() {
-                                  crop = true;
-                                  removeBg = false;
-                                  cut = false;
-                                  _functionLabel = 'Frame crop';
-                                });
-                            }
-                          },
-                          items: [
-                            removeBg == false
-                                ? Padding(
-                                    padding: const EdgeInsets.only(left: 20),
-                                    child: SvgPicture.asset('assets/icons/ic_removeBgr.svg'),
-                                  )
-                                : SvgPicture.asset(
-                                    'assets/icons/ic_removeBgr.svg',
-                                    color: const Color(0xFFDE225B),
-                                    width: 12,
-                                    height: 12,
-                                  ),
-                            cut == false
-                                ? SvgPicture.asset('assets/icons/ic_cut.svg')
-                                : SvgPicture.asset(
-                                    'assets/icons/ic_cut.svg',
-                                    color: const Color(0xFFDE225B),
-                                    width: 12,
-                                    height: 12,
-                                  ),
-                            crop == false
-                                ? Padding(
-                                    padding: const EdgeInsets.only(right: 20),
-                                    child: SvgPicture.asset('assets/icons/ic_crop.svg'),
-                                  )
-                                : SvgPicture.asset(
-                                    'assets/icons/ic_crop.svg',
-                                    color: const Color(0xFFDE225B),
-                                    width: 12,
-                                    height: 12,
-                                  ),
-                            //  Icon(Icons.add,color: Colors.blue,)
-                          ],
-                        ),
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 60 + Spacing.viewPadding.bottom),
+                  child: CurvedNavigationBar(
+                    click: (value) {
+                      unSelect = value;
+                    },
+                    unSelect: unSelect,
+                    key: _bottomNavigationKey,
+                    index: 0,
+                    height: 60.0,
+                    width: AppValue.widths * 0.85,
+                    items: const <String>[
+                      'assets/icons/ic_removeBgr.svg',
+                      'assets/icons/ic_cut.svg',
+                      'assets/icons/ic_crop.svg',
+                    ],
+                    color: Colors.redAccent,
+                    buttonBackgroundColor: Colors.yellowAccent,
+                    backgroundColor: Colors.transparent,
+                    animationCurve: Curves.linearToEaseOut,
+                    animationDuration: Duration(milliseconds: 300),
+                    onTap: (index) {
+                      setState(() {
+                        if (unSelect = true) {
+                          if (index == 0) {
+                            print('remove');
+                            preEditCubit.removeImageBG(widget.image!.path);
+                          } else if (index == 1) {
+                            print("cut");
+                          } else if (index == 2) {
+                            print("crop");
+                          }
+                        }
+                      });
+                    },
+                    letIndexChange: (index) => true,
+                  ),
                 ),
               ),
             ],
