@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'import_buttom_bar.dart';
+import 'nav_buttom.dart';
+import 'nav_painter.dart';
 
 typedef _LetIndexPage = bool Function(int value);
 
@@ -46,7 +47,8 @@ class CurvedNavigationBar extends StatefulWidget {
   CurvedNavigationBarState createState() => CurvedNavigationBarState();
 }
 
-class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTickerProviderStateMixin {
+class CurvedNavigationBarState extends State<CurvedNavigationBar>
+    with SingleTickerProviderStateMixin {
   late double _startingPos;
   int _endingIndex = 0;
   late double _pos;
@@ -58,7 +60,8 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
   @override
   void initState() {
     super.initState();
-    _icon = SvgPicture.asset(widget.items[widget.index], color: const Color(0xFFDE225B));
+    _icon = SvgPicture.asset(widget.items[widget.index],
+        color: const Color(0xFFDE225B));
     _length = widget.items.length;
     _pos = widget.index / _length;
     _startingPos = widget.index / _length;
@@ -69,9 +72,11 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
         final endingPos = _endingIndex / widget.items.length;
         final middle = (endingPos + _startingPos) / 2;
         if ((endingPos - _pos).abs() < (_startingPos - _pos).abs()) {
-          _icon = SvgPicture.asset(widget.items[_endingIndex], color: const Color(0xFFDE225B));
+          _icon = SvgPicture.asset(widget.items[_endingIndex],
+              color: const Color(0xFFDE225B));
         }
-        _buttonHide = (1 - ((middle - _pos) / (_startingPos - middle)).abs()).abs();
+        _buttonHide =
+            (1 - ((middle - _pos) / (_startingPos - middle)).abs()).abs();
       });
     });
   }
@@ -83,7 +88,8 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
       final newPosition = widget.index / _length;
       _startingPos = _pos;
       _endingIndex = widget.index;
-      _animationController.animateTo(newPosition, duration: widget.animationDuration, curve: widget.animationCurve);
+      _animationController.animateTo(newPosition,
+          duration: widget.animationDuration, curve: widget.animationCurve);
     }
   }
 
@@ -107,8 +113,12 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
           widget.unSelect
               ? Positioned(
                   bottom: -40 - (75.0 - widget.height),
-                  left: Directionality.of(context) == TextDirection.rtl ? null : _pos * widget.width,
-                  right: Directionality.of(context) == TextDirection.rtl ? _pos * widget.width : null,
+                  left: Directionality.of(context) == TextDirection.rtl
+                      ? null
+                      : _pos * widget.width,
+                  right: Directionality.of(context) == TextDirection.rtl
+                      ? _pos * widget.width
+                      : null,
                   width: widget.width / _length,
                   child: Center(
                     child: Transform.translate(
@@ -124,12 +134,15 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
                           height: 42,
                           width: 42,
                           padding: const EdgeInsets.all(2),
-                          decoration:
-                              BoxDecoration(color: const Color(0xFFE35C40), borderRadius: BorderRadius.circular(25)),
+                          decoration: BoxDecoration(
+                              color: const Color(0xFFE35C40),
+                              borderRadius: BorderRadius.circular(25)),
                           child: Container(
                             height: 42,
                             width: 42,
-                            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(25)),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(25)),
                             child: Center(child: _icon),
                           ),
                         ),
@@ -146,7 +159,8 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
               borderRadius: BorderRadius.circular(30),
               child: widget.unSelect
                   ? CustomPaint(
-                      painter: NavCustomPainter(_pos, _length, widget.color, Directionality.of(context)),
+                      painter: NavCustomPainter(_pos, _length, widget.color,
+                          Directionality.of(context)),
                       child: Container(
                         height: 42.0,
                       ),
@@ -182,8 +196,11 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
                                 onTap: _buttonTap,
                                 position: _pos,
                                 length: _length,
-                                index: widget.items.indexOf(widget.items[index]),
-                                child: Center(child: SvgPicture.asset(widget.items[index])),
+                                index:
+                                    widget.items.indexOf(widget.items[index]),
+                                child: Center(
+                                    child:
+                                        SvgPicture.asset(widget.items[index])),
                               ))),
                 )),
           ),
@@ -209,7 +226,8 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
     setState(() {
       _startingPos = _pos;
       _endingIndex = index;
-      _animationController.animateTo(newPosition, duration: widget.animationDuration, curve: widget.animationCurve);
+      _animationController.animateTo(newPosition,
+          duration: widget.animationDuration, curve: widget.animationCurve);
     });
     // } else {
     //

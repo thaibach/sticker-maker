@@ -22,7 +22,6 @@ class LanguageCubit extends Cubit<Locale?> {
   changeStartLang() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? langCode = prefs.getString('lang');
-    print(langCode);
     if (langCode != null) {
       emit(Locale(langCode, ''));
     }
