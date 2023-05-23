@@ -76,6 +76,7 @@ class _EditScreenState extends State<EditScreen> {
     _familyPageController.dispose();
     _textColorsPageController.dispose();
     _gradientsPageController.dispose();
+    textFocusNode.dispose();
     super.dispose();
   }
 
@@ -106,7 +107,6 @@ class _EditScreenState extends State<EditScreen> {
               maxScale: 5,
             )));
     final image = await FileImage(File(widget.image!)).image;
-    textFocusNode.addListener(onFocus);
 
     setState(() {
       drawingImage = image;
@@ -414,6 +414,7 @@ Viet
           backgroundColorIndex: _selectedTextBackgroundGradient,
           textAlign: _selectedTextAlign,
           alignWidget: _selectedAlignWidget,
+          textForcus: textFocusNode,
         ),
         if (_isChangeTextFont)
           FontFamilySelectWidget(
@@ -576,11 +577,16 @@ Viet
   }
 
   void _onAddText() {
+    textFocusNode.requestFocus();
     setState(() {
       _isTextInput = !_isTextInput;
       _activeItem = null;
     });
-
+    if (_isDrawing) {
+      setState(() {
+        _isDrawing = false;
+      });
+    }
     if (_currentText.isNotEmpty) {
       _onSubmitText();
     }
@@ -625,6 +631,7 @@ Viet
   }
 
   void _onOverlayItemTap(EditableItem e) {
+    textFocusNode.requestFocus();
     setState(
       () {
         _isTextInput = !_isTextInput;
@@ -768,7 +775,7 @@ Viet
 
   void _toggleDrawing() {
     setState(() {
-      _isDrawing = !_isDrawing;
+      _isDrawing = true;
     });
     _drawingController.freeStyleMode =
         _isDrawing ? FreeStyleMode.draw : FreeStyleMode.none;

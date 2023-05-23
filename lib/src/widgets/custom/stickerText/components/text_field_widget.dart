@@ -16,6 +16,7 @@ class TextFieldWidget extends StatelessWidget {
   final int backgroundColorIndex;
   final TextAlign textAlign;
   final AlignmentGeometry alignWidget;
+  final FocusNode textForcus;
   const TextFieldWidget({
     Key? key,
     required this.controller,
@@ -25,7 +26,9 @@ class TextFieldWidget extends StatelessWidget {
     required this.fontFamilyIndex,
     required this.textColor,
     required this.backgroundColorIndex,
-    required this.textAlign, required this.alignWidget,
+    required this.textAlign,
+    required this.alignWidget,
+    required this.textForcus,
   }) : super(key: key);
 
   @override
@@ -48,6 +51,7 @@ class TextFieldWidget extends StatelessWidget {
             child: TextField(
               autofocus: true,
               controller: controller,
+              focusNode: textForcus,
               textAlign: textAlign,
               style: GoogleFonts.getFont(
                 fontFamilyList[fontFamilyIndex],
