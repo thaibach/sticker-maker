@@ -6,7 +6,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticker_maker/src/cubit/cubit_index.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
-import 'package:sticker_maker/src/widgets/custom/buttom_bar/import_buttom_bar.dart';
 import 'package:sticker_maker/src/widgets/widgets_index.dart';
 
 class PreEditPage extends StatefulWidget {
@@ -39,11 +38,12 @@ class _PreEditPageState extends State<PreEditPage> {
       bloc: preEditCubit,
       listener: (context, state) {
         if (state is RemoveBGLoading) {
-          Loading.show(context);
+          Loading.show(context, '');
         }
         if (state is RemoveBGSuccess) {
           Loading.hide(context);
-          AppNavigate.navigatePage(context, EditScreen(image: preEditCubit.resultPath));
+          AppNavigate.navigatePage(
+              context, EditScreen(image: preEditCubit.resultPath));
         }
       },
       builder: (context, state) {
@@ -64,17 +64,22 @@ class _PreEditPageState extends State<PreEditPage> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              AppNavigate.replacePage(context, const HomePage());
+                              AppNavigate.replacePage(
+                                  context, const HomePage());
                             },
                             child: Padding(
-                              padding: const EdgeInsets.only(top: 20, left: 22, bottom: 21),
-                              child: SvgPicture.asset('assets/icons/ic_back_home.svg'),
+                              padding: const EdgeInsets.only(
+                                  top: 20, left: 22, bottom: 21),
+                              child: SvgPicture.asset(
+                                  'assets/icons/ic_back_home.svg'),
                             ),
                           ),
                           const Spacer(),
                           Text(
                             _functionLabel,
-                            style: AppStyle.DEFAULT_16.copyWith(color: Colors.black, fontWeight: FontWeight.bold),
+                            style: AppStyle.DEFAULT_16.copyWith(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
                           ),
                           const Spacer(),
                           Padding(
@@ -84,12 +89,14 @@ class _PreEditPageState extends State<PreEditPage> {
                         ],
                       ),
                       Container(
-                        margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
+                        margin:
+                            const EdgeInsets.only(left: 10, right: 10, top: 10),
                         padding: const EdgeInsets.all(20),
                         decoration: const BoxDecoration(
                           // color: Colors.blue,
                           image: DecorationImage(
-                            image: AssetImage('assets/images/img_transparent_bgr.png'),
+                            image: AssetImage(
+                                'assets/images/img_transparent_bgr.png'),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -104,7 +111,8 @@ class _PreEditPageState extends State<PreEditPage> {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: 60 + Spacing.viewPadding.bottom),
+                  padding:
+                      EdgeInsets.only(bottom: 60 + Spacing.viewPadding.bottom),
                   child: CurvedNavigationBar(
                     click: (value) {
                       unSelect = value;
@@ -123,7 +131,7 @@ class _PreEditPageState extends State<PreEditPage> {
                     buttonBackgroundColor: Colors.yellowAccent,
                     backgroundColor: Colors.transparent,
                     animationCurve: Curves.linearToEaseOut,
-                    animationDuration: Duration(milliseconds: 300),
+                    animationDuration: const Duration(milliseconds: 300),
                     onTap: (index) {
                       setState(() {
                         if (unSelect = true) {

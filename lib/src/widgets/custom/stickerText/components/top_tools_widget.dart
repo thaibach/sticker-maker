@@ -10,7 +10,7 @@ class TopToolsWidget extends StatelessWidget {
   final Widget? center;
   final Widget? right;
   final int selectedTextBackgroundGradientIndex;
-  final VoidCallback onCancel;
+  // final VoidCallback onCancel;
   final VoidCallback onDone;
   final VoidCallback onToggleTextColorPicker;
   final VoidCallback onChangeTextBackground;
@@ -29,7 +29,7 @@ class TopToolsWidget extends StatelessWidget {
     required this.onToggleTextColorPicker,
     required this.onChangeTextBackground,
     this.activeItem,
-    required this.onCancel,
+    // required this.onCancel,
     required this.onDone,
     required this.onChangeTextFont,
     required this.isChangeTextFont,
@@ -39,7 +39,8 @@ class TopToolsWidget extends StatelessWidget {
     required this.align,
     this.left,
     this.center,
-    this.right, required this.onChangeTextAlign,
+    this.right,
+    required this.onChangeTextAlign,
   }) : super(key: key);
 
   @override
@@ -143,5 +144,4 @@ class TopToolsWidget extends StatelessWidget {
             const Icon(Icons.format_align_right, color: Colors.white);
     }
   }
-
 }

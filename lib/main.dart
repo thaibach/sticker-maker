@@ -55,7 +55,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     prepareModel();
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     super.initState();
   }
 
@@ -69,9 +70,11 @@ class _MyAppState extends State<MyApp> {
       ByteData modelData = await rootBundle.load('assets/rm_model.mnn');
       final modelBuffer = modelData.buffer;
       File modelFile = File(modelPath_);
-      await modelFile.writeAsBytes(modelBuffer.asUint8List(modelData.offsetInBytes, modelData.lengthInBytes));
+      await modelFile.writeAsBytes(modelBuffer.asUint8List(
+          modelData.offsetInBytes, modelData.lengthInBytes));
     }
-    InitModelArguments initArgs = InitModelArguments(modelPath_, inputWidth, inputHeight, numMNNThreads);
+    InitModelArguments initArgs =
+        InitModelArguments(modelPath_, inputWidth, inputHeight, numMNNThreads);
     initModel(initArgs);
   }
 

@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
 import '../../widgets/custom/stickerText/models/editable_items.dart';
@@ -6,7 +8,10 @@ abstract class EditPageState {}
 
 class EditPageInit extends EditPageState {}
 
-class EditPageSuccess extends EditPageState {}
+class EditPageSuccess extends EditPageState {
+  final Uint8List image;
+  EditPageSuccess({required this.image});
+}
 
 class EditPageError extends EditPageState {}
 

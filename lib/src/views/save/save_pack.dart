@@ -1,16 +1,29 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:sticker_maker/src/cubit/cubit_index.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
 
 class SavePackPage extends StatelessWidget {
-  final File? imageFile;
+  final Uint8List? imageFile;
   SavePackPage({super.key, this.imageFile});
+
   final SavePackCubit _savePackCubit = SavePackCubit();
+
+  Future share(Uint8List bytes) async {
+    final dir = await getApplicationDocumentsDirectory();
+    final img =
+        File('${dir.path}/${DateTime.now().microsecondsSinceEpoch}.png');
+    img.writeAsBytes(bytes);
+    await Share.shareXFiles([XFile(img.path)]);
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer(
@@ -43,12 +56,16 @@ class SavePackPage extends StatelessWidget {
                   child: Container(
                     margin: const EdgeInsets.only(right: 16),
                     child: GestureDetector(
+                      onTap: () => share(imageFile!),
                       behavior: HitTestBehavior.translucent,
                       child: SvgPicture.asset('assets/images/save_image.svg'),
                     ),
                   ),
                 ),
-                AspectRatio(aspectRatio: 9 / 10, child: Image.file(imageFile!)),
+                Center(
+                  child: AspectRatio(
+                      aspectRatio: 9 / 10, child: Image.memory(imageFile!)),
+                ),
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: Padding(

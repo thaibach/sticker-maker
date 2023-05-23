@@ -18,7 +18,7 @@ class SizeSliderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedPositioned(
       duration: animationsDuration,
-      top: context.height * .5 - 160,
+      top: context.height * .5 - 130,
       right: -100,
       child: Transform(
         alignment: FractionalOffset.center,
@@ -39,7 +39,7 @@ class SizeSliderWidget extends StatelessWidget {
             child: Slider(
               value: selectedValue,
               min: 14,
-              max: 84,
+              max: 100,
               inactiveColor: Colors.white.withOpacity(0.4),
               onChanged: onChanged,
             ),
