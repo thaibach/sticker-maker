@@ -114,10 +114,6 @@ class _EditScreenState extends State<EditScreen> {
     });
   }
 
-  void onFocus() {
-    setState(() {});
-  }
-
   saveImage(Uint8List bytes, String name) async {
     final Directory? extDir = await getExternalStorageDirectory();
     String dirPath = '${extDir!.path}/Documents/pictures';
