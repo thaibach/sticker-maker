@@ -2,10 +2,16 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
+import 'package:sticker_maker/src/views/settings/cubit/setting_cubit.dart';
 import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class customComponentsSetting {
+  customComponentsSetting(
+    this._settingsCubit,
+  );
+
+  final SettingsCubit _settingsCubit;
+
   final _feedbackController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
@@ -43,11 +49,11 @@ class customComponentsSetting {
                 content: SingleChildScrollView(
                   child: Column(
                     children: [
-                      Text(AppLocalizations.of(context)!.discard_feedback, style: AppStyle.DEFAUlT_LABELBACK_FEED),
+                      const Text('Discard feedback!', style: AppStyle.DEFAUlT_LABELBACK_FEED),
                       const SizedBox(
                         height: 6,
                       ),
-                      Text(AppLocalizations.of(context)!.text_discard,
+                      Text("We would really want to hear your feedback. Are you sure you don't send feedback",
                           textAlign: TextAlign.center,
                           style: AppStyle.DEFAUlT_CONTENT_TEXT_SETTINGSFEED.copyWith(color: const Color(0xFF8D8D8D))),
                       GestureDetector(
@@ -73,7 +79,7 @@ class customComponentsSetting {
                             ),
                             child: Center(
                               child: Text(
-                                AppLocalizations.of(context)!.continue_text,
+                                'Continue',
                                 style: AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA.copyWith(
                                     fontWeight: FontWeight.w500, color: const Color(0xFF5060B8)),
                               ),
@@ -91,7 +97,7 @@ class customComponentsSetting {
                           color: Colors.transparent,
                           child: Center(
                             child: Text(
-                              AppLocalizations.of(context)!.discard,
+                              'Discard',
                               style: AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA.copyWith(
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xFF626262),
@@ -111,10 +117,6 @@ class customComponentsSetting {
     }
 
     return showModalBottomSheet(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      backgroundColor: Colors.white,
       context: context,
       isDismissible: false,
       isScrollControlled: true,
@@ -122,6 +124,7 @@ class customComponentsSetting {
         return Padding(
           padding: MediaQuery.of(context).viewInsets,
           child: Container(
+            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
             height: 354,
             child: Form(
               key: formKey,
@@ -144,9 +147,9 @@ class customComponentsSetting {
                                 BoxDecoration(borderRadius: BorderRadius.circular(12), color: Color(0xFFA5A5A5)),
                             child: Container(
                               decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12)),
-                              child: Center(
+                              child: const Center(
                                 child: Text(
-                                  AppLocalizations.of(context)!.cancel,
+                                  "Cancel",
                                   style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN,
                                   textAlign: TextAlign.center,
                                 ),
@@ -157,12 +160,10 @@ class customComponentsSetting {
                         const SizedBox(
                           width: 15,
                         ),
-                        Expanded(
-                          child: Text(
-                            AppLocalizations.of(context)!.give_us_your_feedback,
-                            style: AppStyle.DEFAUlT_LABELBACK_FEED,
-                            textAlign: TextAlign.center,
-                          ),
+                        const Text(
+                          "Give us your feedback",
+                          style: AppStyle.DEFAUlT_LABELBACK_FEED,
+                          textAlign: TextAlign.center,
                         ),
                         const SizedBox(
                           width: 15,
@@ -187,9 +188,9 @@ class customComponentsSetting {
                             ),
                             child: Container(
                               decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12)),
-                              child: Center(
+                              child: const Center(
                                 child: Text(
-                                  AppLocalizations.of(context)!.send,
+                                  "Send",
                                   style: AppStyle.DEFAUlT_CONTENT_TEXT_SPAN,
                                   textAlign: TextAlign.center,
                                 ),
@@ -214,8 +215,8 @@ class customComponentsSetting {
                           maxLines: 5,
                           controller: _feedbackController,
                           keyboardType: TextInputType.multiline,
-                          decoration: InputDecoration(
-                            hintText: AppLocalizations.of(context)!.your_issue,
+                          decoration: const InputDecoration(
+                            hintText: 'Tell us what your issue?',
                             border: InputBorder.none,
                             hintStyle: AppStyle.DEFAUlT_CONTENT_TEXT_SETTINGSFEED,
                           ),
@@ -225,7 +226,8 @@ class customComponentsSetting {
                             } else if (value.length < 6) {
                               showErrorFeedBack(context);
                             } else {
-                              return null;
+                              _settingsCubit.changeLoading();
+                              Navigator.of(context).pop();
                             }
                           },
                         ),
@@ -258,6 +260,11 @@ class _dialogToastState extends State<dialogToast> {
       Navigator.of(context).pop();
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -298,7 +305,7 @@ class _dialogToastState extends State<dialogToast> {
                   const SizedBox(
                     width: 5,
                   ),
-                  Text(AppLocalizations.of(context)!.at_least,
+                  Text('Please give us at least 6 characters!',
                       style: AppStyle.DEFAUlT_CONTENT_TEXT_SETTINGSFEED.copyWith(color: Colors.black)),
                   const SizedBox(
                     width: 40,
