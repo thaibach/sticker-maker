@@ -74,7 +74,7 @@ class _MyAppState extends State<MyApp> {
           modelData.offsetInBytes, modelData.lengthInBytes));
     }
     InitModelArguments initArgs =
-    InitModelArguments(modelPath_, inputWidth, inputHeight, numMNNThreads);
+        InitModelArguments(modelPath_, inputWidth, inputHeight, numMNNThreads);
     initModel(initArgs);
   }
 

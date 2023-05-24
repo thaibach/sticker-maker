@@ -54,7 +54,7 @@
 "lang_change_fr":"France ( Français )",
 "changing_language":"Changing language",
 "cancel":"Cancel",
-"give_us_your_feedback":"Give us your feedback",Packs library
+"give_us_your_feedback":"Give us your feedback",
 "send":"Send",
 "help_better":"Your feedback will help us better",
 "your_issue":"Tell us What your issue?",
@@ -67,10 +67,10 @@
 "at_least":"Please give us at least 6 characters!",
 "ok":"OK",
 "apply":"Apply",
-"language_default":"English"
-"rectangle":"Rectangle"
-"circle":"Circle"
-"heart":"Heart"
-"diamond":"Diamond"
+"language_default":"English",
+"rectangle":"Rectangle",
+"circle":"Circle",
+"heart":"Heart",
+"diamond":"Diamond",
 "cat_face":"Cat face"
 }

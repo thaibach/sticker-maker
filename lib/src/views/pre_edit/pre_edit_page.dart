@@ -66,7 +66,8 @@ PreEditCubit preEditCubit=PreEditCubit();
         }
         if (state is RemoveBGSuccess) {
           Loading.hide(context);
-          AppNavigate.navigatePage(context, EditScreen(image: preEditCubit.resultPath));
+          AppNavigate.navigatePage(
+              context, EditScreen(image: preEditCubit.resultPath));
         }
         if (state is CropEditSuccess) {
           AppNavigate.navigatePage(context, EditScreen(image: preEditCubit.file!.path));
