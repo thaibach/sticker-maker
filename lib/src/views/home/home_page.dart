@@ -21,7 +21,11 @@ class HomePage extends StatelessWidget {
         bloc: homeCubit,
         listener: (context, state) {
           if (state is HomePageSuccess && homeCubit.imageFile != null) {
-            AppNavigate.navigatePage(context, PreEditPage(image: homeCubit.imageFile));
+            AppNavigate.navigatePage(
+                context,
+                PreEditPage(
+                  image: homeCubit.imageFile,
+                ));
           }
           if (state is HomePageError) {
             Components(homeCubit).popUpAccessRights(context);
@@ -93,8 +97,8 @@ class HomePage extends StatelessWidget {
                                   ),
                                   Text(
                                     AppLocalizations.of(context)!.packs_lib,
-                                    style: AppStyle.DEFAULT_16.copyWith(
-                                      fontWeight: FontWeight.w700,
+                                    style: AppStyle.DEFAUlT_CONTENT.copyWith(
+                                      color: Colors.white,
                                       shadows: <Shadow>[
                                         Shadow(
                                           offset: const Offset(2.0, 4.0),
@@ -127,7 +131,8 @@ class HomePage extends StatelessWidget {
                               ),
                               Text(
                                 AppLocalizations.of(context)!.lab_home,
-                                style: AppStyle.DEFAULT_14.copyWith(fontWeight: FontWeight.w500),
+                                style: AppStyle.DEFAUlT_CONTENT_TEXT.copyWith(
+                                    fontWeight: FontWeight.w700, color: Colors.white),
                               ),
                               Expanded(
                                 child: Container(
@@ -140,7 +145,8 @@ class HomePage extends StatelessWidget {
                                   child: Center(
                                     child: Text(
                                       AppLocalizations.of(context)!.lab_emp_pack,
-                                      style: AppStyle.DEFAULT_14.copyWith(color: Colors.white.withOpacity(0.7)),
+                                      style: AppStyle.DEFAUlT_CONTENT_TEXT_SETTINGSFEED.copyWith(
+                                          color: Colors.white.withOpacity(0.7)),
                                     ),
                                   ),
                                 ),
@@ -187,7 +193,7 @@ class HomePage extends StatelessWidget {
                               children: [
                                 Text(
                                   AppLocalizations.of(context)!.crt_Sti,
-                                  style: AppStyle.DEFAULT_14.copyWith(fontWeight: FontWeight.w700),
+                                  style: AppStyle.DEFAUlT_CONTENT.copyWith(color: Colors.white),
                                 ),
                                 const SizedBox(
                                   width: 10,
