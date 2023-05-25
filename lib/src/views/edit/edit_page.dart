@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticker_maker/src/cubit/cubit_index.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
+import 'package:sticker_maker/src/views/add_sticker_to_pack/page/add_to_pack.dart';
 import 'package:sticker_maker/src/widgets/widgets_index.dart';
 
 class EditScreen extends StatefulWidget {
@@ -105,8 +106,7 @@ class _EditScreenState extends State<EditScreen> {
                                 AppNavigate.pop(context);
                               },
                               child: Container(
-                                margin:
-                                    const EdgeInsets.only(top: 10, left: 10),
+                                margin: const EdgeInsets.only(top: 10, left: 10),
                                 height: 50,
                                 width: 50,
                                 decoration: BoxDecoration(
@@ -120,12 +120,10 @@ class _EditScreenState extends State<EditScreen> {
                                 ),
                                 child: Container(
                                   margin: const EdgeInsets.all(1),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: Colors.white),
+                                  decoration:
+                                      BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
                                   child: Center(
-                                    child: SvgPicture.asset(
-                                        'assets/icons/ic_back.svg'),
+                                    child: SvgPicture.asset('assets/icons/ic_back.svg'),
                                   ),
                                 ),
                               ),
@@ -138,18 +136,20 @@ class _EditScreenState extends State<EditScreen> {
                               height: 50,
                               width: 50,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: const Color(0xFF36CF00)),
+                                  borderRadius: BorderRadius.circular(15), color: const Color(0xFF36CF00)),
                               child: Container(
                                 margin: const EdgeInsets.all(1),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: Colors.white),
+                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
                                 child: Center(
                                   child: GestureDetector(
-                                    onTap: null,
-                                    child: SvgPicture.asset(
-                                        'assets/icons/ic_tick.svg'),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => AddToPack(),
+                                          ));
+                                    },
+                                    child: SvgPicture.asset('assets/icons/ic_tick.svg'),
                                   ),
                                 ),
                               ),
@@ -167,35 +167,27 @@ class _EditScreenState extends State<EditScreen> {
                                     child: Stack(
                                       children: [
                                         Container(
-                                          margin: const EdgeInsets.only(
-                                              left: 10, right: 10, top: 10),
+                                          margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
                                           padding: const EdgeInsets.all(20),
                                           decoration: const BoxDecoration(
                                             // color: Colors.blue,
                                             image: DecorationImage(
-                                              image: AssetImage(
-                                                  'assets/images/img_transparent_bgr.png'),
+                                              image: AssetImage('assets/images/img_transparent_bgr.png'),
                                               fit: BoxFit.cover,
                                             ),
                                           ),
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.67,
+                                          height: MediaQuery.of(context).size.height * 0.67,
                                           width: double.infinity,
                                           child: Center(
-                                            child:
-                                                Image.file(File(widget.image!)),
+                                            child: Image.file(File(widget.image!)),
                                           ),
                                         ),
                                         ..._stackData
                                             .map(
-                                              (editableItem) =>
-                                                  OverlayItemWidget(
+                                              (editableItem) => OverlayItemWidget(
                                                 editableItem: editableItem,
                                                 onItemTap: () {
-                                                  _onOverlayItemTap(
-                                                      editableItem);
+                                                  _onOverlayItemTap(editableItem);
                                                 },
                                                 onPointerDown: (details) {
                                                   _onOverlayItemPointerDown(
@@ -226,8 +218,7 @@ class _EditScreenState extends State<EditScreen> {
                             ),
                             RemoveWidget(
                               isTextInput: _isTextInput,
-                              animationsDuration:
-                                  const Duration(milliseconds: 300),
+                              animationsDuration: const Duration(milliseconds: 300),
                               activeItem: _activeItem,
                               isDeletePosition: _isDeletePosition,
                             ),
@@ -240,13 +231,11 @@ class _EditScreenState extends State<EditScreen> {
                             Padding(
                               padding: const EdgeInsets.only(right: 5.0),
                               child: GestureDetector(
-                                child: SvgPicture.asset(
-                                    'assets/icons/ic_undo.svg'),
+                                child: SvgPicture.asset('assets/icons/ic_undo.svg'),
                               ),
                             ),
                             GestureDetector(
-                              child:
-                                  SvgPicture.asset('assets/icons/ic_redo.svg'),
+                              child: SvgPicture.asset('assets/icons/ic_redo.svg'),
                             ),
                           ]),
                         ),
@@ -255,8 +244,7 @@ class _EditScreenState extends State<EditScreen> {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    margin:
-                        const EdgeInsets.only(left: 25, right: 25, bottom: 40),
+                    margin: const EdgeInsets.only(left: 25, right: 25, bottom: 40),
                     width: double.infinity,
                     height: 42,
                     decoration: BoxDecoration(
@@ -527,8 +515,7 @@ class _EditScreenState extends State<EditScreen> {
       viewportFraction: .125,
     );
     _textColorsPageController = PageController(
-      initialPage:
-          defaultColors.indexWhere((element) => element == _selectedTextColor),
+      initialPage: defaultColors.indexWhere((element) => element == _selectedTextColor),
       viewportFraction: .1,
     );
     // AppNavigate.pop(context);

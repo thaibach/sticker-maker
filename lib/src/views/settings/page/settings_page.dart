@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticker_maker/src/utils/style.dart';
+import 'package:sticker_maker/src/views/add_sticker_to_pack/page/add_to_pack.dart';
 import 'package:sticker_maker/src/views/home/home_page.dart';
 import 'package:sticker_maker/src/views/settings/component/custom_choice_settings.dart';
 import 'package:sticker_maker/src/views/settings/component/custom_components_settings.dart';
 import 'package:sticker_maker/src/views/settings/cubit/setting_cubit.dart';
-import 'package:sticker_maker/src/views/settings/cubit/setting_state.dart';
 import 'package:sticker_maker/src/views/settings/page/about_us_page.dart';
 import 'package:sticker_maker/src/views/settings/page/language_page.dart';
 import 'package:sticker_maker/src/views/settings/page/privacy_page.dart';
