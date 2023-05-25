@@ -59,7 +59,6 @@ dependencies:
   image: ^4.0.17
   dotted_border: ^2.0.0+3
   matrix4_transform: ^2.0.1
-  crop_image: ^1.0.8
 
 
 dev_dependencies:
