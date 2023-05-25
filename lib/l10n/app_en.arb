@@ -67,5 +67,10 @@
 "at_least":"Please give us at least 6 characters!",
 "ok":"OK",
 "apply":"Apply",
-"language_default":"English"
+"language_default":"English",
+"rectangle":"Rectangle",
+"circle":"Circle",
+"heart":"Heart",
+"diamond":"Diamond",
+"cat_face":"Cat face"
 }

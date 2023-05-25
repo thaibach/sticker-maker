@@ -41,7 +41,7 @@ class PrivacyPage extends StatelessWidget {
                     child: Text(
                       AppLocalizations.of(context)!.privacy_policy,
                       textAlign: TextAlign.left,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: 'Nunito',
                         fontSize: 24,
                         fontWeight: FontWeight.w800,

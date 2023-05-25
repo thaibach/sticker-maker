@@ -109,7 +109,7 @@ class _SettingPageState extends State<SettingPage> {
                   )),
               GestureDetector(
                   onTap: () {
-                    customComponentsSetting().showFeedback(context);
+                    customComponentsSetting(_settingsCubit).showFeedback(context);
                   },
                   child: ChosenSetting(icon: "assets/icons/ic_Feed.svg", text: AppLocalizations.of(context)!.feedback))
             ]),

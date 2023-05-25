@@ -1,21 +1,40 @@
+import 'dart:convert';
 import 'dart:ffi';
 import 'dart:io';
-import 'dart:ui' as ui;
 
 import 'package:ffi/ffi.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image/image.dart' as img_img;
 import 'package:path_provider/path_provider.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
+import 'package:sticker_maker/src/widgets/custom/crop_your_image.dart';
 
 import 'pre_edit_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:ui' as ui;
 
 class PreEditCubit extends Cubit<PreEditState> {
   PreEditCubit() : super(PreEditInitial());
   String resultPath = '';
   int bottomBar = 0;
+  Uint8List? croppedData;
+  File? file;
+
+  String functionLabel = '';
+  bool removeBg = false;
+  bool cut = false;
+  bool crop = false;
+  bool borderCrop = false;
+  var isSumbnail = false;
+  var isCropping = false;
+  var isCircleUi = false;
+  bool turnOffBorder = true;
+  bool cropper = false;
+  var statusText = '';
+
+  final cropController = CropController();
+
   Future<ui.Image> getImage(ui.Image oriImg, ui.Image maskImg, int imageWidth,
       int imageHeight) async {
     final ui.PictureRecorder recorder = ui.PictureRecorder();
@@ -26,11 +45,16 @@ class PreEditCubit extends Cubit<PreEditState> {
     return await picture.toImage(imageWidth, imageHeight);
   }
 
-  void changeCuverBottomBar() {
-    emit(BottomBarSuccess());
-  }
 
- 
+
+
+  Future<File> convertUint8ListToFile(Uint8List cropperData) async {
+    final tempDir = await getTemporaryDirectory();
+    file = await File('${tempDir.path}/image.png').create();
+    await file!.writeAsBytes(croppedData!);
+    emit(CropEditSuccess());
+    return file!;
+  }
 
   void removeImageBG(String imagePath) async {
     emit(RemoveBGLoading());
@@ -70,3 +94,6 @@ class PreEditCubit extends Cubit<PreEditState> {
     emit(RemoveBGSuccess());
   }
 }
+
+
+
