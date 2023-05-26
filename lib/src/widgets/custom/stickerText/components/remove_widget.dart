@@ -24,7 +24,7 @@ class RemoveWidget extends StatelessWidget {
     return Visibility(
       visible: !isTextInput,
       child: Positioned(
-        bottom: context.bottomPadding,
+        bottom: context.bottomPadding + 10,
         child: AnimatedSwitcher(
           duration: animationsDuration,
           child: _activeItem == null
@@ -36,8 +36,8 @@ class RemoveWidget extends StatelessWidget {
                     child: Center(
                       child: AnimatedContainer(
                           duration: animationsDuration,
-                          height: !isDeletePosition ? 60.0 : 72,
-                          width: !isDeletePosition ? 60.0 : 72,
+                          height: !isDeletePosition ? 42.0 : 55,
+                          width: !isDeletePosition ? 42.0 : 55,
                           child: isDeletePosition
                               ? SvgPicture.asset('assets/icons/bin_open.svg')
                               : SvgPicture.asset('assets/icons/bin_close.svg')),

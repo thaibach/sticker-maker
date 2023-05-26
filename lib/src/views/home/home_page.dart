@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticker_maker/src/cubit/cubit_index.dart';
 import 'package:sticker_maker/src/utils/app_navigate.dart';
@@ -7,7 +8,6 @@ import 'package:sticker_maker/src/utils/style.dart';
 import 'package:sticker_maker/src/views/home/components/components.dart';
 import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -176,7 +176,7 @@ class HomePage extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Components(homeCubit).popUpImagePicker(context, null);
+                            Components(homeCubit).popUpImagePicker(context, (value) {});
                           },
                           child: Container(
                             margin: const EdgeInsets.only(top: 10, right: 71, left: 71),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sticker_maker/src/cubit/home_cubit/home_cubit.dart';
 import 'package:sticker_maker/src/utils/style.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Components {
   Components(this._homeCubit);
@@ -71,7 +71,7 @@ class Components {
     );
   }
 
-  Future<void> popUpImagePicker(BuildContext context, Function(String image)? callBack) {
+  Future<void> popUpImagePicker(BuildContext context, Function(String image) callBack) {
     return showModalBottomSheet<void>(
       // barrierColor: Colors.transparent,
       backgroundColor: Colors.transparent,
@@ -112,10 +112,9 @@ class Components {
                           GestureDetector(
                             onTap: () async {
                               Navigator.pop(context);
-                              String path = await _homeCubit.getFromGallery(isChooseImage: false);
-                              if (path.isNotEmpty) {
-                                callBack!(path);
-                              }
+                              _homeCubit.getFromGallery(isChooseImage: false).then((path) {
+                                callBack(path);
+                              });
                             },
                             child: Image.asset(
                               'assets/images/img_gallery.png',
@@ -139,10 +138,9 @@ class Components {
                           GestureDetector(
                             onTap: () async {
                               Navigator.pop(context);
-                              String path = await _homeCubit.getFromGallery(isChooseImage: true);
-                              if (path.isNotEmpty) {
-                                callBack!(path);
-                              }
+                              _homeCubit.getFromGallery(isChooseImage: true).then((path) {
+                                callBack(path);
+                              });
                             },
                             child: Image.asset(
                               'assets/images/img_photo.png',

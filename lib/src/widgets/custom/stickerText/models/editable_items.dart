@@ -8,6 +8,7 @@ class EditableItem {
   double rotation = 0;
   ItemType type = ItemType.TEXT;
   String value = '';
+  TextEditingController textEditingController = TextEditingController();
   Color color = Colors.transparent;
   int textStyle = 0;
   double fontSize = 14;

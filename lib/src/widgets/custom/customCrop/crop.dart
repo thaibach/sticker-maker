@@ -456,11 +456,10 @@ class _CropEditorState extends State<_CropEditor> {
                     onScaleStart: widget.interactive ? _startScale : null,
                     onScaleUpdate: widget.interactive ? _updateScale : null,
                     child: Container(
-
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height,
                       padding: const EdgeInsets.all(15),
-                      decoration:  BoxDecoration(
+                      decoration: BoxDecoration(
                         color: widget.baseColor,
                         image: const DecorationImage(
                           image: AssetImage('assets/images/img_transparent_bgr.png'),
@@ -535,19 +534,21 @@ class _CropEditorState extends State<_CropEditor> {
                         widget.preEditCubit.turnOffBorder = false;
                       });
                     },
-                    child: widget.preEditCubit.turnOffBorder == true ? Container(
-                      height: 24,
-                      width: 24,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: const Color(0xFFFF84EB),
-                      ),
-                      padding: const EdgeInsets.all(5),
-                      child: SvgPicture.asset(
-                            'assets/icons/ic_X.svg',
-                          ) ??
-                          widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft),
-                    ) : Container(),
+                    child: widget.preEditCubit.turnOffBorder == true
+                        ? Container(
+                            height: 24,
+                            width: 24,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: const Color(0xFFFF84EB),
+                            ),
+                            padding: const EdgeInsets.all(5),
+                            child: SvgPicture.asset(
+                                  'assets/icons/ic_X.svg',
+                                ) ??
+                                widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft),
+                          )
+                        : Container(),
                   ),
                 ),
                 Positioned(
@@ -565,19 +566,21 @@ class _CropEditorState extends State<_CropEditor> {
                         widget.preEditCubit.convertUint8ListToFile(widget.preEditCubit.croppedData!);
                       });
                     },
-                    child: widget.preEditCubit.turnOffBorder == true ? Container(
-                      height: 24,
-                      width: 24,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: const Color(0xFFFF84EB),
-                      ),
-                      padding: const EdgeInsets.all(5),
-                      child: SvgPicture.asset(
-                            'assets/icons/ic_done.svg',
-                          ) ??
-                          widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft),
-                    ) : Container(),
+                    child: widget.preEditCubit.turnOffBorder == true
+                        ? Container(
+                            height: 24,
+                            width: 24,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: const Color(0xFFFF84EB),
+                            ),
+                            padding: const EdgeInsets.all(5),
+                            child: SvgPicture.asset(
+                                  'assets/icons/ic_done.svg',
+                                ) ??
+                                widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft),
+                          )
+                        : Container(),
                   ),
                 ),
                 Positioned(
@@ -595,19 +598,21 @@ class _CropEditorState extends State<_CropEditor> {
                               _aspectRatio,
                             );
                           },
-                    child: widget.preEditCubit.turnOffBorder == true ? Container(
-                      height: 24,
-                      width: 24,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: const Color(0xFFFF84EB),
-                      ),
-                      padding: const EdgeInsets.all(5),
-                      child: SvgPicture.asset(
-                            'assets/icons/ic_room.svg',
-                          ) ??
-                          widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft),
-                    ) : Container(),
+                    child: widget.preEditCubit.turnOffBorder == true
+                        ? Container(
+                            height: 24,
+                            width: 24,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: const Color(0xFFFF84EB),
+                            ),
+                            padding: const EdgeInsets.all(5),
+                            child: SvgPicture.asset(
+                                  'assets/icons/ic_room.svg',
+                                ) ??
+                                widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft),
+                          )
+                        : Container(),
                   ),
                 ),
               ],
