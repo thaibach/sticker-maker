@@ -2,19 +2,19 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show Uint8List, rootBundle;
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:sticker_maker/src/cubit/cubit_index.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
-import 'package:sticker_maker/src/views/deco_rate/deco_rate_page.dart';
+import 'package:sticker_maker/src/views/edit/edit_sticker_page.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
 import 'package:sticker_maker/src/widgets/custom/crop_your_image.dart';
 import 'package:sticker_maker/src/widgets/widgets_index.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../widgets/custom/buttom_bar/curved_buttom_bar.dart';
 
 class PreEditPage extends StatefulWidget {
   final File? image;
@@ -29,10 +29,13 @@ class PreEditPage extends StatefulWidget {
 }
 
 class _PreEditPageState extends State<PreEditPage> {
-  String _functionLabel = '';
-  GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+  String functionLabel = '';
+  final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   bool unSelect = false;
-PreEditCubit preEditCubit=PreEditCubit();
+  PreEditCubit preEditCubit = PreEditCubit();
+
+  List<String> lable = ["Remove background", "Manual crop", "Frame crop"];
+
   @override
   void initState() {
     preEditCubit.turnOffBorder = false;
@@ -55,7 +58,6 @@ PreEditCubit preEditCubit=PreEditCubit();
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PreEditCubit, PreEditState>(
@@ -66,11 +68,15 @@ PreEditCubit preEditCubit=PreEditCubit();
         }
         if (state is RemoveBGSuccess) {
           Loading.hide(context);
-          AppNavigate.navigatePage(
-              context, EditScreen(image: preEditCubit.resultPath));
+          AppNavigate.navigatePage(context, EditStickerPage(imagePath: preEditCubit.resultPath));
         }
         if (state is CropEditSuccess) {
-          AppNavigate.navigatePage(context, EditScreen(image: preEditCubit.file!.path));
+          // AppNavigate.navigatePage(context, EditScreen(image: state.path));
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return GestureDetector(onTap: () => Navigator.pop(context), child: Image.file(File(state.path)));
+              });
         }
       },
       builder: (context, state) {
@@ -81,8 +87,11 @@ PreEditCubit preEditCubit=PreEditCubit();
             body: Stack(
               children: [
                 Container(
-                    height: MediaQuery.of(context).size.height * 0.89,
-                    margin: const EdgeInsets.only(top: 30, right: 10, left: 10),
+                    margin: EdgeInsets.only(
+                        top: Spacing.viewPadding.top + 5,
+                        right: 10,
+                        left: 10,
+                        bottom: Spacing.viewPadding.bottom + AppValue.heights * 0.06),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: Colors.white,
@@ -90,6 +99,7 @@ PreEditCubit preEditCubit=PreEditCubit();
                     child: Column(
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             GestureDetector(
                               onTap: () {
@@ -100,12 +110,10 @@ PreEditCubit preEditCubit=PreEditCubit();
                                 child: SvgPicture.asset('assets/icons/ic_back_home.svg'),
                               ),
                             ),
-                            const Spacer(),
                             Text(
-                              preEditCubit.functionLabel,
+                              functionLabel,
                               style: AppStyle.DEFAULT_16.copyWith(color: Colors.black, fontWeight: FontWeight.bold),
                             ),
-                            const Spacer(),
                             Padding(
                               padding: const EdgeInsets.only(right: 22),
                               child: SvgPicture.asset('assets/icons/ic_save.svg'),
@@ -113,8 +121,9 @@ PreEditCubit preEditCubit=PreEditCubit();
                           ],
                         ),
                         Container(
+                          margin: EdgeInsets.only(left: 8, right: 8, top: 10),
                           width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.68,
+                          height: MediaQuery.of(context).size.height * 0.65,
                           child: Visibility(
                             visible: preEditCubit.croppedData != null,
                             replacement: Center(
@@ -147,14 +156,12 @@ PreEditCubit preEditCubit=PreEditCubit();
                                               '';
                                         }),
                                         initialSize: 1.0,
-                                   //     maskColor: preEditCubit.isSumbnail ? Colors.red : null,
+                                        //     maskColor: preEditCubit.isSumbnail ? Colors.red : null,
                                         cornerDotBuilder: (size, edgeAlignment) => Container(
                                           height: 24,
                                           width: 24,
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(5),
-                                            color: const Color(0xFFFF84EB)
-                                          ),
+                                              borderRadius: BorderRadius.circular(5), color: const Color(0xFFFF84EB)),
                                         ),
                                         interactive: true,
                                         //fixArea: false,
@@ -235,7 +242,7 @@ PreEditCubit preEditCubit=PreEditCubit();
                                       GestureDetector(
                                         onTap: () {
                                           preEditCubit.isCircleUi = false;
-                                          preEditCubit.cropController.aspectRatio = 2/ 1;
+                                          preEditCubit.cropController.aspectRatio = 2 / 1;
                                           setState(() {
                                             preEditCubit.turnOffBorder = true;
                                           });
@@ -316,53 +323,52 @@ PreEditCubit preEditCubit=PreEditCubit();
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    margin: const EdgeInsets.only(left: 30, right: 30, bottom: 55),
-                    width: double.infinity,
+                    margin: EdgeInsets.only(bottom: AppValue.heights * 0.06 + Spacing.viewPadding.bottom),
                     height: 42,
-                    child:CurvedNavigationBar(
-                    click: (value) {
-                      unSelect = value;
-                    },
-                    unSelect: unSelect,
-                    key: _bottomNavigationKey,
-                    index: 0,
-                    height: 60.0,
-                    width: AppValue.widths * 0.85,
-                    items: const <String>[
-                      'assets/icons/ic_removeBgr.svg',
-                      'assets/icons/ic_cut.svg',
-                      'assets/icons/ic_crop.svg',
-                    ],
-                    color: Colors.redAccent,
-                    buttonBackgroundColor: Colors.yellowAccent,
-                    backgroundColor: Colors.transparent,
-                    animationCurve: Curves.linearToEaseOut,
-                    animationDuration: const Duration(milliseconds: 300),
-                    onTap: (index) {
-                      setState(() {
-                        if (unSelect = true) {
-                          if (index == 0) {
-                            print('remove');
-                            preEditCubit.turnOffBorder = false;
-                            preEditCubit.cropper = false;
-                            preEditCubit.removeImageBG(widget.image!.path);
-                          } else if (index == 1) {
-                            print("cut");
-                            preEditCubit.turnOffBorder = false;
-                            preEditCubit.cropper = false;
-                          } else if (index == 2) {
-                            preEditCubit.cropper = true;
-                            print("crop");
+                    child: CurvedNavigationBar(
+                      click: (value) {
+                        unSelect = value;
+                      },
+                      unSelect: unSelect,
+                      key: _bottomNavigationKey,
+                      index: 0,
+                      height: 60.0,
+                      width: AppValue.widths * 0.85,
+                      items: const <String>[
+                        'assets/icons/ic_removeBgr.svg',
+                        'assets/icons/ic_cut.svg',
+                        'assets/icons/ic_crop.svg',
+                      ],
+                      color: Colors.redAccent,
+                      buttonBackgroundColor: Colors.yellowAccent,
+                      backgroundColor: Colors.transparent,
+                      animationCurve: Curves.linearToEaseOut,
+                      animationDuration: const Duration(milliseconds: 300),
+                      onTap: (index) {
+                        setState(() {
+                          if (unSelect = true) {
+                            functionLabel = lable[index];
+                            if (index == 0) {
+                              print('remove');
+                              preEditCubit.turnOffBorder = false;
+                              preEditCubit.cropper = false;
+                              preEditCubit.removeImageBG(widget.image!.path);
+                            } else if (index == 1) {
+                              print("cut");
+                              preEditCubit.turnOffBorder = false;
+                              preEditCubit.cropper = false;
+                            } else if (index == 2) {
+                              preEditCubit.cropper = true;
+                              print("crop");
+                            }
                           }
-                        }
-                      });
-                    },
-                    letIndexChange: (index) => true,
-
-                  ),
+                        });
+                      },
+                      letIndexChange: (index) => true,
+                    ),
                   ),
                 ),
-                if(preEditCubit.isCropping)
+                if (preEditCubit.isCropping)
                   Container(
                     width: double.infinity,
                     height: double.infinity,
@@ -378,5 +384,4 @@ PreEditCubit preEditCubit=PreEditCubit();
       },
     );
   }
-
 }
