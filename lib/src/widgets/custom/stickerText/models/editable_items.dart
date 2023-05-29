@@ -7,6 +7,7 @@ class EditableItem {
   double scale = 1;
   double rotation = 0;
   ItemType type = ItemType.TEXT;
+  String? image;
   String value = '';
   TextEditingController textEditingController = TextEditingController();
   Color color = Colors.transparent;

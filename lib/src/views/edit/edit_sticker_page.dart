@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sticker_maker/src/views/edit/components/add_drawing.dart';
+import 'package:sticker_maker/src/views/edit/components/add_sticker.dart';
 import 'package:sticker_maker/src/views/edit/components/add_text_overlay.dart';
 
 import '../../cubit/cubit_index.dart';
@@ -14,6 +15,7 @@ import '../../utils/utils_index.dart';
 import '../../widgets/custom/buttom_bar/curved_buttom_bar.dart';
 import '../../widgets/widgets_index.dart';
 import '../views_index.dart';
+import 'components/add_emoji.dart';
 import 'components/save_edit.dart';
 
 class EditStickerPage extends StatefulWidget {
@@ -26,8 +28,8 @@ class EditStickerPage extends StatefulWidget {
 
 class _EditStickerPageState extends State<EditStickerPage> {
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+  int indexSelect = -1;
   bool unSelect = false;
-  bool isDrawing = false;
 
   EditableItem? _activeItem;
   Offset _initPos = const Offset(0, 0);
@@ -259,13 +261,47 @@ class _EditStickerPageState extends State<EditStickerPage> {
                                         ),
                                       ),
                                     ),
+                                    if (indexSelect == 2)
+                                      AddEmojiWidget(
+                                        stackData: editPageCubit.stackData,
+                                        update: (value) {
+                                          setState(() {
+                                            editPageCubit.stackData = value;
+                                            unSelect = false;
+                                            indexSelect = -1;
+                                          });
+                                        },
+                                        pop: () {
+                                          setState(() {
+                                            unSelect = false;
+                                            indexSelect = -1;
+                                          });
+                                        },
+                                      ),
+                                    if (indexSelect == 3)
+                                      AddStickerWidget(
+                                        stackData: editPageCubit.stackData,
+                                        update: (value) {
+                                          setState(() {
+                                            editPageCubit.stackData = value;
+                                            unSelect = false;
+                                            indexSelect = -1;
+                                          });
+                                        },
+                                        pop: () {
+                                          setState(() {
+                                            unSelect = false;
+                                            indexSelect = -1;
+                                          });
+                                        },
+                                      ),
                                   ],
                                 ),
                               ),
                             ]),
                           ),
                         ),
-                        if (isDrawing)
+                        if (indexSelect == 1)
                           Padding(
                               padding: EdgeInsets.only(top: 8.0, bottom: AppValue.heights * 0.07),
                               child: AddDrawing(
@@ -307,19 +343,19 @@ class _EditStickerPageState extends State<EditStickerPage> {
                       animationDuration: const Duration(milliseconds: 300),
                       onTap: (index) {
                         setState(() {
-                          unSelect = !unSelect;
-                          if (unSelect = true) {
-                            if (index == 0) {
-                              isDrawing = false;
-                              showDialogAddText(context);
-                            } else if (index == 1) {
-                              _toggleDrawing();
-                            } else if (index == 2) {
-                              print("crop");
-                            } else if (index == 3) {
-                              print('3');
-                            }
+                          // if (unSelect = true) {
+                          indexSelect = index;
+                          if (indexSelect == 0) {
+                            showDialogAddText(context);
+                            _drawingController.freeStyleMode = FreeStyleMode.none;
+                          } else if (indexSelect == 1) {
+                            _drawingController.freeStyleMode = FreeStyleMode.draw;
+                          } else if (indexSelect == 2) {
+                            _drawingController.freeStyleMode = FreeStyleMode.none;
+                          } else if (indexSelect == 3) {
+                            _drawingController.freeStyleMode = FreeStyleMode.none;
                           }
+                          // }
                         });
                       },
                       letIndexChange: (index) => true,
@@ -332,19 +368,6 @@ class _EditStickerPageState extends State<EditStickerPage> {
         );
       },
     );
-  }
-
-  void _toggleDrawing() {
-    setState(() {
-      if (isDrawing) {
-        unSelect = false;
-        isDrawing = false;
-      } else {
-        isDrawing = true;
-        unSelect = true;
-      }
-    });
-    _drawingController.freeStyleMode = isDrawing ? FreeStyleMode.draw : FreeStyleMode.none;
   }
 
   Future<dynamic> showDialogAddText(BuildContext context) {
@@ -437,13 +460,13 @@ class _EditStickerPageState extends State<EditStickerPage> {
   }
 
   void _onOverlayItemPointerDown(EditableItem e, PointerDownEvent details) {
-    if (e.type != ItemType.IMAGE) {
-      _activeItem = e;
-      _initPos = details.position;
-      _currentPos = e.position;
-      _currentScale = e.scale;
-      _currentRotation = e.rotation;
-    }
+    // if (e.type != ItemType.IMAGE) {
+    _activeItem = e;
+    _initPos = details.position;
+    _currentPos = e.position;
+    _currentScale = e.scale;
+    _currentRotation = e.rotation;
+    // }
   }
 
   void _onOverlayItemPointerUp(EditableItem e, PointerUpEvent details, int index) {

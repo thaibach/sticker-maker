@@ -80,7 +80,13 @@ class OverlayItemWidget extends StatelessWidget {
         );
         break;
       case ItemType.IMAGE:
-        overlayWidget = const Center();
+        overlayWidget = SizedBox(
+          width: context.width - 72,
+          child: Stack(
+            children: [editableItem.image != null ? Center(child: Image.asset(editableItem.image!)) : Center()],
+          ),
+        );
+        break;
     }
 
     return Positioned(
