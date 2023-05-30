@@ -13,4 +13,7 @@ class PreEditError extends PreEditState {}
 
 class RemoveBGLoading extends PreEditState {}
 
-class RemoveBGSuccess extends PreEditState {}
+class RemoveBGSuccess extends PreEditState {
+  final String imagePath;
+  RemoveBGSuccess({required this.imagePath});
+}
