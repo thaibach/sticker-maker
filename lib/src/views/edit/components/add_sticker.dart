@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../utils/utils_index.dart';
 import '../../../widgets/custom/custom.dart';
@@ -15,6 +16,44 @@ class AddStickerWidget extends StatefulWidget {
 }
 
 class _AddStickerWidgetState extends State<AddStickerWidget> {
+  List<Map<String, dynamic>> typeSticker = [
+    {
+      "title": "Beard",
+      "icon_on": "assets/icons/sticker/ic_board_on.svg",
+      "icon_off": "assets/icons/sticker/ic_board_off.svg"
+    },
+    {
+      "title": "Hat",
+      "icon_on": "assets/icons/sticker/ic_hat_on.svg",
+      "icon_off": "assets/icons/sticker/ic_hat_off.svg"
+    },
+    {
+      "title": "Glasses",
+      "icon_on": "assets/icons/sticker/ic_glasses_on.svg",
+      "icon_off": "assets/icons/sticker/ic_glasses_off.svg",
+    },
+    {
+      "title": "Talking",
+      "icon_on": "assets/icons/sticker/ic_talking_on.svg",
+      "icon_off": "assets/icons/sticker/ic_talking_off.svg"
+    },
+    {
+      "title": "Other",
+      "icon_on": "assets/icons/sticker/ic_other_on.svg",
+      "icon_off": "assets/icons/sticker/ic_other_off.svg"
+    },
+  ];
+
+  int indexSelect = 0;
+
+  List<String> listSticker = [];
+
+  @override
+  void initState() {
+    listSticker = listBeard;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -43,30 +82,62 @@ class _AddStickerWidgetState extends State<AddStickerWidget> {
             child: IntrinsicHeight(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    'Choose an icon',
-                    style: AppStyle.DEFAULT_12.copyWith(fontWeight: FontWeight.w600, color: Colors.white),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(
+                          typeSticker.length,
+                          (index) => select_type_sticker(
+                                title: typeSticker[index]['title'],
+                                icon_on: typeSticker[index]['icon_on'],
+                                icon_off: typeSticker[index]['icon_off'],
+                                indexSelect: indexSelect,
+                                index: index,
+                                onClick: () {
+                                  setState(() {
+                                    indexSelect = index;
+                                    if (indexSelect == 0) {
+                                      listSticker = listBeard;
+                                    } else {
+                                      if (indexSelect == 1) {
+                                        listSticker = listHat;
+                                      } else {
+                                        if (indexSelect == 2) {
+                                          listSticker = listGlasses;
+                                        } else {
+                                          if (indexSelect == 3) {
+                                            listSticker = listTalking;
+                                          } else {
+                                            listSticker = listOther;
+                                          }
+                                        }
+                                      }
+                                    }
+                                  });
+                                },
+                              )),
+                    ),
                   ),
                   AppValue.vSpaceTiny,
                   Container(
                     width: AppValue.widths,
-                    height: AppValue.heights * 0.42,
+                    height: AppValue.heights * 0.4,
                     padding: const EdgeInsets.only(bottom: 5),
                     child: GridView(
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3, crossAxisSpacing: 20, mainAxisSpacing: 20),
+                            crossAxisCount: 3, crossAxisSpacing: 15, mainAxisSpacing: 15),
                         children: List.generate(
-                          listBeard.length,
+                          listSticker.length,
                           (index) => GestureDetector(
                               onTap: () {
-                                print(listBeard[index]);
                                 widget.stackData.add(EditableItem()
                                   ..type = ItemType.IMAGE
-                                  ..image = listBeard[index]);
+                                  ..image = listSticker[index]);
                                 widget.update(widget.stackData);
                               },
-                              child: Image.asset(listBeard[index])),
+                              child: Image.asset(listSticker[index])),
                         )),
                   )
                 ],
@@ -133,4 +204,59 @@ class _AddStickerWidgetState extends State<AddStickerWidget> {
     "assets/icons/sticker/talking/6.png",
     "assets/icons/sticker/talking/7.png",
   ];
+}
+
+class select_type_sticker extends StatefulWidget {
+  final String title;
+  final String icon_on;
+  final String icon_off;
+  final int index;
+  final int indexSelect;
+  final Function onClick;
+
+  const select_type_sticker({
+    super.key,
+    required this.title,
+    required this.index,
+    required this.indexSelect,
+    required this.icon_on,
+    required this.icon_off,
+    required this.onClick,
+  });
+
+  @override
+  State<select_type_sticker> createState() => _select_type_stickerState();
+}
+
+class _select_type_stickerState extends State<select_type_sticker> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        widget.onClick();
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 35,
+              width: 35,
+              child: SvgPicture.asset(
+                (widget.index == widget.indexSelect) ? widget.icon_on : widget.icon_off,
+                height: 35,
+                width: 35,
+              ),
+            ),
+            AppValue.vSpace(3),
+            Text(
+              widget.title,
+              style: AppStyle.DEFAULT_12
+                  .copyWith(color: const Color(0xffffffff).withOpacity((widget.index == widget.indexSelect) ? 1 : 0.7)),
+            )
+          ],
+        ),
+      ),
+    );
+  }
 }
