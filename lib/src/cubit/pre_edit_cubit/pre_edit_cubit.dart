@@ -1,6 +1,6 @@
-import 'dart:convert';
 import 'dart:ffi';
 import 'dart:io';
+import 'dart:ui' as ui;
 
 import 'package:ffi/ffi.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +11,9 @@ import 'package:sticker_maker/src/utils/utils_index.dart';
 import 'package:sticker_maker/src/widgets/custom/crop_your_image.dart';
 
 import 'pre_edit_state.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'dart:ui' as ui;
 
 class PreEditCubit extends Cubit<PreEditState> {
   PreEditCubit() : super(PreEditInitial());
-  String resultPath = '';
   int bottomBar = 0;
   Uint8List? croppedData;
   File? file;
@@ -45,15 +42,16 @@ class PreEditCubit extends Cubit<PreEditState> {
     return await picture.toImage(imageWidth, imageHeight);
   }
 
-
-
-
-  Future<File> convertUint8ListToFile(Uint8List cropperData) async {
-    final tempDir = await getTemporaryDirectory();
-    file = await File('${tempDir.path}/image.png').create();
-    await file!.writeAsBytes(croppedData!);
-    emit(CropEditSuccess());
-    return file!;
+  Future<void> convertUint8ListToFile(Uint8List cropperData) async {
+    final Directory? extDir = await getExternalStorageDirectory();
+    if (File("${extDir!.path}/cache.png").existsSync()) {
+      File("${extDir.path}/cache.png").delete();
+    }
+    await Directory(extDir.path).create(recursive: true);
+    String outputPath = '${extDir.path}/cache.png';
+    File cachedFile = File(outputPath);
+    cachedFile.writeAsBytesSync(cropperData);
+    emit(CropEditSuccess(path: cachedFile.path));
   }
 
   void removeImageBG(String imagePath) async {
@@ -90,10 +88,6 @@ class PreEditCubit extends Cubit<PreEditState> {
     File outFile =
         File("${tempDir.path}/${DateTime.now().microsecondsSinceEpoch}.png");
     outFile.writeAsBytesSync(pictureBytes);
-    resultPath = outFile.path;
-    emit(RemoveBGSuccess());
+    emit(RemoveBGSuccess(imagePath: outFile.path));
   }
 }
-
-
-

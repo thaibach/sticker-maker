@@ -59,8 +59,6 @@ dependencies:
   image: ^4.0.17
   dotted_border: ^2.0.0+3
   matrix4_transform: ^2.0.1
-  crop_image: ^1.0.6
-
 
 
 dev_dependencies:
@@ -85,10 +83,17 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - assets/icons/emoji/
     - assets/images/
     - assets/icons/
     - assets/json/
     - assets/
+    - assets/icons/sticker/board/
+    - assets/icons/sticker/glasses/
+    - assets/icons/sticker/hat/
+    - assets/icons/sticker/other/
+    - assets/icons/sticker/talking/
+    - assets/icons/sticker/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

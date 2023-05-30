@@ -11,6 +11,7 @@ import 'package:sticker_maker/src/utils/utils_index.dart';
 import 'package:sticker_maker/src/views/add_sticker_to_pack/page/add_to_pack_page.dart';
 import 'package:sticker_maker/src/views/edit/components/save_edit.dart';
 import 'package:sticker_maker/src/views/save/save_pack.dart';
+import 'package:sticker_maker/src/widgets/custom/buttom_bar/curved_buttom_bar.dart';
 import 'package:sticker_maker/src/widgets/widgets_index.dart';
 
 class EditScreen extends StatefulWidget {

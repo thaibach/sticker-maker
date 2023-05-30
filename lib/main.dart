@@ -18,7 +18,7 @@ void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent, // transparent status bar
       statusBarIconBrightness: Brightness.dark // dark text for status bar
-  ));
+      ));
 
   Bloc.observer = AppBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
@@ -59,7 +59,11 @@ class _MyAppState extends State<MyApp> {
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     super.initState();
   }
-
+@override
+  void dispose() {
+    releaseModel();
+    super.dispose();
+  }
   Future<void> prepareModel() async {
     final directory = await getApplicationDocumentsDirectory();
     // prepare for detection
@@ -93,7 +97,6 @@ class _MyAppState extends State<MyApp> {
               "homePage": (context) => const HomePage(),
               "preEditPage": (context) => const PreEditPage(image: null),
               'settingsPage': (context) => const SettingPage(),
-              "editPage": (context) => const EditScreen(image: null)
             },
             localizationsDelegates: const [
               AppLocalizations.delegate,
@@ -113,4 +116,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-

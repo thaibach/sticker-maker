@@ -38,6 +38,9 @@ class AppStyle {
           ],
         ));
 
+  static const DEFAULT_12 =
+      TextStyle(fontFamily: 'Montserrat', fontSize: AppValue.FONT_SIZE_12, color: Colors.white, height: 1.4);
+
   static const DEFAULT_14 =
       TextStyle(fontFamily: 'Montserrat', fontSize: AppValue.FONT_SIZE_14, color: Colors.white, height: 1.4);
 
