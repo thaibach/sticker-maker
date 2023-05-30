@@ -8,7 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sticker_maker/src/cubit/cubit_index.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
-import 'package:sticker_maker/src/views/add_sticker_to_pack/page/add_to_pack.dart';
+import 'package:sticker_maker/src/views/add_sticker_to_pack/page/add_to_pack_page.dart';
 import 'package:sticker_maker/src/views/edit/components/save_edit.dart';
 import 'package:sticker_maker/src/views/save/save_pack.dart';
 import 'package:sticker_maker/src/widgets/widgets_index.dart';
@@ -115,18 +115,6 @@ class _EditScreenState extends State<EditScreen> {
     });
   }
 
-  saveImage(Uint8List bytes, String name) async {
-    final Directory? extDir = await getExternalStorageDirectory();
-    String dirPath = '${extDir!.path}/Documents/pictures';
-    dirPath =
-        dirPath.replaceAll("Android/data/com.intes.sticker_maker/files/", "");
-    await Directory(dirPath).create(recursive: true);
-    String outputPath = '$dirPath/$name.png';
-    File imageFile = File(outputPath);
-    imageFile.writeAsBytesSync(bytes,
-        flush: true, mode: FileMode.writeOnlyAppend);
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<EditPageCubit, EditPageState>(
@@ -136,7 +124,7 @@ class _EditScreenState extends State<EditScreen> {
         if (state is EditPageSuccess) {
           AppNavigate.navigatePage(
               context,
-              SavePackPage(
+              AddToPackPage(
                 imageFile: state.image,
               ));
         }
@@ -186,18 +174,15 @@ class _EditScreenState extends State<EditScreen> {
                             const Spacer(),
                             GestureDetector(
                               onTap: () async {
-                                // Loading.show(context, 'notiMess');
+                                Loading.show(context, 'notiMess');
                                 setState(() {
                                   isSave = true;
                                 });
-                                Uint8List? imageData =
-                                    await SaveViewImage.saveAsUint8List(
-                                        ImageQuality.high);
+                                Uint8List? imageData = await SaveViewImage.saveAsUint8List(ImageQuality.high);
                                 if (imageData != null) {
-                                  editPageCubit.saveImage(imageData,
-                                      '${DateTime.now().microsecondsSinceEpoch}.png');
+                                  editPageCubit.saveImage(imageData, '${DateTime.now().microsecondsSinceEpoch}');
                                 }
-                                // Loading.hide(context);
+                                Loading.hide(context);
                                 if (isSave) {
                                   setState(() {
                                     isSave = false;
@@ -205,21 +190,11 @@ class _EditScreenState extends State<EditScreen> {
                                 }
                               },
                               child: Container(
-                                margin:
-                                    const EdgeInsets.only(top: 10, right: 10),
+                                margin: const EdgeInsets.only(top: 10, right: 10),
                                 height: 50,
                                 width: 50,
                                 child: Center(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => AddToPack(),
-                                          ));
-                                    },
-                                    child: SvgPicture.asset('assets/icons/ic_tick.svg'),
-                                  ),
+                                  child: SvgPicture.asset('assets/icons/ic_tick.svg'),
                                 ),
                               ),
                             ),
@@ -236,46 +211,35 @@ class _EditScreenState extends State<EditScreen> {
                                     child: SaveViewImage(
                                       child: Stack(
                                         children: [
-                                          if (widget.image != null &&
-                                              drawingImage != null)
+                                          if (widget.image != null && drawingImage != null)
                                             Container(
-                                              margin: const EdgeInsets.only(
-                                                  left: 10, right: 10, top: 10),
+                                              margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
                                               padding: const EdgeInsets.all(20),
                                               decoration: !isSave
                                                   ? const BoxDecoration(
                                                       // color: Colors.blue,
                                                       image: DecorationImage(
-                                                        image: AssetImage(
-                                                            'assets/images/img_transparent_bgr.png'),
+                                                        image: AssetImage('assets/images/img_transparent_bgr.png'),
                                                         fit: BoxFit.cover,
                                                       ),
                                                     )
                                                   : null,
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.67,
+                                              height: MediaQuery.of(context).size.height * 0.67,
                                               width: double.infinity,
                                               child: Center(
                                                 child: AspectRatio(
-                                                    aspectRatio: drawingImage!
-                                                            .width /
-                                                        drawingImage!.height,
+                                                    aspectRatio: drawingImage!.width / drawingImage!.height,
                                                     child: FlutterPainter(
-                                                      controller:
-                                                          _drawingController,
+                                                      controller: _drawingController,
                                                     )),
                                               ),
                                             ),
                                           ..._stackData
                                               .map(
-                                                (editableItem) =>
-                                                    OverlayItemWidget(
+                                                (editableItem) => OverlayItemWidget(
                                                   editableItem: editableItem,
                                                   onItemTap: () {
-                                                    _onOverlayItemTap(
-                                                        editableItem);
+                                                    _onOverlayItemTap(editableItem);
                                                   },
                                                   onPointerDown: (details) {
                                                     _onOverlayItemPointerDown(
@@ -313,17 +277,13 @@ class _EditScreenState extends State<EditScreen> {
                             ),
                           ]),
                         ),
-                        if (_isDrawing)
-                          Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: _drawingSection()),
+                        if (_isDrawing) Padding(padding: const EdgeInsets.only(top: 8.0), child: _drawingSection()),
                       ],
                     )),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: EdgeInsets.only(
-                        bottom: 60 + Spacing.viewPadding.bottom),
+                    padding: EdgeInsets.only(bottom: 60 + Spacing.viewPadding.bottom),
                     child: CurvedNavigationBar(
                       click: (value) {
                         unSelect = value;
@@ -746,10 +706,7 @@ Viet
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
                           color: color,
-                          border: Border.all(
-                              color: _brushColor == color
-                                  ? Colors.red
-                                  : Colors.black)),
+                          border: Border.all(color: _brushColor == color ? Colors.red : Colors.black)),
                       child: const SizedBox.shrink(),
                     ),
                   );
@@ -774,7 +731,6 @@ Viet
     setState(() {
       _isDrawing = true;
     });
-    _drawingController.freeStyleMode =
-        _isDrawing ? FreeStyleMode.draw : FreeStyleMode.none;
+    _drawingController.freeStyleMode = _isDrawing ? FreeStyleMode.draw : FreeStyleMode.none;
   }
 }

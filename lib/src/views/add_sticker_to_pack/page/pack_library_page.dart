@@ -4,12 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticker_maker/src/utils/style.dart';
 import 'package:sticker_maker/src/views/add_sticker_to_pack/component/pack_sticker.dart';
+import 'package:sticker_maker/src/views/add_sticker_to_pack/cubit/add_sticker_to_pack_cubit.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class PackLibrary extends StatelessWidget {
-  PackLibrary({super.key});
+class PackLibraryPage extends StatefulWidget {
+  PackLibraryPage({super.key, required this.addPackCubit});
+  final AddStickerToPackCubit addPackCubit;
 
+  @override
+  State<PackLibraryPage> createState() => _PackLibraryPageState();
+}
+
+class _PackLibraryPageState extends State<PackLibraryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,21 +51,18 @@ class PackLibrary extends StatelessWidget {
             ),
             Expanded(
               child: Container(
+                width: double.infinity,
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 margin: EdgeInsets.only(bottom: 83),
                 decoration: const BoxDecoration(color: Color(0xFFFF8A65)),
                 child: SingleChildScrollView(
-                  // child: Column(children: List.generate(6, (index) => PackSticker())),
                   child: Column(
-                    children: [
-                      SizedBox(height: 20),
-                      PackSticker(),
-                      PackSticker(),
-                      PackSticker(),
-                      PackSticker(),
-                      PackSticker(),
-                      PackSticker(),
-                    ],
+                    children: List.generate(
+                      widget.addPackCubit.listPack.length,
+                      (index) => PackSticker(
+                        stickCubit: widget.addPackCubit,
+                      ),
+                    ),
                   ),
                 ),
               ),

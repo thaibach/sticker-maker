@@ -11,13 +11,11 @@ class EditPageCubit extends Cubit<EditPageState> {
   saveImage(Uint8List bytes, String name) async {
     final Directory? extDir = await getExternalStorageDirectory();
     String dirPath = '${extDir!.path}/Documents/pictures';
-    dirPath =
-        dirPath.replaceAll("Android/data/com.intes.sticker_maker/files/", "");
+    dirPath = dirPath.replaceAll("Android/data/com.intes.sticker_maker/files/", "");
     await Directory(dirPath).create(recursive: true);
     String outputPath = '$dirPath/$name.png';
-    File imageFile = File(outputPath);
-    imageFile.writeAsBytesSync(bytes,
-        flush: true, mode: FileMode.writeOnlyAppend);
+    print("imageFileA ${outputPath}");
     emit(EditPageSuccess(image: bytes));
+    return outputPath;
   }
 }
