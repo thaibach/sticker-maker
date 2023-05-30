@@ -14,7 +14,6 @@ import 'pre_edit_state.dart';
 
 class PreEditCubit extends Cubit<PreEditState> {
   PreEditCubit() : super(PreEditInitial());
-  String resultPath = '';
   int bottomBar = 0;
   Uint8List? croppedData;
   File? file;
@@ -33,10 +32,12 @@ class PreEditCubit extends Cubit<PreEditState> {
 
   final cropController = CropController();
 
-  Future<ui.Image> getImage(ui.Image oriImg, ui.Image maskImg, int imageWidth, int imageHeight) async {
+  Future<ui.Image> getImage(ui.Image oriImg, ui.Image maskImg, int imageWidth,
+      int imageHeight) async {
     final ui.PictureRecorder recorder = ui.PictureRecorder();
     OverlayPainter painter = OverlayPainter(maskImg, oriImg);
-    painter.paint(Canvas(recorder), ui.Size(imageWidth.toDouble(), imageHeight.toDouble()));
+    painter.paint(Canvas(recorder),
+        ui.Size(imageWidth.toDouble(), imageHeight.toDouble()));
     final ui.Picture picture = recorder.endRecording();
     return await picture.toImage(imageWidth, imageHeight);
   }
@@ -68,7 +69,8 @@ class PreEditCubit extends Cubit<PreEditState> {
 
     using((Arena arena) {
       Pointer<Uint8> ptr = arena<Uint8>(totalByteImage);
-      final args = ProcessImageArguments(imagePath, ptr, decodedImage.width, decodedImage.height, cachedFile.path);
+      final args = ProcessImageArguments(imagePath, ptr, decodedImage.width,
+          decodedImage.height, cachedFile.path);
 
       makeProcessImage(args);
     });
@@ -77,14 +79,15 @@ class PreEditCubit extends Cubit<PreEditState> {
     if (await cachedFile.exists()) {
       await cachedFile.delete();
     }
-    ui.Image picture = await getImage(decodedImage, decodeMask, decodedImage.width, decodedImage.height);
+    ui.Image picture = await getImage(
+        decodedImage, decodeMask, decodedImage.width, decodedImage.height);
     final pictureData = await picture.toByteData(
       format: ui.ImageByteFormat.png,
     );
     Uint8List pictureBytes = pictureData!.buffer.asUint8List();
-    File outFile = File("${tempDir.path}/${DateTime.now().microsecondsSinceEpoch}.png");
+    File outFile =
+        File("${tempDir.path}/${DateTime.now().microsecondsSinceEpoch}.png");
     outFile.writeAsBytesSync(pictureBytes);
-    resultPath = outFile.path;
-    emit(RemoveBGSuccess());
+    emit(RemoveBGSuccess(imagePath: outFile.path));
   }
 }

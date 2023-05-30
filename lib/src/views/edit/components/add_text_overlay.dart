@@ -74,7 +74,8 @@ class _AddTextOverlayState extends State<AddTextOverlay> {
           clipBehavior: Clip.antiAlias,
           children: [
             InkWell(
-                overlayColor: MaterialStateColor.resolveWith((states) => Colors.transparent),
+                overlayColor: MaterialStateColor.resolveWith(
+                    (states) => Colors.transparent),
                 onTap: _onAddText,
                 child: SizedBox(
                   height: AppValue.heights,
@@ -85,7 +86,8 @@ class _AddTextOverlayState extends State<AddTextOverlay> {
               onDone: _onAddText,
               isTextInput: _isTextInput,
               animationsDuration: const Duration(milliseconds: 300),
-              selectedTextBackgroundGradientIndex: widget.selectedTextBackgroundGradient,
+              selectedTextBackgroundGradientIndex:
+                  widget.selectedTextBackgroundGradient,
               onToggleTextColorPicker: _toggleTextColor,
               onChangeTextBackground: _onChangeTextBackground,
               activeItem: _activeItem,
@@ -240,7 +242,8 @@ class _AddTextOverlayState extends State<AddTextOverlay> {
       viewportFraction: .125,
     );
     _textColorsPageController = PageController(
-      initialPage: defaultColors.indexWhere((element) => element == widget.selectedTextColor),
+      initialPage: defaultColors
+          .indexWhere((element) => element == widget.selectedTextColor),
       viewportFraction: .1,
     );
   }
