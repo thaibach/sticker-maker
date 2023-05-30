@@ -175,14 +175,14 @@ class _AddToPackPageState extends State<AddToPackPage> {
                             ),
                             Row(
                               children: List.generate(
-                                cubit.listPack.length,
+                                listPack!.length,
                                 (index) => CustomChooseSticker(
-                                  linkSticker: cubit.listPack[index].urlImage!,
-                                  titlePack: cubit.listPack[index].title!,
-                                  status: cubit.listPack[index].status!,
+                                  linkSticker: listPack![index].urlImage!,
+                                  titlePack: listPack![index].title!,
+                                  status: listPack![index].status!,
                                   update: () {
-                                    cubit.listPack[index].status = !cubit.listPack[index].status!;
-                                    if (cubit.listPack[index].status == true) {
+                                    listPack![index].status = !listPack![index].status!;
+                                    if (listPack![index].status == true) {
                                       countSelectedPack++;
                                     } else {
                                       countSelectedPack--;
