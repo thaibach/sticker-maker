@@ -52,21 +52,29 @@ class _PackLibraryPageState extends State<PackLibraryPage> {
             Expanded(
               child: Container(
                 width: double.infinity,
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 16),
                 margin: EdgeInsets.only(bottom: 83),
                 decoration: const BoxDecoration(color: Color(0xFFFF8A65)),
                 child: SingleChildScrollView(
                   child: Column(
-                    children: List.generate(
-                      widget.addPackCubit.listPack.length,
-                      (index) => PackSticker(
-                        stickCubit: widget.addPackCubit,
-                      ),
-                    ),
+                    // children: List.generate(
+                    //   widget.addPackCubit.listPack.length,
+                    //   (index) => PackSticker(
+                    //     stickCubit: widget.addPackCubit,
+                    //   ),
+                    children: [
+                      SizedBox(height: 16),
+                      PackSticker(stickCubit: widget.addPackCubit),
+                      PackSticker(stickCubit: widget.addPackCubit),
+                      PackSticker(stickCubit: widget.addPackCubit),
+                      PackSticker(stickCubit: widget.addPackCubit),
+                      PackSticker(stickCubit: widget.addPackCubit),
+                      PackSticker(stickCubit: widget.addPackCubit),
+                    ],
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

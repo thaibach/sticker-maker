@@ -25,7 +25,6 @@ class _PackStickerState extends State<PackSticker> {
   @override
   void initState() {
     // TODO: implement initState
-
     super.initState();
   }
 
@@ -103,8 +102,7 @@ class _PackStickerState extends State<PackSticker> {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: List.generate(
-                  widget.stickCubit.sticker.length, (index) => CustomSticker(link: "assets/icons/ImgTemp.png")),
+              children: List.generate(5, (index) => CustomSticker(link: "assets/icons/ImgTemp.png")),
             ),
           )
         ],
