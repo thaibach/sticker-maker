@@ -59,7 +59,11 @@ class _MyAppState extends State<MyApp> {
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     super.initState();
   }
-
+@override
+  void dispose() {
+    releaseModel();
+    super.dispose();
+  }
   Future<void> prepareModel() async {
     final directory = await getApplicationDocumentsDirectory();
     // prepare for detection
