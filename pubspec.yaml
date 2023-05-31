@@ -86,6 +86,7 @@ flutter:
     - assets/icons/emoji/
     - assets/images/
     - assets/icons/
+    - assets/json/
     - assets/
     - assets/icons/sticker/board/
     - assets/icons/sticker/glasses/

@@ -18,8 +18,7 @@ class SavePackPage extends StatelessWidget {
 
   Future share(Uint8List bytes) async {
     final dir = await getApplicationDocumentsDirectory();
-    final img =
-        File('${dir.path}/${DateTime.now().microsecondsSinceEpoch}.png');
+    final img = File('${dir.path}/${DateTime.now().microsecondsSinceEpoch}.png');
     img.writeAsBytes(bytes);
     await Share.shareXFiles([XFile(img.path)]);
   }
@@ -43,8 +42,7 @@ class SavePackPage extends StatelessWidget {
                           size: 32,
                         )),
                     IconButton(
-                        onPressed: () =>
-                            AppNavigate.replacePage(context, const HomePage()),
+                        onPressed: () => AppNavigate.replacePage(context, const HomePage()),
                         icon: const Icon(
                           Icons.home,
                           size: 32,
@@ -63,8 +61,7 @@ class SavePackPage extends StatelessWidget {
                   ),
                 ),
                 Center(
-                  child: AspectRatio(
-                      aspectRatio: 9 / 10, child: Image.memory(imageFile!)),
+                  child: AspectRatio(aspectRatio: 9 / 10, child: Image.memory(imageFile!)),
                 ),
                 Align(
                   alignment: Alignment.bottomLeft,
@@ -79,21 +76,13 @@ class SavePackPage extends StatelessWidget {
                     // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextButton(
-                          onPressed: null,
-                          child: SvgPicture.asset('assets/images/i3.svg')),
-                      TextButton(
-                          onPressed: null,
-                          child: Image.asset('assets/images/i1.png')),
-                      TextButton(
-                          onPressed: null,
-                          child: Image.asset('assets/images/i2.png')),
+                      TextButton(onPressed: null, child: SvgPicture.asset('assets/images/i3.svg')),
+                      TextButton(onPressed: null, child: Image.asset('assets/images/i1.png')),
+                      TextButton(onPressed: null, child: Image.asset('assets/images/i2.png')),
                     ],
                   ),
                 ),
-                Container(
-                    margin: const EdgeInsets.only(top: 16),
-                    child: SvgPicture.asset('assets/images/add_pack.svg'))
+                Container(margin: const EdgeInsets.only(top: 16), child: SvgPicture.asset('assets/images/add_pack.svg'))
               ],
             ),
           ));
