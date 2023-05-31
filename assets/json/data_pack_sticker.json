@@ -1,0 +1,85 @@
+{
+    "packSticker": [
+        {
+            "urlImage": "assets/icons/cute_sticker.png",
+            "title": "Cute",
+            "status": false,
+            "stickerChild": {
+                "title": "Cute",
+                "quantity": "5",
+                "urlImage": "assets/icons/cute_sticker.png"
+            }
+        },
+        {
+            "urlImage": "assets/icons/cute_sticker.png",
+            "title": "Cute",
+            "status": false,
+            "stickerChild": {
+                "title": "Cute",
+                "quantity": "5",
+                "urlImage": "assets/icons/cute_sticker.png"
+            }
+        },
+        {
+            "urlImage": "assets/icons/cute_sticker.png",
+            "title": "A",
+            "status": false,
+            "stickerChild": {
+                "title": "A",
+                "quantity": "5",
+                "urlImage": "assets/icons/cute_sticker.png"
+            }
+        },
+        {
+            "urlImage": "assets/icons/cute_sticker.png",
+            "title": "B",
+            "status": false,
+            "stickerChild": {
+                "title": "A",
+                "quantity": "5",
+                "urlImage": "assets/icons/cute_sticker.png"
+            }
+        },
+        {
+            "urlImage": "assets/icons/cute_sticker.png",
+            "title": "C",
+            "status": false,
+            "stickerChild": {
+                "title": "A",
+                "quantity": "5",
+                "urlImage": "assets/icons/cute_sticker.png"
+            }
+        },
+        {
+            "id": "5",
+            "urlImage": "assets/icons/cute_sticker.png",
+            "title": "D",
+            "status": false,
+            "stickerChild": {
+                "title": "A",
+                "quantity": "5",
+                "urlImage": "assets/icons/cute_sticker.png"
+            }
+        },
+        {
+            "urlImage": "assets/icons/cute_sticker.png",
+            "title": "E",
+            "status": false,
+            "stickerChild": {
+                "title": "A",
+                "quantity": "5",
+                "urlImage": "assets/icons/cute_sticker.png"
+            }
+        },
+        {
+            "urlImage": "assets/icons/cute_sticker.png",
+            "title": "F",
+            "status": false,
+            "stickerChild": {
+                "title": "A",
+                "quantity": "5",
+                "urlImage": "assets/icons/cute_sticker.png"
+            }
+        }
+    ]
+}

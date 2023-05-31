@@ -21,5 +21,6 @@ class EditPageCubit extends Cubit<EditPageState> {
     File imageFile = File(outputPath);
     imageFile.writeAsBytesSync(bytes, flush: true, mode: FileMode.writeOnlyAppend);
     emit(EditPageSuccess(image: bytes));
+    return outputPath;
   }
 }
