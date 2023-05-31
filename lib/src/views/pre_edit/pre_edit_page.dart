@@ -3,7 +3,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show Uint8List, rootBundle;
+import 'package:flutter/services.dart' show Uint8List;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -130,74 +130,68 @@ class _PreEditPageState extends State<PreEditPage> {
                             ),
                           ],
                         ),
-                        Container(
-                          margin: EdgeInsets.only(left: 8, right: 8, top: 10),
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.65,
-                          child: Visibility(
-                            visible: preEditCubit.croppedData != null,
-                            replacement: Center(
-                              child: preEditCubit.croppedData == null
-                                  ? const SizedBox.shrink()
-                                  : Image.memory(preEditCubit.croppedData!),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 10),
+                          child: Container(
+                            width: double.infinity,
+                            height: MediaQuery.of(context).size.height * 0.67,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/img_transparent_bgr.png'),
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                            child: Stack(
-                              children: [
-                                preEditCubit.croppedData == null
-                                    ? const CircularProgressIndicator()
-                                    : Crop(
-                                        controller: preEditCubit.cropController,
-                                        image: preEditCubit.croppedData!,
-                                        onCropped: (croppedDatas) {
-                                          print(croppedDatas);
-                                          setState(() {
-                                            preEditCubit.croppedData =
-                                                croppedDatas;
-                                            preEditCubit.isCropping = false;
-                                          });
-                                        },
-                                        withCircleUi: preEditCubit.isCircleUi,
-                                        onStatusChanged: (status) =>
-                                            setState(() {
-                                          preEditCubit.statusText =
-                                              <CropStatus, String>{
-                                                    CropStatus.nothing:
-                                                        'Crop has no image data',
-                                                    CropStatus.loading:
-                                                        'Crop is now loading given image',
-                                                    CropStatus.ready:
-                                                        'Crop is now ready!',
-                                                    CropStatus.cropping:
-                                                        'Crop is now cropping image',
-                                                  }[status] ??
-                                                  '';
-                                        }),
-                                        initialSize: 1.0,
-                                        //     maskColor: preEditCubit.isSumbnail ? Colors.red : null,
-                                        cornerDotBuilder:
-                                            (size, edgeAlignment) => Container(
-                                          height: 24,
-                                          width: 24,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(5),
-                                              color: const Color(0xFFFF84EB)),
-                                        ),
-                                        interactive: true,
-                                        //fixArea: false,
-                                        radius: 5,
-                                        initialAreaBuilder: (rect) {
-                                          return Rect.fromLTRB(
-                                            rect.left + 24,
-                                            rect.top + 24,
-                                            rect.right - 24,
-                                            rect.bottom - 24,
-                                          );
-                                        },
-                                        preEditCubit: preEditCubit,
+                            child:
+                            // backgroundImage != null
+                            //     ? Center(
+                            //       child: AspectRatio(
+                            //         aspectRatio: backgroundImage!.width / backgroundImage!.height,
+                            //         child: FlutterPainter(
+                            //           controller: controller,
+                            //         ),
+                            //       ),
+                            //     )
+                            //     : Container(),
+                            preEditCubit.croppedData != null
+                                ? Visibility(
+                                    visible: preEditCubit.croppedData != null,
+                                    replacement: preEditCubit.croppedData != null
+                                        ? SizedBox(
+                                            height: double.infinity,
+                                            width: double.infinity,
+                                            child: Image.memory(
+                                              preEditCubit.croppedData!,
+                                              fit: BoxFit.contain,
+                                            ),
+                                          )
+                                        : const SizedBox.shrink(),
+                                    child:
+                                    Crop(
+                                      controller: preEditCubit.cropController,
+                                      image: preEditCubit.croppedData!,
+                                      onCropped: (croppedDatas) {
+                                        setState(() {
+                                          preEditCubit.croppedData = croppedDatas;
+                                          preEditCubit.isCropping = false;
+                                        });
+                                      },
+                                      initialSize: 0.9,
+                                      preEditCubit: preEditCubit,
+                                      radius: 5,
+                                      withCircleUi: preEditCubit.isCircleUi,
+                                      onStatusChanged: (status) => setState(() {}),
+                                      maskColor: preEditCubit.isSumbnail ? Colors.white : null,
+                                      cornerDotBuilder: (size, edgeAlignment) => Container(
+                                        height: 24,
+                                        width: 24,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(5), color: const Color(0xFFFF84EB)),
                                       ),
-                              ],
-                            ),
+                                    ),
+                                  )
+                                : const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
                           ),
                         ),
                         preEditCubit.cropper == true
@@ -270,8 +264,7 @@ class _PreEditPageState extends State<PreEditPage> {
                                       GestureDetector(
                                         onTap: () {
                                           preEditCubit.isCircleUi = false;
-                                          preEditCubit.cropController
-                                              .aspectRatio = 2 / 1;
+                                          preEditCubit.cropController.aspectRatio = 2 / 1;
                                           setState(() {
                                             preEditCubit.turnOffBorder = true;
                                           });
@@ -414,8 +407,22 @@ class _PreEditPageState extends State<PreEditPage> {
                     width: double.infinity,
                     height: double.infinity,
                     color: Colors.black.withOpacity(0.5),
-                    child: const Center(
-                      child: CircularProgressIndicator(),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/images/loading.gif',
+                          height: 83,
+                          width: 83,
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const Text(
+                          'Cropping',
+                          style: TextStyle(color: Color(0xFF00FFFF), fontWeight: FontWeight.w800, fontSize: 20),
+                        )
+                      ],
                     ),
                   )
               ],

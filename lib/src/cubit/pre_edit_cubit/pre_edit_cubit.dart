@@ -32,27 +32,26 @@ class PreEditCubit extends Cubit<PreEditState> {
 
   final cropController = CropController();
 
-  Future<ui.Image> getImage(ui.Image oriImg, ui.Image maskImg, int imageWidth,
-      int imageHeight) async {
+  Future<ui.Image> getImage(ui.Image oriImg, ui.Image maskImg, int imageWidth, int imageHeight) async {
     final ui.PictureRecorder recorder = ui.PictureRecorder();
     OverlayPainter painter = OverlayPainter(maskImg, oriImg);
-    painter.paint(Canvas(recorder),
-        ui.Size(imageWidth.toDouble(), imageHeight.toDouble()));
+    painter.paint(Canvas(recorder), ui.Size(imageWidth.toDouble(), imageHeight.toDouble()));
     final ui.Picture picture = recorder.endRecording();
     return await picture.toImage(imageWidth, imageHeight);
   }
 
   Future<void> convertUint8ListToFile(Uint8List cropperData) async {
-    final Directory? extDir = await getExternalStorageDirectory();
-    if (File("${extDir!.path}/cache.png").existsSync()) {
-      File("${extDir.path}/cache.png").delete();
-    }
-    await Directory(extDir.path).create(recursive: true);
-    String outputPath = '${extDir.path}/cache.png';
-    File cachedFile = File(outputPath);
-    cachedFile.writeAsBytesSync(cropperData);
-    emit(CropEditSuccess(path: cachedFile.path));
+      final Directory? extDir = await getExternalStorageDirectory();
+      // if(File("${extDir!.path}/${DateTime.now().microsecondsSinceEpoch}.png").existsSync()){
+      //   File("${extDir.path}/${DateTime.now().microsecondsSinceEpoch}.png").delete();
+      // }
+      await Directory(extDir!.path).create(recursive: true);
+      String outputPath = '${extDir.path}/${DateTime.now().microsecondsSinceEpoch}.png';
+      File cachedFile = File(outputPath);
+      cachedFile.writeAsBytesSync(cropperData);
+      emit(CropEditSuccess(path: cachedFile.path));
   }
+
 
   void removeImageBG(String imagePath) async {
     emit(RemoveBGLoading());
@@ -69,8 +68,7 @@ class PreEditCubit extends Cubit<PreEditState> {
 
     using((Arena arena) {
       Pointer<Uint8> ptr = arena<Uint8>(totalByteImage);
-      final args = ProcessImageArguments(imagePath, ptr, decodedImage.width,
-          decodedImage.height, cachedFile.path);
+      final args = ProcessImageArguments(imagePath, ptr, decodedImage.width, decodedImage.height, cachedFile.path);
 
       makeProcessImage(args);
     });
@@ -79,14 +77,12 @@ class PreEditCubit extends Cubit<PreEditState> {
     if (await cachedFile.exists()) {
       await cachedFile.delete();
     }
-    ui.Image picture = await getImage(
-        decodedImage, decodeMask, decodedImage.width, decodedImage.height);
+    ui.Image picture = await getImage(decodedImage, decodeMask, decodedImage.width, decodedImage.height);
     final pictureData = await picture.toByteData(
       format: ui.ImageByteFormat.png,
     );
     Uint8List pictureBytes = pictureData!.buffer.asUint8List();
-    File outFile =
-        File("${tempDir.path}/${DateTime.now().microsecondsSinceEpoch}.png");
+    File outFile = File("${tempDir.path}/${DateTime.now().microsecondsSinceEpoch}.png");
     outFile.writeAsBytesSync(pictureBytes);
     emit(RemoveBGSuccess(imagePath: outFile.path));
   }
