@@ -98,7 +98,7 @@ class _MyAppState extends State<MyApp> {
               "homePage": (context) => const HomePage(),
               "preEditPage": (context) => const PreEditPage(image: null,),
               'settingsPage': (context) => const SettingPage(),
-              "editPage": (context) =>  const EditScreen(image: null,)
+              
             },
             localizationsDelegates: const [
               AppLocalizations.delegate,
