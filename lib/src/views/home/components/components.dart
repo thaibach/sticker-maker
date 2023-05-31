@@ -227,7 +227,7 @@ class Components {
                           child: Text(
                             AppLocalizations.of(context)!.go_to_settings,
                             style:
-                                AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA.copyWith(color: const Color(0xFF5060B8)),
+                            AppStyle.DEFAUlT_CONTENT_TEXT_FEED_SOCIALMEDIA.copyWith(color: const Color(0xFF5060B8)),
                           ),
                         ),
                       ),

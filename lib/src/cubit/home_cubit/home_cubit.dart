@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img_img;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -9,7 +10,6 @@ import 'package:sticker_maker/src/cubit/home_cubit/home_state.dart';
 
 class HomePageCubit extends Cubit<HomePageState> {
   HomePageCubit() : super(HomePageLoading());
-
   File? imageFile;
   Uint8List resizeImage(bytes) {
     img_img.Image? image = img_img.decodeImage(bytes);
@@ -33,10 +33,11 @@ class HomePageCubit extends Cubit<HomePageState> {
                 : ImageSource.gallery,
             imageQuality: null,
             preferredCameraDevice: CameraDevice.front);
+
         if (image != null) {
           emit(HomePageSuccess());
           imageFile = File(image.path);
-          
+
         }
       }
     } else {
