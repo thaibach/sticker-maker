@@ -272,13 +272,11 @@ class _CropEditorState extends State<_CropEditor> {
 
     // width
     final newWidth = baseWidth * nextScale;
-    final horizontalFocalPointBias = focalPoint == null ? 0.5 : (focalPoint.dx - _imageRect.left) / _imageRect.width;
-    final leftPositionDelta = (newWidth - _imageRect.width) * horizontalFocalPointBias;
+    final leftPositionDelta = (newWidth - _imageRect.width) * 0.5;
 
     // height
     final newHeight = baseHeight * nextScale;
-    final verticalFocalPointBias = focalPoint == null ? 0.5 : (focalPoint.dy - _imageRect.top) / _imageRect.height;
-    final topPositionDelta = (newHeight - _imageRect.height) * verticalFocalPointBias;
+    final topPositionDelta = (newHeight - _imageRect.height) * 0.5;
 
     // position
     final newLeft = max(min(_rect.left, _imageRect.left - leftPositionDelta), _rect.right - newWidth);
@@ -387,7 +385,6 @@ class _CropEditorState extends State<_CropEditor> {
   /// resize cropping area with given aspect ratio.
   void _resizeWith(double? aspectRatio, Rect? initialArea) {
     _aspectRatio = _withCircleUi ? 1 : aspectRatio;
-
     if (initialArea == null) {
       rect = calculator.initialCropRect(
         MediaQuery.of(context).size,
@@ -444,182 +441,171 @@ class _CropEditorState extends State<_CropEditor> {
   Widget build(BuildContext context) {
     return _isImageLoading
         ? Center(child: widget.progressIndicator)
-        : MaterialApp(
-            debugShowCheckedModeBanner: false,
-            navigatorKey: navigatorKey,
-            home: Stack(
-              children: [
-                Listener(
-                  onPointerDown: (_) => _pointerNum++,
-                  onPointerUp: (_) => _pointerNum--,
-                  child: GestureDetector(
-                    onScaleStart: widget.interactive ? _startScale : null,
-                    onScaleUpdate: widget.interactive ? _updateScale : null,
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      padding: const EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        color: widget.baseColor,
-                        image: const DecorationImage(
-                          image: AssetImage('assets/images/img_transparent_bgr.png'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            left: _imageRect.left,
-                            top: _imageRect.top,
-                            child: Image.memory(
-                              widget.image,
-                              width: _isFitVertically ? null : MediaQuery.of(context).size.width * _scale,
-                              height: _isFitVertically ? MediaQuery.of(context).size.height * _scale : null,
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                IgnorePointer(
-                  child: ClipPath(
-                    clipper: _withCircleUi ? _CircleCropAreaClipper(_rect) : _CropAreaClipper(_rect, widget.radius),
-                    child: Container(
-                      width: double.infinity,
-                      height: double.infinity,
-                      //color: widget.maskColor ??  Colors.black.withAlpha(100),
-                      color:
-                          widget.preEditCubit.turnOffBorder == true ? Colors.black.withAlpha(100) : Colors.transparent,
-                    ),
-                  ),
-                ),
-                if (widget.interactive && !widget.fixArea)
-                  Positioned(
-                    left: _rect.left,
-                    top: _rect.top,
+        : Stack(
+            children: [
+              Listener(
+                onPointerDown: (_) => _pointerNum++,
+                onPointerUp: (_) => _pointerNum--,
+                child: GestureDetector(
+                  onScaleStart: widget.interactive ? _startScale : null,
+                  onScaleUpdate: widget.interactive ? _updateScale : null,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    padding: const EdgeInsets.only(top: 9,bottom: 9),
                     child: Stack(
                       children: [
-                        GestureDetector(
-                          onPanUpdate: (details) {
-                            rect = calculator.moveRect(
-                              _rect,
-                              details.delta.dx,
-                              details.delta.dy,
-                              _imageRect,
-                            );
-                          },
-                          child: widget.preEditCubit.turnOffBorder == true
-                              ? DottedBorder(
-                                  color: const Color(0xFFFF84EB),
-                                  strokeWidth: 3,
-                                  child: Container(
-                                    width: _rect.width,
-                                    height: _rect.height,
-                                    color: Colors.transparent,
-                                  ),
-                                )
-                              : Container(),
+                        Positioned(
+                          left: _imageRect.left,
+                          top: _imageRect.top,
+                          child: Image.memory(
+                            widget.image,
+                            width: _isFitVertically ? null : MediaQuery.of(context).size.width * _scale,
+                            height: _isFitVertically ? MediaQuery.of(context).size.height * _scale : null,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ],
                     ),
                   ),
-                Positioned(
-                  left: _rect.left - (dotTotalSize / 2),
-                  top: _rect.top - (dotTotalSize / 2),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        widget.preEditCubit.turnOffBorder = false;
-                      });
-                    },
-                    child: widget.preEditCubit.turnOffBorder == true
-                        ? Container(
-                            height: 24,
-                            width: 24,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: const Color(0xFFFF84EB),
-                            ),
-                            padding: const EdgeInsets.all(5),
-                            child: SvgPicture.asset(
-                                  'assets/icons/ic_X.svg',
-                                ) ??
-                                widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft),
-                          )
-                        : Container(),
+                ),
+              ),
+              IgnorePointer(
+                child: ClipPath(
+                  clipper: _withCircleUi ? _CircleCropAreaClipper(_rect) : _CropAreaClipper(_rect, widget.radius),
+                  child: Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    //color: widget.maskColor ??  Colors.black.withAlpha(100),
+                    color: widget.preEditCubit.turnOffBorder == true ? Colors.black.withAlpha(100) : Colors.transparent,
                   ),
                 ),
+              ),
+              if (!widget.interactive && !widget.fixArea)
                 Positioned(
-                  left: _rect.right - (dotTotalSize / 12),
-                  top: _rect.top - (dotTotalSize / 2),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        widget.preEditCubit.isCropping = true;
-                      });
-                      widget.preEditCubit.isCircleUi
-                          ? widget.preEditCubit.cropController.cropCircle()
-                          : widget.preEditCubit.cropController.crop();
-                      Future.delayed(const Duration(milliseconds: 11000), () {
-                        widget.preEditCubit.convertUint8ListToFile(widget.preEditCubit.croppedData!);
-                      });
-                    },
-                    child: widget.preEditCubit.turnOffBorder == true
-                        ? Container(
-                            height: 24,
-                            width: 24,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: const Color(0xFFFF84EB),
-                            ),
-                            padding: const EdgeInsets.all(5),
-                            child: SvgPicture.asset(
-                                  'assets/icons/ic_done.svg',
-                                ) ??
-                                widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft),
-                          )
-                        : Container(),
+                  left: _rect.left,
+                  top: _rect.top,
+                  child: Stack(
+                    children: [
+                      GestureDetector(
+                        onPanUpdate: (details) {
+                          rect = calculator.moveRect(
+                            _rect,
+                            details.delta.dx,
+                            details.delta.dy,
+                            _imageRect,
+                          );
+                        },
+                        child: widget.preEditCubit.turnOffBorder == true
+                            ? DottedBorder(
+                                color: const Color(0xFFFF84EB),
+                                strokeWidth: 3,
+                                child: Container(
+                                  width: _rect.width,
+                                  height: _rect.height,
+                                  color: Colors.transparent,
+                                ),
+                              )
+                            : Container(),
+                      ),
+                    ],
                   ),
                 ),
-                Positioned(
-                  left: _rect.right - (dotTotalSize / 8),
-                  top: _rect.bottom - (dotTotalSize / 8),
-                  child: GestureDetector(
-                    onPanUpdate: widget.fixArea
-                        ? null
-                        : (details) {
-                            rect = calculator.moveBottomRight(
-                              _rect,
-                              details.delta.dx,
-                              details.delta.dy,
-                              _imageRect,
-                              _aspectRatio,
-                            );
-                          },
-                    child: widget.preEditCubit.turnOffBorder == true
-                        ? Container(
-                            height: 24,
-                            width: 24,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: const Color(0xFFFF84EB),
-                            ),
-                            padding: const EdgeInsets.all(5),
-                            child: SvgPicture.asset(
-                                  'assets/icons/ic_room.svg',
-                                ) ??
-                                widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft),
-                          )
-                        : Container(),
-                  ),
+              Positioned(
+                left: _rect.left - (dotTotalSize /1.36),
+                top: _rect.top - (dotTotalSize / 1.36),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      widget.preEditCubit.turnOffBorder = false;
+                    });
+                  },
+                  child: widget.preEditCubit.turnOffBorder == true
+                      ? Container(
+                          height: 24,
+                          width: 24,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: const Color(0xFFFF84EB),
+                          ),
+                          padding: const EdgeInsets.all(5),
+                          child: SvgPicture.asset(
+                                'assets/icons/ic_X.svg',
+                              ) ??
+                              widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft),
+                        )
+                      : Container(),
                 ),
-              ],
-            ),
+              ),
+              Positioned(
+                left: _rect.right - (dotTotalSize / -6),
+                top: _rect.top - (dotTotalSize / 1.36),
+                child: GestureDetector(
+                  onTap: () async {
+                    setState(() {
+                      widget.preEditCubit.isCropping = true;
+                    });
+                    widget.preEditCubit.isCircleUi
+                        ? widget.preEditCubit.cropController.cropCircle()
+                        : widget.preEditCubit.cropController.crop();
+                   await Future.delayed(const Duration(milliseconds: 5000), () {
+                      widget.preEditCubit.convertUint8ListToFile(widget.preEditCubit.croppedData!);
+                    });
+                  },
+                  child: widget.preEditCubit.turnOffBorder == true
+                      ? Container(
+                          height: 24,
+                          width: 24,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: const Color(0xFFFF84EB),
+                          ),
+                          padding: const EdgeInsets.all(5),
+                          child: SvgPicture.asset(
+                                'assets/icons/ic_done.svg',
+                              ) ??
+                              widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft),
+                        )
+                      : Container(),
+                ),
+              ),
+              Positioned(
+                left: _rect.right - (dotTotalSize / -8),
+                top: _rect.bottom - (dotTotalSize / -8),
+                child: GestureDetector(
+                  onPanUpdate: widget.fixArea
+                      ? null
+                      : (details) {
+                          rect = calculator.moveBottomRight(
+                            _rect,
+                            details.delta.dx,
+                            details.delta.dy,
+                            _imageRect,
+                            _aspectRatio,
+                          );
+                        },
+                  child: widget.preEditCubit.turnOffBorder == true
+                      ? Container(
+                          height: 24,
+                          width: 24,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: const Color(0xFFFF84EB),
+                          ),
+                          padding: const EdgeInsets.all(5),
+                          child: SvgPicture.asset(
+                                'assets/icons/ic_room.svg',
+                              ) ??
+                              widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft),
+                        )
+                      : Container(),
+                ),
+              ),
+            ],
           );
   }
 }
+
 
 class _CropAreaClipper extends CustomClipper<Path> {
   _CropAreaClipper(this.rect, this.radius);
@@ -714,10 +700,10 @@ Uint8List _doCrop(List<dynamic> cropData) {
     image.encodePng(
       image.copyCrop(
         originalImage,
-        x: rect.left.toInt(),
-        y: rect.top.toInt(),
-        width: rect.width.toInt(),
-        height: rect.height.toInt(),
+         rect.left.toInt(),
+         rect.top.toInt(),
+         rect.width.toInt(),
+         rect.height.toInt(),
       ),
     ),
   );
@@ -736,9 +722,8 @@ Uint8List _doCropCircle(List<dynamic> cropData) {
     image.encodePng(
       image.copyCropCircle(
         originalImage,
-        centerX: center.xi,
-        centerY: center.yi,
         radius: min(rect.width, rect.height) ~/ 2,
+        center: center,
       ),
     ),
   );
@@ -750,13 +735,13 @@ image.Image _fromByteData(Uint8List data) {
   assert(tempImage != null);
 
   // check orientation
-  switch (tempImage?.exif.exifIfd.orientation ?? -1) {
+  switch (tempImage?.exif.exifIfd ?? -1) {
     case 3:
-      return image.copyRotate(tempImage!, angle: 180);
+      return image.copyRotate(tempImage!,  180);
     case 6:
-      return image.copyRotate(tempImage!, angle: 90);
+      return image.copyRotate(tempImage!,  90);
     case 8:
-      return image.copyRotate(tempImage!, angle: -90);
+      return image.copyRotate(tempImage!,  -90);
   }
   return tempImage!;
 }

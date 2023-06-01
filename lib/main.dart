@@ -95,8 +95,9 @@ class _MyAppState extends State<MyApp> {
             routes: {
               "/": (context) => const SplashScreen(),
               "homePage": (context) => const HomePage(),
-              "preEditPage": (context) => const PreEditPage(image: null),
+              "preEditPage": (context) => const PreEditPage(image: null,),
               'settingsPage': (context) => const SettingPage(),
+              
             },
             localizationsDelegates: const [
               AppLocalizations.delegate,
@@ -116,3 +117,5 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+
