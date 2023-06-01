@@ -55,187 +55,196 @@ class _AddToPackPageState extends State<AddToPackPage> {
       body: SafeArea(
         child: BlocProvider(
           create: (context) => AddStickerToPackCubit(),
-          child: BlocBuilder<AddStickerToPackCubit, AddStickerToPackState>(builder: (context, state) {
-            return Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 26),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: SvgPicture.asset("assets/icons/ic_backBtn.svg")),
-                      GestureDetector(
-                          onTap: () {
-                            AppNavigate.replacePage(context, const HomePage());
-                          },
-                          child: SvgPicture.asset("assets/icons/ic_home.svg"))
-                    ],
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    margin: EdgeInsets.only(right: 16),
-                    width: 90,
-                    height: 36,
-                    decoration:
-                        BoxDecoration(color: Color(0xFFFF8A65), borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            final snackBar = SnackBar(
-                              content: const Text("Chưa thực hiện tính năng này (^.^)"),
-                              action: SnackBarAction(
-                                label: "",
-                                onPressed: () {
-                                  // Some code to undo the change.
-                                },
-                              ),
-                            );
-                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                          },
-                          child: SvgPicture.asset("assets/icons/save_sticker.svg"),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            final snackBar = SnackBar(
-                              content: Text("Chưa thực hiện tính năng này (^.^)"),
-                              action: SnackBarAction(
-                                label: "",
-                                onPressed: () {},
-                              ),
-                            );
-                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                          },
-                          child: SvgPicture.asset("assets/icons/share_btn.svg"),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(height: 28),
-                Expanded(
-                    child: Center(
-                  child: AspectRatio(aspectRatio: 9 / 10, child: Image.memory(widget.imageFile!)),
-                )),
-                SizedBox(height: 34),
-                Container(
-                  padding: const EdgeInsets.only(bottom: 81),
-                  alignment: Alignment.bottomCenter,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 23),
-                        child: Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            AppLocalizations.of(context)!.your_sticker_packs,
-                            style: AppStyle.DEFAUlT_12_CR,
-                          ),
-                        ),
+          child: BlocBuilder<AddStickerToPackCubit, AddStickerToPackState>(
+            builder: (context, state) {
+              if (state != null) {
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 26),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: SvgPicture.asset("assets/icons/ic_backBtn.svg")),
+                          GestureDetector(
+                              onTap: () {
+                                AppNavigate.replacePage(context, const HomePage());
+                              },
+                              child: SvgPicture.asset("assets/icons/ic_home.svg"))
+                        ],
                       ),
-                      SizedBox(height: 14),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        margin: EdgeInsets.only(right: 16),
+                        width: 90,
+                        height: 36,
+                        decoration: BoxDecoration(
+                            color: Color(0xFFFF8A65), borderRadius: BorderRadius.all(Radius.circular(10))),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Column(children: [
-                                Text(
-                                  AppLocalizations.of(context)!.create_pack,
-                                  style: AppStyle.DEFAUlT_CONTENT_TITLE_PACK_STICKER,
-                                ),
-                                SizedBox(height: 6),
-                                GestureDetector(
-                                    onTap: () {
-                                      final snackBar = SnackBar(
-                                        content: const Text("Chưa thực hiện tính năng này (^.^)"),
-                                        action: SnackBarAction(
-                                          label: "",
-                                          onPressed: () {
-                                            // Some code to undo the change.
-                                          },
-                                        ),
-                                      );
-                                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                            GestureDetector(
+                              onTap: () {
+                                final snackBar = SnackBar(
+                                  content: const Text("Chưa thực hiện tính năng này (^.^)"),
+                                  action: SnackBarAction(
+                                    label: "",
+                                    onPressed: () {
+                                      // Some code to undo the change.
                                     },
-                                    child: SvgPicture.asset(
-                                      "assets/icons/create_pack.svg",
-                                      width: 80,
-                                      height: 80,
-                                    ))
-                              ]),
+                                  ),
+                                );
+                                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                              },
+                              child: SvgPicture.asset("assets/icons/save_sticker.svg"),
                             ),
-                            Row(
-                              children: List.generate(
-                                listPack!.length,
-                                (index) => CustomChooseSticker(
-                                  linkSticker: listPack![index].urlImage!,
-                                  titlePack: listPack![index].title!,
-                                  status: listPack![index].status!,
-                                  update: () {
-                                    listPack![index].status = !listPack![index].status!;
-                                    if (listPack![index].status == true) {
-                                      countSelectedPack++;
-                                    } else {
-                                      countSelectedPack--;
-                                    }
-                                    setState(() {});
-                                  },
-                                ),
-                              ),
-                            )
+                            GestureDetector(
+                              onTap: () {
+                                final snackBar = SnackBar(
+                                  content: Text("Chưa thực hiện tính năng này (^.^)"),
+                                  action: SnackBarAction(
+                                    label: "",
+                                    onPressed: () {},
+                                  ),
+                                );
+                                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                              },
+                              child: SvgPicture.asset("assets/icons/share_btn.svg"),
+                            ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 25),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: GestureDetector(
-                          onTap: () {
-                            countSelectedPack > 0
-                                ? AppNavigate.navigatePage(
-                                    context,
-                                    PackLibraryPage(
-                                      addPackCubit: cubit,
-                                    ))
-                                : null;
-                          },
-                          child: Container(
-                            width: 164,
-                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 9),
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  colors: countSelectedPack > 0
-                                      ? [Color(0xFFDE225B), Color(0xFFE46D39)]
-                                      : [Color(0xFFDE225B).withOpacity(0.3), Color(0xFFE46D39).withOpacity(0.3)]),
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    SizedBox(height: 28),
+                    Expanded(
+                        child: Center(
+                      child: AspectRatio(aspectRatio: 9 / 10, child: Image.memory(widget.imageFile!)),
+                    )),
+                    SizedBox(height: 34),
+                    Container(
+                      padding: const EdgeInsets.only(bottom: 81),
+                      alignment: Alignment.bottomCenter,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 23),
+                            child: Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                AppLocalizations.of(context)!.your_sticker_packs,
+                                style: AppStyle.DEFAUlT_12_CR,
+                              ),
                             ),
+                          ),
+                          SizedBox(height: 14),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Text(AppLocalizations.of(context)!.add_to_pack, style: AppStyle.DEFAUlT_12),
-                                SvgPicture.asset("assets/icons/ic_add.svg"),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: Column(children: [
+                                    Text(
+                                      AppLocalizations.of(context)!.create_pack,
+                                      style: AppStyle.DEFAUlT_CONTENT_TITLE_PACK_STICKER,
+                                    ),
+                                    SizedBox(height: 6),
+                                    GestureDetector(
+                                        onTap: () {
+                                          final snackBar = SnackBar(
+                                            content: const Text("Chưa thực hiện tính năng này (^.^)"),
+                                            action: SnackBarAction(
+                                              label: "",
+                                              onPressed: () {
+                                                // Some code to undo the change.
+                                              },
+                                            ),
+                                          );
+                                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                        },
+                                        child: SvgPicture.asset(
+                                          "assets/icons/create_pack.svg",
+                                          width: 80,
+                                          height: 80,
+                                        ))
+                                  ]),
+                                ),
+                                Builder(builder: (context) {
+                                  return Row(children: listPack != null ? buildList() : [Container()]);
+                                })
                               ],
                             ),
                           ),
-                        ),
+                          SizedBox(height: 25),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: GestureDetector(
+                              onTap: () {
+                                countSelectedPack > 0
+                                    ? AppNavigate.navigatePage(
+                                        context,
+                                        PackLibraryPage(
+                                          addPackCubit: cubit,
+                                        ))
+                                    : null;
+                              },
+                              child: Container(
+                                width: 164,
+                                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 9),
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                      colors: countSelectedPack > 0
+                                          ? [Color(0xFFDE225B), Color(0xFFE46D39)]
+                                          : [Color(0xFFDE225B).withOpacity(0.3), Color(0xFFE46D39).withOpacity(0.3)]),
+                                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text(AppLocalizations.of(context)!.add_to_pack, style: AppStyle.DEFAUlT_12),
+                                    SvgPicture.asset("assets/icons/ic_add.svg"),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                )
-              ],
-            );
-          }),
+                    )
+                  ],
+                );
+              }
+              return Container();
+            },
+          ),
         ),
       ),
     );
+  }
+  List<Widget> buildList() {
+    return listPack!.map((e) {
+      return Builder(builder: (context) {
+        return CustomChooseSticker(
+          linkSticker: e.urlImage!,
+          titlePack: e.title!,
+          status: e.status!,
+          update: () {
+            e.status = !e.status!;
+            if (e.status == true) {
+              countSelectedPack++;
+            } else {
+              countSelectedPack--;
+            }
+            setState(() {});
+          },
+        );
+      });
+    }).toList();
   }
 }
