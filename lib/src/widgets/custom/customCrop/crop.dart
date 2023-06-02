@@ -452,12 +452,12 @@ class _CropEditorState extends State<_CropEditor> {
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
-                    padding: const EdgeInsets.only(top: 9,bottom: 9),
+                    padding: const EdgeInsets.only(top: 20,bottom: 20,left: 20,right: 20),
                     child: Stack(
                       children: [
                         Positioned(
-                          left: _imageRect.left,
-                          top: _imageRect.top,
+                          left: _imageRect.left - 20,
+                          top: _imageRect.top - 20,
                           child: Image.memory(
                             widget.image,
                             width: _isFitVertically ? null : MediaQuery.of(context).size.width * _scale,
@@ -548,7 +548,7 @@ class _CropEditorState extends State<_CropEditor> {
                     widget.preEditCubit.isCircleUi
                         ? widget.preEditCubit.cropController.cropCircle()
                         : widget.preEditCubit.cropController.crop();
-                   await Future.delayed(const Duration(milliseconds: 5000), () {
+                   await Future.delayed(const Duration(milliseconds: 6000), () {
                       widget.preEditCubit.convertUint8ListToFile(widget.preEditCubit.croppedData!);
                     });
                   },
