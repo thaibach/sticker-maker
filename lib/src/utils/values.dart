@@ -39,8 +39,8 @@ class AppValue {
   static const Widget vSpaceLarge = SizedBox(height: 64.0);
   static const Widget vSpaceMassive = SizedBox(height: 128.0);
 
-  static double widths = MediaQueryData.fromWindow(window).size.width;
-  static double heights = MediaQueryData.fromWindow(window).size.height;
+  static double widths = MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.width;
+  static double heights = MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.height;
 
   static bool isIOS() => Platform.isIOS;
 
