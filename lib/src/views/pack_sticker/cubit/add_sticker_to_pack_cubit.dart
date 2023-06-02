@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sticker_maker/src/views/add_sticker_to_pack/cubit/add_sticker_to_pack_state.dart';
+import 'package:sticker_maker/src/views/pack_sticker/cubit/add_sticker_to_pack_state.dart';
 
 import '../model/package_sticker_model.dart';
 

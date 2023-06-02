@@ -8,11 +8,11 @@ import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:sticker_maker/src/utils/utils_index.dart";
-import "package:sticker_maker/src/views/add_sticker_to_pack/component/custom_choose_sticker.dart";
-import "package:sticker_maker/src/views/add_sticker_to_pack/cubit/add_sticker_to_pack_cubit.dart";
-import "package:sticker_maker/src/views/add_sticker_to_pack/cubit/add_sticker_to_pack_state.dart";
-import "package:sticker_maker/src/views/add_sticker_to_pack/model/package_sticker_model.dart";
-import "package:sticker_maker/src/views/add_sticker_to_pack/page/pack_library_page.dart";
+import 'package:sticker_maker/src/views/pack_sticker/component/custom_choose_sticker.dart';
+import 'package:sticker_maker/src/views/pack_sticker/cubit/add_sticker_to_pack_cubit.dart';
+import 'package:sticker_maker/src/views/pack_sticker/cubit/add_sticker_to_pack_state.dart';
+import 'package:sticker_maker/src/views/pack_sticker/model/package_sticker_model.dart';
+import 'package:sticker_maker/src/views/pack_sticker/page/pack_library_page.dart';
 import "package:sticker_maker/src/views/views_index.dart";
 
 class AddToPackPage extends StatefulWidget {
@@ -133,7 +133,7 @@ class _AddToPackPageState extends State<AddToPackPage> {
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 23),
+                            padding: const EdgeInsets.only(left: 15),
                             child: Align(
                               alignment: Alignment.topLeft,
                               child: Text(
@@ -143,42 +143,45 @@ class _AddToPackPageState extends State<AddToPackPage> {
                             ),
                           ),
                           SizedBox(height: 14),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 15),
-                                  child: Column(children: [
-                                    Text(
-                                      AppLocalizations.of(context)!.create_pack,
-                                      style: AppStyle.DEFAUlT_CONTENT_TITLE_PACK_STICKER,
-                                    ),
-                                    SizedBox(height: 6),
-                                    GestureDetector(
-                                        onTap: () {
-                                          final snackBar = SnackBar(
-                                            content: const Text("Chưa thực hiện tính năng này (^.^)"),
-                                            action: SnackBarAction(
-                                              label: "",
-                                              onPressed: () {
-                                                // Some code to undo the change.
-                                              },
-                                            ),
-                                          );
-                                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                                        },
-                                        child: SvgPicture.asset(
-                                          "assets/icons/create_pack.svg",
-                                          width: 80,
-                                          height: 80,
-                                        ))
-                                  ]),
-                                ),
-                                Builder(builder: (context) {
-                                  return Row(children: listPack != null ? buildList() : [Container()]);
-                                })
-                              ],
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 15),
+                                    child: Column(children: [
+                                      Text(
+                                        AppLocalizations.of(context)!.create_pack,
+                                        style: AppStyle.DEFAUlT_CONTENT_TITLE_PACK_STICKER,
+                                      ),
+                                      SizedBox(height: 6),
+                                      GestureDetector(
+                                          onTap: () {
+                                            final snackBar = SnackBar(
+                                              content: const Text("Chưa thực hiện tính năng này (^.^)"),
+                                              action: SnackBarAction(
+                                                label: "",
+                                                onPressed: () {
+                                                  // Some code to undo the change.
+                                                },
+                                              ),
+                                            );
+                                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                          },
+                                          child: SvgPicture.asset(
+                                            "assets/icons/create_pack.svg",
+                                            width: 80,
+                                            height: 80,
+                                          ))
+                                    ]),
+                                  ),
+                                  Builder(builder: (context) {
+                                    return Row(children: listPack != null ? buildList() : [Container()]);
+                                  })
+                                ],
+                              ),
                             ),
                           ),
                           SizedBox(height: 25),
@@ -227,6 +230,7 @@ class _AddToPackPageState extends State<AddToPackPage> {
       ),
     );
   }
+
   List<Widget> buildList() {
     return listPack!.map((e) {
       return Builder(builder: (context) {

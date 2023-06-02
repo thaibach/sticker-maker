@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticker_maker/src/utils/style.dart';
-import 'package:sticker_maker/src/views/add_sticker_to_pack/component/custom_sticker.dart';
-import 'package:sticker_maker/src/views/add_sticker_to_pack/cubit/add_sticker_to_pack_cubit.dart';
+import 'package:sticker_maker/src/views/pack_sticker/component/custom_sticker.dart';
+import 'package:sticker_maker/src/views/pack_sticker/cubit/add_sticker_to_pack_cubit.dart';
 
 import '../model/package_sticker_model.dart';
 
