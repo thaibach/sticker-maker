@@ -12,6 +12,7 @@ import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
 
 import 'app_observer.dart';
 import 'src/cubit/cubit_index.dart';
+import 'src/views/edit/edit_page.dart';
 import 'src/views/views_index.dart';
 
 void main() {
@@ -97,7 +98,7 @@ class _MyAppState extends State<MyApp> {
               "homePage": (context) => const HomePage(),
               "preEditPage": (context) => const PreEditPage(image: null,),
               'settingsPage': (context) => const SettingPage(),
-              
+
             },
             localizationsDelegates: const [
               AppLocalizations.delegate,
