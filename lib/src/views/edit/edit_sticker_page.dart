@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sticker_maker/src/views/add_sticker_to_pack/page/add_to_pack_page.dart';
+import 'package:sticker_maker/src/views/pack_sticker/page/add_to_pack_page.dart';
 import 'package:sticker_maker/src/views/edit/components/add_drawing.dart';
 import 'package:sticker_maker/src/views/edit/components/add_sticker.dart';
 import 'package:sticker_maker/src/views/edit/components/add_text_overlay.dart';
