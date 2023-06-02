@@ -120,7 +120,7 @@ class _PreEditPageState extends State<PreEditPage> {
                           padding: const EdgeInsets.only(left: 10, right: 10),
                           child: Container(
                             width: double.infinity,
-                            height: MediaQuery.of(context).size.height * 0.67,
+                            height: MediaQuery.of(context).size.height * 0.66,
                             decoration: const BoxDecoration(
                               image: DecorationImage(
                                 image: AssetImage('assets/images/img_transparent_bgr.png'),
@@ -192,12 +192,13 @@ class _PreEditPageState extends State<PreEditPage> {
                                           children: [
                                             SvgPicture.asset('assets/icons/ic_rectangle.svg'),
                                             const SizedBox(
-                                              height: 8,
+                                              height: 5,
                                             ),
                                             Text(
                                               AppLocalizations.of(context)!.rectangle,
                                               style: AppStyle.DEFAUlT_CONTENT.copyWith(
                                                 fontWeight: FontWeight.w700,
+                                                fontSize: 12,
                                                 color: const Color(0xFF2F2CCC),
                                               ),
                                             ),
@@ -216,12 +217,13 @@ class _PreEditPageState extends State<PreEditPage> {
                                           children: [
                                             SvgPicture.asset('assets/icons/ic_circle.svg'),
                                             const SizedBox(
-                                              height: 8,
+                                              height: 5,
                                             ),
                                             Text(
                                               AppLocalizations.of(context)!.circle,
                                               style: AppStyle.DEFAUlT_CONTENT.copyWith(
                                                 fontWeight: FontWeight.w700,
+                                                fontSize: 12,
                                                 color: const Color(0xFF2F2CCC),
                                               ),
                                             ),
@@ -240,12 +242,13 @@ class _PreEditPageState extends State<PreEditPage> {
                                           children: [
                                             SvgPicture.asset('assets/icons/ic_heart.svg'),
                                             const SizedBox(
-                                              height: 8,
+                                              height: 5,
                                             ),
                                             Text(
                                               AppLocalizations.of(context)!.heart,
                                               style: AppStyle.DEFAUlT_CONTENT.copyWith(
                                                 fontWeight: FontWeight.w700,
+                                                fontSize: 12,
                                                 color: const Color(0xFF2F2CCC),
                                               ),
                                             ),
@@ -266,12 +269,13 @@ class _PreEditPageState extends State<PreEditPage> {
                                           children: [
                                             SvgPicture.asset('assets/icons/ic_diamond.svg'),
                                             const SizedBox(
-                                              height: 8,
+                                              height: 5,
                                             ),
                                             Text(
                                               AppLocalizations.of(context)!.diamond,
                                               style: AppStyle.DEFAUlT_CONTENT.copyWith(
                                                 fontWeight: FontWeight.w700,
+                                                fontSize: 12,
                                                 color: const Color(0xFF2F2CCC),
                                               ),
                                             ),
@@ -290,12 +294,13 @@ class _PreEditPageState extends State<PreEditPage> {
                                           children: [
                                             SvgPicture.asset('assets/icons/ic_cat_face.svg'),
                                             const SizedBox(
-                                              height: 8,
+                                              height: 5,
                                             ),
                                             Text(
                                               AppLocalizations.of(context)!.cat_face,
                                               style: AppStyle.DEFAUlT_CONTENT.copyWith(
                                                 fontWeight: FontWeight.w700,
+                                                fontSize: 12,
                                                 color: const Color(0xFF2F2CCC),
                                               ),
                                             ),

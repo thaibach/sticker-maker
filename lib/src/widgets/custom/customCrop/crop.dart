@@ -452,17 +452,20 @@ class _CropEditorState extends State<_CropEditor> {
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
-                    padding: const EdgeInsets.only(top: 20,bottom: 20,left: 20,right: 20),
                     child: Stack(
                       children: [
-                        Positioned(
-                          left: _imageRect.left - 20,
-                          top: _imageRect.top - 20,
-                          child: Image.memory(
-                            widget.image,
-                            width: _isFitVertically ? null : MediaQuery.of(context).size.width * _scale,
-                            height: _isFitVertically ? MediaQuery.of(context).size.height * _scale : null,
-                            fit: BoxFit.contain,
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20,bottom: 20,left: 23,right: 20),
+
+                          child: Positioned(
+                            left: _imageRect.left - 3,
+                            top: _imageRect.top ,
+                            child: Image.memory(
+                              widget.image,
+                              width: _isFitVertically ? null : MediaQuery.of(context).size.width * _scale,
+                              height: _isFitVertically ? MediaQuery.of(context).size.height * _scale : null,
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ),
                       ],
@@ -531,8 +534,7 @@ class _CropEditorState extends State<_CropEditor> {
                           padding: const EdgeInsets.all(5),
                           child: SvgPicture.asset(
                                 'assets/icons/ic_X.svg',
-                              ) ??
-                              widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft),
+                              ),
                         )
                       : Container(),
                 ),
@@ -551,6 +553,7 @@ class _CropEditorState extends State<_CropEditor> {
                    await Future.delayed(const Duration(milliseconds: 6000), () {
                       widget.preEditCubit.convertUint8ListToFile(widget.preEditCubit.croppedData!);
                     });
+
                   },
                   child: widget.preEditCubit.turnOffBorder == true
                       ? Container(
@@ -563,8 +566,7 @@ class _CropEditorState extends State<_CropEditor> {
                           padding: const EdgeInsets.all(5),
                           child: SvgPicture.asset(
                                 'assets/icons/ic_done.svg',
-                              ) ??
-                              widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft),
+                              ),
                         )
                       : Container(),
                 ),
@@ -595,8 +597,7 @@ class _CropEditorState extends State<_CropEditor> {
                           padding: const EdgeInsets.all(5),
                           child: SvgPicture.asset(
                                 'assets/icons/ic_room.svg',
-                              ) ??
-                              widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft),
+                              ),
                         )
                       : Container(),
                 ),
