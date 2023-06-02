@@ -5,12 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:sticker_maker/src/cubit/cubit_index.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
-import 'package:sticker_maker/src/views/add_sticker_to_pack/page/add_to_pack_page.dart';
 import 'package:sticker_maker/src/views/edit/components/save_edit.dart';
-import 'package:sticker_maker/src/views/save/save_pack.dart';
+import 'package:sticker_maker/src/views/pack_sticker/page/add_to_pack_page.dart';
 import 'package:sticker_maker/src/widgets/custom/buttom_bar/curved_buttom_bar.dart';
 import 'package:sticker_maker/src/widgets/widgets_index.dart';
 

@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticker_maker/src/utils/style.dart';
-import 'package:sticker_maker/src/views/add_sticker_to_pack/component/pack_sticker.dart';
-import 'package:sticker_maker/src/views/add_sticker_to_pack/cubit/add_sticker_to_pack_cubit.dart';
+import 'package:sticker_maker/src/views/pack_sticker/component/pack_sticker.dart';
+import 'package:sticker_maker/src/views/pack_sticker/cubit/add_sticker_to_pack_cubit.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
