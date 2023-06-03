@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticker_maker/src/cubit/cubit_index.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
+import 'package:sticker_maker/src/views/edit/components/dialog.dart';
 import 'package:sticker_maker/src/views/edit/components/save_edit.dart';
 import 'package:sticker_maker/src/views/pack_sticker/page/add_to_pack_page.dart';
 import 'package:sticker_maker/src/widgets/custom/buttom_bar/curved_buttom_bar.dart';
@@ -152,7 +153,8 @@ class _EditScreenState extends State<EditScreen> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                AppNavigate.pop(context);
+                               // AppNavigate.pop(context);
+                                ComponentsDialog().diaLogBackEdit(context);
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(top: 10, left: 10),
