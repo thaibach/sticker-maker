@@ -61,6 +61,7 @@ dependencies:
   dotted_border: ^2.0.0+3
   matrix4_transform: ^2.0.1
   flutter_painter: ^1.0.1
+  get: ^4.6.5
 
 
 dev_dependencies:

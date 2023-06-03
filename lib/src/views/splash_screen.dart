@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: Spacing.viewPadding.top + 261),
+                  padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 261),
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.108,
                     width: MediaQuery.of(context).size.width * 0.226,

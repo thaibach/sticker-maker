@@ -282,7 +282,7 @@ class _EditScreenState extends State<EditScreen> {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: EdgeInsets.only(bottom: 60 + Spacing.viewPadding.bottom),
+                    padding: EdgeInsets.only(bottom: 60 + MediaQuery.of(context).padding.bottom),
                     child: CurvedNavigationBar(
                       click: (value) {
                         unSelect = value;

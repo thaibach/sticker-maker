@@ -7,6 +7,8 @@ import 'package:flutter/services.dart' show Uint8List;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:sticker_maker/src/cubit/cubit_index.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
 import 'package:sticker_maker/src/views/edit/edit_page.dart';
@@ -84,10 +86,10 @@ class _PreEditPageState extends State<PreEditPage> {
               children: [
                 Container(
                     margin: EdgeInsets.only(
-                        top: Spacing.viewPadding.top + 5,
+                        top: MediaQuery.of(context).padding.top + 5,
                         right: 10,
                         left: 10,
-                        bottom: Spacing.viewPadding.bottom + AppValue.heights * 0.06),
+                        bottom: MediaQuery.of(context).padding.bottom +  Get.height * 0.06),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: Colors.white,
@@ -121,12 +123,16 @@ class _PreEditPageState extends State<PreEditPage> {
                           child: Container(
                             width: double.infinity,
                             height: MediaQuery.of(context).size.height * 0.66,
+                            // padding: const EdgeInsets.all(15),
                             decoration: const BoxDecoration(
+
                               image: DecorationImage(
+                                alignment: Alignment(-.2, 0),
                                 image: AssetImage('assets/images/img_transparent_bgr.png'),
                                 fit: BoxFit.cover,
                               ),
                             ),
+
                             child:
                                 preEditCubit.croppedData != null
                                     ? Visibility(
@@ -150,7 +156,7 @@ class _PreEditPageState extends State<PreEditPage> {
                                               preEditCubit.isCropping = false;
                                             });
                                           },
-                                          initialSize: 0.9,
+                                          initialSize: 0.92,
                                           preEditCubit: preEditCubit,
                                           radius: 5,
                                           withCircleUi: preEditCubit.isCircleUi,
@@ -317,7 +323,7 @@ class _PreEditPageState extends State<PreEditPage> {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    margin: EdgeInsets.only(bottom: AppValue.heights * 0.06 + Spacing.viewPadding.bottom),
+                    margin: EdgeInsets.only(bottom: AppValue.heights * 0.06 + MediaQuery.of(context).padding.bottom),
                     height: 42,
                     child: CurvedNavigationBar(
                       click: (value) {
