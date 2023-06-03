@@ -452,14 +452,12 @@ class _CropEditorState extends State<_CropEditor> {
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
+                    //alignment: Alignment.bottomCenter,
                     child: Stack(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20,bottom: 20,left: 23,right: 20),
-
-                          child: Positioned(
-                            left: _imageRect.left - 3,
-                            top: _imageRect.top ,
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(20),
                             child: Image.memory(
                               widget.image,
                               width: _isFitVertically ? null : MediaQuery.of(context).size.width * _scale,
@@ -515,7 +513,7 @@ class _CropEditorState extends State<_CropEditor> {
                   ),
                 ),
               Positioned(
-                left: _rect.left - (dotTotalSize /1.36),
+                left: _rect.left - (dotTotalSize / 1.36),
                 top: _rect.top - (dotTotalSize / 1.36),
                 child: GestureDetector(
                   onTap: () {
@@ -533,8 +531,8 @@ class _CropEditorState extends State<_CropEditor> {
                           ),
                           padding: const EdgeInsets.all(5),
                           child: SvgPicture.asset(
-                                'assets/icons/ic_X.svg',
-                              ),
+                            'assets/icons/ic_X.svg',
+                          ),
                         )
                       : Container(),
                 ),
@@ -550,10 +548,9 @@ class _CropEditorState extends State<_CropEditor> {
                     widget.preEditCubit.isCircleUi
                         ? widget.preEditCubit.cropController.cropCircle()
                         : widget.preEditCubit.cropController.crop();
-                   await Future.delayed(const Duration(milliseconds: 6000), () {
+                    await Future.delayed(const Duration(seconds: 7), () {
                       widget.preEditCubit.convertUint8ListToFile(widget.preEditCubit.croppedData!);
                     });
-
                   },
                   child: widget.preEditCubit.turnOffBorder == true
                       ? Container(
@@ -565,8 +562,8 @@ class _CropEditorState extends State<_CropEditor> {
                           ),
                           padding: const EdgeInsets.all(5),
                           child: SvgPicture.asset(
-                                'assets/icons/ic_done.svg',
-                              ),
+                            'assets/icons/ic_done.svg',
+                          ),
                         )
                       : Container(),
                 ),
@@ -596,8 +593,8 @@ class _CropEditorState extends State<_CropEditor> {
                           ),
                           padding: const EdgeInsets.all(5),
                           child: SvgPicture.asset(
-                                'assets/icons/ic_room.svg',
-                              ),
+                            'assets/icons/ic_room.svg',
+                          ),
                         )
                       : Container(),
                 ),
@@ -606,7 +603,6 @@ class _CropEditorState extends State<_CropEditor> {
           );
   }
 }
-
 
 class _CropAreaClipper extends CustomClipper<Path> {
   _CropAreaClipper(this.rect, this.radius);
@@ -701,10 +697,10 @@ Uint8List _doCrop(List<dynamic> cropData) {
     image.encodePng(
       image.copyCrop(
         originalImage,
-         rect.left.toInt(),
-         rect.top.toInt(),
-         rect.width.toInt(),
-         rect.height.toInt(),
+        rect.left.toInt(),
+        rect.top.toInt(),
+        rect.width.toInt(),
+        rect.height.toInt(),
       ),
     ),
   );
@@ -738,11 +734,11 @@ image.Image _fromByteData(Uint8List data) {
   // check orientation
   switch (tempImage?.exif.exifIfd ?? -1) {
     case 3:
-      return image.copyRotate(tempImage!,  180);
+      return image.copyRotate(tempImage!, 180);
     case 6:
-      return image.copyRotate(tempImage!,  90);
+      return image.copyRotate(tempImage!, 90);
     case 8:
-      return image.copyRotate(tempImage!,  -90);
+      return image.copyRotate(tempImage!, -90);
   }
   return tempImage!;
 }
