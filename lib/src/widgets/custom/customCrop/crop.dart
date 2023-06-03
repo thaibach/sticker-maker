@@ -110,7 +110,7 @@ class Crop extends StatelessWidget {
     this.fixArea = false,
     this.progressIndicator = const SizedBox.shrink(),
     this.interactive = false,
-  })  : assert((initialSize ?? 2.0) <= 2.0, 'initialSize must be less than 1.0, or null meaning not specified.'),
+  })  : assert((initialSize ?? 1.0) <= 1.0, 'initialSize must be less than 1.0, or null meaning not specified.'),
         super(key: key);
 
   @override
@@ -247,17 +247,11 @@ class _CropEditorState extends State<_CropEditor> {
 
     // scale
     if (_pointerNum >= 2) {
-      _applyScale(
-        _baseScale * detail.scale,
-        focalPoint: detail.localFocalPoint,
-      );
+      _applyScale(_baseScale * detail.scale);
     }
   }
 
-  void _applyScale(
-    double nextScale, {
-    Offset? focalPoint,
-  }) {
+  void _applyScale(double nextScale) {
     late double baseHeight;
     late double baseWidth;
     final ratio = _targetImage!.height / _targetImage!.width;
@@ -279,8 +273,10 @@ class _CropEditorState extends State<_CropEditor> {
     final topPositionDelta = (newHeight - _imageRect.height) * 0.5;
 
     // position
-    final newLeft = max(min(_rect.left, _imageRect.left - leftPositionDelta), _rect.right - newWidth);
-    final newTop = max(min(_rect.top, _imageRect.top - topPositionDelta), _rect.bottom - newHeight);
+    final newLeft = max(min(_rect.left, _imageRect.left - leftPositionDelta),
+        _rect.right - newWidth);
+    final newTop = max(min(_rect.top, _imageRect.top - topPositionDelta),
+        _rect.bottom - newHeight);
 
     if (newWidth < _rect.width || newHeight < _rect.height) {
       return;
@@ -428,9 +424,17 @@ class _CropEditorState extends State<_CropEditor> {
           _rect.width * screenSizeRatio / _scale,
           _rect.height * screenSizeRatio / _scale,
         ),
+
       ],
     );
-    widget.onCropped(cropResult);
+    await Future.delayed(const Duration(seconds: 5), () {
+      widget.preEditCubit.convertUint8ListToFile(cropResult);
+      setState(() {
+        widget.preEditCubit.isCropping = false;
+        widget.preEditCubit.turnOffBorder = false;
+      });
+    });
+ //   widget.onCropped(cropResult);
 
     widget.onStatusChanged?.call(CropStatus.ready);
   }
@@ -450,14 +454,14 @@ class _CropEditorState extends State<_CropEditor> {
                   onScaleStart: widget.interactive ? _startScale : null,
                   onScaleUpdate: widget.interactive ? _updateScale : null,
                   child: Container(
-                    width: MediaQuery.of(context).size.width,
+                    width: MediaQuery.of(context).size.width ,
                     height: MediaQuery.of(context).size.height,
                     //alignment: Alignment.bottomCenter,
                     child: Stack(
                       children: [
                         Center(
                           child: Padding(
-                            padding: const EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(22),
                             child: Image.memory(
                               widget.image,
                               width: _isFitVertically ? null : MediaQuery.of(context).size.width * _scale,
@@ -548,9 +552,7 @@ class _CropEditorState extends State<_CropEditor> {
                     widget.preEditCubit.isCircleUi
                         ? widget.preEditCubit.cropController.cropCircle()
                         : widget.preEditCubit.cropController.crop();
-                    await Future.delayed(const Duration(seconds: 7), () {
-                      widget.preEditCubit.convertUint8ListToFile(widget.preEditCubit.croppedData!);
-                    });
+
                   },
                   child: widget.preEditCubit.turnOffBorder == true
                       ? Container(
@@ -616,13 +618,17 @@ class _CropAreaClipper extends CustomClipper<Path> {
       ..addPath(
         Path()
           ..moveTo(rect.left, rect.top + radius)
-          ..arcToPoint(Offset(rect.left + radius, rect.top), radius: Radius.circular(radius))
+          ..arcToPoint(Offset(rect.left + radius, rect.top),
+              radius: Radius.circular(radius))
           ..lineTo(rect.right - radius, rect.top)
-          ..arcToPoint(Offset(rect.right, rect.top + radius), radius: Radius.circular(radius))
+          ..arcToPoint(Offset(rect.right, rect.top + radius),
+              radius: Radius.circular(radius))
           ..lineTo(rect.right, rect.bottom - radius)
-          ..arcToPoint(Offset(rect.right - radius, rect.bottom), radius: Radius.circular(radius))
+          ..arcToPoint(Offset(rect.right - radius, rect.bottom),
+              radius: Radius.circular(radius))
           ..lineTo(rect.left + radius, rect.bottom)
-          ..arcToPoint(Offset(rect.left, rect.bottom - radius), radius: Radius.circular(radius))
+          ..arcToPoint(Offset(rect.left, rect.bottom - radius),
+              radius: Radius.circular(radius))
           ..close(),
         Offset.zero,
       )
@@ -711,16 +717,13 @@ Uint8List _doCrop(List<dynamic> cropData) {
 Uint8List _doCropCircle(List<dynamic> cropData) {
   final originalImage = cropData[0] as image.Image;
   final rect = cropData[1] as Rect;
-  final center = image.Point(
-    rect.left + rect.width / 2,
-    rect.top + rect.height / 2,
-  );
   return Uint8List.fromList(
     image.encodePng(
       image.copyCropCircle(
         originalImage,
+        center:
+        image.Point(rect.left + rect.width / 2, rect.top + rect.height / 2),
         radius: min(rect.width, rect.height) ~/ 2,
-        center: center,
       ),
     ),
   );
@@ -742,3 +745,5 @@ image.Image _fromByteData(Uint8List data) {
   }
   return tempImage!;
 }
+
+

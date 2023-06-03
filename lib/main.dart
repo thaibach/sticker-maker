@@ -95,9 +95,9 @@ class _MyAppState extends State<MyApp> {
             initialRoute: '/',
             routes: {
               "/": (context) => const SplashScreen(),
-              "homePage": (context) => const HomePage(),
-              "preEditPage": (context) => const PreEditPage(image: null,),
-              'settingsPage': (context) => const SettingPage(),
+              "/homePage": (context) => const HomePage(),
+              "/preEditPage": (context) => const PreEditPage(image: null,),
+              '/settingsPage': (context) => const SettingPage(),
 
             },
             localizationsDelegates: const [

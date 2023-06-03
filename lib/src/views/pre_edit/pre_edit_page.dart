@@ -55,6 +55,7 @@ class _PreEditPageState extends State<PreEditPage> {
     } catch (e) {
       print('Error reading image file: $e');
     }
+    return;
   }
 
   @override
@@ -92,6 +93,14 @@ class _PreEditPageState extends State<PreEditPage> {
                         bottom: MediaQuery.of(context).padding.bottom +  Get.height * 0.06),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.4),
+                          spreadRadius: 0,
+                          blurRadius: 2,
+                          offset: const Offset(0 , 3), // changes position of shadow
+                        ),
+                      ],
                       color: Colors.white,
                     ),
                     child: Column(
@@ -132,7 +141,6 @@ class _PreEditPageState extends State<PreEditPage> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-
                             child:
                                 preEditCubit.croppedData != null
                                     ? Visibility(
@@ -147,7 +155,8 @@ class _PreEditPageState extends State<PreEditPage> {
                                                 ),
                                               )
                                             : const SizedBox.shrink(),
-                                        child: Crop(
+                                        child:
+                                        Crop(
                                           controller: preEditCubit.cropController,
                                           image: preEditCubit.croppedData!,
                                           onCropped: (croppedDatas) {
@@ -156,10 +165,9 @@ class _PreEditPageState extends State<PreEditPage> {
                                               preEditCubit.isCropping = false;
                                             });
                                           },
-                                          initialSize: 0.92,
+                                          initialSize: 0.91,
                                           preEditCubit: preEditCubit,
                                           radius: 5,
-                                          withCircleUi: preEditCubit.isCircleUi,
                                           onStatusChanged: (status) => setState(() {}),
                                           maskColor: preEditCubit.isSumbnail ? Colors.white : null,
                                           cornerDotBuilder: (size, edgeAlignment) => Container(
