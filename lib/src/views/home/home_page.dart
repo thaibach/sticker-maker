@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sticker_maker/src/cubit/cubit_index.dart';
 import 'package:sticker_maker/src/utils/app_navigate.dart';
@@ -78,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                             left: 16,
                             right: 16,
                           ),
-                          height: MediaQuery.of(context).size.height * 0.152,
+                          height: Get.height * 0.152,
                           width: double.infinity,
                           decoration: const BoxDecoration(
                             gradient: LinearGradient(

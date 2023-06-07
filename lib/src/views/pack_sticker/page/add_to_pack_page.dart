@@ -38,7 +38,6 @@ class _AddToPackPageState extends State<AddToPackPage> {
   void initState() {
     cubit = AddStickerToPackCubit();
     cubit.selectedpack == false;
-
     super.initState();
   }
 

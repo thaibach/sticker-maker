@@ -139,7 +139,7 @@ class _EditStickerPageState extends State<EditStickerPage> {
                         top: MediaQueryData.fromWindow(window).viewPadding.top + 5,
                         right: 10,
                         left: 10,
-                        bottom: AppValue.heights * 0.06 + Spacing.viewPadding.bottom),
+                        bottom: AppValue.heights * 0.06 + MediaQuery.of(context).padding.bottom),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: Colors.white,
@@ -327,7 +327,7 @@ class _EditStickerPageState extends State<EditStickerPage> {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: EdgeInsets.only(bottom: AppValue.heights * 0.06 + Spacing.viewPadding.bottom),
+                    padding: EdgeInsets.only(bottom: AppValue.heights * 0.06 + MediaQuery.of(context).padding.bottom),
                     child: CurvedNavigationBar(
                       click: (value) {
                         unSelect = value;
