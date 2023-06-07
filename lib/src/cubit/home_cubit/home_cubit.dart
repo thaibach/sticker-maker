@@ -37,7 +37,6 @@ class HomePageCubit extends Cubit<HomePageState> {
         if (image != null) {
           emit(HomePageSuccess());
           imageFile = File(image.path);
-
         }
       }
     } else {

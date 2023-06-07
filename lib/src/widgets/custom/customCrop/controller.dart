@@ -1,7 +1,7 @@
 part of crop_your_image;
 
 /// Controller to control crop actions.
-class CropController {
+class CropController{
   late CropControllerDelegate _delegate;
 
   /// setter for [CropControllerDelegate]
@@ -31,6 +31,7 @@ class CropController {
 
   /// change [Rect] of cropping area based on [Rect] of original imgage.
   set area(Rect value) => _delegate.onChangeArea(value);
+
 }
 
 /// Delegate of actions from [CropController]
