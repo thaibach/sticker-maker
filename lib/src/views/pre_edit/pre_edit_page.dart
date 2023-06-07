@@ -79,30 +79,29 @@ class _PreEditPageState extends State<PreEditPage> {
   @override
   Widget build(BuildContext context) {
     Canvas? canvas;
-   final size = MediaQuery.of(context).size;
-      // TODO: implement paint
-      Paint paint = Paint();
-      paint
-        ..color = Colors.black
-        ..style = PaintingStyle.stroke
-        ..strokeCap = StrokeCap.round
-        ..strokeWidth = 6;
+    final size = MediaQuery.of(context).size;
+    // TODO: implement paint
+    Paint paint = Paint();
+    paint
+      ..color = Colors.black
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 6;
 
-      Paint paint1 = Paint();
-      paint1
-        ..color = Colors.transparent
-        ..style = PaintingStyle.fill
-        ..strokeWidth = 0;
+    Paint paint1 = Paint();
+    paint1
+      ..color = Colors.transparent
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 0;
 
-      double width = size.width;
-      double height = size.height;
+    double width = size.width;
+    double height = size.height;
 
-      Path path = Path();
-      path.moveTo(0.5 * width, height * 0.35);
-      path.cubicTo(0.2 * width, height * 0.1, -0.25 * width, height * 0.6, 0.5 * width, height);
-      path.moveTo(0.5 * width, height * 0.35);
-      path.cubicTo(0.8 * width, height * 0.1, 1.25 * width, height * 0.6, 0.5 * width, height);
-
+    Path path = Path();
+    path.moveTo(0.5 * width, height * 0.35);
+    path.cubicTo(0.2 * width, height * 0.1, -0.25 * width, height * 0.6, 0.5 * width, height);
+    path.moveTo(0.5 * width, height * 0.35);
+    path.cubicTo(0.8 * width, height * 0.1, 1.25 * width, height * 0.6, 0.5 * width, height);
 
     return BlocConsumer<PreEditCubit, PreEditState>(
       bloc: preEditCubit,
@@ -167,33 +166,55 @@ class _PreEditPageState extends State<PreEditPage> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 22),
-                              child: SvgPicture.asset('assets/icons/ic_call_edit.svg'),
+                              child: GestureDetector(
+                                onTap: () async{
+                                  setState(() {
+                                    preEditCubit.isCropping = true;
+                                  });
+                                  preEditCubit.isCircleUi ? cropController.cropCircle() : cropController.crop();
+                                },
+                                child: SvgPicture.asset('assets/icons/ic_call_edit.svg'),
+                              ),
                             ),
                           ],
                         ),
                         Container(
                           width: double.infinity,
                           height: MediaQuery.of(context).size.height * 0.66,
-                          margin: const EdgeInsets.only(left: 10,right: 10,),
+                          margin: const EdgeInsets.only(
+                            left: 10,
+                            right: 10,
+                          ),
                           decoration: const BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage('assets/images/img_transparent_bgr.png'),
                               fit: BoxFit.cover,
                             ),
                           ),
-                          child: preEditCubit.croppedData != null
-                              ? Visibility(
-                                  visible: preEditCubit.croppedData != null,
-                                  replacement: preEditCubit.croppedData != null
-                                      ? SizedBox(
-                                          height: double.infinity,
-                                          width: double.infinity,
-                                          child: Image.memory(
-                                            preEditCubit.croppedData!,
-                                            fit: BoxFit.contain,
-                                          ),
-                                        )
-                                      : const SizedBox.shrink(),
+                          child: Stack(
+                            children: [
+                              Container(
+                                color: preEditCubit.turnOffBorder == true ? Colors.black.withOpacity(0.64) : Colors.transparent,
+                                padding: const EdgeInsets.all(22),
+                                child: Container(
+                                  color: Colors.white.withOpacity(0.16),
+                                ),
+                              ),
+                              preEditCubit.croppedData != null
+                                  ? Visibility(
+                                visible: preEditCubit.croppedData != null,
+                                replacement: preEditCubit.croppedData != null
+                                    ? SizedBox(
+                                  height: double.infinity,
+                                  width: double.infinity,
+                                  child: Image.memory(
+                                    preEditCubit.croppedData!,
+                                    fit: BoxFit.contain,
+                                  ),
+                                )
+                                    : const SizedBox.shrink(),
+                                child: Padding(
+                                  padding: EdgeInsets.all(22),
                                   child: Crop(
                                     controller: cropController,
                                     image: preEditCubit.croppedData!,
@@ -203,21 +224,20 @@ class _PreEditPageState extends State<PreEditPage> {
                                         preEditCubit.isCropping = false;
                                       });
                                     },
+                                    //  interactive: false,
                                     initialSize: 0.90,
                                     preEditCubit: preEditCubit,
                                     radius: 5,
                                     onStatusChanged: (status) => setState(() {}),
                                     maskColor: preEditCubit.isSumbnail ? Colors.white : null,
-                                    cornerDotBuilder: (size, edgeAlignment) => Container(
-                                      height: 24,
-                                      width: 24,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(5), color: const Color(0xFFFF84EB)),
-                                    ),
                                   ),
-                                )
-                              : const SizedBox.shrink(),
+                                ),
+                              )
+                                  : const SizedBox.shrink(),
+                            ],
+                          )
                         ),
+
                         preEditCubit.cropper == true
                             ? Column(
                                 children: [
@@ -403,6 +423,7 @@ class _PreEditPageState extends State<PreEditPage> {
                               preEditCubit.cropper = false;
                             } else if (index == 2) {
                               preEditCubit.cropper = true;
+
                               print("crop");
                             }
                           }
@@ -442,6 +463,4 @@ class _PreEditPageState extends State<PreEditPage> {
       },
     );
   }
-
 }
-
