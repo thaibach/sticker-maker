@@ -30,16 +30,14 @@ class CustomChooseSticker extends StatelessWidget {
               children: [
                 Image.asset(
                   linkSticker,
-                  width: 80,
-                  height: 80,
+                  width: 70,
+                  height: 70,
                 ),
                 Positioned(
                     bottom: 10,
                     right: 0,
                     child: SvgPicture.asset(
-                      status == false
-                          ? 'assets/icons/ic_unticked_pack.svg'
-                          : 'assets/icons/ic_ticked_pack.svg',
+                      status == false ? 'assets/icons/ic_unticked_pack.svg' : 'assets/icons/ic_ticked_pack.svg',
                       width: 20,
                       height: 20,
                     ))

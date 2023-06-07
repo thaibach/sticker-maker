@@ -31,7 +31,7 @@
 "talking":"Talking",
 "other":"Other",
 "save":"Save",
-"your_sticker_packs":"Your sticker packs",
+"your_sticker_packs":"Choose your sticker packs",
 "create_pack":"Create pack",
 "add_to_pack":"Add to pack",
 "saved_to_photo_gallery":"Image saved to photo gallery !",
@@ -72,5 +72,6 @@
 "circle":"Circle",
 "heart":"Heart",
 "diamond":"Diamond",
-"cat_face":"Cat face"
+"cat_face":"Cat face",
+"enter_new_pack_name":"Enter new pack name"
 }

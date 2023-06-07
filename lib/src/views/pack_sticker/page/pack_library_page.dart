@@ -57,19 +57,14 @@ class _PackLibraryPageState extends State<PackLibraryPage> {
                 decoration: const BoxDecoration(color: Color(0xFFFF8A65)),
                 child: SingleChildScrollView(
                   child: Column(
-                    // children: List.generate(
-                    //   widget.addPackCubit.listPack.length,
-                    //   (index) => PackSticker(
-                    //     stickCubit: widget.addPackCubit,
-                    //   ),
                     children: [
                       SizedBox(height: 16),
-                      PackSticker(stickCubit: widget.addPackCubit),
-                      PackSticker(stickCubit: widget.addPackCubit),
-                      PackSticker(stickCubit: widget.addPackCubit),
-                      PackSticker(stickCubit: widget.addPackCubit),
-                      PackSticker(stickCubit: widget.addPackCubit),
-                      PackSticker(stickCubit: widget.addPackCubit),
+                      PackStickerCover(stickCubit: widget.addPackCubit),
+                      PackStickerCover(stickCubit: widget.addPackCubit),
+                      PackStickerCover(stickCubit: widget.addPackCubit),
+                      PackStickerCover(stickCubit: widget.addPackCubit),
+                      PackStickerCover(stickCubit: widget.addPackCubit),
+                      PackStickerCover(stickCubit: widget.addPackCubit),
                     ],
                   ),
                 ),
