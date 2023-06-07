@@ -443,20 +443,18 @@ class _CropEditorState extends State<_CropEditor> {
     return _isImageLoading
         ? Center(child: widget.progressIndicator)
         : Stack(
-          children: [
-            Listener(
-              onPointerDown: (_) => _pointerNum++,
-              onPointerUp: (_) => _pointerNum--,
-              child: GestureDetector(
-                onScaleStart: widget.interactive ? _startScale : null,
-                onScaleUpdate: widget.interactive ? _updateScale : null,
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  // margin: const EdgeInsets.all(21),
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 21,left: 23,right: 23,bottom: 21),
+            children: [
+              Listener(
+                onPointerDown: (_) => _pointerNum++,
+                onPointerUp: (_) => _pointerNum--,
+                child: GestureDetector(
+                  onScaleStart: widget.interactive ? _startScale : null,
+                  onScaleUpdate: widget.interactive ? _updateScale : null,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    padding: const EdgeInsets.only(left: 2, right: 2),
+                    child: Center(
                       child: Image.memory(
                         widget.image,
                         width: _isFitVertically ? null : MediaQuery.of(context).size.width * _scale,
@@ -467,139 +465,135 @@ class _CropEditorState extends State<_CropEditor> {
                   ),
                 ),
               ),
-            ),
-            IgnorePointer(
-              child: ClipPath(
-                clipper: _withCircleUi ? _CircleCropAreaClipper(_rect) : _CropAreaClipper(_rect, widget.radius),
-                child: Container(
-                 // padding: EdgeInsets.all(21),
+              IgnorePointer(
+                child: ClipPath(
+                  clipper: _withCircleUi ? _CircleCropAreaClipper(_rect) : _CropAreaClipper(_rect, widget.radius),
                   child: Container(
                     width: _isFitVertically ? null : MediaQuery.of(context).size.width * _scale,
                     height: _isFitVertically ? MediaQuery.of(context).size.height * _scale : null,
                     //color: widget.maskColor ??  Colors.black.withAlpha(100),
-                   // margin: const EdgeInsets.all(21),
-                    color:
-                    widget.preEditCubit.turnOffBorder == true ? Colors.black.withAlpha(100) : Colors.transparent,
+                    // margin: const EdgeInsets.all(21),
+                    color: widget.preEditCubit.turnOffBorder == true ? Colors.black.withAlpha(79) : Colors.transparent,
                   ),
                 ),
               ),
-            ),
-            if (!widget.interactive && !widget.fixArea)
-              Positioned(
-                left: _rect.left,
-                top: _rect.top,
-                child: Stack(
-                  children: [
-                    GestureDetector(
-                      onPanUpdate: (details) {
-                        rect = calculator.moveRect(
-                          _rect,
-                          details.delta.dx,
-                          details.delta.dy,
-                          _imageRect,
-                        );
-                      },
-                      child: widget.preEditCubit.turnOffBorder == true
-                          ? DottedBorder(
-                              color: const Color(0xFFFF84EB),
-                              strokeWidth: 3,
-                              child: Container(
+              if (!widget.interactive && !widget.fixArea)
+                Positioned(
+                  left: _rect.left,
+                  top: _rect.top - 1,
+                  child: Stack(
+                    children: [
+                      GestureDetector(
+                        onPanUpdate: (details) {
+                          rect = calculator.moveRect(
+                            _rect,
+                            details.delta.dx,
+                            details.delta.dy,
+                            _imageRect,
+                          );
+                        },
+                        child: widget.preEditCubit.turnOffBorder == true
+                            ? Container(
                                 width: _rect.width,
                                 height: _rect.height,
                                 color: Colors.transparent,
-                              ),
-                            )
-                          : Container(),
-                    ),
-                  ],
+                                child: DottedBorder(
+                                  color: const Color(0xFFFF84EB),
+                                  strokeWidth: 3,
+                                  child: Container(),
+                                ),
+                              )
+                            : Container(),
+                      ),
+                    ],
+                  ),
+                ),
+              Positioned(
+                left: _rect.left - (dotTotalSize / 2),
+                top: _rect.top - (dotTotalSize / 2),
+                child: GestureDetector(
+                  onPanUpdate: widget.fixArea
+                      ? null
+                      : (details) {
+                          rect = calculator.moveTopLeft(
+                            _rect,
+                            details.delta.dx,
+                            details.delta.dy,
+                            _imageRect,
+                            _aspectRatio,
+                          );
+                        },
+                  child: widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topLeft) ??
+                      const DotControl(
+                        color: Colors.transparent,
+                      ),
                 ),
               ),
-            Positioned(
-              left: _rect.left - (dotTotalSize / 1.36),
-              top: _rect.top - (dotTotalSize / 1.36),
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    widget.preEditCubit.turnOffBorder = false;
-                  });
-                },
-                child: widget.preEditCubit.turnOffBorder == true
-                    ? Container(
-                        height: 24,
-                        width: 24,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: const Color(0xFFFF84EB),
-                        ),
-                        padding: const EdgeInsets.all(5),
-                        child: SvgPicture.asset(
-                          'assets/icons/ic_X.svg',
-                        ),
-                      )
-                    : Container(),
+              Positioned(
+                left: _rect.right - (dotTotalSize / 2),
+                top: _rect.top - (dotTotalSize / 2),
+                child: GestureDetector(
+                  onPanUpdate: widget.fixArea
+                      ? null
+                      : (details) {
+                          rect = calculator.moveTopRight(
+                            _rect,
+                            details.delta.dx,
+                            details.delta.dy,
+                            _imageRect,
+                            _aspectRatio,
+                          );
+                        },
+                  child: widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.topRight) ??
+                      const DotControl(
+                        color: Colors.transparent,
+                      ),
+                ),
               ),
-            ),
-            Positioned(
-              left: _rect.right - (dotTotalSize / -6),
-              top: _rect.top - (dotTotalSize / 1.36),
-              child: GestureDetector(
-                onTap: () async {
-                  setState(() {
-                    widget.preEditCubit.isCropping = true;
-                  });
-                  widget.preEditCubit.isCircleUi ? _cropController.cropCircle() : _cropController.crop();
-                },
-                child: widget.preEditCubit.turnOffBorder == true
-                    ? Container(
-                        height: 24,
-                        width: 24,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: const Color(0xFFFF84EB),
-                        ),
-                        padding: const EdgeInsets.all(5),
-                        child: SvgPicture.asset(
-                          'assets/icons/ic_done.svg',
-                        ),
-                      )
-                    : Container(),
+              Positioned(
+                left: _rect.left - (dotTotalSize / 2),
+                top: _rect.bottom - (dotTotalSize / 2),
+                child: GestureDetector(
+                  onPanUpdate: widget.fixArea
+                      ? null
+                      : (details) {
+                          rect = calculator.moveBottomLeft(
+                            _rect,
+                            details.delta.dx,
+                            details.delta.dy,
+                            _imageRect,
+                            _aspectRatio,
+                          );
+                        },
+                  child: widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.bottomLeft) ??
+                      const DotControl(
+                        color: Colors.transparent,
+                      ),
+                ),
               ),
-            ),
-            Positioned(
-              left: _rect.right - (dotTotalSize / -8),
-              top: _rect.bottom - (dotTotalSize / -8),
-              child: GestureDetector(
-                onPanUpdate: widget.fixArea
-                    ? null
-                    : (details) {
-                        rect = calculator.moveBottomRight(
-                          _rect,
-                          details.delta.dx,
-                          details.delta.dy,
-                          _imageRect,
-                          _aspectRatio,
-                        );
-                      },
-                child: widget.preEditCubit.turnOffBorder == true
-                    ? Container(
-                        height: 24,
-                        width: 24,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: const Color(0xFFFF84EB),
-                        ),
-                        padding: const EdgeInsets.all(5),
-                        child: SvgPicture.asset(
-                          'assets/icons/ic_room.svg',
-                        ),
-                      )
-                    : Container(),
+              Positioned(
+                left: _rect.right - (dotTotalSize / 2),
+                top: _rect.bottom - (dotTotalSize / 2),
+                child: GestureDetector(
+                  onPanUpdate: widget.fixArea
+                      ? null
+                      : (details) {
+                          rect = calculator.moveBottomRight(
+                            _rect,
+                            details.delta.dx,
+                            details.delta.dy,
+                            _imageRect,
+                            _aspectRatio,
+                          );
+                        },
+                  child: widget.cornerDotBuilder?.call(dotTotalSize, EdgeAlignment.bottomRight) ??
+                      const DotControl(
+                        color: Colors.transparent,
+                      ),
+                ),
               ),
-            ),
-
-
-          ],
-        );
+            ],
+          );
   }
 }
 
