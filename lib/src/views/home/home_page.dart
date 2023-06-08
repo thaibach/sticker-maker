@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
             AppNavigate.navigatePage(
                 context,
                 PreEditPage(
-                  image: homeCubit.imageFile,
+                  image: homeCubit.imageFile, loading: true,
                 ));
           }
           if (state is HomePageError) {
@@ -49,7 +49,6 @@ class _HomePageState extends State<HomePage> {
                 height: double.infinity,
                 width: double.infinity,
                 decoration: const BoxDecoration(
-                  // color: Colors.blue,
                   image: DecorationImage(
                     image: AssetImage('assets/images/img_bgr_homePage.png'),
                     fit: BoxFit.cover,

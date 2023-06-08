@@ -30,7 +30,7 @@ class PreEditCubit extends Cubit<PreEditState> {
   bool cropper = false;
   var statusText = '';
 
-  final cropController = CropController();
+
 
   Future<ui.Image> getImage(ui.Image oriImg, ui.Image maskImg, int imageWidth, int imageHeight) async {
     final ui.PictureRecorder recorder = ui.PictureRecorder();
