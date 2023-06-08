@@ -140,7 +140,11 @@ class _AddToPackPageState extends State<AddToPackPage> {
                               //     PopUpAddNewPack(
                               //       cubit: cubit,
                               //     ));
-                              cubit.createPack();
+                              setState(() {
+                                if (state is InsertData) {
+                                  cubit.createPack();
+                                }
+                              });
                             },
                             child: SvgPicture.asset(
                               "assets/icons/create_pack.svg",

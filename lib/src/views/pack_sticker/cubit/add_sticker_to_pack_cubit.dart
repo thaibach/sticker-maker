@@ -13,6 +13,7 @@ class AddStickerToPackCubit extends Cubit<AddStickerToPackState> {
   AddStickerToPackCubit() : super(AddStickerToPackLoading());
   bool selectedpack = false;
   List<PackSticker> listpack = [];
+  List<String> listchild = [];
 
   readData() async {
     String response = await rootBundle.loadString("assets/json/data_pack_sticker.json");

@@ -74,7 +74,7 @@ class _PackStickerCoverState extends State<PackStickerCover> {
               child: ListView.builder(
             itemCount: autoGenResponse!.packSticker!.length,
             itemBuilder: (context, index) {
-              return CustomSticker(link: autoGenResponse!.packSticker.toString()); //sai nhe
+              return CustomSticker(link: autoGenResponse!.packSticker![index].urlImage ?? "");
             },
           ))
         ],
