@@ -417,7 +417,7 @@ class _PreEditPageState extends State<PreEditPage> {
                               print('remove');
                               preEditCubit.turnOffBorder = false;
                               preEditCubit.cropper = false;
-                              preEditCubit.removeImageBG(widget.image!.path);
+                              preEditCubit.removeImageBGByApi(widget.image!.path);
                             } else if (index == 1) {
                               print("cut");
                               preEditCubit.turnOffBorder = false;
