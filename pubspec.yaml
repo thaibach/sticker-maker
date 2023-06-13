@@ -62,6 +62,7 @@ dependencies:
   matrix4_transform: ^2.0.1
   flutter_painter: ^1.0.1
   get: ^4.6.5
+  dio: ^4.0.4
 
 
 dev_dependencies:
