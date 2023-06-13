@@ -64,6 +64,7 @@ class PreEditCubit extends Cubit<PreEditState> {
     }
   }
 
+/*
   void removeImageBG(String imagePath) async {
     emit(RemoveBGLoading());
     final tempDir = await getTemporaryDirectory();
@@ -98,6 +99,7 @@ class PreEditCubit extends Cubit<PreEditState> {
     outFile.writeAsBytesSync(pictureBytes);
     emit(RemoveBGSuccess(imagePath: outFile.path));
   }
+*/
 
   void removeImageBGByApi(String imagePath) async {
     emit(RemoveBGLoading());

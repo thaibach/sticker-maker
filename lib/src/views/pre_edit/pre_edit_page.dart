@@ -83,7 +83,8 @@ class _PreEditPageState extends State<PreEditPage> {
         }
         if (state is RemoveBGSuccess) {
           Loading.hide(context);
-          AppNavigate.navigatePage(context, EditStickerPage(imagePath: state.imagePath));
+          AppNavigate.navigatePage(
+              context, EditStickerPage(imagePath: state.imagePath));
         }
         if (state is CropEditSuccess) {
           AppNavigate.navigatePage(
@@ -105,7 +106,8 @@ class _PreEditPageState extends State<PreEditPage> {
                         top: MediaQuery.of(context).padding.top + 5,
                         right: 10,
                         left: 10,
-                        bottom: MediaQuery.of(context).padding.bottom + Get.height * 0.06),
+                        bottom: MediaQuery.of(context).padding.bottom +
+                            Get.height * 0.06),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       boxShadow: [
@@ -113,7 +115,8 @@ class _PreEditPageState extends State<PreEditPage> {
                           color: Colors.black.withOpacity(0.4),
                           spreadRadius: 0,
                           blurRadius: 2,
-                          offset: const Offset(0, 3), // changes position of shadow
+                          offset:
+                              const Offset(0, 3), // changes position of shadow
                         ),
                       ],
                       color: Colors.white,
@@ -125,33 +128,40 @@ class _PreEditPageState extends State<PreEditPage> {
                           children: [
                             InkWell(
                               onTap: () {
-                                AppNavigate.replacePage(context, const HomePage());
+                                AppNavigate.replacePage(
+                                    context, const HomePage());
                               },
                               child: Container(
                                 height: 50,
                                 width: 75,
                                 padding: const EdgeInsets.all(16),
                                 color: Colors.transparent,
-                                child: SvgPicture.asset('assets/icons/ic_back_home.svg'),
+                                child: SvgPicture.asset(
+                                    'assets/icons/ic_back_home.svg'),
                               ),
                             ),
                             Text(
                               functionLabel,
-                              style: AppStyle.DEFAULT_16.copyWith(color: Colors.black, fontWeight: FontWeight.bold),
+                              style: AppStyle.DEFAULT_16.copyWith(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
                             ),
                             InkWell(
                               onTap: () {
                                 setState(() {
                                   preEditCubit.isCropping = true;
                                 });
-                                preEditCubit.isCircleUi ? cropController.cropCircle() : cropController.crop();
+                                preEditCubit.isCircleUi
+                                    ? cropController.cropCircle()
+                                    : cropController.crop();
                               },
                               child: Container(
                                   height: 50,
                                   width: 70,
                                   padding: const EdgeInsets.all(16),
                                   color: Colors.transparent,
-                                  child: SvgPicture.asset('assets/icons/ic_call_edit.svg')),
+                                  child: SvgPicture.asset(
+                                      'assets/icons/ic_call_edit.svg')),
                             ),
                           ],
                         ),
@@ -164,7 +174,8 @@ class _PreEditPageState extends State<PreEditPage> {
                             ),
                             decoration: const BoxDecoration(
                               image: DecorationImage(
-                                image: AssetImage('assets/images/img_transparent_bgr.png'),
+                                image: AssetImage(
+                                    'assets/images/img_transparent_bgr.png'),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -181,17 +192,19 @@ class _PreEditPageState extends State<PreEditPage> {
                                 ),
                                 preEditCubit.croppedData != null
                                     ? Visibility(
-                                        visible: preEditCubit.croppedData != null,
-                                        replacement: preEditCubit.croppedData != null
-                                            ? SizedBox(
-                                                height: double.infinity,
-                                                width: double.infinity,
-                                                child: Image.memory(
-                                                  preEditCubit.croppedData!,
-                                                  fit: BoxFit.contain,
-                                                ),
-                                              )
-                                            : const SizedBox.shrink(),
+                                        visible:
+                                            preEditCubit.croppedData != null,
+                                        replacement:
+                                            preEditCubit.croppedData != null
+                                                ? SizedBox(
+                                                    height: double.infinity,
+                                                    width: double.infinity,
+                                                    child: Image.memory(
+                                                      preEditCubit.croppedData!,
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                  )
+                                                : const SizedBox.shrink(),
                                         child: Padding(
                                           padding: EdgeInsets.all(22),
                                           child: Crop(
@@ -199,7 +212,8 @@ class _PreEditPageState extends State<PreEditPage> {
                                             image: preEditCubit.croppedData!,
                                             onCropped: (croppedDatas) {
                                               setState(() {
-                                                preEditCubit.croppedData = croppedDatas;
+                                                preEditCubit.croppedData =
+                                                    croppedDatas;
                                                 preEditCubit.isCropping = false;
                                               });
                                             },
@@ -207,8 +221,11 @@ class _PreEditPageState extends State<PreEditPage> {
                                             initialSize: 0.90,
                                             preEditCubit: preEditCubit,
                                             radius: 5,
-                                            onStatusChanged: (status) => setState(() {}),
-                                            maskColor: preEditCubit.isSumbnail ? Colors.white : null,
+                                            onStatusChanged: (status) =>
+                                                setState(() {}),
+                                            maskColor: preEditCubit.isSumbnail
+                                                ? Colors.white
+                                                : null,
                                           ),
                                         ),
                                       )
@@ -221,7 +238,8 @@ class _PreEditPageState extends State<PreEditPage> {
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
                                       children: [
                                         InkWell(
                                           onTap: () {
@@ -238,16 +256,20 @@ class _PreEditPageState extends State<PreEditPage> {
                                             color: Colors.transparent,
                                             child: Column(
                                               children: [
-                                                SvgPicture.asset('assets/icons/ic_rectangle.svg'),
+                                                SvgPicture.asset(
+                                                    'assets/icons/ic_rectangle.svg'),
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
                                                 Text(
-                                                  AppLocalizations.of(context)!.rectangle,
-                                                  style: AppStyle.DEFAUlT_CONTENT.copyWith(
+                                                  AppLocalizations.of(context)!
+                                                      .rectangle,
+                                                  style: AppStyle
+                                                      .DEFAUlT_CONTENT.copyWith(
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: 12,
-                                                    color: const Color(0xFF2F2CCC),
+                                                    color:
+                                                        const Color(0xFF2F2CCC),
                                                   ),
                                                 ),
                                               ],
@@ -267,16 +289,20 @@ class _PreEditPageState extends State<PreEditPage> {
                                             color: Colors.transparent,
                                             child: Column(
                                               children: [
-                                                SvgPicture.asset('assets/icons/ic_circle.svg'),
+                                                SvgPicture.asset(
+                                                    'assets/icons/ic_circle.svg'),
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
                                                 Text(
-                                                  AppLocalizations.of(context)!.circle,
-                                                  style: AppStyle.DEFAUlT_CONTENT.copyWith(
+                                                  AppLocalizations.of(context)!
+                                                      .circle,
+                                                  style: AppStyle
+                                                      .DEFAUlT_CONTENT.copyWith(
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: 12,
-                                                    color: const Color(0xFF2F2CCC),
+                                                    color:
+                                                        const Color(0xFF2F2CCC),
                                                   ),
                                                 ),
                                               ],
@@ -295,16 +321,20 @@ class _PreEditPageState extends State<PreEditPage> {
                                             color: Colors.transparent,
                                             child: Column(
                                               children: [
-                                                SvgPicture.asset('assets/icons/ic_heart.svg'),
+                                                SvgPicture.asset(
+                                                    'assets/icons/ic_heart.svg'),
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
                                                 Text(
-                                                  AppLocalizations.of(context)!.heart,
-                                                  style: AppStyle.DEFAUlT_CONTENT.copyWith(
+                                                  AppLocalizations.of(context)!
+                                                      .heart,
+                                                  style: AppStyle
+                                                      .DEFAUlT_CONTENT.copyWith(
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: 12,
-                                                    color: const Color(0xFF2F2CCC),
+                                                    color:
+                                                        const Color(0xFF2F2CCC),
                                                   ),
                                                 ),
                                               ],
@@ -326,16 +356,20 @@ class _PreEditPageState extends State<PreEditPage> {
                                             color: Colors.transparent,
                                             child: Column(
                                               children: [
-                                                SvgPicture.asset('assets/icons/ic_diamond.svg'),
+                                                SvgPicture.asset(
+                                                    'assets/icons/ic_diamond.svg'),
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
                                                 Text(
-                                                  AppLocalizations.of(context)!.diamond,
-                                                  style: AppStyle.DEFAUlT_CONTENT.copyWith(
+                                                  AppLocalizations.of(context)!
+                                                      .diamond,
+                                                  style: AppStyle
+                                                      .DEFAUlT_CONTENT.copyWith(
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: 12,
-                                                    color: const Color(0xFF2F2CCC),
+                                                    color:
+                                                        const Color(0xFF2F2CCC),
                                                   ),
                                                 ),
                                               ],
@@ -355,16 +389,20 @@ class _PreEditPageState extends State<PreEditPage> {
                                             color: Colors.transparent,
                                             child: Column(
                                               children: [
-                                                SvgPicture.asset('assets/icons/ic_cat_face.svg'),
+                                                SvgPicture.asset(
+                                                    'assets/icons/ic_cat_face.svg'),
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
                                                 Text(
-                                                  AppLocalizations.of(context)!.cat_face,
-                                                  style: AppStyle.DEFAUlT_CONTENT.copyWith(
+                                                  AppLocalizations.of(context)!
+                                                      .cat_face,
+                                                  style: AppStyle
+                                                      .DEFAUlT_CONTENT.copyWith(
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: 12,
-                                                    color: const Color(0xFF2F2CCC),
+                                                    color:
+                                                        const Color(0xFF2F2CCC),
                                                   ),
                                                 ),
                                               ],
@@ -382,7 +420,9 @@ class _PreEditPageState extends State<PreEditPage> {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    margin: EdgeInsets.only(bottom: AppValue.heights * 0.06 + MediaQuery.of(context).padding.bottom),
+                    margin: EdgeInsets.only(
+                        bottom: AppValue.heights * 0.06 +
+                            MediaQuery.of(context).padding.bottom),
                     height: 42,
                     child: CurvedNavigationBar(
                       click: (value) {
@@ -411,14 +451,16 @@ class _PreEditPageState extends State<PreEditPage> {
                               print('remove');
                               preEditCubit.turnOffBorder = false;
                               preEditCubit.cropper = false;
-                              preEditCubit.removeImageBGByApi(widget.image!.path);
+                              preEditCubit
+                                  .removeImageBGByApi(widget.image!.path);
                             } else if (index == 1) {
                               print("cut");
                               preEditCubit.turnOffBorder = false;
                               preEditCubit.cropper = false;
                             } else if (index == 2) {
                               preEditCubit.cropper = !preEditCubit.cropper;
-                              preEditCubit.turnOffBorder = !preEditCubit.turnOffBorder;
+                              preEditCubit.turnOffBorder =
+                                  !preEditCubit.turnOffBorder;
                               //preEditCubit.cropper = !preEditCubit.cropper;
                               print("crop");
                             }
@@ -447,7 +489,10 @@ class _PreEditPageState extends State<PreEditPage> {
                         ),
                         const Text(
                           'Cropping',
-                          style: TextStyle(color: Color(0xFF00FFFF), fontWeight: FontWeight.w800, fontSize: 20),
+                          style: TextStyle(
+                              color: Color(0xFF00FFFF),
+                              fontWeight: FontWeight.w800,
+                              fontSize: 20),
                         )
                       ],
                     ),
