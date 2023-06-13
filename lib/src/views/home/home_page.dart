@@ -1,19 +1,15 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:sticker_maker/src/cubit/cubit_index.dart';
-import 'package:sticker_maker/src/utils/app_navigate.dart';
 import 'package:sticker_maker/src/utils/style.dart';
 import 'package:sticker_maker/src/views/home/components/components.dart';
 import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
 
+import '../../cubit/cubit_index.dart';
+import '../../utils/app_navigate.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -35,7 +31,8 @@ class _HomePageState extends State<HomePage> {
             AppNavigate.navigatePage(
                 context,
                 PreEditPage(
-                  image: homeCubit.imageFile, loading: true,
+                  image: homeCubit.imageFile,
+                  loading: true,
                 ));
           }
           if (state is HomePageError) {
@@ -256,5 +253,4 @@ class _HomePageState extends State<HomePage> {
       onWillPop: () => Future.value(false),
     );
   }
-
 }
