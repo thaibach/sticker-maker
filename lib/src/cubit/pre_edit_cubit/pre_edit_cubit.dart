@@ -23,12 +23,14 @@ class PreEditCubit extends Cubit<PreEditState> {
   bool cut = false;
   bool crop = false;
   bool borderCrop = false;
+  bool cropDiamond = false;
   var isSumbnail = false;
   var isCropping = false;
   var isCircleUi = false;
   bool turnOffBorder = true;
   bool cropper = false;
   var statusText = '';
+  int selectedIndex = 0;
 
 
 
