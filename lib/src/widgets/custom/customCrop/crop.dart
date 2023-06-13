@@ -520,25 +520,26 @@ class _CropEditorState extends State<_CropEditor> {
                             _aspectRatio,
                           );
                         },
-                  child: widget.preEditCubit.turnOffBorder == true ?
-                      Container(
-                        height: 25,
-                        width: 25,
-                        margin: const EdgeInsets.all(3),
-                        decoration: const BoxDecoration(
-                            color: Colors.transparent,
-                            border: Border(
-                                left: BorderSide(
-                                  color: Colors.white,
-                                  width: 4,
-                                ),
-                                top: BorderSide(
-                                  color: Colors.white,
-                                  width: 4,
-                                ))),
-                      ) : const DotControl(
-                    color: Colors.transparent,
-                  ),
+                  child: widget.preEditCubit.turnOffBorder == true
+                      ? Container(
+                          height: 25,
+                          width: 25,
+                          margin: const EdgeInsets.all(3),
+                          decoration: const BoxDecoration(
+                              color: Colors.transparent,
+                              border: Border(
+                                  left: BorderSide(
+                                    color: Colors.white,
+                                    width: 4,
+                                  ),
+                                  top: BorderSide(
+                                    color: Colors.white,
+                                    width: 4,
+                                  ))),
+                        )
+                      : const DotControl(
+                          color: Colors.transparent,
+                        ),
                 ),
               ),
               Positioned(
@@ -592,39 +593,40 @@ class _CropEditorState extends State<_CropEditor> {
                             _aspectRatio,
                           );
                         },
-                  child: widget.preEditCubit.turnOffBorder == true ?
-                      Container(
-                        height: 25,
-                        width: 25,
-                        margin: const EdgeInsets.all(3),
-                        decoration: const BoxDecoration(
-                            color: Colors.transparent,
-                            border: Border(
-                                left: BorderSide(
-                                  color: Colors.white,
-                                  width: 4,
-                                ),
-                                bottom: BorderSide(
-                                  color: Colors.white,
-                                  width: 4,
-                                ))),
-                      ): const DotControl(
-                    color: Colors.transparent,
-                  ),
+                  child: widget.preEditCubit.turnOffBorder == true
+                      ? Container(
+                          height: 25,
+                          width: 25,
+                          margin: const EdgeInsets.all(3),
+                          decoration: const BoxDecoration(
+                              color: Colors.transparent,
+                              border: Border(
+                                  left: BorderSide(
+                                    color: Colors.white,
+                                    width: 4,
+                                  ),
+                                  bottom: BorderSide(
+                                    color: Colors.white,
+                                    width: 4,
+                                  ))),
+                        )
+                      : const DotControl(
+                          color: Colors.transparent,
+                        ),
                 ),
               ),
               Positioned(
                 left: _rect.right - (dotTotalSize - 5),
                 top: _rect.bottom - (dotTotalSize - 4),
                 child: GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     print("width  ${_rect.width}");
                     print("height  ${_rect.height}");
                     print("top  ${_rect.top}");
                     print("bottom  ${_rect.bottom}");
                     print("right  ${_rect.right}");
                     print("left  ${_rect.left}");
-                    print("="*20);
+                    print("=" * 20);
                   },
                   onPanUpdate: widget.fixArea
                       ? null
@@ -637,25 +639,26 @@ class _CropEditorState extends State<_CropEditor> {
                             _aspectRatio,
                           );
                         },
-                  child: widget.preEditCubit.turnOffBorder == true  ?
-                      Container(
-                        height: 25,
-                        width: 25,
-                        margin: const EdgeInsets.all(3),
-                        decoration: const BoxDecoration(
-                            color: Colors.transparent,
-                            border: Border(
-                                right: BorderSide(
-                                  color: Colors.white,
-                                  width: 4,
-                                ),
-                                bottom: BorderSide(
-                                  color: Colors.white,
-                                  width: 4,
-                                ))),
-                      ) :  const DotControl(
-                    color: Colors.transparent,
-                  ) ,
+                  child: widget.preEditCubit.turnOffBorder == true
+                      ? Container(
+                          height: 25,
+                          width: 25,
+                          margin: const EdgeInsets.all(3),
+                          decoration: const BoxDecoration(
+                              color: Colors.transparent,
+                              border: Border(
+                                  right: BorderSide(
+                                    color: Colors.white,
+                                    width: 4,
+                                  ),
+                                  bottom: BorderSide(
+                                    color: Colors.white,
+                                    width: 4,
+                                  ))),
+                        )
+                      : const DotControl(
+                          color: Colors.transparent,
+                        ),
                 ),
               ),
             ],
@@ -664,7 +667,7 @@ class _CropEditorState extends State<_CropEditor> {
 }
 
 class _CropAreaClipper extends CustomClipper<Path> {
-  _CropAreaClipper(this.rect,this.radius);
+  _CropAreaClipper(this.rect, this.radius);
 
   final Rect rect;
   final double radius;
@@ -673,26 +676,26 @@ class _CropAreaClipper extends CustomClipper<Path> {
     return Path()
       ..addPath(
         Path()
-        ..moveTo(rect.left, ((rect.bottom - rect.top) + rect.top) - rect.height/2)
-          ..arcToPoint(Offset(rect.left, ((rect.bottom - rect.top) + rect.top) - rect.height/2))
-        ..lineTo(((rect.right - rect.left) + rect.left) - rect.height/2, rect.top)
-         ..arcToPoint(Offset(((rect.right - rect.left) + rect.left) - rect.height/2, rect.top))
-        ..lineTo(rect.right, ((rect.bottom - rect.top) + rect.top) - rect.height/2)
-         ..arcToPoint(Offset(rect.right, ((rect.bottom - rect.top) + rect.top) - rect.height/2))
-        ..lineTo(((rect.right - rect.left) + rect.left) - rect.height/2, rect.bottom)
-         ..arcToPoint(Offset(((rect.right - rect.left) + rect.left) - rect.height/2, rect.bottom))
+          // ..moveTo(rect.left, ((rect.bottom - rect.top) + rect.top) - rect.height/2)
+          //   ..arcToPoint(Offset(rect.left, ((rect.bottom - rect.top) + rect.top) - rect.height/2))
+          // ..lineTo(((rect.right - rect.left) + rect.left) - rect.height/2, rect.top)
+          //  ..arcToPoint(Offset(((rect.right - rect.left) + rect.left) - rect.height/2, rect.top))
+          // ..lineTo(rect.right, ((rect.bottom - rect.top) + rect.top) - rect.height/2)
+          //  ..arcToPoint(Offset(rect.right, ((rect.bottom - rect.top) + rect.top) - rect.height/2))
+          // ..lineTo(((rect.right - rect.left) + rect.left) - rect.height/2, rect.bottom)
+          //  ..arcToPoint(Offset(((rect.right - rect.left) + rect.left) - rect.height/2, rect.bottom))
+          //   ..close(),
+          // Offset.zero,
+          ..moveTo(rect.left, rect.top + radius)
+          ..arcToPoint(Offset(rect.left + radius, rect.top), radius: Radius.circular(radius))
+          ..lineTo(rect.right - radius, rect.top)
+          ..arcToPoint(Offset(rect.right, rect.top + radius), radius: Radius.circular(radius))
+          ..lineTo(rect.right, rect.bottom - radius)
+          ..arcToPoint(Offset(rect.right - radius, rect.bottom), radius: Radius.circular(radius))
+          ..lineTo(rect.left + radius, rect.bottom)
+          ..arcToPoint(Offset(rect.left, rect.bottom - radius), radius: Radius.circular(radius))
           ..close(),
         Offset.zero,
-        //   ..moveTo(rect.left, rect.top + radius)
-        //   ..arcToPoint(Offset(rect.left + radius, rect.top), radius: Radius.circular(radius))
-        //   ..lineTo(rect.right - radius, rect.top)
-        //   ..arcToPoint(Offset(rect.right, rect.top + radius), radius: Radius.circular(radius))
-        //   ..lineTo(rect.right, rect.bottom - radius)
-        //   ..arcToPoint(Offset(rect.right - radius, rect.bottom), radius: Radius.circular(radius))
-        //   ..lineTo(rect.left + radius, rect.bottom)
-        //   ..arcToPoint(Offset(rect.left, rect.bottom - radius), radius: Radius.circular(radius))
-        //   ..close(),
-        // Offset.zero,
       )
       ..addRect(Rect.fromLTWH(0, 0, size.width, size.height))
       ..fillType = PathFillType.evenOdd;
@@ -701,7 +704,6 @@ class _CropAreaClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => true;
 }
-
 
 class _CircleCropAreaClipper extends CustomClipper<Path> {
   final Rect rect;
@@ -807,4 +809,3 @@ image.Image _fromByteData(Uint8List data) {
   }
   return tempImage!;
 }
-

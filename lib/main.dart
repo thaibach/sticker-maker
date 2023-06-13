@@ -12,7 +12,6 @@ import 'package:sticker_maker/src/views/settings/page/settings_page.dart';
 
 import 'app_observer.dart';
 import 'src/cubit/cubit_index.dart';
-import 'src/views/edit/edit_page.dart';
 import 'src/views/views_index.dart';
 
 void main() {
@@ -50,22 +49,23 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int inputWidth = 320;
+  /*int inputWidth = 320;
   int inputHeight = 320;
-  int numMNNThreads = 4;
+  int numMNNThreads = 4;*/
   @override
   void initState() {
-    prepareModel();
+    // prepareModel();
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     super.initState();
   }
-@override
+
+  @override
   void dispose() {
-    releaseModel();
+    // releaseModel();
     super.dispose();
   }
-  Future<void> prepareModel() async {
+/*  Future<void> prepareModel() async {
     final directory = await getApplicationDocumentsDirectory();
     // prepare for detection
     String modelPath_ = '${directory.path}/rm_model.mnn';
@@ -81,7 +81,7 @@ class _MyAppState extends State<MyApp> {
     InitModelArguments initArgs =
         InitModelArguments(modelPath_, inputWidth, inputHeight, numMNNThreads);
     initModel(initArgs);
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,10 @@ class _MyAppState extends State<MyApp> {
             routes: {
               "/": (context) => const SplashScreen(),
               "/homePage": (context) => const HomePage(),
-              "/preEditPage": (context) => PreEditPage(image: null, loading: false,),
+              "/preEditPage": (context) => PreEditPage(
+                    image: null,
+                    loading: false,
+                  ),
               '/settingsPage': (context) => const SettingPage(),
             },
             localizationsDelegates: const [
@@ -117,5 +120,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
-
