@@ -673,26 +673,26 @@ class _CropAreaClipper extends CustomClipper<Path> {
     return Path()
       ..addPath(
         Path()
-        // ..moveTo(rect.left, ((rect.bottom - rect.top) + rect.top) - rect.height/2)
-        //   ..arcToPoint(Offset(rect.left, ((rect.bottom - rect.top) + rect.top) - rect.height/2))
-        // ..lineTo(((rect.right - rect.left) + rect.left) - rect.height/2, rect.top)
-        //  ..arcToPoint(Offset(((rect.right - rect.left) + rect.left) - rect.height/2, rect.top))
-        // ..lineTo(rect.right, ((rect.bottom - rect.top) + rect.top) - rect.height/2)
-        //  ..arcToPoint(Offset(rect.right, ((rect.bottom - rect.top) + rect.top) - rect.height/2))
-        // ..lineTo(((rect.right - rect.left) + rect.left) - rect.height/2, rect.bottom)
-        //  ..arcToPoint(Offset(((rect.right - rect.left) + rect.left) - rect.height/2, rect.bottom))
-        //   ..close(),
-        // Offset.zero,
-          ..moveTo(rect.left, rect.top + radius)
-          ..arcToPoint(Offset(rect.left + radius, rect.top), radius: Radius.circular(radius))
-          ..lineTo(rect.right - radius, rect.top)
-          ..arcToPoint(Offset(rect.right, rect.top + radius), radius: Radius.circular(radius))
-          ..lineTo(rect.right, rect.bottom - radius)
-          ..arcToPoint(Offset(rect.right - radius, rect.bottom), radius: Radius.circular(radius))
-          ..lineTo(rect.left + radius, rect.bottom)
-          ..arcToPoint(Offset(rect.left, rect.bottom - radius), radius: Radius.circular(radius))
+        ..moveTo(rect.left, ((rect.bottom - rect.top) + rect.top) - rect.height/2)
+          ..arcToPoint(Offset(rect.left, ((rect.bottom - rect.top) + rect.top) - rect.height/2))
+        ..lineTo(((rect.right - rect.left) + rect.left) - rect.height/2, rect.top)
+         ..arcToPoint(Offset(((rect.right - rect.left) + rect.left) - rect.height/2, rect.top))
+        ..lineTo(rect.right, ((rect.bottom - rect.top) + rect.top) - rect.height/2)
+         ..arcToPoint(Offset(rect.right, ((rect.bottom - rect.top) + rect.top) - rect.height/2))
+        ..lineTo(((rect.right - rect.left) + rect.left) - rect.height/2, rect.bottom)
+         ..arcToPoint(Offset(((rect.right - rect.left) + rect.left) - rect.height/2, rect.bottom))
           ..close(),
         Offset.zero,
+        //   ..moveTo(rect.left, rect.top + radius)
+        //   ..arcToPoint(Offset(rect.left + radius, rect.top), radius: Radius.circular(radius))
+        //   ..lineTo(rect.right - radius, rect.top)
+        //   ..arcToPoint(Offset(rect.right, rect.top + radius), radius: Radius.circular(radius))
+        //   ..lineTo(rect.right, rect.bottom - radius)
+        //   ..arcToPoint(Offset(rect.right - radius, rect.bottom), radius: Radius.circular(radius))
+        //   ..lineTo(rect.left + radius, rect.bottom)
+        //   ..arcToPoint(Offset(rect.left, rect.bottom - radius), radius: Radius.circular(radius))
+        //   ..close(),
+        // Offset.zero,
       )
       ..addRect(Rect.fromLTWH(0, 0, size.width, size.height))
       ..fillType = PathFillType.evenOdd;
@@ -764,7 +764,7 @@ Uint8List _doCrop(List<dynamic> cropData) {
   final rect = cropData[1] as Rect;
   return Uint8List.fromList(
     image.encodePng(
-      image.copyCropThoi(
+      image.copyCrop(
         originalImage,
         rect.left.toInt(),
         rect.top.toInt(),
