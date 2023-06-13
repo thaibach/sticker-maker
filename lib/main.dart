@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -56,15 +58,16 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     prepareModel();
-    SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     super.initState();
   }
-@override
+
+  @override
   void dispose() {
     releaseModel();
     super.dispose();
   }
+
   Future<void> prepareModel() async {
     final directory = await getApplicationDocumentsDirectory();
     // prepare for detection
@@ -75,11 +78,9 @@ class _MyAppState extends State<MyApp> {
       ByteData modelData = await rootBundle.load('assets/rm_model.mnn');
       final modelBuffer = modelData.buffer;
       File modelFile = File(modelPath_);
-      await modelFile.writeAsBytes(modelBuffer.asUint8List(
-          modelData.offsetInBytes, modelData.lengthInBytes));
+      await modelFile.writeAsBytes(modelBuffer.asUint8List(modelData.offsetInBytes, modelData.lengthInBytes));
     }
-    InitModelArguments initArgs =
-        InitModelArguments(modelPath_, inputWidth, inputHeight, numMNNThreads);
+    InitModelArguments initArgs = InitModelArguments(modelPath_, inputWidth, inputHeight, numMNNThreads);
     initModel(initArgs);
   }
 
@@ -96,7 +97,10 @@ class _MyAppState extends State<MyApp> {
             routes: {
               "/": (context) => const SplashScreen(),
               "/homePage": (context) => const HomePage(),
-              "/preEditPage": (context) => PreEditPage(image: null, loading: false,),
+              "/preEditPage": (context) => PreEditPage(
+                    image: null,
+                    loading: false,
+                  ),
               '/settingsPage': (context) => const SettingPage(),
             },
             localizationsDelegates: const [
@@ -111,11 +115,19 @@ class _MyAppState extends State<MyApp> {
               Locale('fr', ''),
             ],
             locale: lang,
+
+            //set English lam ngon ngu mac dinh khi cai dat app
+            // localeListResolutionCallback: (locales, supportedLocales) {
+            //   for (Locale locale in locales) {
+            //     if (supportedLocales.contains(locale)) {
+            //       return locale;
+            //     }
+            //   }
+            //   return Locale('en', '');
+            // },
           );
         },
       ),
     );
   }
 }
-
-

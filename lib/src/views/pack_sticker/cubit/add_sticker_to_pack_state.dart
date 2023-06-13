@@ -11,11 +11,15 @@ class Readingdata extends AddStickerToPackState {
 }
 
 class InsertData extends AddStickerToPackState {
-  final String listchild;
+  dynamic listchild;
   InsertData({required this.listchild});
 }
 
 class AddStickerToSuccess extends AddStickerToPackState {
   final Uint8List image;
   AddStickerToSuccess({required this.image});
+}
+
+class RemovePackage extends AddStickerToPackState {
+
 }

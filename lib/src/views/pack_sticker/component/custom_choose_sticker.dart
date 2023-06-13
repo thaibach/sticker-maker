@@ -30,8 +30,8 @@ class CustomChooseSticker extends StatelessWidget {
               children: [
                 Image.asset(
                   linkSticker,
-                  width: 70,
-                  height: 70,
+                  width: 65,
+                  height: 65,
                 ),
                 Positioned(
                     bottom: 10,
