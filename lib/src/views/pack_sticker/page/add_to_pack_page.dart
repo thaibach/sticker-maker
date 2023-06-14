@@ -7,7 +7,6 @@ import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:sticker_maker/src/utils/utils_index.dart";
 import 'package:sticker_maker/src/views/pack_sticker/component/custom_choose_sticker.dart';
-import "package:sticker_maker/src/views/pack_sticker/component/custom_popup.dart";
 import 'package:sticker_maker/src/views/pack_sticker/cubit/add_sticker_to_pack_cubit.dart';
 import 'package:sticker_maker/src/views/pack_sticker/cubit/add_sticker_to_pack_state.dart';
 import 'package:sticker_maker/src/views/pack_sticker/model/package_sticker_model.dart';
@@ -170,14 +169,12 @@ class _AddToPackPageState extends State<AddToPackPage> {
                 listener: (context, state) {
                   if (state is InsertData) {
                     stickerChild = state.listchild;
-                   
                   }
                 },
                 bloc: cubit,
                 builder: (context, state) {
                   return GestureDetector(
                     onTap: () {
-                    
                       countSelectedPack > 0
                           ? AppNavigate.navigatePage(
                               context,
