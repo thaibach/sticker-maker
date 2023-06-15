@@ -59,7 +59,7 @@ dependencies:
   matrix4_transform: ^2.0.1
   flutter_painter: ^1.0.1
   get: ^4.6.5
-  dio: ^4.0.4
+  dio: ^5.2.1+1
 
 
 dev_dependencies:
@@ -72,6 +72,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  build_runner: ^2.0.0
+  objectbox_generator: any
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

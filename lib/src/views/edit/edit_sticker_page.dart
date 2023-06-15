@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 import 'dart:ui';
 import 'dart:ui' as ui;
@@ -6,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sticker_maker/src/views/pack_sticker/cubit/add_sticker_to_pack_cubit.dart';
 import 'package:sticker_maker/src/views/pack_sticker/page/add_to_pack_page.dart';
 import 'package:sticker_maker/src/views/edit/components/add_drawing.dart';
 import 'package:sticker_maker/src/views/edit/components/add_sticker.dart';
@@ -112,8 +115,11 @@ class _EditStickerPageState extends State<EditStickerPage> {
         if (state is EditPageSuccess) {
           AppNavigate.navigatePage(
               context,
-              AddToPackPage(
-                imageFile: state.image,
+              BlocProvider(
+                create: (context) => AddStickerToPackCubit()..readData(),
+                child: AddToPackPage(
+                  imageFile: state.image,
+                ),
               ));
         }
       },

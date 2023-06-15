@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticker_maker/src/utils/style.dart';
 import 'package:sticker_maker/src/views/pack_sticker/component/pack_sticker.dart';
 import 'package:sticker_maker/src/views/pack_sticker/cubit/add_sticker_to_pack_cubit.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PackLibraryPage extends StatefulWidget {
   PackLibraryPage({super.key, required this.addPackCubit});
@@ -57,19 +57,14 @@ class _PackLibraryPageState extends State<PackLibraryPage> {
                 decoration: const BoxDecoration(color: Color(0xFFFF8A65)),
                 child: SingleChildScrollView(
                   child: Column(
-                    // children: List.generate(
-                    //   widget.addPackCubit.listPack.length,
-                    //   (index) => PackSticker(
-                    //     stickCubit: widget.addPackCubit,
-                    //   ),
                     children: [
                       SizedBox(height: 16),
-                      PackSticker(stickCubit: widget.addPackCubit),
-                      PackSticker(stickCubit: widget.addPackCubit),
-                      PackSticker(stickCubit: widget.addPackCubit),
-                      PackSticker(stickCubit: widget.addPackCubit),
-                      PackSticker(stickCubit: widget.addPackCubit),
-                      PackSticker(stickCubit: widget.addPackCubit),
+                      PackStickerCover(stickCubit: widget.addPackCubit),
+                      PackStickerCover(stickCubit: widget.addPackCubit),
+                      PackStickerCover(stickCubit: widget.addPackCubit),
+                      PackStickerCover(stickCubit: widget.addPackCubit),
+                      PackStickerCover(stickCubit: widget.addPackCubit),
+                      PackStickerCover(stickCubit: widget.addPackCubit),
                     ],
                   ),
                 ),

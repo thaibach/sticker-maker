@@ -1,0 +1,8 @@
+Executable : C:\Users\THAI\AppData\Local\Android\sdk\cmake\3.18.1\bin\ninja.exe
+arguments : 
+-C
+D:\cfi_Tech\sticker_maker\image_processing_lib\android\.cxx\RelWithDebInfo\1s5b1c10\arm64-v8a
+bitmap
+removebg
+jvmArgs : 
+

@@ -1,0 +1,17 @@
+[
+{
+  "directory": "D:/cfi_Tech/sticker_maker/image_processing_lib/android/.cxx/Debug/u3a332qz/arm64-v8a",
+  "command": "C:\\Users\\THAI\\AppData\\Local\\Android\\Sdk\\ndk\\21.4.7075529\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=C:/Users/THAI/AppData/Local/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/THAI/AppData/Local/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dbitmap_EXPORTS -I../../../../../include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++17 -O0 -fno-limit-debug-info  -fPIC -o CMakeFiles\\bitmap.dir\\D_\\cfi_Tech\\sticker_maker\\image_processing_lib\\ios\\Classes\\bitmap.cpp.o -c D:\\cfi_Tech\\sticker_maker\\image_processing_lib\\ios\\Classes\\bitmap.cpp",
+  "file": "D:\\cfi_Tech\\sticker_maker\\image_processing_lib\\ios\\Classes\\bitmap.cpp"
+},
+{
+  "directory": "D:/cfi_Tech/sticker_maker/image_processing_lib/android/.cxx/Debug/u3a332qz/arm64-v8a",
+  "command": "C:\\Users\\THAI\\AppData\\Local\\Android\\Sdk\\ndk\\21.4.7075529\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=C:/Users/THAI/AppData/Local/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/THAI/AppData/Local/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dremovebg_EXPORTS -I../../../../../include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++17 -O0 -fno-limit-debug-info  -fPIC -o CMakeFiles\\removebg.dir\\D_\\cfi_Tech\\sticker_maker\\image_processing_lib\\ios\\Classes\\bgRemoval.cpp.o -c D:\\cfi_Tech\\sticker_maker\\image_processing_lib\\ios\\Classes\\bgRemoval.cpp",
+  "file": "D:\\cfi_Tech\\sticker_maker\\image_processing_lib\\ios\\Classes\\bgRemoval.cpp"
+},
+{
+  "directory": "D:/cfi_Tech/sticker_maker/image_processing_lib/android/.cxx/Debug/u3a332qz/arm64-v8a",
+  "command": "C:\\Users\\THAI\\AppData\\Local\\Android\\Sdk\\ndk\\21.4.7075529\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=C:/Users/THAI/AppData/Local/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/THAI/AppData/Local/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dremovebg_EXPORTS -I../../../../../include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -frtti -fexceptions -std=c++17 -O0 -fno-limit-debug-info  -fPIC -o CMakeFiles\\removebg.dir\\D_\\cfi_Tech\\sticker_maker\\image_processing_lib\\ios\\Classes\\net.cpp.o -c D:\\cfi_Tech\\sticker_maker\\image_processing_lib\\ios\\Classes\\net.cpp",
+  "file": "D:\\cfi_Tech\\sticker_maker\\image_processing_lib\\ios\\Classes\\net.cpp"
+}
+]
