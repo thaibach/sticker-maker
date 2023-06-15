@@ -1,0 +1,2 @@
+ninja: Entering directory `D:\cfi_Tech\sticker_maker\image_processing_lib\android\.cxx\Debug\u3a332qz\armeabi-v7a'
+ninja: no work to do.

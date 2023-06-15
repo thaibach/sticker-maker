@@ -1,0 +1,8 @@
+# ninja log v5
+1	274	705559458	CMakeFiles/bitmap.dir/D_/cfi_Tech/sticker_maker/image_processing_lib/ios/Classes/bitmap.cpp.o	fc18f870e35a57d0
+275	378	705559458	D:/cfi_Tech/sticker_maker/build/image_processing/intermediates/cxx/RelWithDebInfo/1s5b1c10/obj/armeabi-v7a/libbitmap.so	cdab75d3ad9f2b2f
+5	2740	705559461	CMakeFiles/removebg.dir/D_/cfi_Tech/sticker_maker/image_processing_lib/ios/Classes/net.cpp.o	649ff4b223c4407a
+8	3357	705559461	CMakeFiles/removebg.dir/D_/cfi_Tech/sticker_maker/image_processing_lib/ios/Classes/bgRemoval.cpp.o	dd0b93fe2a9f1ea3
+3357	3679	705559462	D:/cfi_Tech/sticker_maker/build/image_processing/intermediates/cxx/RelWithDebInfo/1s5b1c10/obj/armeabi-v7a/libremovebg.so	9be48530c8b7c325
+7	274	706002578	D:/cfi_Tech/sticker_maker/build/image_processing/intermediates/cxx/RelWithDebInfo/1s5b1c10/obj/armeabi-v7a/libbitmap.so	cdab75d3ad9f2b2f
+17	460	706002578	D:/cfi_Tech/sticker_maker/build/image_processing/intermediates/cxx/RelWithDebInfo/1s5b1c10/obj/armeabi-v7a/libremovebg.so	9be48530c8b7c325

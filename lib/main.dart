@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -75,11 +77,9 @@ class _MyAppState extends State<MyApp> {
       ByteData modelData = await rootBundle.load('assets/rm_model.mnn');
       final modelBuffer = modelData.buffer;
       File modelFile = File(modelPath_);
-      await modelFile.writeAsBytes(modelBuffer.asUint8List(
-          modelData.offsetInBytes, modelData.lengthInBytes));
+      await modelFile.writeAsBytes(modelBuffer.asUint8List(modelData.offsetInBytes, modelData.lengthInBytes));
     }
-    InitModelArguments initArgs =
-        InitModelArguments(modelPath_, inputWidth, inputHeight, numMNNThreads);
+    InitModelArguments initArgs = InitModelArguments(modelPath_, inputWidth, inputHeight, numMNNThreads);
     initModel(initArgs);
   }*/
 
@@ -114,6 +114,16 @@ class _MyAppState extends State<MyApp> {
               Locale('fr', ''),
             ],
             locale: lang,
+
+            //set English lam ngon ngu mac dinh khi cai dat app
+            // localeListResolutionCallback: (locales, supportedLocales) {
+            //   for (Locale locale in locales) {
+            //     if (supportedLocales.contains(locale)) {
+            //       return locale;
+            //     }
+            //   }
+            //   return Locale('en', '');
+            // },
           );
         },
       ),

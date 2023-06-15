@@ -1,0 +1,68 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "BackgroundRemoval",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "bitmap::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-bitmap-Debug-753433eafea30b31a58d.json",
+					"name" : "bitmap",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "removebg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-removebg-Debug-d9a72a765dd162928d60.json",
+					"name" : "removebg",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/cfi_Tech/sticker_maker/image_processing_lib/android/.cxx/Debug/u3a332qz/armeabi-v7a",
+		"source" : "D:/cfi_Tech/sticker_maker/image_processing_lib/android"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 1
+	}
+}

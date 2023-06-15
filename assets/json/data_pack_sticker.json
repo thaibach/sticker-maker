@@ -1,85 +1,84 @@
 {
     "packSticker": [
         {
+            "id": "1",
             "urlImage": "assets/icons/cute_sticker.png",
             "title": "Cute",
             "status": false,
-            "stickerChild": {
-                "title": "Cute",
-                "quantity": "5",
-                "urlImage": "assets/icons/cute_sticker.png"
-            }
+            "stickerChild": [
+                "assets/icons/cute_sticker.png",
+                "assets/icons/cute_sticker.png"
+            ]
         },
         {
+            "id": "2",
             "urlImage": "assets/icons/cute_sticker.png",
-            "title": "Cute",
+            "title": "Pet",
             "status": false,
-            "stickerChild": {
-                "title": "Cute",
-                "quantity": "5",
-                "urlImage": "assets/icons/cute_sticker.png"
-            }
+            "stickerChild": [
+                "assets/icons/cute_sticker.png",
+                "assets/icons/cute_sticker.png"
+            ]
         },
         {
+            "id": "3",
             "urlImage": "assets/icons/cute_sticker.png",
             "title": "A",
             "status": false,
-            "stickerChild": {
-                "title": "A",
-                "quantity": "5",
-                "urlImage": "assets/icons/cute_sticker.png"
-            }
+            "stickerChild": [
+                "assets/icons/cute_sticker.png",
+                "assets/icons/cute_sticker.png"
+            ]
         },
         {
+            "id": "4",
             "urlImage": "assets/icons/cute_sticker.png",
             "title": "B",
             "status": false,
-            "stickerChild": {
-                "title": "A",
-                "quantity": "5",
-                "urlImage": "assets/icons/cute_sticker.png"
-            }
-        },
-        {
-            "urlImage": "assets/icons/cute_sticker.png",
-            "title": "C",
-            "status": false,
-            "stickerChild": {
-                "title": "A",
-                "quantity": "5",
-                "urlImage": "assets/icons/cute_sticker.png"
-            }
+            "stickerChild": [
+                "assets/icons/cute_sticker.png",
+                "assets/icons/cute_sticker.png"
+            ]
         },
         {
             "id": "5",
             "urlImage": "assets/icons/cute_sticker.png",
-            "title": "D",
+            "title": "C",
             "status": false,
-            "stickerChild": {
-                "title": "A",
-                "quantity": "5",
-                "urlImage": "assets/icons/cute_sticker.png"
-            }
+            "stickerChild": [
+                "assets/icons/cute_sticker.png",
+                "assets/icons/cute_sticker.png"
+            ]
         },
         {
+            "id": "6",
+            "urlImage": "assets/icons/cute_sticker.png",
+            "title": "D",
+            "status": false,
+            "stickerChild": [
+                "assets/icons/cute_sticker.png",
+                "assets/icons/cute_sticker.png"
+            ]
+        },
+        {
+            "id": "7",
             "urlImage": "assets/icons/cute_sticker.png",
             "title": "E",
             "status": false,
-            "stickerChild": {
-                "title": "A",
-                "quantity": "5",
-                "urlImage": "assets/icons/cute_sticker.png"
-            }
+            "stickerChild": [
+                "assets/icons/cute_sticker.png",
+                "assets/icons/cute_sticker.png"
+            ]
         },
         {
+            "id": "8",
             "urlImage": "assets/icons/cute_sticker.png",
             "title": "F",
             "status": false,
-            "stickerChild": {
-                "title": "A",
-                "quantity": "5",
-                "urlImage": "assets/icons/cute_sticker.png"
-            }
+            "stickerChild": [
+                "assets/icons/cute_sticker.png",
+                "assets/icons/cute_sticker.png"
+            ]
         }
     ]
 }

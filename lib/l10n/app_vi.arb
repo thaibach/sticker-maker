@@ -33,7 +33,7 @@
 "talking":"Chat",
 "other":"Khác",
 "save":"Lưu",
-"your_sticker_packs":"Gói sticker của bạn",
+"your_sticker_packs":"Chọn gói sticker của bạn",
 "create_pack":"Tạo gói",
 "add_to_pack":"Thêm vào gói",
 "saved_to_photo_gallery":"Đã lưu vào thư viện ảnh !",
@@ -70,5 +70,6 @@
 "at_least":"Sử dụng ít nhất 6 ký tự",
 "ok":"OK",
 "apply":"Áp dụng",
-"language_default":"Vietnamese"
+"language_default":"Vietnamese",
+"enter_new_pack_name":"Nhập tên gói mới"
 }

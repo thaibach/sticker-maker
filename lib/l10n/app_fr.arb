@@ -69,5 +69,6 @@
 "at_least":"Veuillez nous donner au moins 6 caractères !",
 "ok":"OK",
 "apply":"Appliquer",
-"language_default":"France"
+"language_default":"France",
+"enter_new_pack_name":"Entrez le nouveau nom du pack"
 }
