@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sticker_maker/src/views/edit/components/dialog.dart';
 import 'package:sticker_maker/src/views/pack_sticker/cubit/add_sticker_to_pack_cubit.dart';
 import 'package:sticker_maker/src/views/pack_sticker/page/add_to_pack_page.dart';
 import 'package:sticker_maker/src/views/edit/components/add_drawing.dart';
@@ -151,7 +152,7 @@ class _EditStickerPageState extends State<EditStickerPage> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                AppNavigate.pop(context);
+                                ComponentsDialog().diaLogBackEdit(context);
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(top: 10, left: 10),

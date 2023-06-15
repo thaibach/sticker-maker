@@ -1,0 +1,68 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "BackgroundRemoval",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "bitmap::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-bitmap-Debug-de566e4d5d66cf96e541.json",
+					"name" : "bitmap",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "removebg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-removebg-Debug-c9d4b8101e628b8722ae.json",
+					"name" : "removebg",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Kieu Thang/AndroidStudioProjects/sticker_maker/image_processing_lib/android/.cxx/Debug/3r6u4139/arm64-v8a",
+		"source" : "C:/Users/Kieu Thang/AndroidStudioProjects/sticker_maker/image_processing_lib/android"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 1
+	}
+}

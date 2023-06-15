@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 import 'package:sticker_maker/src/cubit/cubit_index.dart';
 import 'package:sticker_maker/src/utils/utils_index.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
-import 'package:sticker_maker/src/widgets/custom/crop_your_image.dart';
+import 'package:sticker_maker/src/widgets/custom/customCrop/crop_your_image.dart';
 import 'package:sticker_maker/src/widgets/widgets_index.dart';
 
 import '../../widgets/custom/buttom_bar/curved_buttom_bar.dart';
@@ -37,6 +37,14 @@ class _PreEditPageState extends State<PreEditPage> {
   PreEditCubit preEditCubit = PreEditCubit();
   final cropController = CropController();
   List<String> lable = ["Remove background", "Manual crop", "Frame crop"];
+
+  List<Cropped> cropped = [
+    Cropped(image: 'assets/icons/ic_rectangle.svg', name: 'Rectangle'),
+    Cropped(image: 'assets/icons/ic_circle.svg', name: 'Circle'),
+    Cropped(image: 'assets/icons/ic_triangle.svg', name: 'Triangle'),
+    Cropped(image: 'assets/icons/ic_diamond.svg', name: 'Diamond'),
+    Cropped(image: 'assets/icons/ic_hexagon.svg', name: 'Hexagon'),
+  ];
 
   @override
   void initState() {
@@ -206,7 +214,7 @@ class _PreEditPageState extends State<PreEditPage> {
                                                   )
                                                 : const SizedBox.shrink(),
                                         child: Padding(
-                                          padding: EdgeInsets.all(22),
+                                          padding: const EdgeInsets.all(22),
                                           child: Crop(
                                             controller: cropController,
                                             image: preEditCubit.croppedData!,
@@ -248,6 +256,7 @@ class _PreEditPageState extends State<PreEditPage> {
                                               ..withCircleUi = false
                                               ..aspectRatio = 1;
                                             setState(() {
+                                              preEditCubit.crop = false;
                                               preEditCubit.turnOffBorder = true;
                                             });
                                           },
@@ -281,6 +290,7 @@ class _PreEditPageState extends State<PreEditPage> {
                                             preEditCubit.isCircleUi = true;
                                             cropController.withCircleUi = true;
                                             setState(() {
+                                              preEditCubit.crop = false;
                                               preEditCubit.turnOffBorder = true;
                                             });
                                           },
@@ -311,10 +321,14 @@ class _PreEditPageState extends State<PreEditPage> {
                                         ),
                                         InkWell(
                                           onTap: () {
-                                            // preEditCubit.isCircleUi = false;
-                                            // setState(() {
-                                            //   preEditCubit.turnOffBorder = true;
-                                            // });
+                                            setState(() {
+                                              preEditCubit.crop = true;
+                                              preEditCubit.cropHexagon = false;
+                                              preEditCubit.turnOffBorder = true;
+                                            });
+                                            cropController
+                                              ..withCircleUi = false
+                                              ..aspectRatio = 1;
                                           },
                                           child: Container(
                                             height: 50,
@@ -322,13 +336,12 @@ class _PreEditPageState extends State<PreEditPage> {
                                             child: Column(
                                               children: [
                                                 SvgPicture.asset(
-                                                    'assets/icons/ic_heart.svg'),
+                                                    'assets/icons/ic_triangle.svg'),
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
                                                 Text(
-                                                  AppLocalizations.of(context)!
-                                                      .heart,
+                                                  "Triangle",
                                                   style: AppStyle
                                                       .DEFAUlT_CONTENT.copyWith(
                                                     fontWeight: FontWeight.w700,
@@ -343,13 +356,14 @@ class _PreEditPageState extends State<PreEditPage> {
                                         ),
                                         InkWell(
                                           onTap: () {
-                                            // preEditCubit.isCircleUi = false;
-                                            // cropController
-                                            //   ..withCircleUi = false
-                                            //   ..aspectRatio = 1;
-                                            // setState(() {
-                                            //   preEditCubit.turnOffBorder = true;
-                                            // });
+                                            setState(() {
+                                              preEditCubit.crop = true;
+                                              preEditCubit.cropHexagon = false;
+                                              preEditCubit.turnOffBorder = true;
+                                            });
+                                            cropController
+                                              ..withCircleUi = true
+                                              ..aspectRatio = 1;
                                           },
                                           child: Container(
                                             height: 50,
@@ -378,11 +392,14 @@ class _PreEditPageState extends State<PreEditPage> {
                                         ),
                                         InkWell(
                                           onTap: () {
-                                            // preEditCubit.isCircleUi = true;
-                                            // cropController.withCircleUi = true;
-                                            // setState(() {
-                                            //   preEditCubit.turnOffBorder = true;
-                                            // });
+                                            setState(() {
+                                              preEditCubit.crop = true;
+                                              preEditCubit.cropHexagon = true;
+                                              preEditCubit.turnOffBorder = true;
+                                            });
+                                            cropController
+                                              ..withCircleUi = false
+                                              ..aspectRatio = 1;
                                           },
                                           child: Container(
                                             height: 50,
@@ -390,13 +407,12 @@ class _PreEditPageState extends State<PreEditPage> {
                                             child: Column(
                                               children: [
                                                 SvgPicture.asset(
-                                                    'assets/icons/ic_cat_face.svg'),
+                                                    'assets/icons/ic_hexagon.svg'),
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
                                                 Text(
-                                                  AppLocalizations.of(context)!
-                                                      .cat_face,
+                                                  'Hexagon',
                                                   style: AppStyle
                                                       .DEFAUlT_CONTENT.copyWith(
                                                     fontWeight: FontWeight.w700,
@@ -504,4 +520,11 @@ class _PreEditPageState extends State<PreEditPage> {
       },
     );
   }
+}
+
+class Cropped {
+  final String image;
+  final String name;
+
+  Cropped({required this.image, required this.name});
 }

@@ -1,0 +1,8 @@
+Executable : C:\Users\Kieu Thang\AppData\Local\Android\sdk\cmake\3.18.1\bin\ninja.exe
+arguments : 
+-C
+C:\Users\Kieu Thang\AndroidStudioProjects\sticker_maker\image_processing_lib\android\.cxx\Debug\3r6u4139\arm64-v8a
+bitmap
+removebg
+jvmArgs : 
+
