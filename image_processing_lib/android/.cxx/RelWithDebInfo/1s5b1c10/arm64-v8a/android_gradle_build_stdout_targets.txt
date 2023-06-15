@@ -1,0 +1,2 @@
+ninja: Entering directory `D:\cfi_Tech\sticker_maker\image_processing_lib\android\.cxx\RelWithDebInfo\1s5b1c10\arm64-v8a'
+ninja: no work to do.

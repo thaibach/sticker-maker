@@ -1,0 +1,4 @@
+D:/cfi_Tech/sticker_maker/image_processing_lib/android/.cxx/Debug/u3a332qz/armeabi-v7a/CMakeFiles/bitmap.dir
+D:/cfi_Tech/sticker_maker/image_processing_lib/android/.cxx/Debug/u3a332qz/armeabi-v7a/CMakeFiles/removebg.dir
+D:/cfi_Tech/sticker_maker/image_processing_lib/android/.cxx/Debug/u3a332qz/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/cfi_Tech/sticker_maker/image_processing_lib/android/.cxx/Debug/u3a332qz/armeabi-v7a/CMakeFiles/rebuild_cache.dir

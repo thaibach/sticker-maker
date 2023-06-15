@@ -64,4 +64,5 @@ class AddStickerToPackCubit extends Cubit<AddStickerToPackState> {
     String outputPath = '$dirPath/${DateTime.now().microsecondsSinceEpoch}.png';
     emit(AddStickerToSuccess(image: bytes));
   }
+  
 }

@@ -1,10 +1,9 @@
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:flutter/material.dart';
-import 'package:image/image.dart' as img_img;
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image/image.dart' as img_img;
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sticker_maker/src/cubit/home_cubit/home_state.dart';
 
@@ -28,11 +27,9 @@ class HomePageCubit extends Cubit<HomePageState> {
       } else {
         ImagePicker imagePicker = ImagePicker();
         XFile? image = await imagePicker.pickImage(
-            source: isChooseImage == true
-                ? ImageSource.camera
-                : ImageSource.gallery,
+            source: isChooseImage == true ? ImageSource.camera : ImageSource.gallery,
             imageQuality: null,
-            preferredCameraDevice: CameraDevice.front);
+            preferredCameraDevice: CameraDevice.rear);
 
         if (image != null) {
           emit(HomePageSuccess());
@@ -45,11 +42,9 @@ class HomePageCubit extends Cubit<HomePageState> {
       if (statusImage.isGranted || statusStorage.isGranted) {
         ImagePicker imagePicker = ImagePicker();
         XFile? image = await imagePicker.pickImage(
-            source: isChooseImage == true
-                ? ImageSource.camera
-                : ImageSource.gallery,
+            source: isChooseImage == true ? ImageSource.camera : ImageSource.gallery,
             imageQuality: null,
-            preferredCameraDevice: CameraDevice.front);
+            preferredCameraDevice: CameraDevice.rear);
         if (image != null) {
           emit(HomePageSuccess());
           imageFile = File(image.path);

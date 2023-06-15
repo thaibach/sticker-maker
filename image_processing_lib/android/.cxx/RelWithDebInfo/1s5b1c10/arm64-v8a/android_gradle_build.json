@@ -1,0 +1,48 @@
+{
+  "buildFiles": [
+    "D:\\cfi_Tech\\sticker_maker\\image_processing_lib\\android\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\THAI\\AppData\\Local\\Android\\sdk\\cmake\\3.18.1\\bin\\ninja.exe",
+      "-C",
+      "D:\\cfi_Tech\\sticker_maker\\image_processing_lib\\android\\.cxx\\RelWithDebInfo\\1s5b1c10\\arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\THAI\\AppData\\Local\\Android\\sdk\\cmake\\3.18.1\\bin\\ninja.exe",
+    "-C",
+    "D:\\cfi_Tech\\sticker_maker\\image_processing_lib\\android\\.cxx\\RelWithDebInfo\\1s5b1c10\\arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "bitmap::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "bitmap",
+      "output": "D:\\cfi_Tech\\sticker_maker\\build\\image_processing\\intermediates\\cxx\\RelWithDebInfo\\1s5b1c10\\obj\\arm64-v8a\\libbitmap.so",
+      "runtimeFiles": []
+    },
+    "removebg::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "removebg",
+      "output": "D:\\cfi_Tech\\sticker_maker\\build\\image_processing\\intermediates\\cxx\\RelWithDebInfo\\1s5b1c10\\obj\\arm64-v8a\\libremovebg.so",
+      "runtimeFiles": [
+        "D:\\cfi_Tech\\sticker_maker\\image_processing_lib\\android\\src\\main\\arm64-v8a\\libMNN.so",
+        "D:\\cfi_Tech\\sticker_maker\\image_processing_lib\\android\\src\\main\\arm64-v8a\\libopencv_java4.so"
+      ]
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "C:\\Users\\THAI\\AppData\\Local\\Android\\Sdk\\ndk\\21.4.7075529\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "C:\\Users\\THAI\\AppData\\Local\\Android\\Sdk\\ndk\\21.4.7075529\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}
