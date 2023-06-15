@@ -34,7 +34,7 @@ class ComponentsDialog{
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).pop();
-                      Navigator.of(context).pop();
+
                     },
                     child: Container(
                       margin: const EdgeInsets.only(top: 6, bottom: 20),
@@ -65,6 +65,7 @@ class ComponentsDialog{
                   ),
                   GestureDetector(
                     onTap: () {
+                      Navigator.of(context).pop();
                       Navigator.of(context).pop();
                     },
                     child: Container(

@@ -16,6 +16,8 @@
 "rectangle":"Rectangle",
 "circle":"Circle",
 "heart":"Heart",
+"triangle":"Triangle",
+"hexagon":"Hexagon",
 "diamond":"Diamond",
 "cat_face":"Cat face",
 "cropping":"Cropping ",

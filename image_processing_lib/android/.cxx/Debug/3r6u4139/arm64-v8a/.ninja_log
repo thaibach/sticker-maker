@@ -1,0 +1,6 @@
+# ninja log v5
+1	1439	708331910	CMakeFiles/bitmap.dir/C_/Users/Kieu_Thang/AndroidStudioProjects/sticker_maker/image_processing_lib/ios/Classes/bitmap.cpp.o	4e197eed26fe5ad2
+1441	1819	708331910	C:/Users/Kieu Thang/AndroidStudioProjects/sticker_maker/build/image_processing/intermediates/cxx/Debug/3r6u4139/obj/arm64-v8a/libbitmap.so	21a99c0e5f33ed12
+16	8473	708331917	CMakeFiles/removebg.dir/C_/Users/Kieu_Thang/AndroidStudioProjects/sticker_maker/image_processing_lib/ios/Classes/net.cpp.o	bf06fa47092a18fc
+36	8673	708331917	CMakeFiles/removebg.dir/C_/Users/Kieu_Thang/AndroidStudioProjects/sticker_maker/image_processing_lib/ios/Classes/bgRemoval.cpp.o	ea6f341ddcee45c2
+8673	8971	708331917	C:/Users/Kieu Thang/AndroidStudioProjects/sticker_maker/build/image_processing/intermediates/cxx/Debug/3r6u4139/obj/arm64-v8a/libremovebg.so	535e58e8f73ce6c9

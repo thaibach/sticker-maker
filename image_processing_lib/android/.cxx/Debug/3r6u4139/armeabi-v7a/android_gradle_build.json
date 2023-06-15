@@ -1,0 +1,48 @@
+{
+  "buildFiles": [
+    "C:\\Users\\Kieu Thang\\AndroidStudioProjects\\sticker_maker\\image_processing_lib\\android\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Users\\Kieu Thang\\AppData\\Local\\Android\\sdk\\cmake\\3.18.1\\bin\\ninja.exe",
+      "-C",
+      "C:\\Users\\Kieu Thang\\AndroidStudioProjects\\sticker_maker\\image_processing_lib\\android\\.cxx\\Debug\\3r6u4139\\armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\Kieu Thang\\AppData\\Local\\Android\\sdk\\cmake\\3.18.1\\bin\\ninja.exe",
+    "-C",
+    "C:\\Users\\Kieu Thang\\AndroidStudioProjects\\sticker_maker\\image_processing_lib\\android\\.cxx\\Debug\\3r6u4139\\armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "bitmap::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "bitmap",
+      "output": "C:\\Users\\Kieu Thang\\AndroidStudioProjects\\sticker_maker\\build\\image_processing\\intermediates\\cxx\\Debug\\3r6u4139\\obj\\armeabi-v7a\\libbitmap.so",
+      "runtimeFiles": []
+    },
+    "removebg::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "armeabi-v7a",
+      "artifactName": "removebg",
+      "output": "C:\\Users\\Kieu Thang\\AndroidStudioProjects\\sticker_maker\\build\\image_processing\\intermediates\\cxx\\Debug\\3r6u4139\\obj\\armeabi-v7a\\libremovebg.so",
+      "runtimeFiles": [
+        "C:\\Users\\Kieu Thang\\AndroidStudioProjects\\sticker_maker\\image_processing_lib\\android\\src\\main\\armeabi-v7a\\libMNN.so",
+        "C:\\Users\\Kieu Thang\\AndroidStudioProjects\\sticker_maker\\image_processing_lib\\android\\src\\main\\armeabi-v7a\\libopencv_java4.so"
+      ]
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "C:\\Users\\Kieu Thang\\AppData\\Local\\Android\\Sdk\\ndk\\21.4.7075529\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "C:\\Users\\Kieu Thang\\AppData\\Local\\Android\\Sdk\\ndk\\21.4.7075529\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

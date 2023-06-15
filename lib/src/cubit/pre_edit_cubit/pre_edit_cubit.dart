@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:ui' as ui;
-
+import 'package:image/image.dart' as img;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +22,7 @@ class PreEditCubit extends Cubit<PreEditState> {
   bool removeBg = false;
   bool cut = false;
   bool crop = false;
+  bool cropHexagon = false;
   bool borderCrop = false;
   bool cropDiamond = false;
   var isSumbnail = false;
@@ -140,4 +141,32 @@ class PreEditCubit extends Cubit<PreEditState> {
       }
     });
   }
+
+  img.Image copyCrop(img.Image src, int x, int y, int w, int h) {
+    // Make sure crop rectangle is within the range of the src image.
+    x = x.clamp(0, src.width - 1).toInt();
+    y = y.clamp(0, src.height - 1).toInt();
+    if (x + w > src.width) {
+      w = src.width - x;
+    }
+    if (y + h > src.height) {
+      h = src.height - y;
+    }
+
+    final dst =
+    img.Image(w, h, channels: src.channels, exif: src.exif, iccp: src.iccProfile);
+
+    for (var yi = 0, sy = y; yi < h; ++yi, ++sy) {
+      for (var xi = 0, sx = x; xi < w; ++xi, ++sx) {
+        dst.setPixel(xi, yi, src.getPixel(sx, sy));
+      }
+    }
+    print(x);
+    print(y);
+    print(w);
+    print(h);
+
+    return dst;
+  }
 }
+

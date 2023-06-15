@@ -2,7 +2,8 @@ part of crop_your_image;
 
 const dotTotalSize = 32.0; // fixed corner dot size.
 
-typedef CornerDotBuilder = Widget Function(double size, EdgeAlignment edgeAlignment);
+typedef CornerDotBuilder = Widget Function(
+    double size, EdgeAlignment edgeAlignment);
 
 typedef CroppingAreaBuilder = Rect Function(Rect imageRect);
 
@@ -110,7 +111,8 @@ class Crop extends StatelessWidget {
     this.fixArea = false,
     this.progressIndicator = const SizedBox.shrink(),
     this.interactive = false,
-  })  : assert((initialSize ?? 1.0) <= 1.0, 'initialSize must be less than 1.0, or null meaning not specified.'),
+  })  : assert((initialSize ?? 1.0) <= 1.0,
+            'initialSize must be less than 1.0, or null meaning not specified.'),
         super(key: key);
 
   @override
@@ -207,7 +209,9 @@ class _CropEditorState extends State<_CropEditor> {
 
   bool get _isImageLoading => _lastComputed != null;
 
-  _Calculator get calculator => _isFitVertically ? const _VerticalCalculator() : const _HorizontalCalculator();
+  _Calculator get calculator => _isFitVertically
+      ? const _VerticalCalculator()
+      : const _HorizontalCalculator();
 
   set rect(Rect newRect) {
     setState(() {
@@ -273,8 +277,10 @@ class _CropEditorState extends State<_CropEditor> {
     final topPositionDelta = (newHeight - _imageRect.height) * 0.5;
 
     // position
-    final newLeft = max(min(_rect.left, _imageRect.left - leftPositionDelta), _rect.right - newWidth);
-    final newTop = max(min(_rect.top, _imageRect.top - topPositionDelta), _rect.bottom - newHeight);
+    final newLeft = max(min(_rect.left, _imageRect.left - leftPositionDelta),
+        _rect.right - newWidth);
+    final newTop = max(min(_rect.top, _imageRect.top - topPositionDelta),
+        _rect.bottom - newHeight);
 
     if (newWidth < _rect.width || newHeight < _rect.height) {
       return;
@@ -456,26 +462,76 @@ class _CropEditorState extends State<_CropEditor> {
                     child: Center(
                       child: Image.memory(
                         widget.image,
-                        width: _isFitVertically ? null : MediaQuery.of(context).size.width * _scale,
-                        height: _isFitVertically ? MediaQuery.of(context).size.height * _scale : null,
+                        width: _isFitVertically
+                            ? null
+                            : MediaQuery.of(context).size.width * _scale,
+                        height: _isFitVertically
+                            ? MediaQuery.of(context).size.height * _scale
+                            : null,
                         fit: BoxFit.contain,
                       ),
                     ),
                   ),
                 ),
               ),
-              IgnorePointer(
-                child: ClipPath(
-                  clipper: _withCircleUi ? _CircleCropAreaClipper(_rect) : _CropAreaClipper(_rect, widget.radius),
-                  child: Container(
-                    width: _isFitVertically ? null : MediaQuery.of(context).size.width * _scale,
-                    height: _isFitVertically ? MediaQuery.of(context).size.height * _scale : null,
-                    //color: widget.maskColor ??  Colors.black.withAlpha(100),
-                    // margin: const EdgeInsets.all(21),
-                    color: widget.preEditCubit.turnOffBorder == true ? Colors.black.withAlpha(79) : Colors.transparent,
-                  ),
-                ),
-              ),
+              widget.preEditCubit.crop == false
+                  ? IgnorePointer(
+                      child: ClipPath(
+                        clipper: _withCircleUi
+                            ? _CircleCropAreaClipper(_rect)
+                            : _CropAreaClipper(_rect, widget.radius),
+                        child: Container(
+                          width: _isFitVertically
+                              ? null
+                              : MediaQuery.of(context).size.width * _scale,
+                          height: _isFitVertically
+                              ? MediaQuery.of(context).size.height * _scale
+                              : null,
+                          //color: widget.maskColor ??  Colors.black.withAlpha(100),
+                          // margin: const EdgeInsets.all(21),
+                          color: widget.preEditCubit.turnOffBorder == true
+                              ? Colors.black.withAlpha(79)
+                              : Colors.transparent,
+                        ),
+                      ),
+                    )
+                  : IgnorePointer(
+                      child: widget.preEditCubit.cropHexagon == false ? ClipPath(
+                        clipper: _withCircleUi
+                            ? _CropDiamondClipper(_rect)
+                            : _CropTriangleClipper(_rect),
+                        child: Container(
+                          width: _isFitVertically
+                              ? null
+                              : MediaQuery.of(context).size.width * _scale,
+                          height: _isFitVertically
+                              ? MediaQuery.of(context).size.height * _scale
+                              : null,
+                          //color: widget.maskColor ??  Colors.black.withAlpha(100),
+                          // margin: const EdgeInsets.all(21),
+                          color: widget.preEditCubit.turnOffBorder == true
+                              ? Colors.black.withAlpha(79)
+                              : Colors.transparent,
+                        ),
+                      ) : ClipPath(
+                        clipper: _withCircleUi
+                            ? _CropDiamondClipper(_rect)
+                            : _CropHexagonleClipper(_rect),
+                        child: Container(
+                          width: _isFitVertically
+                              ? null
+                              : MediaQuery.of(context).size.width * _scale,
+                          height: _isFitVertically
+                              ? MediaQuery.of(context).size.height * _scale
+                              : null,
+                          //color: widget.maskColor ??  Colors.black.withAlpha(100),
+                          // margin: const EdgeInsets.all(21),
+                          color: widget.preEditCubit.turnOffBorder == true
+                              ? Colors.black.withAlpha(79)
+                              : Colors.transparent,
+                        ),
+                      ),
+                    ),
               if (!widget.interactive && !widget.fixArea)
                 Positioned(
                   left: _rect.left,
@@ -497,7 +553,8 @@ class _CropEditorState extends State<_CropEditor> {
                                 height: _rect.height,
                                 decoration: BoxDecoration(
                                     color: Colors.transparent,
-                                    border: Border.all(color: Colors.white.withOpacity(0.4))),
+                                    border: Border.all(
+                                        color: Colors.white.withOpacity(0.4))),
                                 child: Container(),
                               )
                             : Container(),
@@ -671,30 +728,135 @@ class _CropAreaClipper extends CustomClipper<Path> {
 
   final Rect rect;
   final double radius;
+
   @override
   Path getClip(Size size) {
     return Path()
       ..addPath(
         Path()
-          // ..moveTo(rect.left, ((rect.bottom - rect.top) + rect.top) - rect.height/2)
-          //   ..arcToPoint(Offset(rect.left, ((rect.bottom - rect.top) + rect.top) - rect.height/2))
-          // ..lineTo(((rect.right - rect.left) + rect.left) - rect.height/2, rect.top)
-          //  ..arcToPoint(Offset(((rect.right - rect.left) + rect.left) - rect.height/2, rect.top))
-          // ..lineTo(rect.right, ((rect.bottom - rect.top) + rect.top) - rect.height/2)
-          //  ..arcToPoint(Offset(rect.right, ((rect.bottom - rect.top) + rect.top) - rect.height/2))
-          // ..lineTo(((rect.right - rect.left) + rect.left) - rect.height/2, rect.bottom)
-          //  ..arcToPoint(Offset(((rect.right - rect.left) + rect.left) - rect.height/2, rect.bottom))
-          //   ..close(),
-          // Offset.zero,
           ..moveTo(rect.left, rect.top + radius)
-          ..arcToPoint(Offset(rect.left + radius, rect.top), radius: Radius.circular(radius))
+          ..arcToPoint(Offset(rect.left + radius, rect.top),
+              radius: Radius.circular(radius))
           ..lineTo(rect.right - radius, rect.top)
-          ..arcToPoint(Offset(rect.right, rect.top + radius), radius: Radius.circular(radius))
+          ..arcToPoint(Offset(rect.right, rect.top + radius),
+              radius: Radius.circular(radius))
           ..lineTo(rect.right, rect.bottom - radius)
-          ..arcToPoint(Offset(rect.right - radius, rect.bottom), radius: Radius.circular(radius))
+          ..arcToPoint(Offset(rect.right - radius, rect.bottom),
+              radius: Radius.circular(radius))
           ..lineTo(rect.left + radius, rect.bottom)
-          ..arcToPoint(Offset(rect.left, rect.bottom - radius), radius: Radius.circular(radius))
+          ..arcToPoint(Offset(rect.left, rect.bottom - radius),
+              radius: Radius.circular(radius))
           ..close(),
+        Offset.zero,
+      )
+      ..addRect(Rect.fromLTWH(0, 0, size.width, size.height))
+      ..fillType = PathFillType.evenOdd;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => true;
+}
+
+class _CropDiamondClipper extends CustomClipper<Path> {
+  _CropDiamondClipper(this.rect);
+
+  final Rect rect;
+
+
+  @override
+  Path getClip(Size size) {
+    return Path()
+      ..addPath(
+        Path()
+          ..moveTo(rect.left,
+              ((rect.bottom - rect.top) + rect.top) - rect.height / 2)
+          ..arcToPoint(Offset(rect.left,
+              ((rect.bottom - rect.top) + rect.top) - rect.height / 2))
+          ..lineTo(((rect.right - rect.left) + rect.left) - rect.height / 2,
+              rect.top)
+          ..arcToPoint(Offset(
+              ((rect.right - rect.left) + rect.left) - rect.height / 2,
+              rect.top))
+          ..lineTo(rect.right,
+              ((rect.bottom - rect.top) + rect.top) - rect.height / 2)
+          ..arcToPoint(Offset(rect.right,
+              ((rect.bottom - rect.top) + rect.top) - rect.height / 2))
+          ..lineTo(((rect.right - rect.left) + rect.left) - rect.height / 2,
+              rect.bottom)
+          ..arcToPoint(Offset(
+              ((rect.right - rect.left) + rect.left) - rect.height / 2,
+              rect.bottom))
+          ..close(),
+        Offset.zero,
+      )
+      ..addRect(Rect.fromLTWH(0, 0, size.width, size.height))
+      ..fillType = PathFillType.evenOdd;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => true;
+}
+
+class _CropTriangleClipper extends CustomClipper<Path> {
+  _CropTriangleClipper(this.rect);
+
+  final Rect rect;
+
+  @override
+  Path getClip(Size size) {
+    return Path()
+      ..addPath(
+        Path()
+        ..moveTo(rect.left, ((rect.bottom - rect.top) + rect.top))
+        ..lineTo(((rect.right - rect.left) + rect.left) - rect.height / 2, rect.top)
+          ..arcToPoint(Offset(rect.right, ((rect.bottom - rect.top) + rect.top)))
+          ..close(),
+        Offset.zero,
+      )
+      ..addRect(Rect.fromLTWH(0, 0, size.width, size.height))
+      ..fillType = PathFillType.evenOdd;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => true;
+}
+
+class _CropHexagonleClipper extends CustomClipper<Path> {
+  _CropHexagonleClipper(this.rect);
+
+  final Rect rect;
+
+  @override
+  Path getClip(Size size) {
+    return Path()
+      ..addPath(
+        Path()
+          ..moveTo(rect.left,
+              ((rect.bottom - rect.top) + rect.top) - rect.height / 4)
+          ..arcToPoint(Offset(rect.left,
+              ((rect.bottom - rect.top) + rect.top) - rect.height * 0.75))
+          ..lineTo(((rect.right - rect.left) + rect.left) - rect.height / 2,
+              rect.top)
+          ..arcToPoint(Offset(
+              ((rect.right - rect.left) + rect.left) - rect.height / 2,
+              rect.top))
+          ..lineTo(rect.right,
+              ((rect.bottom - rect.top) + rect.top) - rect.height * 0.75)
+          ..arcToPoint(Offset(rect.right,
+              ((rect.bottom - rect.top) + rect.top) - rect.height * 0.25))
+          ..lineTo(((rect.right - rect.left) + rect.left) - rect.height / 2,
+              rect.bottom)
+          ..arcToPoint(Offset(
+              ((rect.right - rect.left) + rect.left) - rect.height / 2,
+              rect.bottom))
+          ..close(),
+          // ..moveTo(size.width / 2, 0)
+          // ..lineTo(size.width, size.height * .25)
+          // ..lineTo(size.width, size.height * .75)
+          // ..lineTo(size.width * .5, size.height)
+          // ..lineTo(0, size.height * .75)
+          // ..lineTo(0, size.height * .25)
+          // ..close(),
         Offset.zero,
       )
       ..addRect(Rect.fromLTWH(0, 0, size.width, size.height))
@@ -786,7 +948,8 @@ Uint8List _doCropCircle(List<dynamic> cropData) {
     image.encodePng(
       image.copyCropCircle(
         originalImage,
-        center: image.Point(rect.left + rect.width / 2, rect.top + rect.height / 2),
+        center:
+        image.Point(rect.left + rect.width / 2, rect.top + rect.height / 2),
         radius: min(rect.width, rect.height) ~/ 2,
       ),
     ),

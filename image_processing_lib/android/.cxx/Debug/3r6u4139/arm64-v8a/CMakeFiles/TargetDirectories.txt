@@ -1,0 +1,4 @@
+C:/Users/Kieu Thang/AndroidStudioProjects/sticker_maker/image_processing_lib/android/.cxx/Debug/3r6u4139/arm64-v8a/CMakeFiles/bitmap.dir
+C:/Users/Kieu Thang/AndroidStudioProjects/sticker_maker/image_processing_lib/android/.cxx/Debug/3r6u4139/arm64-v8a/CMakeFiles/removebg.dir
+C:/Users/Kieu Thang/AndroidStudioProjects/sticker_maker/image_processing_lib/android/.cxx/Debug/3r6u4139/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/Kieu Thang/AndroidStudioProjects/sticker_maker/image_processing_lib/android/.cxx/Debug/3r6u4139/arm64-v8a/CMakeFiles/rebuild_cache.dir
