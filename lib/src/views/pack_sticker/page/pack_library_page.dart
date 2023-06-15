@@ -1,16 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticker_maker/src/utils/style.dart';
 import 'package:sticker_maker/src/views/pack_sticker/component/pack_sticker.dart';
 import 'package:sticker_maker/src/views/pack_sticker/cubit/add_sticker_to_pack_cubit.dart';
-import 'package:sticker_maker/src/views/pack_sticker/cubit/add_sticker_to_pack_state.dart';
 import 'package:sticker_maker/src/views/views_index.dart';
-
-import '../model/package_sticker_model.dart';
 
 class PackLibraryPage extends StatefulWidget {
   PackLibraryPage({super.key, required this.addPackCubit});

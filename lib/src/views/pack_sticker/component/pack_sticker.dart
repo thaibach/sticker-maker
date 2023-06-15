@@ -70,13 +70,22 @@ class _PackStickerCoverState extends State<PackStickerCover> {
             ],
           ),
           SizedBox(height: 2),
-          Expanded(
-              child: ListView.builder(
-            itemCount: autoGenResponse!.packSticker!.length,
-            itemBuilder: (context, index) {
-              return CustomSticker(link: autoGenResponse!.packSticker![index].urlImage ?? "");
-            },
-          ))
+          // Expanded(
+          //   //   child: ListView.builder(
+          //   // itemCount: autoGenResponse!.packSticker!.length,
+          //   // itemBuilder: (context, index) {
+          //   //   return CustomSticker(link: autoGenResponse!.packSticker![index].urlImage ?? "");
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                CustomSticker(link: "assets/icons/cute_sticker.png"),
+                CustomSticker(link: "assets/icons/cute_sticker.png"),
+                CustomSticker(link: "assets/icons/cute_sticker.png"),
+                CustomSticker(link: "assets/icons/cute_sticker.png"),
+              ],
+            ),
+          ),
         ],
       ),
     );

@@ -70,29 +70,30 @@ class _AddToPackPageState extends State<AddToPackPage> {
                   ],
                 ),
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Container(
-                  margin: EdgeInsets.only(right: 16, bottom: 28),
-                  width: 90,
-                  height: 36,
-                  decoration:
-                      BoxDecoration(color: Color(0xFFFF8A65), borderRadius: BorderRadius.all(Radius.circular(10))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: SvgPicture.asset("assets/icons/save_sticker.svg"),
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: SvgPicture.asset("assets/icons/share_btn.svg"),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // Align(
+              //   alignment: Alignment.centerRight,
+              //   child: Container(
+              //     margin: EdgeInsets.only(right: 16, bottom: 28),
+              //     width: 90,
+              //     height: 36,
+              //     decoration:
+              //         BoxDecoration(color: Color(0xFFFF8A65), borderRadius: BorderRadius.all(Radius.circular(10))),
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //       children: [
+              //         GestureDetector(
+              //           onTap: () {},
+              //           child: SvgPicture.asset("assets/icons/save_sticker.svg"),
+              //         ),
+              //         GestureDetector(
+              //           onTap: () {},
+              //           child: SvgPicture.asset("assets/icons/share_btn.svg"),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+
               Expanded(
                   flex: 7,
                   child: Center(
@@ -123,12 +124,6 @@ class _AddToPackPageState extends State<AddToPackPage> {
                           SizedBox(height: 5),
                           GestureDetector(
                             onTap: () {
-                              // AppNavigate.navigatePage(
-                              //     context,
-                              //     PopUpAddNewPack(
-                              //       cubit: cubit,
-                              //     ));
-                              // setState(() {});
                               cubit.createPack();
                             },
                             child: SvgPicture.asset(
