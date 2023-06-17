@@ -153,8 +153,8 @@ class _ObjectWidgetState extends State<_ObjectWidget> {
             final widget = Padding(
               padding: EdgeInsets.all(objectPadding),
               child: SizedBox(
-                width: size.width,
-                height: size.height,
+                width: size.width / 2,
+                height: size.height / 2,
               ),
             );
             return Positioned(

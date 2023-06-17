@@ -21,8 +21,10 @@ class ImageBackgroundDrawable extends BackgroundDrawable {
         image,
         Rect.fromPoints(Offset.zero,
             Offset(image.width.toDouble(), image.height.toDouble())),
-        Rect.fromPoints(Offset.zero, Offset(size.width, size.height)),
+        Rect.fromCenter(center: const Offset(190,300), width: size.width / 1.4, height: size.height/ 2.2),
+
         Paint());
+
   }
 
   // /// Compares two [ImageBackgroundDrawable]s for equality.

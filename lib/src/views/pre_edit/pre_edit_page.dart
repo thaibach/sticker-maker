@@ -156,12 +156,17 @@ class _PreEditPageState extends State<PreEditPage> {
                             ),
                             InkWell(
                               onTap: () {
-                                setState(() {
-                                  preEditCubit.isCropping = true;
-                                });
-                                preEditCubit.isCircleUi
-                                    ? cropController.cropCircle()
-                                    : cropController.crop();
+                                if(preEditCubit.turnOffBorder == false){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => EditStickerPage(imagePath: widget.image!.path,)));
+                                }else{
+                                  setState(() {
+                                    preEditCubit.isCropping = true;
+                                  });
+                                  preEditCubit.isCircleUi
+                                      ? cropController.cropCircle()
+                                      : cropController.crop();
+                                }
+
                               },
                               child: Container(
                                   height: 50,
@@ -319,112 +324,112 @@ class _PreEditPageState extends State<PreEditPage> {
                                             ),
                                           ),
                                         ),
-                                        InkWell(
-                                          onTap: () {
-                                            setState(() {
-                                              preEditCubit.crop = true;
-                                              preEditCubit.cropHexagon = false;
-                                              preEditCubit.turnOffBorder = true;
-                                            });
-                                            cropController
-                                              ..withCircleUi = false
-                                              ..aspectRatio = 1;
-                                          },
-                                          child: Container(
-                                            height: 50,
-                                            color: Colors.transparent,
-                                            child: Column(
-                                              children: [
-                                                SvgPicture.asset(
-                                                    'assets/icons/ic_triangle.svg'),
-                                                const SizedBox(
-                                                  height: 5,
-                                                ),
-                                                Text(
-                                                  "Triangle",
-                                                  style: AppStyle
-                                                      .DEFAUlT_CONTENT.copyWith(
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 12,
-                                                    color:
-                                                        const Color(0xFF2F2CCC),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        InkWell(
-                                          onTap: () {
-                                            setState(() {
-                                              preEditCubit.crop = true;
-                                              preEditCubit.cropHexagon = false;
-                                              preEditCubit.turnOffBorder = true;
-                                            });
-                                            cropController
-                                              ..withCircleUi = true
-                                              ..aspectRatio = 1;
-                                          },
-                                          child: Container(
-                                            height: 50,
-                                            color: Colors.transparent,
-                                            child: Column(
-                                              children: [
-                                                SvgPicture.asset(
-                                                    'assets/icons/ic_diamond.svg'),
-                                                const SizedBox(
-                                                  height: 5,
-                                                ),
-                                                Text(
-                                                  AppLocalizations.of(context)!
-                                                      .diamond,
-                                                  style: AppStyle
-                                                      .DEFAUlT_CONTENT.copyWith(
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 12,
-                                                    color:
-                                                        const Color(0xFF2F2CCC),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        InkWell(
-                                          onTap: () {
-                                            setState(() {
-                                              preEditCubit.crop = true;
-                                              preEditCubit.cropHexagon = true;
-                                              preEditCubit.turnOffBorder = true;
-                                            });
-                                            cropController
-                                              ..withCircleUi = false
-                                              ..aspectRatio = 1;
-                                          },
-                                          child: Container(
-                                            height: 50,
-                                            color: Colors.transparent,
-                                            child: Column(
-                                              children: [
-                                                SvgPicture.asset(
-                                                    'assets/icons/ic_hexagon.svg'),
-                                                const SizedBox(
-                                                  height: 5,
-                                                ),
-                                                Text(
-                                                  'Hexagon',
-                                                  style: AppStyle
-                                                      .DEFAUlT_CONTENT.copyWith(
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 12,
-                                                    color:
-                                                        const Color(0xFF2F2CCC),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
+                                        // InkWell(
+                                        //   onTap: () {
+                                        //     setState(() {
+                                        //       preEditCubit.crop = true;
+                                        //       preEditCubit.cropHexagon = false;
+                                        //       preEditCubit.turnOffBorder = true;
+                                        //     });
+                                        //     cropController
+                                        //       ..withCircleUi = false
+                                        //       ..aspectRatio = 1;
+                                        //   },
+                                        //   child: Container(
+                                        //     height: 50,
+                                        //     color: Colors.transparent,
+                                        //     child: Column(
+                                        //       children: [
+                                        //         SvgPicture.asset(
+                                        //             'assets/icons/ic_triangle.svg'),
+                                        //         const SizedBox(
+                                        //           height: 5,
+                                        //         ),
+                                        //         Text(
+                                        //           "Triangle",
+                                        //           style: AppStyle
+                                        //               .DEFAUlT_CONTENT.copyWith(
+                                        //             fontWeight: FontWeight.w700,
+                                        //             fontSize: 12,
+                                        //             color:
+                                        //                 const Color(0xFF2F2CCC),
+                                        //           ),
+                                        //         ),
+                                        //       ],
+                                        //     ),
+                                        //   ),
+                                        // ),
+                                        // InkWell(
+                                        //   onTap: () {
+                                        //     setState(() {
+                                        //       preEditCubit.crop = true;
+                                        //       preEditCubit.cropHexagon = false;
+                                        //       preEditCubit.turnOffBorder = true;
+                                        //     });
+                                        //     cropController
+                                        //       ..withCircleUi = true
+                                        //       ..aspectRatio = 1;
+                                        //   },
+                                        //   child: Container(
+                                        //     height: 50,
+                                        //     color: Colors.transparent,
+                                        //     child: Column(
+                                        //       children: [
+                                        //         SvgPicture.asset(
+                                        //             'assets/icons/ic_diamond.svg'),
+                                        //         const SizedBox(
+                                        //           height: 5,
+                                        //         ),
+                                        //         Text(
+                                        //           AppLocalizations.of(context)!
+                                        //               .diamond,
+                                        //           style: AppStyle
+                                        //               .DEFAUlT_CONTENT.copyWith(
+                                        //             fontWeight: FontWeight.w700,
+                                        //             fontSize: 12,
+                                        //             color:
+                                        //                 const Color(0xFF2F2CCC),
+                                        //           ),
+                                        //         ),
+                                        //       ],
+                                        //     ),
+                                        //   ),
+                                        // ),
+                                        // InkWell(
+                                        //   onTap: () {
+                                        //     setState(() {
+                                        //       preEditCubit.crop = true;
+                                        //       preEditCubit.cropHexagon = true;
+                                        //       preEditCubit.turnOffBorder = true;
+                                        //     });
+                                        //     cropController
+                                        //       ..withCircleUi = false
+                                        //       ..aspectRatio = 1;
+                                        //   },
+                                        //   child: Container(
+                                        //     height: 50,
+                                        //     color: Colors.transparent,
+                                        //     child: Column(
+                                        //       children: [
+                                        //         SvgPicture.asset(
+                                        //             'assets/icons/ic_hexagon.svg'),
+                                        //         const SizedBox(
+                                        //           height: 5,
+                                        //         ),
+                                        //         Text(
+                                        //           'Hexagon',
+                                        //           style: AppStyle
+                                        //               .DEFAUlT_CONTENT.copyWith(
+                                        //             fontWeight: FontWeight.w700,
+                                        //             fontSize: 12,
+                                        //             color:
+                                        //                 const Color(0xFF2F2CCC),
+                                        //           ),
+                                        //         ),
+                                        //       ],
+                                        //     ),
+                                        //   ),
+                                        // ),
                                       ],
                                     ),
                                   ),

@@ -54,12 +54,13 @@ dependencies:
   intl: any
   image_cropper: ^3.0.0
   fluttertoast: ^8.2.1
-  image: ^3.2.0
+#  image: ^3.2.0
   dotted_border: ^2.0.0+3
   matrix4_transform: ^2.0.1
   flutter_painter: ^1.0.1
   get: ^4.6.5
   dio: ^5.2.1+1
+  archive: ^3.3.7
 
 
 dev_dependencies:

@@ -23,7 +23,9 @@ import '../painters/painter.dart';
 import 'painter_controller_widget.dart';
 
 part 'free_style_widget.dart';
+
 part 'object_widget.dart';
+
 part 'shape_widget.dart';
 // part 'text_widget.dart';
 
@@ -146,7 +148,7 @@ class _FlutterPainterWidget extends StatelessWidget {
     return Navigator(
         onGenerateRoute: (settings) => PageRouteBuilder(
             settings: settings,
-            opaque: false,
+            //opaque: false,
             pageBuilder: (context, animation, secondaryAnimation) {
               final controller = PainterController.of(context);
               return NotificationListener<FlutterPainterNotification>(
