@@ -6,7 +6,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:image/image.dart' as image;
+import '../../../widgets/image.dart' as image;
 import 'package:sticker_maker/src/cubit/cubit_index.dart';
 
 

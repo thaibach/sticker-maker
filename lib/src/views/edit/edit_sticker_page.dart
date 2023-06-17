@@ -43,6 +43,7 @@ class _EditStickerPageState extends State<EditStickerPage> {
   double _currentRotation = 0;
 
   late PainterController _drawingController;
+  late PainterController _drawingControllers;
 
   ui.Image? drawingImage;
   Paint shapePaint = Paint()
@@ -96,14 +97,33 @@ class _EditStickerPageState extends State<EditStickerPage> {
               paint: shapePaint,
             ),
             scale: const ScaleSettings(
-              enabled: true,
+              enabled: false,
               minScale: 1,
-              maxScale: 5,
-            )));
+              maxScale: 10,
+            )),
+    );
+    _drawingControllers = PainterController(
+      settings: PainterSettings(
+          freeStyle: const FreeStyleSettings(
+            color: Colors.black,
+            strokeWidth: 10,
+          ),
+          shape: ShapeSettings(
+            paint: shapePaint,
+          ),
+          scale: const ScaleSettings(
+            enabled: false,
+            minScale: 1,
+            maxScale: 10,
+          )),
+    );
     final image = await FileImage(File(widget.imagePath)).image;
+    final images = await const NetworkImage('https://picsum.photos/1920/1080/').image;
     setState(() {
       drawingImage = image;
+      drawingImage = images;
       _drawingController.background = image.backgroundDrawable;
+      _drawingControllers.background = images.backgroundDrawable;
     });
   }
 
@@ -201,7 +221,7 @@ class _EditStickerPageState extends State<EditStickerPage> {
                                     Container(
                                       height: MediaQuery.of(context).size.height * 0.65,
                                       width: double.infinity,
-                                      margin: const EdgeInsets.symmetric(horizontal: 8),
+                                     // margin: const EdgeInsets.symmetric(horizontal: 8),
                                       decoration: const BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage('assets/images/img_transparent_bgr.png'),
@@ -214,19 +234,30 @@ class _EditStickerPageState extends State<EditStickerPage> {
                                         child: Stack(
                                           children: [
                                             if (widget.imagePath != null && drawingImage != null)
+                                              // Container(
+                                              //   //   margin: const EdgeInsets.only(left: 8, right: 8),
+                                              //   height: MediaQuery.of(context).size.height * 0.65,
+                                              //   width: double.infinity,
+                                              //   child: Center(
+                                              //     child: FlutterPainter(
+                                              //       onDrawableCreated: (a) {
+                                              //         setState(() {});
+                                              //       },
+                                              //       controller: _drawingControllers,
+                                              //     ),
+                                              //   ),
+                                              // ),
                                               Container(
-                                                margin: const EdgeInsets.only(left: 8, right: 8, top: 10),
+                                               margin: const EdgeInsets.only(left: 8, right: 8,),
                                                 height: MediaQuery.of(context).size.height * 0.65,
                                                 width: double.infinity,
                                                 child: Center(
-                                                  child: AspectRatio(
-                                                      aspectRatio: drawingImage!.width / drawingImage!.height,
-                                                      child: FlutterPainter(
-                                                        onDrawableCreated: (a) {
-                                                          setState(() {});
-                                                        },
-                                                        controller: _drawingController,
-                                                      )),
+                                                  child: FlutterPainter(
+                                                    onDrawableCreated: (a) {
+                                                      setState(() {});
+                                                    },
+                                                    controller: _drawingController,
+                                                  ),
                                                 ),
                                               ),
                                             RemoveWidget(

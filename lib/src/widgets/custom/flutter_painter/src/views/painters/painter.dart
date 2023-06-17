@@ -24,17 +24,18 @@ class Painter extends CustomPainter {
     this.scale,
   });
 
+
   /// Paints the drawables onto the [canvas] of size [size].
   @override
   void paint(Canvas canvas, Size size) {
     // This is to allow [_scale] to be upgraded to non-nullable after checking for null
     final _scale = scale;
 
-    // Draw the background if it was provided
-    if (background != null && background!.isNotHidden) {
-      background!.draw(canvas, size);
-    }
 
+    // Draw the background if it was provided
+    if (background!= null && background!.isNotHidden) {
+      background!.draw(canvas, Size(size.width ,size.height));    //  background!.draw(canvas, size);
+    }
     // If a scale size is being used, save the canvas (with the background), scale it
     // and then proceed to drawing the drawables
     if (_scale != null) {
